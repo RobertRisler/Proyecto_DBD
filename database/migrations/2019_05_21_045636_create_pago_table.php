@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriaTable extends Migration
+class CreatePagoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateCategoriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoria', function (Blueprint $table) {
+        Schema::create('pago', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre_categoria');
-            $table->string('descripcion_cat');
+            $table->boolean('tipo_pago');
+            $table->money('monto_pago');
+            $table->timestamps('fecha_pago');
+
+
+
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateCategoriaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categoria');
+        Schema::dropIfExists('pago');
     }
 }
