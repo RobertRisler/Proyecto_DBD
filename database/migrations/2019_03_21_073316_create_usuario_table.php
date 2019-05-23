@@ -19,7 +19,16 @@ class CreateUsuarioTable extends Migration
             $table->string('apellido_usuario');
             $table->string('correo_usuario')->unique();
             $table->string('contrasena');
-            $table->boolean('tipo_usuario');
+
+
+            $table->bigInteger('id_tipo_usuario');
+
+            /*Llave foranea de tipo_usuario en usuario, por tener 1 * m */
+            $table->foreign('id_tipo_usuario')
+                ->references('id')
+                ->on('tipo_usuario')
+                ->onDelete('cascade');
+
 
             $table->timestamps();
         });

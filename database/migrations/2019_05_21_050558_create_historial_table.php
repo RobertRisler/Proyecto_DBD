@@ -17,7 +17,15 @@ class CreateHistorialTable extends Migration
             $table->bigIncrements('id');
             $table->string('actividad');
             $table->string('descripcion');
-            $table->timestamps('fecha_actividad');
+            $table->timestamp('fecha_actividad');
+
+            $table->bigInteger('id_usuario');
+            /*Llave foranea de usuario en historial, por tener 1 * 1 */
+            $table->foreign('id_usuario')
+                ->references('id')
+                ->on('usuario')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -19,13 +19,13 @@ class CreatePedidoTable extends Migration
             $table->string('apellido_cliente');
             $table->string('rut_cliente');
             $table->string('correo_cliente');
-            $table->timestamps('fecha_pedido');
+            $table->timestamp('fecha_pedido');
             $table->boolean('tipo_entrega');
-            $table->timestamps('hora_estimada');
-            $table->int('estado_pedido');
-            $table->unsignedInteger('id_usuario');
-            $table->unsignedInteger('id_despacho');
-            $table->unsignedInteger('id_pago');
+            $table->timestamp('hora_estimada');
+            $table->integer('estado_pedido');
+            $table->bigInteger('id_usuario');
+            $table->bigInteger('id_despacho');
+            $table->bigInteger('id_pago');
 
 
 

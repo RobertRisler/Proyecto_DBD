@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDespachoTable extends Migration
+class CreateProductoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateDespachoTable extends Migration
      */
     public function up()
     {
-        Schema::create('despacho', function (Blueprint $table) {
+        Schema::create('producto', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre_repartidor');
-            $table->string('rut_repartidor');
-            $table->int('tiempo_estimado');
-            $table->int('estado_despacho');
-            $table->timestamps('hora_despacho');
-
-
+            $table->string('nombre_producto');
+            $table->string('descripcion_producto');
+            $table->decimal('precio_total', 9,3);
+            $table->string('tipo_producto');
+            $table->boolean('disponibilidad_producto');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ class CreateDespachoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('despacho');
+        Schema::dropIfExists('producto');
     }
 }
