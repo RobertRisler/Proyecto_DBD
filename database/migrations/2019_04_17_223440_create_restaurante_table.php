@@ -17,8 +17,8 @@ class CreateRestauranteTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre_restaurante');
             $table->string('descripcion');
-            $table->timestamps('hora_apertura');
-            $table->timestamps('hora_cierre');
+            $table->timestamp('hora_apertura');
+            $table->timestamp('hora_cierre');
             $table->boolean('promedio_valoracion');
             $table->string('telefono_restaurante');
             $table->boolean('hace_despacho');

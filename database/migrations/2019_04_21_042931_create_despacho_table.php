@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePagoTable extends Migration
+class CreateDespachoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreatePagoTable extends Migration
      */
     public function up()
     {
-        Schema::create('pago', function (Blueprint $table) {
+        Schema::create('despacho', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('tipo_pago');
-            $table->money('monto_pago');
-            $table->timestamps('fecha_pago');
-
+            $table->string('nombre_repartidor');
+            $table->string('rut_repartidor');
+            $table->integer('tiempo_estimado');
+            $table->integer('estado_despacho');
+            $table->timestamp('hora_despacho');
 
 
             $table->timestamps();
@@ -32,6 +33,6 @@ class CreatePagoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pago');
+        Schema::dropIfExists('despacho');
     }
 }

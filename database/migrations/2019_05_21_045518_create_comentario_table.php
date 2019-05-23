@@ -16,10 +16,28 @@ class CreateComentarioTable extends Migration
         Schema::create('comentario', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('mensaje_comentario');
-            $table->int('valoracion');
-            $table->timestamps('fecha_comentario');
+            $table->integer('valoracion');
+            $table->timestamp('fecha_comentario');
 
             $table->timestamps();
+
+
+            $table->bigInteger('id_usuario');
+            $table->bigInteger('id_restaurante');
+
+            /*Llave foranea de usuario en comentario, por tener 1 * m */
+            $table->foreign('id_usuario')
+                ->references('id')
+                ->on('usuario')
+                ->onDelete('cascade');
+
+            /*Llave foranea de restaurante en comentario, por tener 1 * m */
+            $table->foreign('id_restaurante')
+                ->references('id')
+                ->on('restaurante')
+                ->onDelete('cascade');
+
+
         });
     }
 
