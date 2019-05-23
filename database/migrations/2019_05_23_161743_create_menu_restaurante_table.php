@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMesaTable extends Migration
+class CreateMenuRestauranteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,29 +13,23 @@ class CreateMesaTable extends Migration
      */
     public function up()
     {
-        Schema::create('mesa', function (Blueprint $table) {
+        Schema::create('menu_restaurante', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('cantidad_asientos');
-            $table->boolean('estado_reservacion');
             $table->timestamps();
-
-            $table->bigInteger('id_reserva');
+            $table->bigInteger('id_menu');
             $table->bigInteger('id_restaurante');
 
-
-
-            /*Llave foranea de reserva en mesa, por tener 1 * m */
-            $table->foreign('id_reserva')
-                ->references('id')
-                ->on('reserva')
-                ->onDelete('cascade');
-
-            /*Llave foranea de restaurante en mesa, por tener 1 * m */
+            /*Llave foranea restaurnte , por tener n * m */
             $table->foreign('id_restaurante')
                 ->references('id')
                 ->on('restaurante')
                 ->onDelete('cascade');
 
+            /*Llave foranea menu, por tener n * m */
+            $table->foreign('id_menu')
+                ->references('id')
+                ->on('menu')
+                ->onDelete('cascade');
 
         });
     }
@@ -47,6 +41,6 @@ class CreateMesaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mesa');
+        Schema::dropIfExists('menu_restaurante');
     }
 }

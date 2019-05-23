@@ -15,13 +15,13 @@ class CreateReservaTable extends Migration
     {
         Schema::create('reserva', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->int('cantidad_personas');
-            $table->timestamps('fecha_reserva');
+            $table->integer('cantidad_personas');
+            $table->timestamp('fecha_reserva');
             $table->string('rut_cliente');
             $table->string('nombre_cliente');
             $table->string('apellido_cliente');
             $table->boolean('estado_reserva');
-            $table->unsignedInteger('id_usuario');
+            $table->bigInteger('id_usuario');
 
 
 
