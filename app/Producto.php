@@ -15,10 +15,10 @@ class Producto extends Model
     ];
     //relacion con otra tabla
     //poner nombre en plural si se relaciona con muchos
-    public function productos_pedidos(){
-    	return $this->hasMany('App\Productos_pedido');
+    public function pedidos(){
+    	return $this->belongToMany('App\Pedido');
     }
-	public function productos_menus(){
-    	return $this->hasMany('App\Productos_menu');
+	public function menus(){
+    	return $this->belongToMany('App\Menu');
     }
 }

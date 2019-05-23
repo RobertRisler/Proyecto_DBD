@@ -18,10 +18,10 @@ class Menu extends Model
     public function categorias(){
     	return $this->belongsTo('App\Categoria');
     }
-	public function menu_restaurantes(){
-    	return $this->hasMany('App\Menu_restaurante');
+	public function restaurantes(){
+    	return $this->belongToMany('App\Restaurante');
     }
-	public function productos_menus(){
-    	return $this->hasMany('App\Productos_menu');
+	public function productos(){
+    	return $this->belongToMany('App\Producto');
     }
 }

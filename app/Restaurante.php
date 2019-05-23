@@ -22,7 +22,7 @@ class Restaurante extends Model
 	public function mesas(){
     	return $this->hasMany('App\Mesa');
     }
-	public function menu_restaurantes(){
-    	return $this->hasMany('App\Menu_restaurante');
+	public function menus(){
+    	return $this->belongToMany('App\Menu');
     }
 }

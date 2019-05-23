@@ -22,7 +22,7 @@ class Pedido extends Model
 	public function despachos(){
     	return $this->belongsTo('App\Despacho');
     }
-	public function productos_pedidos(){
-    	return $this->hasMany('App\Productos_pedido');
+	public function productos(){
+    	return $this->belongToMany('App\Producto');
     }
 }
