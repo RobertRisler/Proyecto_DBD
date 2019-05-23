@@ -6,16 +6,15 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class HistorialRequest extends FormRequest
 {
-    /**
+     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +23,9 @@ class HistorialRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+			'actividad' => 'required|string',
+			'descripcion' => 'required|string',
+			'fecha_actividad' => 'required|date'
         ];
     }
 }

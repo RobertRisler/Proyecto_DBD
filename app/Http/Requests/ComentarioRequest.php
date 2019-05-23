@@ -6,16 +6,15 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ComentarioRequest extends FormRequest
 {
-    /**
+     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +23,9 @@ class ComentarioRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+			'mensaje_comentario' => 'required|string',
+			'valoracion' => 'required|integer',
+			'fecha_comentario' => 'required|date'
         ];
     }
 }

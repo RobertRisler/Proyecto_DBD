@@ -6,16 +6,15 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ProductoRequest extends FormRequest
 {
-    /**
+     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +23,11 @@ class ProductoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+			'nombre_producto' => 'required|string',
+			'descripcion_producto' => 'required|string',
+			'precio_total' => 'required|integer',
+			'tipo_producto' => 'required|string',
+			'disponibilidad_producto' => 'required|boolean'
         ];
     }
 }
