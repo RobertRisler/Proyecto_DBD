@@ -19,6 +19,7 @@ class CreateCallesComunasTable extends Migration
 
             $table->bigInteger('id_calle');
             $table->bigInteger('id_comuna');
+            
         });
     }
 
