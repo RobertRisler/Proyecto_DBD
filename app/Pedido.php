@@ -25,4 +25,7 @@ class Pedido extends Model
 	public function productos(){
     	return $this->belongToMany('App\Producto');
     }
+    public function pagos(){
+        return $this->hasOne('App\Pago');
+    }
 }
