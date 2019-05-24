@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMesaTable extends Migration
+class CreateMesasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMesaTable extends Migration
      */
     public function up()
     {
-        Schema::create('mesa', function (Blueprint $table) {
+        Schema::create('mesas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('cantidad_asientos');
             $table->boolean('estado_reservacion');
@@ -27,13 +27,13 @@ class CreateMesaTable extends Migration
             /*Llave foranea de reserva en mesa, por tener 1 * m */
             $table->foreign('id_reserva')
                 ->references('id')
-                ->on('reserva')
+                ->on('reservas')
                 ->onDelete('cascade');
 
             /*Llave foranea de restaurante en mesa, por tener 1 * m */
             $table->foreign('id_restaurante')
                 ->references('id')
-                ->on('restaurante')
+                ->on('restaurantes')
                 ->onDelete('cascade');
 
 
@@ -47,6 +47,6 @@ class CreateMesaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mesa');
+        Schema::dropIfExists('mesas');
     }
 }

@@ -23,13 +23,13 @@ class CreateMenuProductoTable extends Migration
             /*Llave foranea menu , por tener n * m */
             $table->foreign('id_menu')
                 ->references('id')
-                ->on('menu')
+                ->on('menus')
                 ->onDelete('cascade');
 
             /*Llave foranea producto, por tener n * m */
             $table->foreign('id_producto')
                 ->references('id')
-                ->on('producto')
+                ->on('productos')
                 ->onDelete('cascade');
         });
     }

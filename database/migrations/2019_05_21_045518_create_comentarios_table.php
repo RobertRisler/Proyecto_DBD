@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComentarioTable extends Migration
+class CreateComentariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateComentarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('comentario', function (Blueprint $table) {
+        Schema::create('comentarios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('mensaje_comentario');
             $table->integer('valoracion');
@@ -28,13 +28,13 @@ class CreateComentarioTable extends Migration
             /*Llave foranea de usuario en comentario, por tener 1 * m */
             $table->foreign('id_usuario')
                 ->references('id')
-                ->on('usuario')
+                ->on('usuarios')
                 ->onDelete('cascade');
 
             /*Llave foranea de restaurante en comentario, por tener 1 * m */
             $table->foreign('id_restaurante')
                 ->references('id')
-                ->on('restaurante')
+                ->on('restaurantes')
                 ->onDelete('cascade');
 
 
@@ -48,6 +48,6 @@ class CreateComentarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comentario');
+        Schema::dropIfExists('comentarios');
     }
 }

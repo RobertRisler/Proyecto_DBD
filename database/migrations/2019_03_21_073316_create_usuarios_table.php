@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsuarioTable extends Migration
+class CreateUsuariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUsuarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('usuario', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre_usuario');
             $table->string('apellido_usuario');
@@ -21,14 +21,13 @@ class CreateUsuarioTable extends Migration
             $table->string('contrasena');
 
 
-            $table->bigInteger('id_tipo_usuario');
+            /*$table->bigInteger('id_tipo_usuario');
 
-            /*Llave foranea de tipo_usuario en usuario, por tener 1 * m */
+
             $table->foreign('id_tipo_usuario')
                 ->references('id')
-                ->on('tipo_usuario')
-                ->onDelete('cascade');
-
+                ->on('tipo_usuarios')
+                ->onDelete('cascade');*/
 
             $table->timestamps();
         });
@@ -41,6 +40,6 @@ class CreateUsuarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuario');
+        Schema::dropIfExists('usuarios');
     }
 }

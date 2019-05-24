@@ -23,13 +23,13 @@ class CreatePedidoProductoTable extends Migration
             /*Llave foranea pedido , por tener n * m */
             $table->foreign('id_pedido')
                 ->references('id')
-                ->on('pedido')
+                ->on('pedidos')
                 ->onDelete('cascade');
 
             /*Llave foranea producto, por tener n * m */
             $table->foreign('id_producto')
                 ->references('id')
-                ->on('producto')
+                ->on('productos')
                 ->onDelete('cascade');
 
         });

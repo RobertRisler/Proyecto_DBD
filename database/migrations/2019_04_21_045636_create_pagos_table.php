@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePagoTable extends Migration
+class CreatePagosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePagoTable extends Migration
      */
     public function up()
     {
-        Schema::create('pago', function (Blueprint $table) {
+        Schema::create('pagos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('tipo_pago');
             $table->decimal('monto_pago', 9, 3);
@@ -32,6 +32,6 @@ class CreatePagoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pago');
+        Schema::dropIfExists('pagos');
     }
 }

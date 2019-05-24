@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipoUsuarioTable extends Migration
+class CreateProductosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateTipoUsuarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_usuario', function (Blueprint $table) {
+        Schema::create('productos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre_tipo_u');
+            $table->string('nombre_producto');
+            $table->string('descripcion_producto');
+            $table->decimal('precio_total', 9,3);
+            $table->string('tipo_producto');
+            $table->boolean('disponibilidad_producto');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateTipoUsuarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_usuario');
+        Schema::dropIfExists('productos');
     }
 }

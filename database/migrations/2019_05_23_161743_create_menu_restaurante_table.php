@@ -22,13 +22,13 @@ class CreateMenuRestauranteTable extends Migration
             /*Llave foranea restaurnte , por tener n * m */
             $table->foreign('id_restaurante')
                 ->references('id')
-                ->on('restaurante')
+                ->on('restaurantes')
                 ->onDelete('cascade');
 
             /*Llave foranea menu, por tener n * m */
             $table->foreign('id_menu')
                 ->references('id')
-                ->on('menu')
+                ->on('menus')
                 ->onDelete('cascade');
 
         });
