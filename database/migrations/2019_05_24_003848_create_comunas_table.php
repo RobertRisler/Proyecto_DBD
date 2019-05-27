@@ -22,7 +22,7 @@ class CreateComunasTable extends Migration
             /*Llave foranea ciudad, por tener 1 * n */
             $table->foreign('id_ciudad')
                 ->references('id')
-                ->on('ciudad')
+                ->on('ciudades')
                 ->onDelete('cascade');
 
             $table->timestamps();

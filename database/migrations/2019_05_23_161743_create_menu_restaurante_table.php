@@ -15,6 +15,7 @@ class CreateMenuRestauranteTable extends Migration
     {
         Schema::create('menu_restaurante', function (Blueprint $table) {
             $table->bigIncrements('id');
+            
             $table->bigInteger('id_menu');
             $table->bigInteger('id_restaurante');
 

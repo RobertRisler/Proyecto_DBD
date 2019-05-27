@@ -20,7 +20,7 @@ class CreateRestaurantesTable extends Migration
             $table->timestamp('hora_apertura');
             $table->timestamp('hora_cierre');
             $table->boolean('promedio_valoracion');
-            $table->string('telefono_restaurante');
+            $table->string('telefono');
             $table->boolean('hace_despacho');
             $table->boolean('validacion');
 

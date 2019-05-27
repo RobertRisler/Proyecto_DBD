@@ -19,7 +19,6 @@ class CreateTarjetasTable extends Migration
             $table->integer('numero_cuotas');
             $table->boolean('tipo');
 
-
             $table->timestamps();
         });
     }

@@ -15,9 +15,9 @@ class CreatePagosTable extends Migration
     {
         Schema::create('pagos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('tipo_pago');
-            $table->decimal('monto_pago', 9, 3);
-            $table->timestamp('fecha_pago');
+            $table->boolean('tipo');
+            $table->decimal('monto', 9, 3);
+            $table->timestamp('fecha');
             $table->timestamps();
         });
     }

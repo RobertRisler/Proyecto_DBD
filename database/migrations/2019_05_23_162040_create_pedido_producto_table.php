@@ -15,7 +15,6 @@ class CreatePedidoProductoTable extends Migration
     {
         Schema::create('pedido_producto', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
 
             $table->bigInteger('id_pedido');
             $table->bigInteger('id_producto');
@@ -32,6 +31,7 @@ class CreatePedidoProductoTable extends Migration
                 ->on('productos')
                 ->onDelete('cascade');
 
+            $table->timestamps();
         });
     }
 
