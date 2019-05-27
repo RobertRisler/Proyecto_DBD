@@ -15,14 +15,12 @@ class CreateUsuariosTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre_usuario');
-            $table->string('apellido_usuario');
-            $table->string('correo_usuario')->unique();
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('correo')->unique();
             $table->string('contrasena');
 
-
             /*$table->bigInteger('id_tipo_usuario');
-
 
             $table->foreign('id_tipo_usuario')
                 ->references('id')

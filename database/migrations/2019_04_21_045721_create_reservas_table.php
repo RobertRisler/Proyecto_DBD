@@ -16,22 +16,19 @@ class CreateReservasTable extends Migration
         Schema::create('reservas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('cantidad_personas');
-            $table->timestamp('fecha_reserva');
+            $table->timestamp('fecha');
             $table->string('rut_cliente');
             $table->string('nombre_cliente');
             $table->string('apellido_cliente');
-            $table->boolean('estado_reserva');
+            $table->boolean('estado');
+            
             $table->bigInteger('id_usuario');
-
-
 
             /*Llave foranea de usuario en reserva, por tener 1 * m */
             $table->foreign('id_usuario')
                 ->references('id')
                 ->on('usuarios')
                 ->onDelete('cascade');
-
-
 
             $table->timestamps();
         });

@@ -15,11 +15,23 @@ class CreateCallesComunasTable extends Migration
     {
         Schema::create('calles_comunas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
 
             $table->bigInteger('id_calle');
             $table->bigInteger('id_comuna');
             
+            /*Llave foranea calle, por tener 1 * n */
+            $table->foreign('id_calle')
+                ->references('id')
+                ->on('calles')
+                ->onDelete('cascade');
+            
+            /*Llave foranea comuna, por tener 1 * n */
+            $table->foreign('id_calle')
+                ->references('id')
+                ->on('comunas')
+                ->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 

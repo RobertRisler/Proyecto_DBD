@@ -18,9 +18,6 @@ class CreatePagosTable extends Migration
             $table->boolean('tipo_pago');
             $table->decimal('monto_pago', 9, 3);
             $table->timestamp('fecha_pago');
-
-
-
             $table->timestamps();
         });
     }

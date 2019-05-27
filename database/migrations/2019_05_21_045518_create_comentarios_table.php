@@ -19,9 +19,6 @@ class CreateComentariosTable extends Migration
             $table->integer('valoracion');
             $table->timestamp('fecha_comentario');
 
-            $table->timestamps();
-
-
             $table->bigInteger('id_usuario');
             $table->bigInteger('id_restaurante');
 
@@ -37,7 +34,7 @@ class CreateComentariosTable extends Migration
                 ->on('restaurantes')
                 ->onDelete('cascade');
 
-
+            $table->timestamps();
         });
     }
 

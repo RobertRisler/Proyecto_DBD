@@ -19,8 +19,8 @@ class CreateMenusTable extends Migration
             $table->string('descripcion_menu');
             $table->integer('cantidad_productos');
 
-
             $table->bigInteger('id_categoria');
+            
             /*Llave foranea de categoria en menu, por tener 1 * 1 */
             $table->foreign('id_categoria')
                 ->references('id')

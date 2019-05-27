@@ -15,7 +15,6 @@ class CreateMenuProductoTable extends Migration
     {
         Schema::create('menu_producto', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
 
             $table->bigInteger('id_menu');
             $table->bigInteger('id_producto');
@@ -31,6 +30,8 @@ class CreateMenuProductoTable extends Migration
                 ->references('id')
                 ->on('productos')
                 ->onDelete('cascade');
+            
+            $table->timestamps();
         });
     }
 

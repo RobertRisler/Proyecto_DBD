@@ -15,7 +15,7 @@ class CreateRestaurantesTable extends Migration
     {
         Schema::create('restaurantes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre_restaurante');
+            $table->string('nombre');
             $table->string('descripcion');
             $table->timestamp('hora_apertura');
             $table->timestamp('hora_cierre');
@@ -23,6 +23,14 @@ class CreateRestaurantesTable extends Migration
             $table->string('telefono_restaurante');
             $table->boolean('hace_despacho');
             $table->boolean('validacion');
+
+            $table->bigInteger('id_calle');
+
+            /*Llave foranea calle, por tener 1 * n */
+            $table->foreign('id_calle')
+                ->references('id')
+                ->on('calles')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -27,9 +27,6 @@ class CreatePedidosTable extends Migration
             $table->bigInteger('id_despacho');
             $table->bigInteger('id_pago');
 
-
-
-
             /*Llave foranea de usuario en pedido, por tener 1 * m */
             $table->foreign('id_usuario')
                 ->references('id')
@@ -47,9 +44,6 @@ class CreatePedidosTable extends Migration
                 ->references('id')
                 ->on('pagos')
                 ->onDelete('cascade');
-
-
-
 
             $table->timestamps();
         });

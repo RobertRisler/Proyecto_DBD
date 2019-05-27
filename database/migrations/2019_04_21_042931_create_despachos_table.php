@@ -20,8 +20,6 @@ class CreateDespachosTable extends Migration
             $table->integer('tiempo_estimado');
             $table->integer('estado_despacho');
             $table->timestamp('hora_despacho');
-
-
             $table->timestamps();
         });
     }

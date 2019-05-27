@@ -15,10 +15,17 @@ class CreateComunasTable extends Migration
     {
         Schema::create('comunas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
             $table->string('nombre');
 
             $table->bigInteger('id_ciudad');
+
+            /*Llave foranea ciudad, por tener 1 * n */
+            $table->foreign('id_ciudad')
+                ->references('id')
+                ->on('ciudad')
+                ->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 

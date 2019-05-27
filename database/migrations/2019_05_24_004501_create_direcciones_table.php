@@ -15,11 +15,24 @@ class CreateDireccionesTable extends Migration
     {
         Schema::create('direcciones', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
             $table->string('alias');
 
             $table->bigInteger('id_usuario');
             $table->bigInteger('id_calle');
+
+            /*Llave foranea usuario, por tener 1 * n */
+            $table->foreign('id_usuario')
+                ->references('id')
+                ->on('usuarios')
+                ->onDelete('cascade');
+
+            /*Llave foranea calle, por tener 1 * n */
+            $table->foreign('id_calle')
+                ->references('id')
+                ->on('calles')
+                ->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 

@@ -15,7 +15,6 @@ class CreateMenuRestauranteTable extends Migration
     {
         Schema::create('menu_restaurante', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
             $table->bigInteger('id_menu');
             $table->bigInteger('id_restaurante');
 
@@ -31,6 +30,7 @@ class CreateMenuRestauranteTable extends Migration
                 ->on('menus')
                 ->onDelete('cascade');
 
+            $table->timestamps();
         });
     }
 
