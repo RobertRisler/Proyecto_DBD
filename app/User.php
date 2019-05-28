@@ -40,7 +40,7 @@ class User extends Authenticatable
     //atributos
     //rellenar con atributos
     protected $fillable=[
-    	'nombre', 'apellido', 'correo', 'contrasena'
+    	'nombre', 'apellido', 'correo', 'contrasena', 'id_tipo_usuario',
     ];
     //relacion con otra tabla
     //poner nombre en plural si se relaciona con muchos

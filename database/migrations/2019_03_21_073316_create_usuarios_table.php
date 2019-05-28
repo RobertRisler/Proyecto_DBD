@@ -20,12 +20,12 @@ class CreateUsuariosTable extends Migration
             $table->string('correo')->unique();
             $table->string('contrasena');
 
-            /*$table->bigInteger('id_tipo_usuario');
+            $table->bigInteger('id_tipo_usuario');
 
             $table->foreign('id_tipo_usuario')
                 ->references('id')
                 ->on('tipo_usuarios')
-                ->onDelete('cascade');*/
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

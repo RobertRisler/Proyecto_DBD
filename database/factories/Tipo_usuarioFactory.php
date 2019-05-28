@@ -5,9 +5,9 @@
 use App\Model;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(App\Tipo_usuario::class, function (Faker $faker) {
     return [
         //
-		'nombre_tipo_u' => $faker->text($maxNbChars = 50)
+		'nombre' => $faker -> randomElement(['administrador','usuario','restaurante'])
     ];
 });

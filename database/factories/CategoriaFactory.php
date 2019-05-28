@@ -5,10 +5,10 @@
 use App\Model;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(App\Categoria::class, function (Faker $faker) {
     return [
         //
-		'nombre_categoria' => $faker->text($maxNbChars = 50),
-		'descripcion_cat' => $faker->text($maxNbChars = 255)
+		'nombre' => $faker->randomElement(['Desayuno','Almuerzo','Once','Cena', 'Bebestibles']),
+		'descripcion' => $faker->text($maxNbChars = 255)
     ];
 });

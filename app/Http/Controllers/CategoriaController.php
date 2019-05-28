@@ -11,7 +11,12 @@ class CategoriaController extends Controller
     //
 	public function index()
     {
-        return Categoria::all();
+
+
+        $categoria = Categoria::all();
+        return $categoria;
+
+
     }
     /**
      * Show the form for creating a new resource.

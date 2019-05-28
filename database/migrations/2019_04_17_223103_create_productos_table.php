@@ -17,7 +17,7 @@ class CreateProductosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->decimal('precio_total', 9,3);
+            $table->decimal('precio_total');
             $table->string('tipo');
             $table->boolean('disponibilidad');
             $table->timestamps();

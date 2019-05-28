@@ -17,9 +17,9 @@ class CreateRestaurantesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->timestamp('hora_apertura');
-            $table->timestamp('hora_cierre');
-            $table->boolean('promedio_valoracion');
+            $table->time('hora_apertura');
+            $table->string('hora_cierre');
+            $table->integer('promedio_valoracion');
             $table->string('telefono');
             $table->boolean('hace_despacho');
             $table->boolean('validacion');
@@ -27,12 +27,12 @@ class CreateRestaurantesTable extends Migration
             $table->bigInteger('id_calle');
 
             /*Llave foranea calle, por tener 1 * n */
-            /*
+
             $table->foreign('id_calle')
                 ->references('id')
                 ->on('calles')
                 ->onDelete('cascade');
-            */
+
             $table->timestamps();
         });
     }

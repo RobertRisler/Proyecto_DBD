@@ -17,7 +17,7 @@ class CreateTarjetasTable extends Migration
             $table->bigIncrements('id');
             $table->integer('cuatro_digitos');
             $table->integer('numero_cuotas');
-            $table->boolean('tipo');
+            $table->string('tipo');
 
             $table->timestamps();
         });

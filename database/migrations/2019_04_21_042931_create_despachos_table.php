@@ -17,9 +17,9 @@ class CreateDespachosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre_repartidor');
             $table->string('rut_repartidor');
-            $table->integer('tiempo_estimado');
-            $table->integer('estado_despacho');
-            $table->timestamp('hora_despacho');
+            $table->string('tiempo_estimado');
+            $table->boolean('estado_despacho');
+            $table->string('hora_despacho');
             $table->timestamps();
         });
     }

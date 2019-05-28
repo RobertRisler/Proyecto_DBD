@@ -21,7 +21,7 @@ class CreatePedidosTable extends Migration
             $table->string('correo_cliente');
             $table->timestamp('fecha');
             $table->boolean('tipo_entrega');
-            $table->timestamp('hora_estimada');
+            $table->string('hora_estimada');
             $table->integer('estado');
             
             $table->bigInteger('id_usuario');
