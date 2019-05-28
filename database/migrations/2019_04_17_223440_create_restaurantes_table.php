@@ -32,9 +32,8 @@ class CreateRestaurantesTable extends Migration
                 ->references('id')
                 ->on('calles')
                 ->onDelete('cascade');
-
-            $table->timestamps();
             */
+            $table->timestamps();
         });
     }
 
