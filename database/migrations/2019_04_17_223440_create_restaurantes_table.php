@@ -27,12 +27,14 @@ class CreateRestaurantesTable extends Migration
             $table->bigInteger('id_calle');
 
             /*Llave foranea calle, por tener 1 * n */
+            /*
             $table->foreign('id_calle')
                 ->references('id')
                 ->on('calles')
                 ->onDelete('cascade');
 
             $table->timestamps();
+            */
         });
     }
 

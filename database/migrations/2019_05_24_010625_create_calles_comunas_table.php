@@ -26,7 +26,7 @@ class CreateCallesComunasTable extends Migration
                 ->onDelete('cascade');
             
             /*Llave foranea comuna, por tener 1 * n */
-            $table->foreign('id_calle')
+            $table->foreign('id_comuna')
                 ->references('id')
                 ->on('comunas')
                 ->onDelete('cascade');

@@ -7,15 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Historial extends Model
 {
     //
-	protected $table='historials';
+	protected $table = 'historiales';
     //atributos
     //rellenar con atributos
-    protected $fillable=[
-    	'actividad', 'descripcion', 'fecha_actividad'
-    ];
+    protected $fillable = ['actividad', 'descripcion', 'fecha_actividad'];
     //relacion con otra tabla
     //poner nombre en plural si se relaciona con muchos
-    public function usuarios(){
+    public function usuarios()
+    {
     	return $this->belongsTo('App\User');
     }
 }

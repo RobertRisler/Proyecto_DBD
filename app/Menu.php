@@ -7,21 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     //
-	protected $table='menus';
+	protected $table = 'menus';
     //atributos
     //rellenar con atributos
-    protected $fillable=[
-    	'nombre_menu', 'descripcion_menu', 'cantidad_productos'
-    ];
+    protected $fillable = ['nombre', 'descripcion', 'cantidad_productos'];
     //relacion con otra tabla
     //poner nombre en plural si se relaciona con muchos
-    public function categorias(){
+    public function categorias()
+    {
     	return $this->belongsTo('App\Categoria');
     }
-	public function restaurantes(){
+
+    public function restaurantes()
+    {
     	return $this->belongToMany('App\Restaurante');
     }
-	public function productos(){
+
+    public function productos()
+    {
     	return $this->belongToMany('App\Producto');
     }
 }
