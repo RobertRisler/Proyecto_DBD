@@ -12,6 +12,86 @@ class PedidoSeeder extends Seeder
     public function run()
     {
         //
-		factory('App\Pedido',30)->create();
+        factory(App\Pedido::class)->create([
+            'nombre_cliente'=>'',
+            'apellido_cliente'=>'',
+            'rut_cliente'=>'',
+            'correo_cliente'=>'',
+            'fecha'=>'',
+            'tipo_entrega'=>'',
+            'hora_estimada'=>'',
+            'estado'=>'',
+            'id_usuario'=>'',
+            'id_despacho'=>'',
+            'id_pago'=>''
+
+
+        ]);
+
+        factory(App\Pedido::class)->create([
+            'nombre_cliente'=>'',
+            'apellido_cliente'=>'',
+            'rut_cliente'=>'',
+            'correo_cliente'=>'',
+            'fecha'=>'',
+            'tipo_entrega'=>'',
+            'hora_estimada'=>'',
+            'estado'=>'',
+            'id_usuario'=>'',
+            'id_despacho'=>'',
+            'id_pago'=>''
+
+
+        ]);
+
+        factory(App\Pedido::class)->create([
+            'nombre_cliente'=>'',
+            'apellido_cliente'=>'',
+            'rut_cliente'=>'',
+            'correo_cliente'=>'',
+            'fecha'=>'',
+            'tipo_entrega'=>'',
+            'hora_estimada'=>'',
+            'estado'=>'',
+            'id_usuario'=>'',
+            'id_despacho'=>'',
+            'id_pago'=>''
+
+
+        ]);
+
+        factory(App\Pedido::class)->create([
+            'nombre_cliente'=>'',
+            'apellido_cliente'=>'',
+            'rut_cliente'=>'',
+            'correo_cliente'=>'',
+            'fecha'=>'',
+            'tipo_entrega'=>'',
+            'hora_estimada'=>'',
+            'estado'=>'',
+            'id_usuario'=>'',
+            'id_despacho'=>'',
+            'id_pago'=>''
+
+
+        ]);
+
+        factory(App\Pedido::class)->create([
+            'nombre_cliente'=>'',
+            'apellido_cliente'=>'',
+            'rut_cliente'=>'',
+            'correo_cliente'=>'',
+            'fecha'=>'',
+            'tipo_entrega'=>'',
+            'hora_estimada'=>'',
+            'estado'=>'',
+            'id_usuario'=>'',
+            'id_despacho'=>'',
+            'id_pago'=>''
+
+
+        ]);
+
+        factory('App\Pedido',30)->create();
     }
 }

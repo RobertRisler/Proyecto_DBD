@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
          //$this->call(UserSeeder::class);
          $this->call(Tipo_usuarioSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(CategoriaSeeder::class);
+        /*$this->call(CategoriaSeeder::class);
         $this->call(ProductoSeeder::class);
         $this->call(CalleSeeder::class);
         $this->call(RestauranteSeeder::class);
@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DireccionSeeder::class);
         $this->call(CiudadSeeder::class);
         $this->call(ComunaSeeder::class);
-
+    */
 
     }
 }

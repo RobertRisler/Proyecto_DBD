@@ -12,6 +12,32 @@ class Tipo_usuarioSeeder extends Seeder
     public function run()
     {
         //
-		factory('App\Tipo_usuario',30)->create();
+
+        factory(App\Tipo_usuario::class)->create([
+            'nombre'=>'administrador'
+
+        ]);
+
+        factory(App\Tipo_usuario::class)->create([
+            'nombre'=>'usuario'
+
+        ]);
+
+        factory(App\Tipo_usuario::class)->create([
+            'nombre'=>'usuario'
+
+        ]);
+
+        factory(App\Tipo_usuario::class)->create([
+            'nombre'=>'administrador'
+
+        ]);
+
+        factory(App\Tipo_usuario::class)->create([
+            'nombre'=>'usuario'
+
+        ]);
+
+        factory('App\Tipo_usuario',30)->create();
     }
 }

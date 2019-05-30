@@ -12,6 +12,47 @@ class MenuSeeder extends Seeder
     public function run()
     {
         //
+
+        factory(App\Menu::class)->create([
+            'nombre'=>'',
+            'descripcion'=>'',
+            'cantidad_productos'=>'',
+            'id_categoria'=>'1'
+
+        ]);
+
+        factory(App\Menu::class)->create([
+            'nombre'=>'',
+            'descripcion'=>'',
+            'cantidad_productos'=>'',
+            'id_categoria'=>'1'
+
+        ]);
+
+        factory(App\Menu::class)->create([
+            'nombre'=>'',
+            'descripcion'=>'',
+            'cantidad_productos'=>'',
+            'id_categoria'=>'1'
+
+        ]);
+
+        factory(App\Menu::class)->create([
+            'nombre'=>'',
+            'descripcion'=>'',
+            'cantidad_productos'=>'',
+            'id_categoria'=>'1'
+
+        ]);
+
+        factory(App\Menu::class)->create([
+            'nombre'=>'',
+            'descripcion'=>'',
+            'cantidad_productos'=>'',
+            'id_categoria'=>'1'
+
+        ]);
+
 		factory('App\Menu',30)->create();
     }
 }
