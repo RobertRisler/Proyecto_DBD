@@ -12,7 +12,7 @@ class ProductoSeeder extends Seeder
     public function run()
     {
         //
-
+        /*
         factory(App\Producto::class)->create([
             'nombre'=>'',
             'descripcion'=>'',
@@ -57,6 +57,8 @@ class ProductoSeeder extends Seeder
             'disponibilidad'=>''
 
         ]);
+
+        */
 
 		factory('App\Producto',30)->create();
     }

@@ -12,7 +12,7 @@ class ReservaSeeder extends Seeder
     public function run()
     {
         //
-
+        /*
         factory(App\Reserva::class)->create([
             'cantidad_personas'=>'',
             'fecha_resevacion'=>'',
@@ -67,6 +67,8 @@ class ReservaSeeder extends Seeder
             'id_usuario'=>''
 
         ]);
+
+        */
 
 		factory('App\Reserva',30)->create();
     }

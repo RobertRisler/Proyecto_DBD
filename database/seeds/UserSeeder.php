@@ -13,6 +13,7 @@ class UserSeeder extends Seeder
     {
         //
 
+        /*
         factory(App\User::class)->create([
             'nombre'=>'Jose',
             'apellido'=>'Manuel',
@@ -62,6 +63,8 @@ class UserSeeder extends Seeder
 
 
         ]);
+
+        */
 		factory('App\User',30)->create();
 
     }

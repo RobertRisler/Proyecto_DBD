@@ -13,7 +13,7 @@ class ComentarioSeeder extends Seeder
     {
 
 
-
+        /*
         //
 
         factory(App\Comentario::class)->create([
@@ -65,7 +65,7 @@ class ComentarioSeeder extends Seeder
 
         ]);
 
-
+        */
 
 		factory('App\Comentario',30)->create();
     }

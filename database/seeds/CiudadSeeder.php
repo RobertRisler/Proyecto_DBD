@@ -12,7 +12,7 @@ class CiudadSeeder extends Seeder
     public function run()
     {
 
-
+        /*
         factory(App\Ciudad::class)->create([
             'nombre'=>'Curicó'
 
@@ -38,6 +38,8 @@ class CiudadSeeder extends Seeder
 
         ]);
 
+
+        */
         factory('App\Ciudad',30)->create();
     }
 }

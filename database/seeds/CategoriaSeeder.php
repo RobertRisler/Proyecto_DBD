@@ -12,7 +12,7 @@ class CategoriaSeeder extends Seeder
     public function run()
     {
         //
-
+/*
         factory(App\Categoria::class)->create([
             'nombre'=>'Desayuno',
             'descripcion'=>''
@@ -41,7 +41,7 @@ class CategoriaSeeder extends Seeder
             'nombre'=>'Bebestibles',
             'descripcion'=>''
 
-        ]);
+        ]);*/
 
 		factory('App\Categoria',30)->create();
     }

@@ -11,7 +11,7 @@ class CalleSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Calle::class)->create([
+        /*factory(App\Calle::class)->create([
             'nombre'=>'Los aromos',
             'numero'=>540
 
@@ -40,7 +40,7 @@ class CalleSeeder extends Seeder
             'numero'=>657
 
         ]);
-
+*/
 
         factory('App\Calle',30)->create();
     }

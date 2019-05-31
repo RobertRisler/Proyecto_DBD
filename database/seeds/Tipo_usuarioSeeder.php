@@ -13,6 +13,7 @@ class Tipo_usuarioSeeder extends Seeder
     {
         //
 
+        /*
         factory(App\Tipo_usuario::class)->create([
             'nombre'=>'administrador'
 
@@ -38,6 +39,8 @@ class Tipo_usuarioSeeder extends Seeder
 
         ]);
 
+
+        */
         factory('App\Tipo_usuario',30)->create();
     }
 }

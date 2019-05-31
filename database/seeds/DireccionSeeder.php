@@ -12,12 +12,7 @@ class DireccionSeeder extends Seeder
     public function run()
     {
 
-        factory(App\Direccion::class)->create([
-            'alias'=>'',
-            'id_usuario'=>'',
-            'id_calle'=>''
-
-        ]);
+        /*
 
         factory(App\Direccion::class)->create([
             'alias'=>'',
@@ -47,7 +42,14 @@ class DireccionSeeder extends Seeder
 
         ]);
 
+        factory(App\Direccion::class)->create([
+            'alias'=>'',
+            'id_usuario'=>'',
+            'id_calle'=>''
 
+        ]);
+
+        */
         factory('App\Direccion',30)->create();
     }
 }

@@ -12,6 +12,8 @@ class TarjetaSeeder extends Seeder
     public function run()
     {
 
+
+        /*
         factory(App\Tarjeta::class)->create([
             'cuatro_digitos'=>'',
             'numero_cuotas'=>'',
@@ -48,6 +50,8 @@ class TarjetaSeeder extends Seeder
             'tipo'=>''
 
         ]);
+
+        */
 
 
         factory('App\Tarjeta',30)->create();

@@ -12,7 +12,7 @@ class HistorialSeeder extends Seeder
     public function run()
     {
         //
-
+        /*
         factory(App\Historial::class)->create([
             'actividad'=>'',
             'descripcion'=>'',
@@ -53,6 +53,8 @@ class HistorialSeeder extends Seeder
 
         ]);
 
+
+        */
 		factory('App\Historial',30)->create();
     }
 }

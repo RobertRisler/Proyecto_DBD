@@ -11,7 +11,7 @@ class PagoSeeder extends Seeder
      */
     public function run()
     {
-
+        /*
         factory(App\Pago::class)->create([
             'tipo'=>'',
             'monto'=>'',
@@ -46,6 +46,8 @@ class PagoSeeder extends Seeder
             'fecha'=>''
 
         ]);
+
+        */
 
         factory('App\Pago',30)->create();
     }

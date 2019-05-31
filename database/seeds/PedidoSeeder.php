@@ -12,6 +12,7 @@ class PedidoSeeder extends Seeder
     public function run()
     {
         //
+        /*
         factory(App\Pedido::class)->create([
             'nombre_cliente'=>'',
             'apellido_cliente'=>'',
@@ -91,6 +92,8 @@ class PedidoSeeder extends Seeder
 
 
         ]);
+
+        */
 
         factory('App\Pedido',30)->create();
     }

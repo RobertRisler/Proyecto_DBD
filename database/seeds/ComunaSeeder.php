@@ -11,13 +11,7 @@ class ComunaSeeder extends Seeder
      */
     public function run()
     {
-
-
-        factory(App\Comuna::class)->create([
-            'nombre'=>'',
-            'id_ciudad'=>''
-
-        ]);
+        /*
 
         factory(App\Comuna::class)->create([
             'nombre'=>'',
@@ -43,7 +37,13 @@ class ComunaSeeder extends Seeder
 
         ]);
 
+        factory(App\Comuna::class)->create([
+            'nombre'=>'',
+            'id_ciudad'=>''
 
+        ]);
+
+        */
         factory('App\Comuna',30)->create();
     }
 }

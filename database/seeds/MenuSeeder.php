@@ -12,7 +12,7 @@ class MenuSeeder extends Seeder
     public function run()
     {
         //
-
+        /*
         factory(App\Menu::class)->create([
             'nombre'=>'',
             'descripcion'=>'',
@@ -52,6 +52,8 @@ class MenuSeeder extends Seeder
             'id_categoria'=>'1'
 
         ]);
+
+        */
 
 		factory('App\Menu',30)->create();
     }

@@ -9,73 +9,74 @@ use App\Http\Requests\UserRequest;
 class UserController extends Controller
 {
     //
-	public function index()
+	public function index()//Los muestra todos
     {
-	return User::all();
+        $users = User::all();
+        return response()->json($users);
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+
+    public function create(Request $request)//crea un recurso
     {
-        //
+        $users = new User();
+        $users->nombre = $request->input('nombre');
+        $users->apellido = $request->input('apellido');
+        $users->correo = $request->input('correo');
+        $users->contrasena = $request->input('contrasena');
+        $users->id_tipo_usuario = $request->input('id_tipo_usuario');
+
+        $users->save();
+        return response()->json($users);
+
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(UserRequest $request)
+
+    public function store(Request $request)
     {
         return User::create($request->all());
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+
+
+    public function show($id)//muestra segun el $id
     {
-        return User::findOrFail($id);
+
+        $users = User::find($id);
+        return response()->json($users);
+
+
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+
+
     public function edit($id)
     {
         //
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UserRequest $request, $id)
+
+
+
+    public function update(Request $request, $id)//actualiza uno en especifico
     {
-        $user = User::findOrFail($id);
-        $user->fill($request->all());
-        $user->save();
-        return $user;
+
+        $users = User::find($id);
+        $users->nombre = $request->input('nombre');
+        $users->apellido = $request->input('apellido');
+        $users->correo = $request->input('correo');
+        $users->contrasena = $request->input('contrasena');
+        $users->id_tipo_usuario = $request->input('id_tipo_usuario');
+        $users->save();
+        return response()->json($users);
+
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+
+
+    public function destroy($id)//Elimina uno en especifico
     {
-        $user = User::findOrFail($id);
-        $user ->delete();
-        return 'eliminado';
+        $users = User::find($id);
+        $users ->delete();
+        return "Eliminado!";
+
+
     }
 }

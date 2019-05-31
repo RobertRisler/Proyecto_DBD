@@ -12,7 +12,7 @@ class DespachoSeeder extends Seeder
     public function run()
     {
         //
-
+        /*
         factory(App\Despacho::class)->create([
             'nombre_repartidor'=>'Jose',
             'rut_repartidor'=>'198231238',
@@ -58,6 +58,7 @@ class DespachoSeeder extends Seeder
 
         ]);
 
+        */
 		factory('App\Despacho',30)->create();
     }
 }

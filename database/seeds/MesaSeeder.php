@@ -12,6 +12,8 @@ class MesaSeeder extends Seeder
     public function run()
     {
         //
+
+        /*
         factory(App\Mesa::class)->create([
             'cantidad_asientos'=>'',
             'estado_reservacion'=>'',
@@ -51,6 +53,8 @@ class MesaSeeder extends Seeder
             'id_restaurante'=>'1'
 
         ]);
+
+        */
 
 
 		factory('App\Mesa',30)->create();
