@@ -18,6 +18,12 @@ class UserController extends Controller
 
     public function create(Request $request)//crea un recurso
     {
+
+
+    }
+
+    public function store(Request $request)
+    {
         $users = new User();
         $users->nombre = $request->input('nombre');
         $users->apellido = $request->input('apellido');
@@ -27,12 +33,6 @@ class UserController extends Controller
 
         $users->save();
         return response()->json($users);
-
-    }
-
-    public function store(Request $request)
-    {
-        return User::create($request->all());
     }
 
 

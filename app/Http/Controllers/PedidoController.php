@@ -8,74 +8,81 @@ use App\Http\Requests\PedidoRequest;
 
 class PedidoController extends Controller
 {
-    //
-	public function index()
+    public function index()
     {
-        return Pedido::all();
+        $pedido = Pedido::all();
+        return response()->json($pedido);
+
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(PedidoRequest $request)
+
+    public function store(Request $request)
     {
-        return Pedido::create($request->all());
+        $pedido = new Pedido();
+        $pedido->nombre_cliente = $request->input('nombre_cliente');
+        $pedido->apellido_cliente = $request->input('apellido_cliente');
+        $pedido->rut_cliente = $request->input('rut_cliente');
+        $pedido->correo_cliente = $request->input('correo_cliente');
+        $pedido->fecha = $request->input('fecha');
+
+
+        $pedido->tipo_entrega = $request->input('tipo_entrega');
+        $pedido->hora_estimada = $request->input('hora_estimada');
+        $pedido->estado = $request->input('estado');
+        $pedido->id_usuario = $request->input('id_usuario');
+
+        $pedido->id_despacho = $request->input('id_despacho');
+        $pedido->id_pago = $request->input('id_pago');
+
+        $pedido->save();
+        return response()->json($pedido);
+
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        return Pedido::findOrFail($id);
+        $pedido = Pedido::find($id);
+        return response()->json($pedido);
+
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(PedidoRequest $request, $id)
+
+    public function update(Request $request, $id)
     {
-        $pedido = Pedido::findOrFail($id);
-        $pedido->fill($request->all());
+        $pedido = Pedido::find($id);
+        $pedido->nombre_cliente = $request->input('nombre_cliente');
+        $pedido->apellido_cliente = $request->input('apellido_cliente');
+        $pedido->rut_cliente = $request->input('rut_cliente');
+        $pedido->correo_cliente = $request->input('correo_cliente');
+        $pedido->fecha = $request->input('fecha');
+
+
+        $pedido->tipo_entrega = $request->input('tipo_entrega');
+        $pedido->hora_estimada = $request->input('hora_estimada');
+        $pedido->estado = $request->input('estado');
+        $pedido->id_usuario = $request->input('id_usuario');
+
+        $pedido->id_despacho = $request->input('id_despacho');
+        $pedido->id_pago = $request->input('id_pago');
+
         $pedido->save();
-        return $pedido;
+        return response()->json($pedido);
+
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        $pedido = Pedido::findOrFail($id);
-        $pedido ->delete();
-        return 'eliminado';
+        $pedido = Pedido::find($id);
+        $pedido->delete();
+        return "Eliminado";
+
     }
 }

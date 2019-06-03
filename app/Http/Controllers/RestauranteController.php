@@ -9,73 +9,75 @@ use App\Http\Requests\RestauranteRequest;
 class RestauranteController extends Controller
 {
     //
-	public function index()
+    public function index()
     {
-        return Restaurante::all();
+        $restaurante = Restaurante::all();
+        return response()->json($restaurante);
+
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(RestauranteRequest $request)
+
+    public function store(Request $request)
     {
-        return Restaurante::create($request->all());
+        $restaurante = new Restaurante();
+        $restaurante->nombre = $request->input('nombre');
+        $restaurante->descripcion = $request->input('descripcion');
+        $restaurante->hora_apertura = $request->input('hora_apertura');
+        $restaurante->hora_cierre = $request->input('hora_cierre');
+        $restaurante->promedio_valoracion = $request->input('promedio_valoracion');
+        $restaurante->telefono = $request->input('telefono');
+        $restaurante->hace_despacho = $request->input('hace_despacho');
+        $restaurante->validacion = $request->input('validacion');
+        $restaurante->id_calle = $request->input('id_calle');
+
+        $restaurante->save();
+        return response()->json($restaurante);
+
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        return Restaurante::findOrFail($id);
+
+        $restaurante = Restaurante::find($id);
+        return response()->json($restaurante);
+
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(RestauranteRequest $request, $id)
+
+    public function update(Request $request, $id)
     {
-        $restaurante = Restaurante::findOrFail($id);
-        $restaurante->fill($request->all());
+
+        $restaurante = Restaurante::find($id);
+        $restaurante->nombre = $request->input('nombre');
+        $restaurante->descripcion = $request->input('descripcion');
+        $restaurante->hora_apertura = $request->input('hora_apertura');
+        $restaurante->hora_cierre = $request->input('hora_cierre');
+        $restaurante->promedio_valoracion = $request->input('promedio_valoracion');
+        $restaurante->telefono = $request->input('telefono');
+        $restaurante->hace_despacho = $request->input('hace_despacho');
+        $restaurante->validacion = $request->input('validacion');
+        $restaurante->id_calle = $request->input('id_calle');
+
         $restaurante->save();
-        return $restaurante;
+        return response()->json($restaurante);
+
+
+
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        $restaurante = Restaurante::findOrFail($id);
+
+        $restaurante = Restaurante::find($id);
         $restaurante ->delete();
-        return 'eliminado';
+        return "Eliminado!";
     }
 }

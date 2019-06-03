@@ -9,73 +9,67 @@ use App\Http\Requests\ReservaRequest;
 class ReservaController extends Controller
 {
     //
-	public function index()
+    public function index()
     {
-        return Reserva::all();
+
+        $reserva = Reserva::all();
+        return response()->json($reserva);
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(ReservaRequest $request)
+
+    public function store(Request $request)
     {
-        return Reserva::create($request->all());
+        $reserva = new Reserva();
+        $reserva->cantidad_personas = $request->input('cantidad_personas');
+        $reserva->fecha_resevacion = $request->input('fecha_resevacion');
+        $reserva->rut_cliente = $request->input('rut_cliente');
+        $reserva->nombre_cliente = $request->input('nombre_cliente');
+        $reserva->apellido_cliente = $request->input('apellido_cliente');
+        $reserva->estado = $request->input('estado');
+        $reserva->id_usuario = $request->input('id_usuario');
+
+        $reserva->save();
+        return response()->json($reserva);
+
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        return Reserva::findOrFail($id);
+
+        $reserva = Reserva::find($id);
+        return response()->json($reserva);
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(ReservaRequest $request, $id)
+
+    public function update(Request $request, $id)
     {
-        $reserva = Reserva::findOrFail($id);
-        $reserva->fill($request->all());
+
+        $reserva = Reserva::find($id);
+        $reserva->cantidad_personas = $request->input('cantidad_personas');
+        $reserva->fecha_resevacion = $request->input('fecha_resevacion');
+        $reserva->rut_cliente = $request->input('rut_cliente');
+        $reserva->nombre_cliente = $request->input('nombre_cliente');
+        $reserva->apellido_cliente = $request->input('apellido_cliente');
+        $reserva->estado = $request->input('estado');
+        $reserva->id_usuario = $request->input('id_usuario');
+
         $reserva->save();
-        return $reserva;
+        return response()->json($reserva);
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        $reserva = Reserva::findOrFail($id);
+        $reserva = Reserva::find($id);
         $reserva ->delete();
-        return 'eliminado';
+        return "Eliminado!";
+
     }
 }

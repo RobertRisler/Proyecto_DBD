@@ -41,6 +41,6 @@ class Tipo_usuarioSeeder extends Seeder
 
 
         */
-        factory('App\Tipo_usuario',30)->create();
+        factory('App\Tipo_usuario',3)->create();
     }
 }

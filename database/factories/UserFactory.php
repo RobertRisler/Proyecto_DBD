@@ -21,7 +21,7 @@ $factory->define(App\User::class, function (Faker $faker) {
     $id_tipo_usuario = $faker->randomElement($ids_tipos_usuarios)->id;
 
 
-    //$ids_tipos_usuarios = DB::table('tipo_usuarios')->select('id')->get();
+
 
 
     return [

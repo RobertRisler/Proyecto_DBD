@@ -11,71 +11,60 @@ class ProductoController extends Controller
     //
 	public function index()
     {
-        return Producto::all();
+        $producto = Producto::all();
+        return response()->json($producto);
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(ProductoRequest $request)
+
+    public function store(Request $request)
     {
-        return Producto::create($request->all());
+        $producto = new Producto();
+        $producto->nombre = $request->input('nombre');
+        $producto->descripcion = $request->input('descripcion');
+        $producto->precio_total = $request->input('precio_total');
+        $producto->tipo = $request->input('tipo');
+        $producto->disponibilidad = $request->input('disponibilidad');
+
+        $producto->save();
+        return response()->json($producto);
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        return Producto::findOrFail($id);
+
+        $producto = Producto::find($id);
+        return response()->json($producto);
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(ProductoRequest $request, $id)
+
+    public function update(Request $request, $id)
     {
-        $producto = Producto::findOrFail($id);
-        $producto->fill($request->all());
+        $producto = Producto::find($id);
+        $producto->nombre = $request->input('nombre');
+        $producto->descripcion = $request->input('descripcion');
+        $producto->precio_total = $request->input('precio_total');
+        $producto->tipo = $request->input('tipo');
+        $producto->disponibilidad = $request->input('disponibilidad');
+
         $producto->save();
-        return $producto;
+        return response()->json($producto);
+
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        $producto = Producto::findOrFail($id);
+
+        $producto = Producto::find($id);
         $producto ->delete();
-        return 'eliminado';
+        return "Eliminado!";
+
     }
 }

@@ -2,90 +2,69 @@
 
 namespace App\Http\Controllers;
 
+use Grpc\Call;
 use Illuminate\Http\Request;
 use App\Calle;
 use App\Http\Requests\CalleRequest;
 
 class CalleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return Calle::all();
+
+        $calle = Calle::all();
+        return response()->json($calle);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        return Calle::create($request->all());
+
+        $calle = new Calle();
+        $calle->nombre = $request->input('nombre');
+        $calle->numero = $request->input('numero');
+
+        $calle->save();
+        return response()->json($calle);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        return Calle::findOrFail($id);
+
+        $calle = Calle::find($id);
+        return response()->json($calle);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        $calle = Calle::findOrFail($id);
-        $calle->fill($request->all());
+
+        $calle = Calle::find($id);
+        $calle->nombre = $request->input('nombre');
+        $calle->numero = $request->input('numero');
+
         $calle->save();
-        return $calle;
+        return response()->json($calle);
+
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        $calle = Calle::findOrFail($id);
+
+        $calle = Calle::find($id);
         $calle ->delete();
-        return 'eliminado';
+        return "Eliminado!";
+
     }
 }

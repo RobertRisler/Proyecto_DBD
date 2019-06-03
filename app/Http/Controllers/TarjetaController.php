@@ -8,83 +8,61 @@ use App\Http\Requests\TarjetaRequest;
 
 class TarjetaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index()//rellenar
     {
-        return Tarjeta::all();
+        $tarjetas = Tarjeta::all();
+        return response()->json($tarjetas);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(Request $request)//rellenar
     {
-        return Tarjeta::create($request->all());
+        $tarjeta = new Tarjeta();
+        $tarjeta->cuatro_digitos = $request->input('cuatro_digitos');
+        $tarjeta->numero_cuotas = $request->input('numero_cuotas');
+        $tarjeta->tipo = $request->input('tipo');
+
+        $tarjeta->save();
+        return response()->json($tarjeta);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show($id)//rellenar
     {
-        return Tarjeta::findOrFail($id);
+        $tarjeta = Tarjeta::find($id);
+        return response()->json($tarjeta);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(Request $request, $id)//rellenar
     {
-        $tarjeta = Tarjeta::findOrFail($id);
-        $tarjeta->fill($request->all());
+        $tarjeta = Tarjeta::find($id);
+        $tarjeta->cuatro_digitos = $request->input('cuatro_digitos');
+        $tarjeta->numero_cuotas = $request->input('numero_cuotas');
+        $tarjeta->tipo = $request->input('tipo');
+
         $tarjeta->save();
-        return $tarjeta;
+        return response()->json($tarjeta);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function destroy($id)//rellenar
     {
-        $tarjeta = Tarjeta::findOrFail($id);
+        $tarjeta = Tarjeta::find($id);
         $tarjeta ->delete();
-        return 'eliminado';    }
+        return "Eliminado!";
+    }
 }

@@ -8,74 +8,64 @@ use App\Http\Requests\MenuRequest;
 
 class MenuController extends Controller
 {
-    //
-	public function index()
+    public function index()
     {
-        return Menu::all();
+        $menu = Menu::all();
+        return response()->json($menu);
+
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(MenuRequest $request)
+
+    public function store(Request $request)
     {
-        return Menu::create($request->all());
+        $menu = new Menu();
+        $menu->nombre = $request->input('nombre');
+        $menu->descripcion = $request->input('descripcion');
+        $menu->cantidad_productos = $request->input('cantidad_productos');
+        $menu->id_categoria = $request->input('id_categoria');
+
+
+        $menu->save();
+        return response()->json($menu);
+
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        return Menu::findOrFail($id);
+        $menu = Menu::find($id);
+        return response()->json($menu);
+
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(MenuRequest $request, $id)
+
+    public function update(Request $request, $id)
     {
-        $menu = Menu::findOrFail($id);
-        $menu->fill($request->all());
+        $menu = Menu::find($id);
+        $menu->nombre = $request->input('nombre');
+        $menu->descripcion = $request->input('descripcion');
+        $menu->cantidad_productos = $request->input('cantidad_productos');
+        $menu->id_categoria = $request->input('id_categoria');
+
+
         $menu->save();
-        return $menu;
+        return response()->json($menu);
+
+
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        $menu = Menu::findOrFail($id);
+        $menu = Menu::find($id);
         $menu ->delete();
-        return 'eliminado';
+        return "Eliminado";
+
     }
 }
