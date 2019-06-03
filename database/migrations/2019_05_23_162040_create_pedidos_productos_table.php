@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePedidoProductoTable extends Migration
+class CreatePedidosProductosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePedidoProductoTable extends Migration
      */
     public function up()
     {
-        Schema::create('pedido_producto', function (Blueprint $table) {
+        Schema::create('pedidos_productos', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->bigInteger('id_pedido');
@@ -42,6 +42,6 @@ class CreatePedidoProductoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedido_producto');
+        Schema::dropIfExists('pedidos_productos');
     }
 }
