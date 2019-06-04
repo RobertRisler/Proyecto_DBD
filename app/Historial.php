@@ -13,7 +13,7 @@ class Historial extends Model
     protected $fillable = ['actividad', 'descripcion', 'fecha_actividad'];
     //relacion con otra tabla
     //poner nombre en plural si se relaciona con muchos
-    public function usuarios()
+    public function usuario()
     {
     	return $this->belongsTo('App\User');
     }

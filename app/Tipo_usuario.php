@@ -15,6 +15,7 @@ class Tipo_usuario extends Model
     //poner nombre en plural si se relaciona con muchos
     public function usuarios()
     {
-    	return $this->hasMany('App\User');
+    	return $this->hasMany(User::class, 'id_tipo_usuario', 'id');
     }
 }
+

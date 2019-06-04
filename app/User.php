@@ -49,7 +49,7 @@ class User extends Authenticatable
     	return $this->hasMany('App\Comentario');
     }
 
-    public function historials()
+    public function historiales()
     {
     	return $this->hasMany('App\Historial');
     }
@@ -64,9 +64,9 @@ class User extends Authenticatable
     	return $this->hasMany('App\Pedido');
     }
 
-    public function tipo_usuarios()
+    public function tipo_usuario()
     {
-    	return $this->belongsTo('App\Tipo_Usuario');
+    	return $this->hasOne(Tipo_usuario::class, 'id','id_tipo_usuario');
     }
 
     public function direcciones()
