@@ -34,4 +34,9 @@ class Restaurante extends Model
     {
     	return $this->belongsTo('App\Calle');
     }
+    
+    public function horarios_restaurantes()
+    {
+    	return $this->hasMany('App\Horario_Restaurante');
+    }
 }
