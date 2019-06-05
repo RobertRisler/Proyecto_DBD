@@ -7,12 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Calle::class, function (Faker $faker) {
     return [
-
-
         'nombre' => $faker->streetName,
-        'numero' => $faker->numberBetween(10,900),
-
-
-
+        'numero' => $faker->numberBetween(10,900)
     ];
 });

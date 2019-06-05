@@ -11,13 +11,9 @@ $factory->define(App\Restaurante::class, function (Faker $faker) {
     $id_calle = $faker->randomElement($ids_calles)->id;
 
     return [
-        //
-
 		'nombre' => $faker->randomElement(['Pizza Hut','Sushi Ok','Rock & Salsa','Pollo Las Parcelas','Dragón Chino',
-            'Tommy Beans','Burger King','Dominó','Tarragona','Soy Churro','Bufalo Beef', 'Mamut', 'Pizzas El Antojito']),
+        'Tommy Beans','Burger King','Dominó','Tarragona','Soy Churro','Bufalo Beef', 'Mamut', 'Pizzas El Antojito']),
 		'descripcion' => $faker->text($maxNbChars = 255),
-		'hora_apertura' => $faker->time($format = 'H:i:s', $min= '43200',$max = '43200'),
-		'hora_cierre' => $faker->time($format = 'H:i:s', $max = 'now'),
 		'promedio_valoracion' => $faker->numberBetween($min = 0, $max = 5),
 		'telefono' => $faker->phoneNumber,
 		'hace_despacho' => $faker->boolean,

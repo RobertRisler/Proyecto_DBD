@@ -13,9 +13,6 @@ $factory->define(App\Comentario::class, function (Faker $faker) {
     $ids_restaurantes = \DB::table('restaurantes')->select('id')->get();
     $id_restaurante = $faker->randomElement($ids_restaurantes)->id;
 
-
-
-
     return [
         //
 		'mensaje' => $faker->text($maxNbChars = 255),
