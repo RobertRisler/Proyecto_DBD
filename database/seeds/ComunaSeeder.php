@@ -11,39 +11,31 @@ class ComunaSeeder extends Seeder
      */
     public function run()
     {
-        /*
-
         factory(App\Comuna::class)->create([
-            'nombre'=>'',
-            'id_ciudad'=>''
-
+            'nombre' => 'Temuco',
+            'id_ciudad' => '2'
+        ]);
+        
+        factory(App\Comuna::class)->create([
+            'nombre' => 'La Reina',
+            'id_ciudad' => '3'
         ]);
 
         factory(App\Comuna::class)->create([
-            'nombre'=>'',
-            'id_ciudad'=>''
-
+            'nombre' => 'Providencia',
+            'id_ciudad' => '3'
         ]);
 
         factory(App\Comuna::class)->create([
-            'nombre'=>'',
-            'id_ciudad'=>''
-
+            'nombre' => 'Estación Central',
+            'id_ciudad' => '3'
         ]);
 
         factory(App\Comuna::class)->create([
-            'nombre'=>'',
-            'id_ciudad'=>''
-
+            'nombre' => 'Lautaro',
+            'id_ciudad' => '2'
         ]);
-
-        factory(App\Comuna::class)->create([
-            'nombre'=>'',
-            'id_ciudad'=>''
-
-        ]);
-
-        */
+        
         factory('App\Comuna',30)->create();
     }
 }

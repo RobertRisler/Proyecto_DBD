@@ -22,10 +22,10 @@ class CreatePedidosTable extends Migration
             $table->timestamp('fecha');
             $table->boolean('tipo_entrega');
             $table->string('hora_estimada');
-            $table->integer('estado');
+            $table->boolean('estado');
             
             $table->bigInteger('id_usuario');
-            $table->bigInteger('id_despacho');
+            $table->bigInteger('id_despacho')->nullable();
             $table->bigInteger('id_pago');
 
             /*Llave foranea de usuario en pedido, por tener 1 * m */

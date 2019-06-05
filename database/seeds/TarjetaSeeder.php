@@ -11,49 +11,37 @@ class TarjetaSeeder extends Seeder
      */
     public function run()
     {
-
-
         /*
         factory(App\Tarjeta::class)->create([
             'cuatro_digitos'=>'',
             'numero_cuotas'=>'',
             'tipo'=>''
-
         ]);
 
         factory(App\Tarjeta::class)->create([
             'cuatro_digitos'=>'',
             'numero_cuotas'=>'',
             'tipo'=>''
-
-        ]);
-
-
-        factory(App\Tarjeta::class)->create([
-            'cuatro_digitos'=>'',
-            'numero_cuotas'=>'',
-            'tipo'=>''
-
-        ]);
-
-
-        factory(App\Tarjeta::class)->create([
-            'cuatro_digitos'=>'',
-            'numero_cuotas'=>'',
-            'tipo'=>''
-
         ]);
 
         factory(App\Tarjeta::class)->create([
             'cuatro_digitos'=>'',
             'numero_cuotas'=>'',
             'tipo'=>''
-
         ]);
 
+        factory(App\Tarjeta::class)->create([
+            'cuatro_digitos'=>'',
+            'numero_cuotas'=>'',
+            'tipo'=>''
+        ]);
+
+        factory(App\Tarjeta::class)->create([
+            'cuatro_digitos'=>'',
+            'numero_cuotas'=>'',
+            'tipo'=>''
+        ]);
         */
-
-
         factory('App\Tarjeta',30)->create();
     }
 }

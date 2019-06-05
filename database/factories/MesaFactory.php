@@ -13,14 +13,9 @@ $factory->define(App\Mesa::class, function (Faker $faker) {
     $ids_restaurantes = \DB::table('restaurantes')->select('id')->get();
     $id_restaurante = $faker->randomElement($ids_restaurantes)->id;
 
-
-
     return [
-        //
 		'cantidad_asientos' => $faker->numberBetween($min = 1, $max = 10),
-		'estado_reservacion' => $faker->boolean,
         'id_reserva'=>$id_reserva,
         'id_restaurante'=>$id_restaurante
-
     ];
 });

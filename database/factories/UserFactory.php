@@ -17,19 +17,15 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\User::class, function (Faker $faker) {
+
     $ids_tipos_usuarios = \DB::table('tipo_usuarios')->select('id')->get();
     $id_tipo_usuario = $faker->randomElement($ids_tipos_usuarios)->id;
-
-
-
-
 
     return [
 		'nombre' => $faker->firstName,
 		'apellido' => $faker->lastName,
 		'correo' => $faker->unique()->safeEmail,
 		'contrasena' => $password = bcrypt('secret'),
-        'id_tipo_usuario' =>  $id_tipo_usuario
-
+        'id_tipo_usuario' => $id_tipo_usuario
     ];
 });

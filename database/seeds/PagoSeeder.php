@@ -13,42 +13,35 @@ class PagoSeeder extends Seeder
     {
         /*
         factory(App\Pago::class)->create([
-            'tipo'=>'',
-            'monto'=>'',
-            'fecha'=>''
-
+            'tipo' => '',
+            'monto' => '',
+            'fecha' => ''
         ]);
 
         factory(App\Pago::class)->create([
-            'tipo'=>'',
-            'monto'=>'',
-            'fecha'=>''
-
+            'tipo' => '',
+            'monto' => '',
+            'fecha' => ''
         ]);
 
         factory(App\Pago::class)->create([
-            'tipo'=>'',
-            'monto'=>'',
-            'fecha'=>''
-
+            'tipo' => '',
+            'monto' => '',
+            'fecha' => ''
         ]);
 
         factory(App\Pago::class)->create([
-            'tipo'=>'',
-            'monto'=>'',
-            'fecha'=>''
-
+            'tipo' => '',
+            'monto' => '',
+            'fecha' => ''
         ]);
 
         factory(App\Pago::class)->create([
-            'tipo'=>'',
-            'monto'=>'',
-            'fecha'=>''
-
+            'tipo' => '',
+            'monto' => '',
+            'fecha' => ''
         ]);
-
         */
-
         factory('App\Pago',30)->create();
     }
 }

@@ -11,37 +11,31 @@ class CalleSeeder extends Seeder
      */
     public function run()
     {
-        /*factory(App\Calle::class)->create([
-            'nombre'=>'Los aromos',
-            'numero'=>540
-
+        factory(App\Calle::class)->create([
+            'nombre' => 'Los aromos',
+            'numero' => 540
+        ]);
+        
+        factory(App\Calle::class)->create([
+            'nombre' => 'Las acacias',
+            'numero' => 2001
         ]);
 
         factory(App\Calle::class)->create([
-            'nombre'=>'Las acacias',
-            'numero'=>2001
-
+            'nombre' => 'Los Helechos',
+            'numero' => 1432
         ]);
 
         factory(App\Calle::class)->create([
-            'nombre'=>'Los alerces',
-            'numero'=>456
-
+            'nombre' => 'Luis chacón',
+            'numero' => 298
         ]);
 
         factory(App\Calle::class)->create([
-            'nombre'=>'Luis chacón',
-            'numero'=>298
-
+            'nombre' => 'Reina Victoria',
+            'numero' => 6728
         ]);
-
-        factory(App\Calle::class)->create([
-            'nombre'=>'Dos oriente',
-            'numero'=>657
-
-        ]);
-*/
-
+        
         factory('App\Calle',30)->create();
     }
 }

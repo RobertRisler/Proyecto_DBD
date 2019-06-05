@@ -11,38 +11,31 @@ class CategoriaSeeder extends Seeder
      */
     public function run()
     {
-        //
-/*
         factory(App\Categoria::class)->create([
-            'nombre'=>'Desayuno',
-            'descripcion'=>''
-
+            'nombre' => 'Desayuno',
+            'descripcion' => 'Una rica y nutritiva comida para comenzar el día'
         ]);
 
         factory(App\Categoria::class)->create([
-            'nombre'=>'Almuerzo',
-            'descripcion'=>'Escoge los mejores puntos para disfrutar de un gran almuerzo'
-
+            'nombre' => 'Almuerzo',
+            'descripcion' => 'Escoge los mejores puntos para disfrutar de un gran almuerzo'
         ]);
 
         factory(App\Categoria::class)->create([
-            'nombre'=>'Once',
-            'descripcion'=>''
-
+            'nombre' => 'Once',
+            'descripcion' => 'La comida de la tarde'
         ]);
 
         factory(App\Categoria::class)->create([
-            'nombre'=>'Cena',
-            'descripcion'=>''
-
+            'nombre' => 'Cena',
+            'descripcion' => 'Que tu última comida del día sea la mejor'
         ]);
 
         factory(App\Categoria::class)->create([
-            'nombre'=>'Bebestibles',
-            'descripcion'=>''
-
-        ]);*/
-
+            'nombre' => 'Bebestibles',
+            'descripcion' => 'Una gran selección de bebestibles para saciar tu sed'
+        ]);
+        
 		factory('App\Categoria',30)->create();
     }
 }

@@ -11,55 +11,46 @@ class ProductoSeeder extends Seeder
      */
     public function run()
     {
-        //
-        /*
         factory(App\Producto::class)->create([
-            'nombre'=>'',
-            'descripcion'=>'',
-            'precio_total'=>'',
-            'tipo'=>'',
-            'disponibilidad'=>''
-
+            'nombre' => 'Huevos con tocino y café',
+            'descripcion' => 'El desayuno típico americano',
+            'precio_total' => '2500',
+            'tipo' => 'Desayuno',
+            'disponibilidad' => 'True'
         ]);
 
         factory(App\Producto::class)->create([
-            'nombre'=>'',
-            'descripcion'=>'',
-            'precio_total'=>'',
-            'tipo'=>'',
-            'disponibilidad'=>''
-
+            'nombre' => 'Ceviche de reineta',
+            'descripcion' => 'Rico ceviche preparado al estilo peruano',
+            'precio_total' => '4000',
+            'tipo' => 'Entrada',
+            'disponibilidad' => 'True'
         ]);
 
         factory(App\Producto::class)->create([
-            'nombre'=>'',
-            'descripcion'=>'',
-            'precio_total'=>'',
-            'tipo'=>'',
-            'disponibilidad'=>''
-
+            'nombre' => 'Ave mayo y café',
+            'descripcion' => 'Un sandwich con un buen café para comenzar el día',
+            'precio_total' => '1750',
+            'tipo' => 'Desayuno',
+            'disponibilidad' => 'True'
         ]);
 
         factory(App\Producto::class)->create([
-            'nombre'=>'',
-            'descripcion'=>'',
-            'precio_total'=>'',
-            'tipo'=>'',
-            'disponibilidad'=>''
-
+            'nombre' => 'Pizza vegetariana familiar',
+            'descripcion' => 'Exquisita pizza preparada con los mejores vegetales',
+            'precio_total' => '8900',
+            'tipo' => 'Almuerzo',
+            'disponibilidad' => 'False'
         ]);
 
         factory(App\Producto::class)->create([
-            'nombre'=>'',
-            'descripcion'=>'',
-            'precio_total'=>'',
-            'tipo'=>'',
-            'disponibilidad'=>''
-
+            'nombre' => 'Completo dinámico',
+            'descripcion' => 'Un completo con todos los ingredientes chilenos',
+            'precio_total' => '2000',
+            'tipo' => 'Almuerzo',
+            'disponibilidad' => 'True'
         ]);
-
-        */
-
+        
 		factory('App\Producto',30)->create();
     }
 }

@@ -11,54 +11,46 @@ class DespachoSeeder extends Seeder
      */
     public function run()
     {
-        //
-        /*
         factory(App\Despacho::class)->create([
-            'nombre_repartidor'=>'Jose',
-            'rut_repartidor'=>'198231238',
-            'tiempo_estimado'=>'',
-            'estado_despacho'=>'',
-            'hora_despacho'=>''
-
+            'nombre_repartidor' => 'Jose',
+            'rut_repartidor' => '198231238',
+            'tiempo_estimado' => '1:30:0',
+            'estado_despacho' => False,
+            'hora_despacho' => '0:0:0'
         ]);
 
         factory(App\Despacho::class)->create([
-            'nombre_repartidor'=>'Miguel',
-            'rut_repartidor'=>'178882341',
-            'tiempo_estimado'=>'',
-            'estado_despacho'=>'',
-            'hora_despacho'=>''
-
+            'nombre_repartidor' => 'Miguel',
+            'rut_repartidor' => '178882341',
+            'tiempo_estimado' => '0:45:0',
+            'estado_despacho' => True,
+            'hora_despacho' => '17:53:20'
         ]);
 
         factory(App\Despacho::class)->create([
-            'nombre_repartidor'=>'Caco',
-            'rut_repartidor'=>'153882341',
-            'tiempo_estimado'=>'',
-            'estado_despacho'=>'',
-            'hora_despacho'=>''
-
+            'nombre_repartidor' => 'Caco',
+            'rut_repartidor' => '153882341',
+            'tiempo_estimado' => '0:24:0',
+            'estado_despacho' => False,
+            'hora_despacho' => '0:0:0'
         ]);
 
         factory(App\Despacho::class)->create([
-            'nombre_repartidor'=>'Martin',
-            'rut_repartidor'=>'172182341',
-            'tiempo_estimado'=>'',
-            'estado_despacho'=>'',
-            'hora_despacho'=>''
-
+            'nombre_repartidor' => 'Nicole',
+            'rut_repartidor' => '172182341',
+            'tiempo_estimado' => '0:15:0',
+            'estado_despacho' => True,
+            'hora_despacho' => '0:15:37'
         ]);
 
         factory(App\Despacho::class)->create([
-            'nombre_repartidor'=>'Francisco',
-            'rut_repartidor'=>'178881241',
-            'tiempo_estimado'=>'',
-            'estado_despacho'=>'',
-            'hora_despacho'=>''
-
+            'nombre_repartidor' => 'Francisco',
+            'rut_repartidor' => '178881241',
+            'tiempo_estimado' => '0:35:0',
+            'estado_despacho' => False,
+            'hora_despacho' => '0:0:0'
         ]);
-
-        */
+        
 		factory('App\Despacho',30)->create();
     }
 }

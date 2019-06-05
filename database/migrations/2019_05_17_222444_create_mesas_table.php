@@ -16,7 +16,6 @@ class CreateMesasTable extends Migration
         Schema::create('mesas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('cantidad_asientos');
-            $table->boolean('estado_reservacion');
 
             $table->bigInteger('id_reserva');
             $table->bigInteger('id_restaurante');

@@ -11,35 +11,26 @@ class CiudadSeeder extends Seeder
      */
     public function run()
     {
-
-        /*
         factory(App\Ciudad::class)->create([
-            'nombre'=>'Curicó'
-
+            'nombre' => 'Curicó'
         ]);
 
         factory(App\Ciudad::class)->create([
-            'nombre'=>'Cerro Navia'
-
+            'nombre' => 'Temuco'
         ]);
 
         factory(App\Ciudad::class)->create([
-            'nombre'=>'Estación Central'
-
+            'nombre' => 'Santiago'
         ]);
 
         factory(App\Ciudad::class)->create([
-            'nombre'=>'Providencia'
-
+            'nombre' => 'Talca'
         ]);
 
         factory(App\Ciudad::class)->create([
-            'nombre'=>'Valdivia'
-
+            'nombre' => 'Valdivia'
         ]);
-
-
-        */
+        
         factory('App\Ciudad',30)->create();
     }
 }
