@@ -11,7 +11,8 @@ class Tipo_usuarioController extends Controller
     //
 	public function index()
     {
-	return Tipo_usuario::all();
+        $tipo_usuario = Tipo_usuario::all();
+        return response()->json($tipo_usuario);
     }
     /**
      * Show the form for creating a new resource.
@@ -28,9 +29,13 @@ class Tipo_usuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Tipo_usuarioRequest $request)
+    public function store(Request $request)
     {
-        return Tipo_usuario::create($request->all());
+        $tipo_usuario = new Tipo_usuario();
+        $tipo_usuario->nombre = $request->input('nombre');
+
+        $tipo_usuario->save();
+        return response()->json($tipo_usuario);
     }
     /**
      * Display the specified resource.
@@ -40,7 +45,8 @@ class Tipo_usuarioController extends Controller
      */
     public function show($id)
     {
-        return Tipo_usuario::findOrFail($id);
+        $tipo_usuario = Tipo_usuario::find($id);
+        return response()->json($tipo_usuario);
     }
     /**
      * Show the form for editing the specified resource.
@@ -59,12 +65,13 @@ class Tipo_usuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Tipo_usuarioRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $tipo_usuario = Tipo_usuario::findOrFail($id);
-        $tipo_usuario->fill($request->all());
+        $tipo_usuario = Tipo_usuario::find($id);
+        $tipo_usuario->nombre = $request->input('nombre');
+
         $tipo_usuario->save();
-        return $tipo_usuario;
+        return response()->json($tipo_usuario);
     }
     /**
      * Remove the specified resource from storage.
@@ -74,8 +81,8 @@ class Tipo_usuarioController extends Controller
      */
     public function destroy($id)
     {
-        $historial = Historial::findOrFail($id);
-        $historial ->delete();
+        $tipo_usuario = Tipo_usuario::find($id);
+        $tipo_usuario ->delete();
         return 'eliminado';
     }
 }

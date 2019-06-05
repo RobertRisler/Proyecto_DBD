@@ -11,7 +11,6 @@ class ReservaController extends Controller
     //
     public function index()
     {
-
         $reserva = Reserva::all();
         return response()->json($reserva);
     }
