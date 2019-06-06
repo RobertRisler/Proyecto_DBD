@@ -12,11 +12,11 @@ class Comentario extends Model
     
     public function usuarios()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\User','id_usuario','id');
     }
 
     public function restaurantes()
     {
-    	return $this->belongsTo('App\Restaurante');
+    	return $this->belongsTo('App\Restaurante', 'id_restaurante','id');
     }
 }

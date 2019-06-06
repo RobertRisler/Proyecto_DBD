@@ -5,11 +5,8 @@ use App\Despacho;
 use App\Model;
 use Faker\Generator as Faker;
 
-<<<<<<< HEAD
-$factory->define(Despacho::class, function (Faker $faker) {
-=======
 $factory->define(App\Despacho::class, function (Faker $faker) {
->>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
+
     return [
         //tiempo estimado 3600 is 1 hr (maximo que demora en entregar pedido)
 		'nombre_repartidor' => $faker->firstName,

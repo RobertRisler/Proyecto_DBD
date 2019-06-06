@@ -11,6 +11,6 @@ class Horario_Restaurante extends Model
 
     public function restaurantes()
     {
-    	return $this->belongsTo('App\Restaurante');
+    	return $this->belongsTo('App\Restaurante', 'id_restaurante','id');
     }
 }

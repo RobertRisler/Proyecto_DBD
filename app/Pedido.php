@@ -13,12 +13,12 @@ class Pedido extends Model
     
     public function usuarios()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\User','id_usuario','id');
     }
 
     public function despachos()
     {
-    	return $this->belongsTo('App\Despacho');
+    	return $this->hasMany('App\Despacho','id','id_despacho');
     }
 
     public function pedidos_productos()
@@ -28,6 +28,6 @@ class Pedido extends Model
 
     public function pagos()
     {
-        return $this->hasOne('App\Pago');
+        return $this->hasOne('App\Pago','id','id_pago');
     }
 }

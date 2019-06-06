@@ -11,11 +11,11 @@ class Pago extends Model
     
     public function tarjetas()
     {
-    	return $this->belongsTo('App\Tarjeta');
+    	return $this->belongsTo('App\Tarjeta','id_tarjeta','id');
     }
 
     public function pedidos()
     {
-    	return $this->belongsTo('App\Pedido');
+    	return $this->belongsTo('App\Pedido','id','id_pago');
     }
 }

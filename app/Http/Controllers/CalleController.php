@@ -2,17 +2,6 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-use Illuminate\Http\Request;
-
-class CalleController extends Controller
-{
-    //
-=======
-use Grpc\Call;
-use Illuminate\Http\Request;
-use App\Calle;
-use App\Http\Requests\CalleRequest;
 
 class CalleController extends Controller
 {
@@ -74,5 +63,5 @@ class CalleController extends Controller
         return "Eliminado!";
 
     }
->>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
+
 }

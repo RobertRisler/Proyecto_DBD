@@ -11,6 +11,6 @@ class Horario_Mesa extends Model
 
     public function mesas()
     {
-    	return $this->belongsTo('App\Mesa');
+    	return $this->belongsTo('App\Mesa','id_mesa','id');
     }
 }

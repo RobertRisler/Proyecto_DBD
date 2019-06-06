@@ -11,9 +11,6 @@ class ComunaSeeder extends Seeder
      */
     public function run()
     {
-<<<<<<< HEAD
-        //
-=======
         factory(App\Comuna::class)->create([
             'nombre' => 'Temuco',
             'id_ciudad' => '2'
@@ -40,6 +37,6 @@ class ComunaSeeder extends Seeder
         ]);
         
         factory('App\Comuna',30)->create();
->>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
+
     }
 }

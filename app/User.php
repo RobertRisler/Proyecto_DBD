@@ -46,31 +46,31 @@ class User extends Authenticatable
     //poner nombre en plural si se relaciona con muchos
     public function comentarios()
     {
-    	return $this->hasMany('App\Comentario');
+    	return $this->hasMany('App\Comentario', 'id_usuario','id');
     }
 
     public function historiales()
     {
-    	return $this->hasMany('App\Historial');
+    	return $this->hasMany('App\Historial','id_usuario','id');
     }
 
     public function reservas()
     {
-    	return $this->hasMany('App\Reserva');
+    	return $this->hasMany('App\Reserva','id_usuario','id');
     }
 
     public function pedidos()
     {
-    	return $this->hasMany('App\Pedido');
+    	return $this->hasMany('App\Pedido', 'id_usuario','id');
     }
 
     public function tipo_usuario()
     {
-    	return $this->hasOne(Tipo_usuario::class, 'id','id_tipo_usuario');
+    	return $this->hasOne('App\Tipo_usuario', 'id','id_tipo_usuario');
     }
 
     public function direcciones()
     {
-    	return $this->hasMany('App\Direccion');
+    	return $this->hasMany('App\Direccion', 'id_usuario','id');
     }
 }

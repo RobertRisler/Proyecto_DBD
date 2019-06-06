@@ -12,10 +12,10 @@ class Reserva extends Model
     
     public function mesas()
     {
-    	return $this->hasMany('App\Mesa');
+    	return $this->hasMany('App\Mesa','id_reserva','id');
     }
     public function usuarios()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\User', 'id_usuario','id');
     }
 }

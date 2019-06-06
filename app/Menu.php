@@ -12,7 +12,7 @@ class Menu extends Model
     
     public function categorias()
     {
-    	return $this->belongsTo('App\Categoria');
+    	return $this->belongsTo('App\Categoria', 'id_categoria','id');
     }
 
     public function menus_restaurantes()

@@ -3,12 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 
-class CiudadController extends Controller
-{
-    //
-=======
 use App\Ciudad;
 use App\Http\Requests\CiudadRequest;
 
@@ -69,5 +64,5 @@ class CiudadController extends Controller
 
 
     }
->>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
+
 }

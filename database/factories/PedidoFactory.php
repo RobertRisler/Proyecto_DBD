@@ -5,9 +5,7 @@ use App\Pedido;
 use App\Model;
 use Faker\Generator as Faker;
 
-<<<<<<< HEAD
-$factory->define(Pedido::class, function (Faker $faker) {
-=======
+
 $factory->define(App\Pedido::class, function (Faker $faker) {
 
     $ids_usuarios = \DB::table('usuarios')->select('id')->get();
@@ -20,7 +18,7 @@ $factory->define(App\Pedido::class, function (Faker $faker) {
     $id_pago = $faker->randomElement($ids_pagos)->id;
 
 
->>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
+
     return [
         //
 		'nombre_cliente' => $faker->firstName,

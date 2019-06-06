@@ -12,6 +12,6 @@ class Despacho extends Model
     
     public function pedidos()
     {
-    	return $this->hasOne('App\Pedido');
+    	return $this->hasOne('App\Pedido','id_despacho','id');
     }
 }

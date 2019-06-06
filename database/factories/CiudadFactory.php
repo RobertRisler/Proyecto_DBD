@@ -5,11 +5,7 @@
 use App\Model;
 use Faker\Generator as Faker;
 
-<<<<<<< HEAD
-$factory->define(Model::class, function (Faker $faker) {
-    return [
-        //
-=======
+
 $factory->define(App\Ciudad::class, function (Faker $faker) {
     return [
         'nombre' =>$faker->randomElement(['Maipú', 'Santiago', 'La Florida','Antofagasta',
@@ -269,6 +265,6 @@ $factory->define(App\Ciudad::class, function (Faker $faker) {
 'Putre',
 'Chaitén'])
 
->>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
+
     ];
 });

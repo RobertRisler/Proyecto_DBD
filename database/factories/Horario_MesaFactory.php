@@ -5,7 +5,7 @@
 use App\Horario_Mesa;
 use Faker\Generator as Faker;
 
-$factory->define(Horario_Mesa::class, function (Faker $faker) {
+$factory->define(App\Horario_Mesa::class, function (Faker $faker) {
 
     $ids_mesas = \DB::table('mesas')->select('id')->get();
     $id_mesa = $faker->randomElement($ids_mesas)->id;

@@ -5,15 +5,13 @@ use App\Restaurante;
 use App\Model;
 use Faker\Generator as Faker;
 
-<<<<<<< HEAD
-$factory->define(Restaurante::class, function (Faker $faker) {
-=======
+
 $factory->define(App\Restaurante::class, function (Faker $faker) {
 
     $ids_calles = \DB::table('calles')->select('id')->get();
     $id_calle = $faker->randomElement($ids_calles)->id;
 
->>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
+
     return [
 		'nombre' => $faker->randomElement(['Pizza Hut','Sushi Ok','Rock & Salsa','Pollo Las Parcelas','Dragón Chino',
         'Tommy Beans','Burger King','Dominó','Tarragona','Soy Churro','Bufalo Beef', 'Mamut', 'Pizzas El Antojito']),

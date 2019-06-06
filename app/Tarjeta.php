@@ -11,6 +11,6 @@ class Tarjeta extends Model
     
     public function pagos()
     {
-    	return $this->hasMany('App\Pago');
+    	return $this->hasMany('App\Pago', 'id_tarjeta','id');
     }
 }

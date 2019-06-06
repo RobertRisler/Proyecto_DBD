@@ -13,7 +13,7 @@ class CreateTriggerMenu extends Migration
      */
     public function up()
     {
-		/*DB::statement('
+		/*/*DB::statement('
         CREATE OR REPLACE FUNCTION ContarProductos()
             RETURNS TRIGGER AS 
             $ContarProductos$
@@ -26,9 +26,9 @@ class CreateTriggerMenu extends Migration
 					SET cantidad_productos = sum(producto.precio_total)
 			END
 				$$ LANGUAGE plpgsql;
-        ');*/
+        ');*//*
         DB::unprepared('
-		 CREATE TRIGGER menu_cantidad_productos AFTER INSERT ON `menu` FOR EACH ROW
+		 CREATE TRIGGER menu_cantidad_productos AFTER INSERT ON 'menu' FOR EACH ROW
 		 BEGIN
 				SELECT * 
                 FROM menu, producto, menu_producto
@@ -38,6 +38,7 @@ class CreateTriggerMenu extends Migration
 					SET cantidad_productos = sum(producto.precio_total)
 		 END
 		 ');
+        */
     }
 
     /**
@@ -47,6 +48,6 @@ class CreateTriggerMenu extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP TRIGGER `menu_cantidad_productos`');
+        DB::unprepared('DROP TRIGGER menu_cantidad_productos');
     }
 }

@@ -17,22 +17,22 @@ class Restaurante extends Model
     //poner nombre en plural si se relaciona con muchos
     public function comentarios()
     {
-    	return $this->hasMany('App\Comentario');
+    	return $this->hasMany('App\Comentario','id_restaurante','id');
     }
 
     public function mesas()
     {
-    	return $this->hasMany('App\Mesa');
+    	return $this->hasMany('App\Mesa','id_restaurante','id');
     }
 
     public function menus()
     {
-    	return $this->belongToMany('App\Menu');
+    	return $this->belongsTo('App\Menu');
     }
 
     public function calles()
     {
-    	return $this->belongsTo('App\Calle');
+    	return $this->belongsTo('App\Calle','id_calle','id');
     }
     
     public function horarios_restaurantes()

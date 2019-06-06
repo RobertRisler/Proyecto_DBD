@@ -6,25 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Calle extends Model
 {
-<<<<<<< HEAD
-    //
-=======
+
 	protected $table = 'calles';
     protected $fillable = ['nombre', 'numero'];
 
     public function direcciones()
     {
-    	return $this->hasMany('App\Direccion');
+    	return $this->hasMany('App\Direccion','id_calle','id');
     }
 
     public function restaurantes()
     {
-    	return $this->hasMany('App\Restaurante');
+    	return $this->hasMany('App\Restaurante','id_calle','id');
     }
 
     public function calles_comunas()
     {
-    	return $this->hasMany('App\Calle_Comuna');
+    	return $this->hasMany('App\Calle_Comuna', 'id_calle','id');
     }
->>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
+
 }

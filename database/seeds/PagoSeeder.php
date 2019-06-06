@@ -11,10 +11,6 @@ class PagoSeeder extends Seeder
      */
     public function run()
     {
-<<<<<<< HEAD
-        //
-		factory('App\Pago',4)->create();
-=======
         factory(App\Pago::class)->create([
             'tipo' => 'efectivo',
             'monto' => '6500',
@@ -51,6 +47,5 @@ class PagoSeeder extends Seeder
         ]);
         
         factory('App\Pago',30)->create();
->>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
     }
 }

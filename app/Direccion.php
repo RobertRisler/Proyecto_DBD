@@ -11,11 +11,11 @@ class Direccion extends Model
 
     public function usuarios()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\User','id_usuario','id');
     }
 
     public function calles()
     {
-    	return $this->belongsTo('App\Calle');
+    	return $this->belongsTo('App\Calle','id_calle','id');
     }
 }

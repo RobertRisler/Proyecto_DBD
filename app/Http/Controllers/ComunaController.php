@@ -2,17 +2,10 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-=======
-use App\Comuna;
->>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
-use Illuminate\Http\Request;
 
 class ComunaController extends Controller
 {
-<<<<<<< HEAD
-    //
-=======
+
     public function index()
     {
         $comuna = Comuna::all();
@@ -69,5 +62,5 @@ class ComunaController extends Controller
         return "Eliminado";
 
     }
->>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
+
 }

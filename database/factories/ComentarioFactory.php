@@ -6,9 +6,7 @@ use App\Comentario;
 use App\Model;
 use Faker\Generator as Faker;
 
-<<<<<<< HEAD
-$factory->define(Comentario::class, function (Faker $faker) {
-=======
+
 $factory->define(App\Comentario::class, function (Faker $faker) {
 
     $ids_usuarios = \DB::table('usuarios')->select('id')->get();
@@ -17,7 +15,7 @@ $factory->define(App\Comentario::class, function (Faker $faker) {
     $ids_restaurantes = \DB::table('restaurantes')->select('id')->get();
     $id_restaurante = $faker->randomElement($ids_restaurantes)->id;
 
->>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
+
     return [
         //
 		'mensaje' => $faker->text($maxNbChars = 255),
