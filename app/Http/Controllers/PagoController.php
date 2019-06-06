@@ -31,6 +31,7 @@ class PagoController extends Controller
         $pago->tipo = $request->input('tipo');
         $pago->monto = $request->input('monto');
         $pago->fecha = $request->input('fecha');
+        $pago->id_tarjeta = $request->input('id_tarjeta');
 
 
         $pago->save();
@@ -60,6 +61,7 @@ class PagoController extends Controller
         $pago->tipo = $request->input('tipo');
         $pago->monto = $request->input('monto');
         $pago->fecha = $request->input('fecha');
+        $pago->id_tarjeta = $request->input('id_tarjeta');
 
 
         $pago->save();
