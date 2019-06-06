@@ -21,12 +21,15 @@ DROP TABLE IF EXISTS direcciones CASCADE;
 DROP TABLE IF EXISTS ciudades CASCADE;
 DROP TABLE IF EXISTS comunas CASCADE;
 DROP TABLE IF EXISTS calles_comunas CASCADE;
+DROP TABLE IF EXISTS horarios_mesas CASCADE;
+DROP TABLE IF EXISTS horarios_restaurantes CASCADE;
 
-
+CREATE SCHEMA public;
 
 CREATE TABLE tipo_usuarios (
 	id BIGSERIAL,
 	nombre VARCHAR(255),
+
 	PRIMARY KEY(id)
  );
 
@@ -37,15 +40,17 @@ CREATE TABLE usuarios (
 	correo VARCHAR(255) UNIQUE,
 	contrasena VARCHAR(255),
 	id_tipo_usuario BIGINT,
+
 	PRIMARY KEY(id),
+
 	FOREIGN KEY(id_tipo_usuario) REFERENCES tipo_usuarios(id)
  );
- 
  
  CREATE TABLE categorias (
 	id BIGSERIAL,
 	nombre VARCHAR(255),
 	descripcion VARCHAR(255),
+
 	PRIMARY KEY(id)
  );
  
@@ -56,6 +61,7 @@ CREATE TABLE usuarios (
 	precio_total DECIMAL,
 	tipo VARCHAR(255),
 	disponibilidad BOOLEAN,
+
 	PRIMARY KEY(id)
  );
  
@@ -63,6 +69,7 @@ CREATE TABLE usuarios (
 	id BIGSERIAL,
 	nombre VARCHAR(255),
 	numero INT,
+
 	PRIMARY KEY(id)
  );
  
@@ -74,8 +81,11 @@ CREATE TABLE usuarios (
 	telefono  VARCHAR(255),
 	hace_despacho BOOLEAN,
 	validacion BOOLEAN,
-	PRIMARY KEY(id)
-	
+	id_calle BIGINT,
+
+	PRIMARY KEY(id),
+
+	FOREIGN KEY(id_calle) REFERENCES calles(id)
  );
  
  CREATE TABLE despachos (
@@ -85,6 +95,7 @@ CREATE TABLE usuarios (
 	tiempo_estimado VARCHAR(255),
 	estado_despacho BOOLEAN,
 	hora_despacho VARCHAR(255),
+
 	PRIMARY KEY(id)
  );
  
@@ -93,6 +104,7 @@ CREATE TABLE usuarios (
 	tipo VARCHAR(255),
 	monto DECIMAL,
 	fecha TIMESTAMP,
+
 	PRIMARY KEY(id)
  );
  
@@ -105,18 +117,20 @@ CREATE TABLE usuarios (
 	apellido_cliente VARCHAR(255),
 	estado BOOLEAN,
 	id_usuario BIGINT,
+
 	PRIMARY KEY(id),
+
 	FOREIGN KEY(id_usuario) REFERENCES usuarios(id)
-	
  );
  
  CREATE TABLE mesas (
 	id BIGSERIAL,
 	cantidad_asientos INT,
-	estado_reservacion BOOLEAN,
 	id_reserva BIGINT,
 	id_restaurante BIGINT,
+
 	PRIMARY KEY(id),
+
 	FOREIGN KEY(id_reserva) REFERENCES reservas(id),
 	FOREIGN KEY(id_restaurante) REFERENCES restaurantes(id)
  );
@@ -130,25 +144,28 @@ CREATE TABLE usuarios (
 	fecha TIMESTAMP,
 	tipo_entrega BOOLEAN,
 	hora_estimada VARCHAR(255),
-	estado INT,
+	estado BOOLEAN,
 	id_usuario BIGINT,
 	id_despacho BIGINT,
 	id_pago BIGINT,
+
 	PRIMARY KEY(id),
+
 	FOREIGN KEY(id_usuario) REFERENCES usuarios(id),
 	FOREIGN KEY(id_despacho) REFERENCES despachos(id),
 	FOREIGN KEY(id_pago) REFERENCES pagos(id)
-	
  );
  
  CREATE TABLE comentarios (
 	id BIGSERIAL,
 	mensaje VARCHAR(255),
 	valoracion INT,
-	fecha TIMESTAMP,
+	fecha TIME,
 	id_usuario BIGINT,
 	id_restaurante BIGINT,
+
 	PRIMARY KEY(id),
+
 	FOREIGN KEY(id_usuario) REFERENCES usuarios(id),
 	FOREIGN KEY(id_restaurante) REFERENCES restaurantes(id)
  );
@@ -159,9 +176,10 @@ CREATE TABLE usuarios (
 	descripcion VARCHAR(255),
 	cantidad_productos INT,
 	id_categoria BIGINT,
+
 	PRIMARY KEY(id),
+
 	FOREIGN KEY(id_categoria) REFERENCES categorias(id)
- 
  );
  
  CREATE TABLE historiales (
@@ -170,29 +188,34 @@ CREATE TABLE usuarios (
 	descripcion VARCHAR(255),
 	fecha_actividad TIMESTAMP,
 	id_usuario BIGINT,
+
 	PRIMARY KEY(id),
+
 	FOREIGN KEY(id_usuario) REFERENCES usuarios(id)
  );
  
  CREATE TABLE menu_restaurante (
     id_menu BIGINT,
     id_restaurante BIGINT,
-    FOREIGN KEY (id_menu) REFERENCES menus(id),
-    FOREIGN KEY (id_restaurante) REFERENCES restaurantes(id)
+
+    FOREIGN KEY(id_menu) REFERENCES menus(id),
+    FOREIGN KEY(id_restaurante) REFERENCES restaurantes(id)
  );
  
  CREATE TABLE pedido_producto (
     id_pedido BIGINT,
     id_producto BIGINT,
-    FOREIGN KEY (id_pedido) REFERENCES pedidos(id),
-    FOREIGN KEY (id_producto) REFERENCES productos(id)
+
+    FOREIGN KEY(id_pedido) REFERENCES pedidos(id),
+    FOREIGN KEY(id_producto) REFERENCES productos(id)
  );
  
  CREATE TABLE menu_producto (
     id_menu BIGINT,
     id_producto BIGINT,
-    FOREIGN KEY (id_menu) REFERENCES menus(id),
-    FOREIGN KEY (id_producto) REFERENCES productos(id)
+
+    FOREIGN KEY(id_menu) REFERENCES menus(id),
+    FOREIGN KEY(id_producto) REFERENCES productos(id)
  );
  
  CREATE TABLE tarjetas (
@@ -200,6 +223,7 @@ CREATE TABLE usuarios (
 	cuatro_digitos INT,
 	numero_cuotas INT, 
 	tipo VARCHAR(255),
+
 	PRIMARY KEY(id)
  );
  
@@ -208,7 +232,9 @@ CREATE TABLE usuarios (
 	alias VARCHAR(255),
 	id_usuario BIGINT,
 	id_calle BIGINT,
+
 	PRIMARY KEY(id),
+
 	FOREIGN KEY(id_usuario) REFERENCES usuarios(id),
 	FOREIGN KEY(id_calle) REFERENCES calles(id)
  );
@@ -216,6 +242,7 @@ CREATE TABLE usuarios (
  CREATE TABLE ciudades (
 	id BIGSERIAL,
 	nombre VARCHAR(255),
+
 	PRIMARY KEY(id)
  );
  
@@ -223,22 +250,42 @@ CREATE TABLE usuarios (
 	id BIGSERIAL,
 	nombre VARCHAR(255),
 	id_ciudad BIGINT,
+
 	PRIMARY KEY(id),
+
 	FOREIGN KEY(id_ciudad) REFERENCES ciudades(id)
  );
  
  CREATE TABLE calles_comunas (
     id_calle BIGINT,
     id_comuna BIGINT,
-    FOREIGN KEY (id_calle) REFERENCES calles(id),
-    FOREIGN KEY (id_comuna) REFERENCES comunas(id)
+
+    FOREIGN KEY(id_calle) REFERENCES calles(id),
+    FOREIGN KEY(id_comuna) REFERENCES comunas(id)
  );
  
- 
- 
- 
- 
- 
- 
- 
- 
+ CREATE TABLE horarios_mesas
+ (
+	id BIGSERIAL,
+	hora_inicio TIME,
+	hora_fin TIME,
+	estado_reservacion BOOLEAN,
+	id_mesa BIGINT,
+
+	PRIMARY KEY(id),
+
+	FOREIGN KEY(id_mesa) REFERENCES mesas(id)
+ );
+
+CREATE TABLE horarios_restaurantes
+(
+	id BIGSERIAL,
+	dia_semana VARCHAR(255),
+	horario_apertura TIME,
+	horario_cierre TIME,
+	id_restaurante BIGINT,
+
+	PRIMARY KEY(id),
+
+	FOREIGN KEY(id_restaurante) REFERENCES restaurantes(id)
+)

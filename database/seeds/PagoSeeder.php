@@ -11,7 +11,6 @@ class PagoSeeder extends Seeder
      */
     public function run()
     {
-        
         factory(App\Pago::class)->create([
             'tipo' => 'efectivo',
             'monto' => '6500',
