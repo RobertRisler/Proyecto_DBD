@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
         $this->call(DespachoSeeder::class);
         $this->call(ReservaSeeder::class);
         $this->call(MesaSeeder::class);
+        $this->call(TarjetaSeeder::class);
         $this->call(PagoSeeder::class);
         $this->call(ComentarioSeeder::class);
         $this->call(MenuSeeder::class);
         $this->call(HistorialSeeder::class);
-        $this->call(TarjetaSeeder::class);
         $this->call(PedidoSeeder::class);
         $this->call(DireccionSeeder::class);
         $this->call(CiudadSeeder::class);

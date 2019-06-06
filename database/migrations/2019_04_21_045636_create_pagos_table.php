@@ -19,6 +19,15 @@ class CreatePagosTable extends Migration
             $table->decimal('monto');
             $table->timestamp('fecha');
             $table->timestamps();
+
+            $table->bigInteger('id_tarjeta')->nullable();
+
+            /*Llave foranea de tarjeta en pago, por tener 1 * m */
+            $table->foreign('id_tarjeta')
+                ->references('id')
+                ->on('tarjetas')
+                ->onDelete('cascade');
+
         });
     }
 
