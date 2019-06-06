@@ -1,11 +1,11 @@
 <?php
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
-
+use App\Categoria;
 use App\Model;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Categoria::class, function (Faker $faker) {
     return [
         //
 		'nombre_categoria' => $faker->text($maxNbChars = 50),

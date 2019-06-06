@@ -2,10 +2,11 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
+use App\Comentario;
 use App\Model;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Comentario::class, function (Faker $faker) {
     return [
         //
 		'mensaje_comentario' => $faker->text($maxNbChars = 255),

@@ -1,11 +1,11 @@
 <?php
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
-
+use App\Menu;
 use App\Model;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Menu::class, function (Faker $faker) {
     return [
         //
 		'nombre_menu' => $faker->text($maxNbChars = 50),

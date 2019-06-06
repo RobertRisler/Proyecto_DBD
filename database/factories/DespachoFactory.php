@@ -1,11 +1,11 @@
 <?php
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
-
+use App\Despacho;
 use App\Model;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Despacho::class, function (Faker $faker) {
     return [
         //
 		'nombre_repartidor' => $faker->text($maxNbChars = 50),
