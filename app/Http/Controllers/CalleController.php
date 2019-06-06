@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Calle;
+use App\Http\Requests\CalleRequest;
+
 
 class CalleController extends Controller
 {
@@ -20,13 +24,19 @@ class CalleController extends Controller
 
     public function store(Request $request)
     {
+        $numero = $request->input('numero');
 
-        $calle = new Calle();
-        $calle->nombre = $request->input('nombre');
-        $calle->numero = $request->input('numero');
+        if((is_numeric($numero)) && $numero >= 0){
 
-        $calle->save();
-        return response()->json($calle);
+            $calle = new Calle();
+            $calle->nombre = $request->input('nombre');
+            $calle->numero = $request->input('numero');
+            $calle->save();
+            return response()->json($calle);
+        }
+        else{
+            return "Error parametros de entradas";
+        }
     }
 
     public function show($id)
@@ -44,15 +54,19 @@ class CalleController extends Controller
 
     public function update(Request $request, $id)
     {
+        $numero = $request->input('numero');
 
-        $calle = Calle::find($id);
-        $calle->nombre = $request->input('nombre');
-        $calle->numero = $request->input('numero');
+        if((is_numeric($numero)) && $numero >= 0){
 
-        $calle->save();
-        return response()->json($calle);
-
-
+            $calle = Calle::find($id);
+            $calle->nombre = $request->input('nombre');
+            $calle->numero = $request->input('numero');
+            $calle->save();
+            return response()->json($calle);
+        }
+        else{
+            return "Error parametros de entradas";
+        }
     }
 
     public function destroy($id)

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Comuna;
+use App\Http\Requests\ComunaRequest;
+
 
 class ComunaController extends Controller
 {
@@ -47,7 +51,6 @@ class ComunaController extends Controller
         $comuna = Comuna::find($id);
         $comuna->nombre = $request->input('nombre');
         $comuna->id_ciudad = $request->input('id_ciudad');
-
 
         $comuna->save();
         return response()->json($comuna);

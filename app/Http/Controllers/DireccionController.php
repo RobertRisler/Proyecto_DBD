@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Direccion;
 use Illuminate\Http\Request;
+use App\Direccion;
+use App\Http\Requests\DireccionRequest;
+
 
 class DireccionController extends Controller
 {

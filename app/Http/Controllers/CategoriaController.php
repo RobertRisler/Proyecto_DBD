@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Tarjeta;
 use Illuminate\Http\Request;
 use App\Categoria;
 use App\Http\Requests\CategoriaRequest;
