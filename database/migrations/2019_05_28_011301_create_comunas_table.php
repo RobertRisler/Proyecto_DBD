@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipoUsuarioTable extends Migration
+class CreateComunasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,18 @@ class CreateTipoUsuarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_usuario', function (Blueprint $table) {
+        Schema::create('comunas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre_tipo_u');
+            $table->string('nombre');
+
+            $table->bigInteger('id_ciudad');
+
+            /*Llave foranea ciudad, por tener 1 * n */
+            $table->foreign('id_ciudad')
+                ->references('id')
+                ->on('ciudades')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -27,6 +36,6 @@ class CreateTipoUsuarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_usuario');
+        Schema::dropIfExists('comunas');
     }
 }

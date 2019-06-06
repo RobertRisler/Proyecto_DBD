@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHistorialTable extends Migration
+class CreateMenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateHistorialTable extends Migration
      */
     public function up()
     {
-        Schema::create('historial', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('actividad');
+            $table->string('nombre');
             $table->string('descripcion');
-            $table->timestamp('fecha_actividad');
+            $table->integer('cantidad_productos');
 
-            $table->bigInteger('id_usuario');
-            /*Llave foranea de usuario en historial, por tener 1 * 1 */
-            $table->foreign('id_usuario')
+            $table->bigInteger('id_categoria');
+
+            /*Llave foranea de categoria en menu, por tener 1 * 1 */
+            $table->foreign('id_categoria')
                 ->references('id')
-                ->on('usuario')
+                ->on('categorias')
                 ->onDelete('cascade');
 
             $table->timestamps();
@@ -37,6 +38,6 @@ class CreateHistorialTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('historial');
+        Schema::dropIfExists('menus');
     }
 }

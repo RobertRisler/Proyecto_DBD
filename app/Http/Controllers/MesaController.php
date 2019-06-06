@@ -8,74 +8,63 @@ use App\Http\Requests\MesaRequest;
 
 class MesaController extends Controller
 {
-    //
-	public function index()
+    public function index()
     {
-        return Mesa::all();
+        $mesa = Mesa::findAll();
+        return response()->json($mesa);
+
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(MesaRequest $request)
+
+    public function store(Request $request)
     {
-        return Mesa::create($request->all());
+        $mesa = new Mesa();
+        $mesa->cantidad_asientos = $request->input('cantidad_asientos');
+        $mesa->estado_reservacion = $request->input('estado_reservacion');
+        $mesa->id_reserva = $request->input('id_reserva');
+        $mesa->id_restaurante = $request->input('id_restaurante');
+
+
+        $mesa->save();
+        return response()->json($mesa);
+
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        return Mesa::findOrFail($id);
+        $mesa = Mesa::find($id);
+        return response()->json($mesa);
+
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(MesaRequest $request, $id)
+
+    public function update(Request $request, $id)
     {
-        $mesa = Mesa::findOrFail($id);
-        $mesa->fill($request->all());
+        $mesa = Mesa::find($id);
+        $mesa->cantidad_asientos = $request->input('cantidad_asientos');
+        $mesa->estado_reservacion = $request->input('estado_reservacion');
+        $mesa->id_reserva = $request->input('id_reserva');
+        $mesa->id_restaurante = $request->input('id_restaurante');
+
+
         $mesa->save();
-        return $mesa;
+        return response()->json($mesa);
+
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        $mesa = Mesa::findOrFail($id);
-        $mesa ->delete();
-        return 'eliminado';
+        $mesa = Mesa::find($id);
+        $mesa->delete();
+        return "Eliminado";
+
     }
 }

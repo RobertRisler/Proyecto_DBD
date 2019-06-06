@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 namespace App;
 
@@ -40,23 +40,37 @@ class User extends Authenticatable
     //atributos
     //rellenar con atributos
     protected $fillable=[
-    	'nombre_usuario', 'apellido_usuario', 'correo_usuario', 'contrasena'
+    	'nombre', 'apellido', 'correo', 'contrasena', 'id_tipo_usuario',
     ];
     //relacion con otra tabla
     //poner nombre en plural si se relaciona con muchos
-    public function comentarios(){
+    public function comentarios()
+    {
     	return $this->hasMany('App\Comentario');
     }
-	public function historials(){
+
+    public function historiales()
+    {
     	return $this->hasMany('App\Historial');
     }
-	public function reservas(){
+
+    public function reservas()
+    {
     	return $this->hasMany('App\Reserva');
     }
-	public function pedidos(){
+
+    public function pedidos()
+    {
     	return $this->hasMany('App\Pedido');
     }
-	public function tipo_usuarios(){
-    	return $this->belongsTo('App\Tipo_Usuario');
+
+    public function tipo_usuario()
+    {
+    	return $this->hasOne(Tipo_usuario::class, 'id','id_tipo_usuario');
+    }
+
+    public function direcciones()
+    {
+    	return $this->hasMany('App\Direccion');
     }
 }

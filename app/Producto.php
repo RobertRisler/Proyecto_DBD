@@ -6,19 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Producto extends Model
 {
-    //
-	protected $table='productos';
-    //atributos
-    //rellenar con atributos
-    protected $fillable=[
-    	'nombre_producto', 'descripcion_producto', 'precio_total', 'tipo_producto', 'disponibilidad_producto'
-    ];
-    //relacion con otra tabla
-    //poner nombre en plural si se relaciona con muchos
-    public function pedidos(){
-    	return $this->belongToMany('App\Pedido');
+    protected $table = 'productos';
+    
+    protected $fillable=['nombre', 'descripcion', 'precio_total', 'tipo', 'disponibilidad'];
+    
+    public function pedidos_productos()
+    {
+    	return $this->hasMany('App\Pedido_Producto');
     }
-	public function menus(){
-    	return $this->belongToMany('App\Menu');
+    public function menus_productos()
+    {
+    	return $this->hasMany('App\Menu_Producto');
     }
 }

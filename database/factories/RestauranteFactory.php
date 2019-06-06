@@ -5,16 +5,24 @@ use App\Restaurante;
 use App\Model;
 use Faker\Generator as Faker;
 
+<<<<<<< HEAD
 $factory->define(Restaurante::class, function (Faker $faker) {
+=======
+$factory->define(App\Restaurante::class, function (Faker $faker) {
+
+    $ids_calles = \DB::table('calles')->select('id')->get();
+    $id_calle = $faker->randomElement($ids_calles)->id;
+
+>>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
     return [
-        //
-		'nombre_restaurante' => $faker->text($maxNbChars = 50),
-		'descripcion_rest' => $faker->text($maxNbChars = 255),
-		'hora_apertura' => $faker->time($format = 'H:i:s', $max = 'now'),
-		'hora_cierre' => $faker->time($format = 'H:i:s', $max = 'now'),
+		'nombre' => $faker->randomElement(['Pizza Hut','Sushi Ok','Rock & Salsa','Pollo Las Parcelas','Dragón Chino',
+        'Tommy Beans','Burger King','Dominó','Tarragona','Soy Churro','Bufalo Beef', 'Mamut', 'Pizzas El Antojito']),
+		'descripcion' => $faker->text($maxNbChars = 255),
 		'promedio_valoracion' => $faker->numberBetween($min = 0, $max = 5),
-		'telefono_restaurante' => $faker->phoneNumber,
+		'telefono' => $faker->phoneNumber,
 		'hace_despacho' => $faker->boolean,
-		'validacion' => $faker->boolean
+		'validacion' => $faker->boolean,
+        'id_calle' =>$id_calle
     ];
 });
+

@@ -8,74 +8,65 @@ use App\Http\Requests\ComentarioRequest;
 
 class ComentarioController extends Controller
 {
-    //
-	public function index()
+    public function index()
     {
-        return Comentario::all();
+        $comentario = Comentario::all();
+        return response()->json($comentario);
+
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(ComentarioRequest $request)
+
+    public function store(Request $request)
     {
-        return Comentario::create($request->all());
+        $comentario = new Comentario();
+        $comentario->mensaje = $request->input('mensaje');
+        $comentario->valoracion = $request->input('valoracion');
+        $comentario->fecha = $request->input('fecha');
+        $comentario->id_usuario = $request->input('id_usuario');
+        $comentario->id_restaurante = $request->input('id_restaurante');
+
+        $comentario->save();
+        return response()->json($comentario);
+
+
+
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        return Comentario::findOrFail($id);
+        $comentario  = Comentario::find($id);
+        return response()->json($comentario);
+
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(ComentarioRequest $request, $id)
+
+    public function update(Request $request, $id)
     {
-        $comentario = Comentario::findOrFail($id);
-        $comentario->fill($request->all());
+        $comentario  = Comentario::find($id);
+        $comentario->mensaje = $request->input('mensaje');
+        $comentario->valoracion = $request->input('valoracion');
+        $comentario->fecha = $request->input('fecha');
+        $comentario->id_usuario = $request->input('id_usuario');
+        $comentario->id_restaurante = $request->input('id_restaurante');
+
         $comentario->save();
-        return $comentario;
+        return response()->json($comentario);
+
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        $comentario = Comentario::findOrFail($id);
+        $comentario  = Comentario::find($id);
         $comentario ->delete();
-        return 'eliminado';
+        return "Eliminado";
+
     }
 }

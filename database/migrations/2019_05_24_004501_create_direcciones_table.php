@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComentarioTable extends Migration
+class CreateDireccionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,31 +13,26 @@ class CreateComentarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('comentario', function (Blueprint $table) {
+        Schema::create('direcciones', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('mensaje_comentario');
-            $table->integer('valoracion');
-            $table->timestamp('fecha_comentario');
-
-            $table->timestamps();
-
+            $table->string('alias');
 
             $table->bigInteger('id_usuario');
-            $table->bigInteger('id_restaurante');
+            $table->bigInteger('id_calle');
 
-            /*Llave foranea de usuario en comentario, por tener 1 * m */
+            /*Llave foranea usuario, por tener 1 * n */
             $table->foreign('id_usuario')
                 ->references('id')
-                ->on('usuario')
+                ->on('usuarios')
                 ->onDelete('cascade');
 
-            /*Llave foranea de restaurante en comentario, por tener 1 * m */
-            $table->foreign('id_restaurante')
+            /*Llave foranea calle, por tener 1 * n */
+            $table->foreign('id_calle')
                 ->references('id')
-                ->on('restaurante')
+                ->on('calles')
                 ->onDelete('cascade');
 
-
+            $table->timestamps();
         });
     }
 
@@ -48,6 +43,6 @@ class CreateComentarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comentario');
+        Schema::dropIfExists('direcciones');
     }
 }

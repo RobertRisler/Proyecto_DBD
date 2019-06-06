@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReservaTable extends Migration
+class CreateReservasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,25 +13,22 @@ class CreateReservaTable extends Migration
      */
     public function up()
     {
-        Schema::create('reserva', function (Blueprint $table) {
+        Schema::create('reservas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('cantidad_personas');
-            $table->timestamp('fecha_reserva');
+            $table->timestamp('fecha_resevacion');
             $table->string('rut_cliente');
             $table->string('nombre_cliente');
             $table->string('apellido_cliente');
-            $table->boolean('estado_reserva');
+            $table->boolean('estado');
+            
             $table->bigInteger('id_usuario');
-
-
 
             /*Llave foranea de usuario en reserva, por tener 1 * m */
             $table->foreign('id_usuario')
                 ->references('id')
-                ->on('usuario')
+                ->on('usuarios')
                 ->onDelete('cascade');
-
-
 
             $table->timestamps();
         });
@@ -44,6 +41,6 @@ class CreateReservaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reserva');
+        Schema::dropIfExists('reservas');
     }
 }

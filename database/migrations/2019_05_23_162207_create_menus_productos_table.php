@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePedidoProductoTable extends Migration
+class CreateMenusProductosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,25 +13,25 @@ class CreatePedidoProductoTable extends Migration
      */
     public function up()
     {
-        Schema::create('pedido_producto', function (Blueprint $table) {
+        Schema::create('menus_productos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
 
-            $table->bigInteger('id_pedido');
+            $table->bigInteger('id_menu');
             $table->bigInteger('id_producto');
 
-            /*Llave foranea pedido , por tener n * m */
-            $table->foreign('id_pedido')
+            /*Llave foranea menu , por tener n * m */
+            $table->foreign('id_menu')
                 ->references('id')
-                ->on('pedido')
+                ->on('menus')
                 ->onDelete('cascade');
 
             /*Llave foranea producto, por tener n * m */
             $table->foreign('id_producto')
                 ->references('id')
-                ->on('producto')
+                ->on('productos')
                 ->onDelete('cascade');
-
+            
+            $table->timestamps();
         });
     }
 
@@ -42,6 +42,6 @@ class CreatePedidoProductoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedido_producto');
+        Schema::dropIfExists('menus_productos');
     }
 }

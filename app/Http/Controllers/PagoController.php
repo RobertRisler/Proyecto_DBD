@@ -8,6 +8,7 @@ use App\Http\Requests\PagoRequest;
 
 class PagoController extends Controller
 {
+<<<<<<< HEAD
     //
 	public function index()
     {
@@ -18,10 +19,21 @@ class PagoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+=======
+    public function index()
+    {
+
+        $pago = Pago::all();
+        return response()->json($pago);
+
+    }
+
+>>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
     public function create()
     {
         //
     }
+<<<<<<< HEAD
     /**
      * Store a newly created resource in storage.
      *
@@ -48,10 +60,36 @@ class PagoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+=======
+
+    public function store(Request $request)
+    {
+
+        $pago = new Pago();
+        $pago->tipo = $request->input('tipo');
+        $pago->monto = $request->input('monto');
+        $pago->fecha = $request->input('fecha');
+
+
+        $pago->save();
+        return response()->json($pago);
+
+
+    }
+
+    public function show($id)
+    {
+
+        $pago = Pago::find($id);
+        return response()->json($pago);
+    }
+
+>>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
     public function edit($id)
     {
         //
     }
+<<<<<<< HEAD
     /**
      * Update the specified resource in storage.
      *
@@ -77,5 +115,28 @@ class PagoController extends Controller
         $pago = Pago::findOrFail($id);
         $pago ->delete();
         return 'eliminado';
+=======
+
+    public function update(Request $request, $id)
+    {
+
+        $pago = Pago::find($id);
+        $pago->tipo = $request->input('tipo');
+        $pago->monto = $request->input('monto');
+        $pago->fecha = $request->input('fecha');
+
+
+        $pago->save();
+        return response()->json($pago);
+    }
+
+    public function destroy($id)
+    {
+        $pago = Pago::find($id);
+        $pago ->delete();
+        return "Eliminado";
+
+
+>>>>>>> 2573bd8f4c6a3c844606a7884fb2183969f83a54
     }
 }

@@ -8,74 +8,64 @@ use App\Http\Requests\DespachoRequest;
 
 class DespachoController extends Controller
 {
-    //
-	public function index()
+    public function index()
     {
-        return Despacho::all();
+        $despacho = Despacho::all();
+        return response()->json($despacho);
+
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(DespachoRequest $request)
+
+    public function store(Request $request)
     {
-        return Despacho::create($request->all());
+        $despacho = new Despacho();
+        $despacho->nombre_repartidor = $request->input('nombre_repartidor');
+        $despacho->rut_repartidor = $request->input('rut_repartidor');
+        $despacho->tiempo_estimado = $request->input('tiempo_estimado');
+        $despacho->estado_despacho = $request->input('estado_despacho');
+        $despacho->hora_despacho = $request->input('hora_despacho');
+
+        $despacho->save();
+        return response()->json($despacho);
+
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        return Despacho::findOrFail($id);
+        $despacho = Despacho::find($id);
+        return response()->json($despacho);
+
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(DespachoRequest $request, $id)
+
+    public function update(Request $request, $id)
     {
-        $despacho = Despacho::findOrFail($id);
-        $despacho->fill($request->all());
+        $despacho = Despacho::find($id);
+        $despacho->nombre_repartidor = $request->input('nombre_repartidor');
+        $despacho->rut_repartidor = $request->input('rut_repartidor');
+        $despacho->tiempo_estimado = $request->input('tiempo_estimado');
+        $despacho->estado_despacho = $request->input('estado_despacho');
+        $despacho->hora_despacho = $request->input('hora_despacho');
+
         $despacho->save();
-        return $despacho;
+        return response()->json($despacho);
+
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        $despacho = Despacho::findOrFail($id);
+
+        $despacho = Despacho::find($id);
         $despacho ->delete();
-        return 'eliminado';
+        return "Eliminado!";
+
     }
 }
