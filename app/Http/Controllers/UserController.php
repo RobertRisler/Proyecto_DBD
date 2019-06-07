@@ -29,6 +29,21 @@ class UserController extends Controller
         }
     }
 
+    public function mostrarComentarios($id_usuario)
+    {
+
+        if($usuario = User::find($id_usuario)) {
+            
+            $usuario = User::find($id_usuario);
+            $comentarios = $usuario->comentarios()->get();
+            return $comentarios;
+
+
+        }else{
+            return "No se encuentra el pedido.";
+        }
+    }
+
 
     public function create(Request $request)//crea un recurso
     {

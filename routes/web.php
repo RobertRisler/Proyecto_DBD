@@ -28,6 +28,8 @@ Route::get('/usuario','UserController@index');
 Route::get('/usuario/{id}','UserController@show');
 /*Muesta el historial de un usuario*/
 Route::get('/historialUsuario/{id}','UserController@mostrarHistorial');
+/*Muesta comentarios de un usuario*/
+Route::get('/comentariosUsuario/{id}','UserController@mostrarComentarios');
 
 Route::delete('/usuario/{id}','UserController@destroy');
 
