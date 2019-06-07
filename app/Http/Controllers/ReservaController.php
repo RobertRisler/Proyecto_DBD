@@ -22,17 +22,24 @@ class ReservaController extends Controller
 
     public function store(Request $request)
     {
-        $reserva = new Reserva();
-        $reserva->cantidad_personas = $request->input('cantidad_personas');
-        $reserva->fecha_resevacion = $request->input('fecha_resevacion');
-        $reserva->rut_cliente = $request->input('rut_cliente');
-        $reserva->nombre_cliente = $request->input('nombre_cliente');
-        $reserva->apellido_cliente = $request->input('apellido_cliente');
-        $reserva->estado = $request->input('estado');
-        $reserva->id_usuario = $request->input('id_usuario');
+        $numeroPersonas = $request->input('cantidad_personas');
 
-        $reserva->save();
-        return response()->json($reserva);
+        if((is_numeric($numeroPersonas)) && $numeroPersonas > 0){
+            $reserva = new Reserva();
+            $reserva->cantidad_personas = $request->input('cantidad_personas');
+            $reserva->fecha_resevacion = $request->input('fecha_resevacion');
+            $reserva->rut_cliente = $request->input('rut_cliente');
+            $reserva->nombre_cliente = $request->input('nombre_cliente');
+            $reserva->apellido_cliente = $request->input('apellido_cliente');
+            $reserva->estado = $request->input('estado');
+            $reserva->id_usuario = $request->input('id_usuario');
+
+            $reserva->save();
+            return response()->json($reserva);
+        }
+        else{
+            return "Error parametros de entradas";
+        }
 
     }
 
@@ -50,18 +57,24 @@ class ReservaController extends Controller
 
     public function update(Request $request, $id)
     {
+        $numeroPersonas = $request->input('cantidad_personas');
 
-        $reserva = Reserva::find($id);
-        $reserva->cantidad_personas = $request->input('cantidad_personas');
-        $reserva->fecha_resevacion = $request->input('fecha_resevacion');
-        $reserva->rut_cliente = $request->input('rut_cliente');
-        $reserva->nombre_cliente = $request->input('nombre_cliente');
-        $reserva->apellido_cliente = $request->input('apellido_cliente');
-        $reserva->estado = $request->input('estado');
-        $reserva->id_usuario = $request->input('id_usuario');
+        if((is_numeric($numeroPersonas)) && $numeroPersonas > 0){
+            $reserva = Reserva::find($id);
+            $reserva->cantidad_personas = $request->input('cantidad_personas');
+            $reserva->fecha_resevacion = $request->input('fecha_resevacion');
+            $reserva->rut_cliente = $request->input('rut_cliente');
+            $reserva->nombre_cliente = $request->input('nombre_cliente');
+            $reserva->apellido_cliente = $request->input('apellido_cliente');
+            $reserva->estado = $request->input('estado');
+            $reserva->id_usuario = $request->input('id_usuario');
 
-        $reserva->save();
-        return response()->json($reserva);
+            $reserva->save();
+            return response()->json($reserva);
+        }
+        else{
+            return "Error parametros de entradas";
+        }
     }
 
     public function destroy($id)

@@ -53,20 +53,26 @@ class ComentarioController extends Controller
 
     public function store(Request $request)
     {
-        $comentario = new Comentario();
-        $comentario->mensaje = $request->input('mensaje');
-        $comentario->valoracion = $request->input('valoracion');
-        $comentario->fecha = $request->input('fecha');
-        if(($comentario->fecha)>now()){
-            return "Error, fecha incorrecta.";
+        $valoracion = $request->input('valoracion');
 
+        if((is_numeric($valoracion)) && ($valoracion > 0) && ($valoracion < 6)){
+            $comentario = new Comentario();
+            $comentario->mensaje = $request->input('mensaje');
+            $comentario->valoracion = $request->input('valoracion');
+            $comentario->fecha = $request->input('fecha');
+            if(($comentario->fecha)>now()){
+                return "Error, fecha incorrecta.";
+
+            }
+            $comentario->id_usuario = $request->input('id_usuario');
+            $comentario->id_restaurante = $request->input('id_restaurante');
+
+            $comentario->save();
+            return response()->json($comentario);
         }
-        $comentario->id_usuario = $request->input('id_usuario');
-        $comentario->id_restaurante = $request->input('id_restaurante');
-
-        $comentario->save();
-        return response()->json($comentario);
-
+        else{
+            return "Error parametros de entradas";
+        }
 
 
     }
@@ -85,19 +91,26 @@ class ComentarioController extends Controller
 
     public function update(Request $request, $id)
     {
-        $comentario  = Comentario::find($id);
-        $comentario->mensaje = $request->input('mensaje');
-        $comentario->valoracion = $request->input('valoracion');
-        $comentario->fecha = $request->input('fecha');
-        if(($comentario->fecha)>now()){
-            return "Error, fecha no puede superar fecha actual.";
+        $valoracion = $request->input('valoracion');
 
+        if((is_numeric($valoracion)) && ($valoracion > 0) && ($valoracion < 6)){
+            $comentario  = Comentario::find($id);
+            $comentario->mensaje = $request->input('mensaje');
+            $comentario->valoracion = $request->input('valoracion');
+            $comentario->fecha = $request->input('fecha');
+            if(($comentario->fecha)>now()){
+                return "Error, fecha no puede superar fecha actual.";
+
+            }
+            $comentario->id_usuario = $request->input('id_usuario');
+            $comentario->id_restaurante = $request->input('id_restaurante');
+
+            $comentario->save();
+            return response()->json($comentario);
         }
-        $comentario->id_usuario = $request->input('id_usuario');
-        $comentario->id_restaurante = $request->input('id_restaurante');
-
-        $comentario->save();
-        return response()->json($comentario);
+        else{
+            return "Error parametros de entradas";
+        }
 
     }
 

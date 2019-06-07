@@ -22,6 +22,9 @@ class ProductoController extends Controller
 
     public function store(Request $request)
     {
+        $precio = $request->input('precio_total');
+
+        if((is_numeric($precio)) && $precio >= 0){
         $producto = new Producto();
         $producto->nombre = $request->input('nombre');
         $producto->descripcion = $request->input('descripcion');
@@ -31,6 +34,10 @@ class ProductoController extends Controller
 
         $producto->save();
         return response()->json($producto);
+        }
+        else{
+            return "Error parametros de entradas";
+        }
     }
 
     public function show($id)
@@ -47,6 +54,9 @@ class ProductoController extends Controller
 
     public function update(Request $request, $id)
     {
+        $precio = $request->input('precio_total');
+
+        if((is_numeric($precio)) && $precio >= 0){
         $producto = Producto::find($id);
         $producto->nombre = $request->input('nombre');
         $producto->descripcion = $request->input('descripcion');
@@ -56,6 +66,10 @@ class ProductoController extends Controller
 
         $producto->save();
         return response()->json($producto);
+        }
+        else{
+            return "Error parametros de entradas";
+        }
 
     }
 

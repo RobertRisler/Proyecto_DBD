@@ -23,19 +23,24 @@ class RestauranteController extends Controller
 
     public function store(Request $request)
     {
-        $restaurante = new Restaurante();
-        $restaurante->nombre = $request->input('nombre');
-        $restaurante->descripcion = $request->input('descripcion');
-        $restaurante->hora_apertura = $request->input('hora_apertura');
-        $restaurante->hora_cierre = $request->input('hora_cierre');
-        $restaurante->promedio_valoracion = $request->input('promedio_valoracion');
-        $restaurante->telefono = $request->input('telefono');
-        $restaurante->hace_despacho = $request->input('hace_despacho');
-        $restaurante->validacion = $request->input('validacion');
-        $restaurante->id_calle = $request->input('id_calle');
+        $valoracion = $request->input('promedio_valoracion');
 
-        $restaurante->save();
-        return response()->json($restaurante);
+        if((is_numeric($valoracion)) && ($valoracion > 0) && ($valoracion < 6)){
+            $restaurante = new Restaurante();
+            $restaurante->nombre = $request->input('nombre');
+            $restaurante->descripcion = $request->input('descripcion');
+            $restaurante->promedio_valoracion = $request->input('promedio_valoracion');
+            $restaurante->telefono = $request->input('telefono');
+            $restaurante->hace_despacho = $request->input('hace_despacho');
+            $restaurante->validacion = $request->input('validacion');
+            $restaurante->id_calle = $request->input('id_calle');
+
+            $restaurante->save();
+            return response()->json($restaurante);
+        }
+        else{
+            return "Error parametros de entradas";
+        }
 
     }
 
@@ -54,21 +59,24 @@ class RestauranteController extends Controller
 
     public function update(Request $request, $id)
     {
+        $valoracion = $request->input('promedio_valoracion');
 
-        $restaurante = Restaurante::find($id);
-        $restaurante->nombre = $request->input('nombre');
-        $restaurante->descripcion = $request->input('descripcion');
-        $restaurante->hora_apertura = $request->input('hora_apertura');
-        $restaurante->hora_cierre = $request->input('hora_cierre');
-        $restaurante->promedio_valoracion = $request->input('promedio_valoracion');
-        $restaurante->telefono = $request->input('telefono');
-        $restaurante->hace_despacho = $request->input('hace_despacho');
-        $restaurante->validacion = $request->input('validacion');
-        $restaurante->id_calle = $request->input('id_calle');
+        if((is_numeric($valoracion)) && ($valoracion > 0) && ($valoracion < 6)){
+            $restaurante = Restaurante::find($id);
+            $restaurante->nombre = $request->input('nombre');
+            $restaurante->descripcion = $request->input('descripcion');
+            $restaurante->promedio_valoracion = $request->input('promedio_valoracion');
+            $restaurante->telefono = $request->input('telefono');
+            $restaurante->hace_despacho = $request->input('hace_despacho');
+            $restaurante->validacion = $request->input('validacion');
+            $restaurante->id_calle = $request->input('id_calle');
 
-        $restaurante->save();
-        return response()->json($restaurante);
-
+            $restaurante->save();
+            return response()->json($restaurante);
+        }
+        else{
+            return "Error parametros de entradas";
+        }
 
 
     }

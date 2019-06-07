@@ -197,6 +197,22 @@ Route::get('/pedidoProducto/{id}','PedidoProductoController@show');
 Route::delete('/pedidoProducto/{id}','PedidoProductoController@destroy');
 
 
+/*Rutas de HorarioMesaController*/
+
+Route::post('/horarioMesa', 'Horario_MesaController@store');
+Route::put('/horarioMesa/{id}', 'Horario_MesaController@update');
+Route::get('/horarioMesa','Horario_MesaController@index');
+Route::get('/horarioMesa/{id}','Horario_MesaController@show');
+Route::delete('/horarioMesa/{id}','Horario_MesaController@destroy');
+
+
+/*Rutas de HorarioMesaController*/
+
+Route::post('/horarioRestaurante', 'Horario_RestauranteController@store');
+Route::put('/horarioRestaurante/{id}', 'Horario_RestauranteController@update');
+Route::get('/horarioRestaurante','Horario_RestauranteController@index');
+Route::get('/horarioRestaurante/{id}','Horario_RestauranteController@show');
+Route::delete('/horarioRestaurante/{id}','Horario_RestauranteController@destroy');
 
 
 

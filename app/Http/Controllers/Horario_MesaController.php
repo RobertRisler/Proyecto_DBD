@@ -11,8 +11,8 @@ class Horario_MesaController extends Controller
 
     public function index()
     {
-        $horario_restaurante = Horario_Mesa::all();
-        return response()->json($horario_restaurante);
+        $horario_mesa = Horario_Mesa::all();
+        return response()->json($horario_mesa);
     }
 
 
@@ -25,21 +25,21 @@ class Horario_MesaController extends Controller
     public function store(Request $request)
     {
 
-        $horario_restaurante = new Horario_Mesa();
-        $horario_restaurante->hora_inicio = $request->input('hora_inicio');
-        $horario_restaurante->hora_fin = $request->input('hora_fin');
-        $horario_restaurante->estado_reservacion = $request->input('estado_reservacion');
-        $horario_restaurante->id_mesa = $request->input('id_mesa');
+        $horario_mesa = new Horario_Mesa();
+        $horario_mesa->hora_inicio = $request->input('hora_inicio');
+        $horario_mesa->hora_fin = $request->input('hora_fin');
+        $horario_mesa->estado_reservacion = $request->input('estado_reservacion');
+        $horario_mesa->id_mesa = $request->input('id_mesa');
 
-        $horario_restaurante->save();
-        return response()->json($horario_restaurante);
+        $horario_mesa->save();
+        return response()->json($horario_mesa);
     }
 
 
     public function show($id)
     {
-        $horario_restaurante = Horario_Mesa::find($id);
-        return response()->json($horario_restaurante);
+        $horario_mesa = Horario_Mesa::find($id);
+        return response()->json($horario_mesa);
     }
 
 
@@ -51,20 +51,20 @@ class Horario_MesaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $horario_restaurante = Horario_Mesa::find($id);
-        $horario_restaurante->hora_inicio = $request->input('hora_inicio');
-        $horario_restaurante->hora_fin = $request->input('hora_fin');
-        $horario_restaurante->estado_reservacion = $request->input('estado_reservacion');
-        $horario_restaurante->id_mesa = $request->input('id_mesa');
+        $horario_mesa = Horario_Mesa::find($id);
+        $horario_mesa->hora_inicio = $request->input('hora_inicio');
+        $horario_mesa->hora_fin = $request->input('hora_fin');
+        $horario_mesa->estado_reservacion = $request->input('estado_reservacion');
+        $horario_mesa->id_mesa = $request->input('id_mesa');
 
-        $horario_restaurante->save();
-        return response()->json($horario_restaurante);
+        $horario_mesa->save();
+        return response()->json($horario_mesa);
     }
 
     public function destroy($id)
     {
-        $horario_restaurante = Horario_Mesa::find($id);
-        $horario_restaurante ->delete();
+        $horario_mesa = Horario_Mesa::find($id);
+        $horario_mesa ->delete();
         return "Eliminado!";
     }
 }

@@ -24,13 +24,46 @@ class TarjetaController extends Controller
 
     public function store(Request $request)//rellenar
     {
-        $tarjeta = new Tarjeta();
-        $tarjeta->cuatro_digitos = $request->input('cuatro_digitos');
-        $tarjeta->numero_cuotas = $request->input('numero_cuotas');
-        $tarjeta->tipo = $request->input('tipo');
+        $numeroCuotas = $request->input('numero_cuotas');
+        $cuatroDigitos = $request->input('cuatro_digitos');
+        $tipo = $request->input('tipo');
 
-        $tarjeta->save();
-        return response()->json($tarjeta);
+        if((is_numeric($cuatroDigitos)) && ($cuatroDigitos >= 0) && ($cuatroDigitos < 10000)){
+            if ($tipo == 'debito') {
+                if((is_numeric($numeroCuotas)) && $numeroCuotas == 0){
+                    $tarjeta = new Tarjeta();
+                    $tarjeta->cuatro_digitos = $request->input('cuatro_digitos');
+                    $tarjeta->numero_cuotas = $request->input('numero_cuotas');
+                    $tarjeta->tipo = $request->input('tipo');
+
+                    $tarjeta->save();
+                    return response()->json($tarjeta);
+                }
+                else{
+                    return "Error debito debe tener 0 cuotas";
+                }
+            }
+            if ($tipo == 'credito') {
+                if((is_numeric($numeroCuotas)) && ($numeroCuotas > 0) && ($numeroCuotas < 49)){
+                    $tarjeta = new Tarjeta();
+                    $tarjeta->cuatro_digitos = $request->input('cuatro_digitos');
+                    $tarjeta->numero_cuotas = $request->input('numero_cuotas');
+                    $tarjeta->tipo = $request->input('tipo');
+
+                    $tarjeta->save();
+                    return response()->json($tarjeta);
+                }
+                else{
+                    return "Error numero cuotas no valido";
+                } 
+            }
+            else{
+                return "Error tipo invalido";
+            }
+        }
+        else{
+            return "Error cuatro digitos invalidos";
+        }   
     }
 
 
@@ -49,13 +82,47 @@ class TarjetaController extends Controller
 
     public function update(Request $request, $id)//rellenar
     {
-        $tarjeta = Tarjeta::find($id);
-        $tarjeta->cuatro_digitos = $request->input('cuatro_digitos');
-        $tarjeta->numero_cuotas = $request->input('numero_cuotas');
-        $tarjeta->tipo = $request->input('tipo');
+        $numeroCuotas = $request->input('numero_cuotas');
+        $cuatroDigitos = $request->input('cuatro_digitos');
+        $tipo = $request->input('tipo');
 
-        $tarjeta->save();
-        return response()->json($tarjeta);
+        if((is_numeric($cuatroDigitos)) && ($cuatroDigitos >= 0) && ($cuatroDigitos < 10000)){
+            if ($tipo == 'debito') {
+                if((is_numeric($numeroCuotas)) && $numeroCuotas == 0){
+                    $tarjeta = Tarjeta::find($id);
+                    $tarjeta->cuatro_digitos = $request->input('cuatro_digitos');
+                    $tarjeta->numero_cuotas = $request->input('numero_cuotas');
+                    $tarjeta->tipo = $request->input('tipo');
+
+                    $tarjeta->save();
+                    return response()->json($tarjeta);
+                }
+                else{
+                    return "Error debito debe tener 0 cuotas";
+                }
+            }
+            if ($tipo == 'credito') {
+                if((is_numeric($numeroCuotas)) && ($numeroCuotas > 0) && ($numeroCuotas < 49)){
+                    $tarjeta = Tarjeta::find($id);
+                    $tarjeta->cuatro_digitos = $request->input('cuatro_digitos');
+                    $tarjeta->numero_cuotas = $request->input('numero_cuotas');
+                    $tarjeta->tipo = $request->input('tipo');
+
+                    $tarjeta->save();
+                    return response()->json($tarjeta);
+                }
+                else{
+                    return "Error numero cuotas no valido";
+                } 
+            }
+            else{
+                return "Error tipo invalido";
+            }
+        }
+        else{
+            return "Error cuatro digitos invalidos";
+        } 
+        
     }
 
 

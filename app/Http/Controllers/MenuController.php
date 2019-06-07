@@ -22,15 +22,23 @@ class MenuController extends Controller
 
     public function store(Request $request)
     {
-        $menu = new Menu();
-        $menu->nombre = $request->input('nombre');
-        $menu->descripcion = $request->input('descripcion');
-        $menu->cantidad_productos = $request->input('cantidad_productos');
-        $menu->id_categoria = $request->input('id_categoria');
+        $numeroProductos = $request->input('cantidad_productos');
+
+        if((is_numeric($numeroProductos)) && $numeroProductos >= 0){
+
+            $menu = new Menu();
+            $menu->nombre = $request->input('nombre');
+            $menu->descripcion = $request->input('descripcion');
+            $menu->cantidad_productos = $request->input('cantidad_productos');
+            $menu->id_categoria = $request->input('id_categoria');
 
 
-        $menu->save();
-        return response()->json($menu);
+            $menu->save();
+            return response()->json($menu);
+        }
+        else{
+            return "Error parametros de entradas";
+        }
 
     }
 
@@ -48,15 +56,22 @@ class MenuController extends Controller
 
     public function update(Request $request, $id)
     {
-        $menu = Menu::find($id);
-        $menu->nombre = $request->input('nombre');
-        $menu->descripcion = $request->input('descripcion');
-        $menu->cantidad_productos = $request->input('cantidad_productos');
-        $menu->id_categoria = $request->input('id_categoria');
+        $numeroProductos = $request->input('cantidad_productos');
+
+        if((is_numeric($numeroProductos)) && $numeroProductos >= 0){
+            $menu = Menu::find($id);
+            $menu->nombre = $request->input('nombre');
+            $menu->descripcion = $request->input('descripcion');
+            $menu->cantidad_productos = $request->input('cantidad_productos');
+            $menu->id_categoria = $request->input('id_categoria');
 
 
-        $menu->save();
-        return response()->json($menu);
+            $menu->save();
+            return response()->json($menu);
+        }
+        else{
+            return "Error parametros de entradas";
+        }
 
 
     }
