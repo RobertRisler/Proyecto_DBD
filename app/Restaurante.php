@@ -11,8 +11,7 @@ class Restaurante extends Model
     //atributos
     //rellenar con atributos
     protected $fillable = [
-        'nombre', 'descripcion', 'hora_apertura', 'hora_cierre',
-        'promedio_valoracion', 'telefono', 'hace_despacho', 'validacion'];
+        'nombre', 'descripcion', 'promedio_valoracion', 'telefono', 'hace_despacho', 'validacion'];
     //relacion con otra tabla
     //poner nombre en plural si se relaciona con muchos
     public function comentarios()
