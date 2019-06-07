@@ -17,6 +17,10 @@ class DireccionController extends Controller
     }
 
 
+
+    
+
+
     public function create(Request $request)//crea un recurso
     {
 

@@ -15,6 +15,14 @@ class ReservaController extends Controller
         return response()->json($reserva);
     }
 
+    /*Muestra las mesas de una reserva*/
+    public function mostrarMesas($id_reserva)
+    {
+        $reserva = Reserva::find($id_reserva);
+        $mesas = $reserva->mesas()->get();
+        return $mesas;
+    }
+
     public function create()
     {
         //

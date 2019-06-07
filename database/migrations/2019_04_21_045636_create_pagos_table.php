@@ -18,7 +18,7 @@ class CreatePagosTable extends Migration
             $table->string('tipo');
             $table->decimal('monto');
             $table->timestamp('fecha');
-            $table->timestamps();
+            
 
             $table->bigInteger('id_tarjeta')->nullable();
 
@@ -27,6 +27,8 @@ class CreatePagosTable extends Migration
                 ->references('id')
                 ->on('tarjetas')
                 ->onDelete('cascade');
+
+            $table->timestamps();
 
         });
     }

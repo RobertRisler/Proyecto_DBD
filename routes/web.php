@@ -26,6 +26,9 @@ Route::post('/usuario', 'UserController@store');
 Route::put('/usuario/{id}', 'UserController@update');
 Route::get('/usuario','UserController@index');
 Route::get('/usuario/{id}','UserController@show');
+/*Muesta el historial de un usuario*/
+Route::get('/historialUsuario/{id}','UserController@mostrarHistorial');
+
 Route::delete('/usuario/{id}','UserController@destroy');
 
 /*Rutas de tarjeta*/
@@ -82,6 +85,9 @@ Route::post('/despacho', 'DespachoController@store');
 Route::put('/despacho/{id}', 'DespachoController@update');
 Route::get('/despacho','DespachoController@index');
 Route::get('/despacho/{id}','DespachoController@show');
+
+Route::get('/pedidoDespacho/{id}','DespachoController@mostrarPedido');
+
 Route::delete('/despacho/{id}','DespachoController@destroy');
 
 /*Rutas de pago*/
@@ -98,6 +104,8 @@ Route::post('/reserva', 'ReservaController@store');
 Route::put('/reserva/{id}', 'ReservaController@update');
 Route::get('/reserva','ReservaController@index');
 Route::get('/reserva/{id}','ReservaController@show');
+/*Muestra las mesas de una reserva*/
+Route::get('/mesasReserva/{id}','ReservaController@mostrarMesas');
 Route::delete('/reserva/{id}','ReservaController@destroy');
 
 /*Rutas de mesa*/
@@ -114,6 +122,10 @@ Route::post('/pedido', 'PedidoController@store');
 Route::put('/pedido/{id}', 'PedidoController@update');
 Route::get('/pedido','PedidoController@index');
 Route::get('/pedido/{id}','PedidoController@show');
+/*Muestra un usuario de un pedido*/
+Route::get('/usuarioPedido/{id}','PedidoController@mostrarUsuario');
+/*Muestra despacho de un pedido*/
+Route::get('/despachoPedido/{id}','PedidoController@mostrarDespacho');
 Route::delete('/pedido/{id}','PedidoController@destroy');
 
 /*Rutas de comentario*/
@@ -142,6 +154,8 @@ Route::post('/historial', 'HistorialController@store');
 Route::put('/historial/{id}', 'HistorialController@update');
 Route::get('/historial','HistorialController@index');
 Route::get('/historial/{id}','HistorialController@show');
+
+Route::get('/usuarioHistorial/{id}','HistorialController@mostrarUsuario');
 Route::delete('/historial/{id}','HistorialController@destroy');
 
 /*Rutas de ciudad*/
@@ -151,6 +165,9 @@ Route::put('/ciudad/{id}', 'CiudadController@update');
 Route::get('/ciudad','CiudadController@index');
 Route::get('/ciudad/{id}','CiudadController@show');
 Route::delete('/ciudad/{id}','CiudadController@destroy');
+
+Route::get('/comunaCiudad/{id}','CiudadController@mostrarComunasCiudad');/*Muestra las ciudades  de una comuna*/
+
 
 /*Rutas de comuna*/
 

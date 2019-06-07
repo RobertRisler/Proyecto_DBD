@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Tipo_usuario;
+use App\Historial;
 use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
@@ -14,6 +15,18 @@ class UserController extends Controller
     {
         $users = User::all();
         return response()->json($users);
+    }
+
+    /*Muesta el historial de un usuario $id_usuario*/
+    public function mostrarHistorial($id_usuario)
+    {
+
+        if($historiales = Historial::find($id_usuario)) {
+            $historiales = Historial::where('id_usuario', $id_usuario)->get();
+            return response()->json($historiales);
+        }else{
+            return "No se encuentra usuario.";
+        }
     }
 
 

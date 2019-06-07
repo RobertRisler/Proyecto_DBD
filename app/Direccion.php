@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Http\DireccionController;
 use Illuminate\Database\Eloquent\Model;
 
 class Direccion extends Model

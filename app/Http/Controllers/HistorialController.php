@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Historial;
+use App\User;
 use App\Http\Requests\HistorialRequest;
 
 class HistorialController extends Controller
@@ -14,6 +15,14 @@ class HistorialController extends Controller
         return response()->json($historial);
 
     }
+    /*Muestra el usuario que escribio el $id_historial*/
+    public function mostrarUsuario($id_historial){
+        $historial = Historial::find($id_historial);
+        $usuarios = $historial->usuario()->get();
+        return $usuarios;
+
+    }
+    
 
     public function create()
     {
