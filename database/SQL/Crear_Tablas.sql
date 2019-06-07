@@ -105,6 +105,16 @@ CREATE TABLE usuarios
 
 	PRIMARY KEY(id)
  );
+
+ CREATE TABLE tarjetas
+ (
+	id BIGSERIAL,
+	cuatro_digitos INT,
+	numero_cuotas INT, 
+	tipo VARCHAR(255),
+
+	PRIMARY KEY(id)
+ );
  
  CREATE TABLE pagos
  (
@@ -112,8 +122,11 @@ CREATE TABLE usuarios
 	tipo VARCHAR(255),
 	monto DECIMAL,
 	fecha TIMESTAMP,
+	id_tarjeta BIGINT,
 
-	PRIMARY KEY(id)
+	PRIMARY KEY(id),
+
+	FOREIGN KEY(id_tarjeta) REFERENCES tarjetas(id)
  );
  
  CREATE TABLE reservas
@@ -172,7 +185,7 @@ CREATE TABLE usuarios
 	id BIGSERIAL,
 	mensaje VARCHAR(255),
 	valoracion INT,
-	fecha TIME,
+	fecha TIMESTAMP,
 	id_usuario BIGINT,
 	id_restaurante BIGINT,
 
@@ -206,16 +219,6 @@ CREATE TABLE usuarios
 	PRIMARY KEY(id),
 
 	FOREIGN KEY(id_usuario) REFERENCES usuarios(id)
- );
- 
- CREATE TABLE tarjetas
- (
-	id BIGSERIAL,
-	cuatro_digitos INT,
-	numero_cuotas INT, 
-	tipo VARCHAR(255),
-
-	PRIMARY KEY(id)
  );
  
  CREATE TABLE direcciones
@@ -323,3 +326,4 @@ CREATE TABLE pedidos_productos
 	FOREIGN KEY(id_pedido) REFERENCES pedidos(id),
 	FOREIGN KEY(id_producto) REFERENCES productos(id)
 );
+
