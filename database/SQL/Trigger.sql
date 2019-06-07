@@ -19,12 +19,14 @@ $menu_cantidad_productos$
 BEGIN 
     SELECT menus
     FROM menus, productos, menus_productos
-    GROUP BY productos.id
+    GROUP BY menus.id;
     UPDATE menus
     SET cantidad_productos = COUNT(*)
-    WHERE menus.id = menus_productos.id_menu AND productos.id = menus_productos.id_producto 
+    WHERE menus.id = menus_productos.id_menu AND productos.id = menus_productos.id_producto;
 END;
 $menu_cantidad_productos$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS menu_cantidad_productos ON menus;
 
 CREATE TRIGGER  menu_cantidad_productos 
 AFTER INSERT ON menus 
