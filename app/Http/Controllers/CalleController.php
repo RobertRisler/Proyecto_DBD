@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Restaurante;
 use Illuminate\Http\Request;
 use App\Calle;
+use App\Direccion;
 use App\Http\Requests\CalleRequest;
 
 
@@ -16,6 +18,26 @@ class CalleController extends Controller
         return response()->json($calle);
 
     }
+    /*Muestra las direcciones que se encuentra la calle*/
+    public function mostrarDirecciones($id_calle)
+    {
+
+        if($direcciones = Direccion::find($id_calle)) {
+            $direcciones = Direccion::where('id_calle', $id_calle)->get();
+            return response()->json($direcciones);
+        }
+    }
+
+    /*Muestra las restaurantes que se encuentra la calle*/
+    public function mostrarRestaurantes($id_calle)
+    {
+
+        if($restaurantes = Restaurante::find($id_calle)) {
+            $restaurantes = Restaurante::where('id_calle', $id_calle)->get();
+            return response()->json($restaurantes);
+        }
+    }
+
 
     public function create()
     {

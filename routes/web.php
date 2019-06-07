@@ -116,6 +116,10 @@ Route::get('/comentario','ComentarioController@index');
 Route::get('/comentario/{id}','ComentarioController@show');
 Route::delete('/comentario/{id}','ComentarioController@destroy');
 
+Route::get('/comentario/usuario/{id}','ComentarioController@mostrarComentarioUsuario');
+Route::get('/comentario/restaurante/{id}','ComentarioController@mostrarComentarioRestaurante');
+
+
 /*Rutas de menu*/
 
 Route::post('/menu', 'MenuController@store');
@@ -157,6 +161,40 @@ Route::get('/direccion/{id}','DireccionController@show');
 Route::delete('/direccion/{id}','DireccionController@destroy');
 
 
+/*Rutas de CalleComuna*/
+
+Route::post('/calleComuna', 'CalleComunaController@store');
+Route::put('/calleComuna/{id}', 'CalleComunaController@update');
+Route::get('/calleComuna','CalleComunaController@index');
+Route::get('/calleComuna/{id}','CalleComunaController@show');
+Route::delete('/calleComuna/{id}','CalleComunaController@destroy');
+
+
+/*Rutas de MenuProductoController*/
+
+Route::post('/menuProducto', 'MenuProductoController@store');
+Route::put('/menuProducto/{id}', 'MenuProductoController@update');
+Route::get('/menuProducto','MenuProductoController@index');
+Route::get('/menuProducto/{id}','MenuProductoController@show');
+Route::delete('/menuProducto/{id}','MenuProductoController@destroy');
+
+
+/*Rutas de MenuRestauranteController*/
+
+Route::post('/menuRestaurante', 'MenuRestauranteController@store');
+Route::put('/menuRestaurante/{id}', 'MenuRestauranteController@update');
+Route::get('/menuRestaurante','MenuRestauranteController@index');
+Route::get('/menuRestaurante/{id}','MenuRestauranteController@show');
+Route::delete('/menuRestaurante/{id}','MenuRestauranteController@destroy');
+
+
+/*Rutas de PedidoProductoController*/
+
+Route::post('/pedidoProducto', 'PedidoProductoController@store');
+Route::put('/pedidoProducto/{id}', 'PedidoProductoController@update');
+Route::get('/pedidoProducto','PedidoProductoController@index');
+Route::get('/pedidoProducto/{id}','PedidoProductoController@show');
+Route::delete('/pedidoProducto/{id}','PedidoProductoController@destroy');
 
 
 

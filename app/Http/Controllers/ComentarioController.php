@@ -15,6 +15,37 @@ class ComentarioController extends Controller
 
     }
 
+    public function mostrarComentarioUsuario($id_usuario){
+
+        if($comentario = Comentario::find($id_usuario)){
+            $comentario = Comentario::where('id_usuario',$id_usuario)->get();
+            return response()->json($comentario);
+
+        }else{
+
+            return "No se encuentra usuario.";
+        }
+
+    }
+
+
+    public function mostrarComentarioRestaurante($id_restaurante){
+
+        if($comentario = Comentario::find($id_restaurante)){
+            $comentario = Comentario::where('id_restaurante',$id_restaurante)->get();
+            return response()->json($comentario);
+
+        }else{
+
+            return "No se encuentra restaurante.";
+        }
+
+    }
+
+
+
+
+
     public function create()
     {
         //
@@ -26,6 +57,10 @@ class ComentarioController extends Controller
         $comentario->mensaje = $request->input('mensaje');
         $comentario->valoracion = $request->input('valoracion');
         $comentario->fecha = $request->input('fecha');
+        if(($comentario->fecha)>now()){
+            return "Error, fecha incorrecta.";
+
+        }
         $comentario->id_usuario = $request->input('id_usuario');
         $comentario->id_restaurante = $request->input('id_restaurante');
 
@@ -54,6 +89,10 @@ class ComentarioController extends Controller
         $comentario->mensaje = $request->input('mensaje');
         $comentario->valoracion = $request->input('valoracion');
         $comentario->fecha = $request->input('fecha');
+        if(($comentario->fecha)>now()){
+            return "Error, fecha no puede superar fecha actual.";
+
+        }
         $comentario->id_usuario = $request->input('id_usuario');
         $comentario->id_restaurante = $request->input('id_restaurante');
 

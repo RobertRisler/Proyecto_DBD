@@ -32,5 +32,10 @@ class DatabaseSeeder extends Seeder
         $this->call(ComunaSeeder::class);
         $this->call(Horario_MesaSeeder::class);
         $this->call(Horario_RestauranteSeeder::class);
+        $this->call(CalleComunaSeeder::class);
+        $this->call(MenuProductoSeeder::class);
+        $this->call(MenuRestauranteSeeder::class);
+        $this->call(PedidoProductoSeeder::class);
+        
     }
 }

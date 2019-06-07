@@ -13,7 +13,7 @@ class CreateMenusProductosTable extends Migration
      */
     public function up()
     {
-        Schema::create('menus_productos', function (Blueprint $table) {
+            Schema::create('menus_productos', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->bigInteger('id_menu');

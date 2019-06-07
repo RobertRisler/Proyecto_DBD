@@ -13,32 +13,23 @@ class CreateTriggerMenu extends Migration
      */
     public function up()
     {
-		/*/*DB::statement('
-        CREATE OR REPLACE FUNCTION ContarProductos()
-            RETURNS TRIGGER AS 
-            $ContarProductos$
-            BEGIN
-                SELECT * 
-                FROM menu, producto, menu_producto
-                WHERE menu.id = menu_producto.id_menu AND producto.id = menu_producto.id_producto 
-				GROUP BY menu.id
-                UPDATE menu
-					SET cantidad_productos = sum(producto.precio_total)
-			END
-				$$ LANGUAGE plpgsql;
-        ');*//*
+/*
         DB::unprepared('
-		 CREATE TRIGGER menu_cantidad_productos AFTER INSERT ON 'menu' FOR EACH ROW
-		 BEGIN
-				SELECT * 
-                FROM menu, producto, menu_producto
-                WHERE menu.id = menu_producto.id_menu AND producto.id = menu_producto.id_producto 
-				GROUP BY menu.id
-                UPDATE menu
-					SET cantidad_productos = sum(producto.precio_total)
-		 END
+		 
+		 
+		  
+        CREATE TRIGGER menu_cantidad_productos AFTER INSERT ON ´menus´ FOR EACH ROW
+            BEGIN
+                INSERT INTO menus_productos (´id_pedido´, ´id_producto´, ´created_at´, ´updated_at´)
+                VALUES (3, 2, now(), null);
+            END
+        
+		 
 		 ');
-        */
+
+
+
+*/
     }
 
     /**
