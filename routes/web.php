@@ -43,6 +43,9 @@ Route::put('/categoria/{id}', 'CategoriaController@update');
 Route::get('/categoria','CategoriaController@index');
 Route::get('/categoria/{id}','CategoriaController@show');
 Route::delete('/categoria/{id}','CategoriaController@destroy');
+Route::get('/categoriaMenu/{id}','CategoriaController@mostrarMenuCategoria');
+
+
 
 /*Rutas de producto*/
 
@@ -59,6 +62,11 @@ Route::put('/calle/{id}', 'CalleController@update');
 Route::get('/calle','CalleController@index');
 Route::get('/calle/{id}','CalleController@show');
 Route::delete('/calle/{id}','CalleController@destroy');
+
+Route::get('/calleDirecciones/{id}','CalleController@mostrarDirecciones');/*muestra direcciones que tienen esa calle*/
+Route::get('/calleRestaurantes/{id}','CalleController@mostrarRestaurantes');/*Muestra restaurantes con esa calle*7
+
+
 
 /*Rutas de restaurante*/
 
