@@ -134,3 +134,31 @@ INSERT INTO horarios_restaurantes (dia_semana, horario_apertura, horario_cierre,
 INSERT INTO horarios_restaurantes (dia_semana, horario_apertura, horario_cierre, id_restaurante) VALUES ('Sábado', '09:00:00', '14:00:00', 1);
 INSERT INTO horarios_restaurantes (dia_semana, horario_apertura, horario_cierre, id_restaurante) VALUES ('Jueves', '08:00:00', '18:00:00', 2);
 INSERT INTO horarios_restaurantes (dia_semana, horario_apertura, horario_cierre, id_restaurante) VALUES ('Domingo', '12:00:00', '15:00:00', 3);
+
+
+INSERT INTO calles_comunas (id_calle, id_comuna) VALUES (1, 2);
+INSERT INTO calles_comunas (id_calle, id_comuna) VALUES (2, 3);
+INSERT INTO calles_comunas (id_calle, id_comuna) VALUES (1, 5);
+INSERT INTO calles_comunas (id_calle, id_comuna) VALUES (5, 2);
+INSERT INTO calles_comunas (id_calle, id_comuna) VALUES (3, 2);
+
+
+INSERT INTO menus_productos (id_menu, id_producto) VALUES (1, 4);
+INSERT INTO menus_productos (id_menu, id_producto) VALUES (3, 5);
+INSERT INTO menus_productos (id_menu, id_producto) VALUES (3, 2);
+INSERT INTO menus_productos (id_menu, id_producto) VALUES (2, 1);
+INSERT INTO menus_productos (id_menu, id_producto) VALUES (4, 2);
+
+
+INSERT INTO menus_restaurantes (id_menu, id_restaurante) VALUES (1, 4);
+INSERT INTO menus_restaurantes (id_menu, id_restaurante) VALUES (2, 1);
+INSERT INTO menus_restaurantes (id_menu, id_restaurante) VALUES (5, 4);
+INSERT INTO menus_restaurantes (id_menu, id_restaurante) VALUES (5, 2);
+INSERT INTO menus_restaurantes (id_menu, id_restaurante) VALUES (3, 5);
+
+
+INSERT INTO pedidos_productos (id_pedido, id_producto) VALUES (3, 4);
+INSERT INTO pedidos_productos (id_pedido, id_producto) VALUES (1, 3);
+INSERT INTO pedidos_productos (id_pedido, id_producto) VALUES (2, 1);
+INSERT INTO pedidos_productos (id_pedido, id_producto) VALUES (4, 2);
+INSERT INTO pedidos_productos (id_pedido, id_producto) VALUES (5, 4);

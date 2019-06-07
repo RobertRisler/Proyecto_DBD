@@ -19,7 +19,7 @@ class CreateMenusProductosTable extends Migration
             $table->bigInteger('id_menu');
             $table->bigInteger('id_producto');
 
-            /*Llave foranea menu , por tener n * m */
+            /*Llave foranea menu, por tener n * m */
             $table->foreign('id_menu')
                 ->references('id')
                 ->on('menus')
