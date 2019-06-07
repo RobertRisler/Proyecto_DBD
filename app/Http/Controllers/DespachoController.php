@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Despacho;
+use App\Pedido;
 use App\Http\Requests\DespachoRequest;
 
 class DespachoController extends Controller
@@ -14,6 +15,23 @@ class DespachoController extends Controller
         return response()->json($despacho);
 
     }
+
+    /*Muestra pedido de un despacho*/
+    public function mostrarPedido($id_despacho)
+    {
+
+        if($despacho = Despacho::find($id_despacho)) {
+            
+            $despacho = Despacho::find($id_despacho);
+            $pedido = $despacho->pedidos()->get();
+            return $pedido;
+
+
+        }else{
+            return "No se encuentra el pedido.";
+        }
+    }
+
 
     public function create()
     {
