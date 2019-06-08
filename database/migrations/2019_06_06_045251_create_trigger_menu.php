@@ -26,6 +26,7 @@ class CreateTriggerMenu extends Migration
 */
 		/*DB::unprepared('
 		 CREATE TRIGGER menu_cantidad_productos AFTER INSERT ON menus FOR EACH ROW
+		 WHEN INSERT menus
 		 BEGIN
 				SELECT menus
                 FROM menus, productos, menus_productos
@@ -45,14 +46,14 @@ class CreateTriggerMenu extends Migration
                 WHERE menus.id = menus_productos.id_menu AND productos.id = menus_productos.id_producto 
 				GROUP BY menus.id
                 UPDATE menus
-					SET cantidad_productos = sum(productos.precio_total) 
+					SET cantidad_productos = COUNT(*) 
 		 END 
 		 $menu_cantidad_productos$ 
 		 LANGUAGE plpgsql 
 		 CREATE TRIGGER  menu_cantidad_productos AFTER INSERT ON menus 
 		 FOR EACH ROW EXECUTE PROCEDURE menu_cantidad_productos(); 
 		 ');*/
-		 DB::unprepared('
+		 /*DB::unprepared('
 		 CREATE OR REPLACE FUNCTION menu_cantidad_productos() 
 		 RETURNS trigger AS 
 		 $menu_cantidad_productos$ 
@@ -68,7 +69,7 @@ class CreateTriggerMenu extends Migration
 		 LANGUAGE plpgsql 
 		 CREATE TRIGGER menu_cantidad_productos AFTER INSERT ON menus 
 		 FOR EACH ROW EXECUTE PROCEDURE menu_cantidad_productos(); 
-		 ');
+		 ');*/
     }
 
     /**

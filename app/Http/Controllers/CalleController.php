@@ -26,8 +26,7 @@ class CalleController extends Controller
             $direcciones = Direccion::where('id_calle', $id_calle)->get();
             return response()->json($direcciones);
         }else{
-            return "No se encuentra la calle."
-        }
+            return "No se encuentra la calle.";       }
     }
 
     /*Muestra las restaurantes que se encuentra la calle*/
@@ -38,7 +37,7 @@ class CalleController extends Controller
             $restaurantes = Restaurante::where('id_calle', $id_calle)->get();
             return response()->json($restaurantes);
         }else{
-            return "No se encuentra la calle."
+            return "No se encuentra la calle.";
         }
     }
 
