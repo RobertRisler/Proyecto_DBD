@@ -54,6 +54,8 @@ class CreateTriggerMenu extends Migration
 		 FOR EACH ROW EXECUTE PROCEDURE menu_cantidad_productos(); 
 		 ');*/
 		 /*DB::unprepared('
+		 /*
+		 DB::unprepared('
 		 CREATE OR REPLACE FUNCTION menu_cantidad_productos() 
 		 RETURNS trigger AS 
 		 $menu_cantidad_productos$ 
@@ -70,6 +72,8 @@ class CreateTriggerMenu extends Migration
 		 CREATE TRIGGER menu_cantidad_productos AFTER INSERT ON menus 
 		 FOR EACH ROW EXECUTE PROCEDURE menu_cantidad_productos(); 
 		 ');*/
+		 ');
+		 */
     }
 
     /**

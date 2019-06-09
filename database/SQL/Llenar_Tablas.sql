@@ -45,11 +45,18 @@ INSERT INTO despachos (nombre_repartidor, rut_repartidor, tiempo_estimado, estad
 INSERT INTO despachos (nombre_repartidor, rut_repartidor, tiempo_estimado, estado_despacho, hora_despacho) VALUES ('Francisco', '178881241', '0:35:0', false, '0:0:0');
 
 
-INSERT INTO pagos (tipo, monto, fecha) VALUES ('efectivo', 67543.98, '1987-03-09 00:00:00');
-INSERT INTO pagos (tipo, monto, fecha) VALUES ('efectivo', 81547.62, '2001-02-14 00:00:00');
-INSERT INTO pagos (tipo, monto, fecha) VALUES ('tarjeta', 54165.18, '2017-03-15 00:00:00');
-INSERT INTO pagos (tipo, monto, fecha) VALUES ('efectivo', 90651.14, '1990-04-01 00:00:00');
-INSERT INTO pagos (tipo, monto, fecha) VALUES ('efectivo', 77159.91, '1989-08-17 00:00:00');
+INSERT INTO tarjetas (cuatro_digitos, numero_cuotas, tipo) VALUES (9564, 0, 'debito');
+INSERT INTO tarjetas (cuatro_digitos, numero_cuotas, tipo) VALUES (4786, 0, 'debito');
+INSERT INTO tarjetas (cuatro_digitos, numero_cuotas, tipo) VALUES (2264, 0, 'debito');
+INSERT INTO tarjetas (cuatro_digitos, numero_cuotas, tipo) VALUES (4921, 0, 'debito');
+INSERT INTO tarjetas (cuatro_digitos, numero_cuotas, tipo) VALUES (2600, 14, 'credito');
+
+
+INSERT INTO pagos (tipo, monto, fecha, id_tarjeta) VALUES ('efectivo', 67543.98, '1987-03-09 00:00:00', NULL);
+INSERT INTO pagos (tipo, monto, fecha, id_tarjeta) VALUES ('efectivo', 81547.62, '2001-02-14 00:00:00', NULL);
+INSERT INTO pagos (tipo, monto, fecha, id_tarjeta) VALUES ('tarjeta', 54165.18, '2017-03-15 00:00:00', 1);
+INSERT INTO pagos (tipo, monto, fecha, id_tarjeta) VALUES ('efectivo', 90651.14, '1990-04-01 00:00:00', NULL);
+INSERT INTO pagos (tipo, monto, fecha, id_tarjeta) VALUES ('efectivo', 77159.91, '1989-08-17 00:00:00', NULL);
 
 
 INSERT INTO reservas (cantidad_personas, fecha_reservacion, rut_cliente, nombre_cliente, apellido_cliente, estado, id_usuario) VALUES (2, '2017-07-07 00:00:00', '191231239', 'Juan', 'Ayala', true, 2);
@@ -92,13 +99,6 @@ INSERT INTO historiales (actividad, descripcion, fecha_actividad, id_usuario) VA
 INSERT INTO historiales (actividad, descripcion, fecha_actividad, id_usuario) VALUES ('Compra', 'Compró en PizzaHut', '2016-06-06 00:00:00', 3);
 INSERT INTO historiales (actividad, descripcion, fecha_actividad, id_usuario) VALUES ('Modificar', 'Modificó precio artículo', '2018-08-08 00:00:00', 4);
 INSERT INTO historiales (actividad, descripcion, fecha_actividad, id_usuario) VALUES ('Modificar', 'Modificó horario apertura', '2019-03-09 00:00:00', 5);
-
-
-INSERT INTO tarjetas (cuatro_digitos, numero_cuotas, tipo) VALUES (9564, 0, 'debito');
-INSERT INTO tarjetas (cuatro_digitos, numero_cuotas, tipo) VALUES (4786, 0, 'debito');
-INSERT INTO tarjetas (cuatro_digitos, numero_cuotas, tipo) VALUES (2264, 0, 'debito');
-INSERT INTO tarjetas (cuatro_digitos, numero_cuotas, tipo) VALUES (4921, 0, 'debito');
-INSERT INTO tarjetas (cuatro_digitos, numero_cuotas, tipo) VALUES (2600, 14, 'credito');
 
 
 INSERT INTO direcciones (alias, id_usuario, id_calle) VALUES ('Casa Temuco', 1, 3);

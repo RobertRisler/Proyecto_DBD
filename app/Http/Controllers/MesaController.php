@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mesa;
+use App\Restaurante;
 use App\Http\Requests\MesaRequest;
 
 class MesaController extends Controller

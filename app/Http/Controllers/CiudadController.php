@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Ciudad;
+use App\Comuna;
 use App\Http\Requests\CiudadRequest;
 
 class CiudadController extends Controller
@@ -13,6 +14,17 @@ class CiudadController extends Controller
     {
         $ciudad = Ciudad::all();
         return response()->json($ciudad);
+
+    }
+
+    public function mostrarComunasCiudad($id_ciudad)
+    {
+        if($comuna = Comuna::find($id_ciudad)) {
+            $comuna = Comuna::where('id_ciudad', $id_ciudad)->get();
+            return response()->json($comuna);
+        }else{
+            return "No se encuentra la ciudad.";
+        }
 
     }
 

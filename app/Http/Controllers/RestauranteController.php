@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Restaurante;
+use App\Mesa;
 use App\Http\Requests\RestauranteRequest;
 
 class RestauranteController extends Controller
@@ -77,8 +78,6 @@ class RestauranteController extends Controller
         else{
             return "Error parametros de entradas";
         }
-
-
     }
 
     public function destroy($id)
@@ -88,4 +87,66 @@ class RestauranteController extends Controller
         $restaurante ->delete();
         return "Eliminado!";
     }
+	public function agregarMesa(Request $request, $id){
+		if ($restaurante = Restaurante::find($id)){
+			$mesa = new Mesa();
+			$mesa->cantidad_asientos = $request->input('cantidad_asientos');
+            $mesa->id_reserva = $request->input('id_reserva');
+            $mesa->id_restaurante = $id;
+			$mesa->save();
+			return response()->json($mesa);
+		}
+		else{
+			return "No se encuentra el restaurante para la mesa";
+		}
+	}
+	public function mostrarMesas($id){
+		if (Restaurante::find($id)){
+			$mesa = Mesa::where('id_restaurante',$id)->get();
+			return response()->json($mesa);
+		}
+		else{
+			return "No existe el restaurante";
+		}
+	}
+	public function cambiarMesa(Request $request, $id_restaurante, $id_mesa){
+		if ($restaurante = Restaurante::find($id_restaurante)){
+			if ($mesa = Mesa::find($id_mesa)){
+				if ($mesa->id_restaurante == $id_restaurante){
+					$mesa->cantidad_asientos = $request->input('cantidad_asientos');
+					$mesa->id_reserva = $request->input('id_reserva');
+					$mesa->save();
+					return response()->json($mesa);
+				}
+				else{
+					return "La mesa no esta en el restaurante";
+				}
+			}
+			else{
+				return "No existe el restaurante";
+			}
+		}
+		else{
+			return "No existe el restaurante";
+		}
+	}
+	public function eliminarMesa(Request $request, $id_restaurante, $id_mesa){
+		if ($restaurante = Restaurante::find($id_restaurante)){
+			if ($mesa = Mesa::find($id_mesa)){
+				if ($mesa->id_restaurante == $id_restaurante){
+					$mesa->delete();
+					return "Eliminado!";
+				}
+				else{
+					return "La mesa no esta en el restaurante";
+				}
+			}
+			else{
+				return "No existe el restaurante";
+			}
+		}
+		else{
+			return "No existe el restaurante";
+		}
+	}
 }

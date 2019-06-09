@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pedido;
+use App\User;
 use App\Http\Requests\PedidoRequest;
 
 class PedidoController extends Controller
@@ -14,6 +15,24 @@ class PedidoController extends Controller
         return response()->json($pedido);
 
     }
+
+
+    /*Muestra el usuario que realizo un pedido*/
+    public function mostrarUsuario($id_pedido){
+        $pedido = Pedido::find($id_pedido);
+        $usuarios = $pedido->usuarios()->get();
+        return $usuarios;
+
+    }
+
+    /*Muestra el usuario que realizo un pedido*/
+    public function mostrarDespacho($id_pedido){
+        $pedido = Pedido::find($id_pedido);
+        $despacho = $pedido->despachos()->get();
+        return $despacho;
+
+    }
+
 
     public function create()
     {

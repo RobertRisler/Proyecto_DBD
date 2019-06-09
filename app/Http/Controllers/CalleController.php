@@ -27,7 +27,8 @@ class CalleController extends Controller
             return response()->json($direcciones);
         }else{
             return "No se encuentra la calle.";       }
-    }
+            return "No se encuentra la calle.";
+        }
 
     /*Muestra las restaurantes que se encuentra la calle*/
     public function mostrarRestaurantes($id_calle)
