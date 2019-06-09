@@ -23,15 +23,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 /*Rutas de usuario*/
 
 Route::post('/usuario', 'UserController@store');
+Route::post('/usuario/{id_usuario}/{id_restaurante}/comentarios', 'UserController@agregarComentario');
 Route::put('/usuario/{id}', 'UserController@update');
+Route::put('/usuario/{id_usuario}/{id_restaurante}/{id_comentario}/comentarios','UserController@modificarComentario');
 Route::get('/usuario','UserController@index');
 Route::get('/usuario/{id}','UserController@show');
+Route::get('/usuario/{id_usuario}/comentarios','UserController@mostrarTotalComentarios');
+Route::get('/usuario/{id_usuario}/{id_restaurante}/comentarios','UserController@mostrarComentarios');
 /*Muesta el historial de un usuario*/
 Route::get('/historialUsuario/{id}','UserController@mostrarHistorial');
 /*Muesta comentarios de un usuario*/
 Route::get('/comentariosUsuario/{id}','UserController@mostrarComentarios');
 
 Route::delete('/usuario/{id}','UserController@destroy');
+Route::delete('/usuario/{id_usuario}/{id_restaurante}/{id_comentario}/comentarios','UserController@eliminarComentario');
 
 /*Rutas de tarjeta*/
 
@@ -76,8 +81,8 @@ Route::get('/calleRestaurantes/{id}','CalleController@mostrarRestaurantes');/*Mu
 /*Rutas de restaurante*/
 
 Route::post('/restaurante', 'RestauranteController@store');
+Route::post('/restaurante/{id}/mesas', 'RestauranteController@agregarMesa');
 Route::put('/restaurante/{id}', 'RestauranteController@update');
-Route::put('/restaurante/{id}/mesas', 'RestauranteController@agregarMesa');
 Route::put('/restaurante/{id_restaurante}/{id_mesa}/mesas', 'RestauranteController@cambiarMesa');
 Route::get('/restaurante','RestauranteController@index');
 Route::get('/restaurante/{id}','RestauranteController@show');

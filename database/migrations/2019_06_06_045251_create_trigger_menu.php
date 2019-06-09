@@ -71,8 +71,8 @@ class CreateTriggerMenu extends Migration
 		 LANGUAGE plpgsql 
 		 CREATE TRIGGER menu_cantidad_productos AFTER INSERT ON menus 
 		 FOR EACH ROW EXECUTE PROCEDURE menu_cantidad_productos(); 
-		 ');*/
 		 ');
+		 );
 		 */
     }
 
@@ -81,8 +81,8 @@ class CreateTriggerMenu extends Migration
      *
      * @return void
      */
-    public function down()
+   /* public function down()
     {
         DB::unprepared('DROP TRIGGER menu_cantidad_productos');
-    }
+    }*/
 }
