@@ -154,10 +154,14 @@ Route::get('/comentario/restaurante/{id}','ComentarioController@mostrarComentari
 /*Rutas de menu*/
 
 Route::post('/menu', 'MenuController@store');
+Route::post('/menu/{id}', 'MenuController@agregarMenu');
 Route::put('/menu/{id}', 'MenuController@update');
+Route::put('/menu/{id_categoria}/{id_menu}/categorias', 'MenuController@modificarMenu');
 Route::get('/menu','MenuController@index');
 Route::get('/menu/{id}','MenuController@show');
+Route::get('/menu/{id}/categorias','MenuController@mostrarMenus');
 Route::delete('/menu/{id}','MenuController@destroy');
+Route::delete('/menu/{id_categorias}/{id_menu}/categorias','MenuController@eliminarMenu');
 
 /*Rutas de historial*/
 

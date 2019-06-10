@@ -63,6 +63,13 @@ class MenuProductoController extends Controller
 			$menuProducto->id_menu = $id;
 			$menuProducto->id_producto = $producto->id;
 			$menuProducto->save();
+			$total_productos = 0;
+			$menu_producto = Menu_Producto::where('id_menu',$id)->get();
+			foreach ($menu_producto as $menus){
+				$total_productos = $total_productos + 1;
+			}
+			$menu->cantidad_productos = $total_productos;
+			$menu->save();
 			return response()->json($producto);
 		}
 		else{
@@ -119,6 +126,14 @@ class MenuProductoController extends Controller
 		if ($id > -1){
 			$producto = producto::find($id_producto);
 			$producto ->delete();
+			$menu = Menu::find($id_menu);
+			$menu_producto = Menu_Producto::where('id_menu',$id_menu)->get();
+			$total_productos = 0;
+			foreach ($menu_producto as $menus){
+				$total_productos = $total_productos + 1;
+			}
+			$menu->cantidad_productos = $total_productos;
+			$menu->save();
 			return "Eliminado!";
 		}
 		else{
