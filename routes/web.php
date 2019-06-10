@@ -209,10 +209,14 @@ Route::delete('/calleComuna/{id}','CalleComunaController@destroy');
 /*Rutas de MenuProductoController*/
 
 Route::post('/menuProducto', 'MenuProductoController@store');
+Route::post('/menuProducto/{id}/productos', 'MenuProductoController@agregarProducto');
 Route::put('/menuProducto/{id}', 'MenuProductoController@update');
+Route::put('/menuProducto/{id_menu}/{id_producto}/productos', 'MenuProductoController@cambiarProducto');
 Route::get('/menuProducto','MenuProductoController@index');
 Route::get('/menuProducto/{id}','MenuProductoController@show');
+Route::get('/menuProducto/{id}/productos','MenuProductoController@mostrarProductos');
 Route::delete('/menuProducto/{id}','MenuProductoController@destroy');
+Route::delete('/menuProducto/{id_menu}/{id_producto}/productos','MenuProductoController@eliminarProducto');
 
 
 /*Rutas de MenuRestauranteController*/

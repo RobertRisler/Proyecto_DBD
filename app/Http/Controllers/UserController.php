@@ -169,32 +169,6 @@ class UserController extends Controller
 		else{
 			return "No existe el comentario";
 		}
-		/*if($users = User::find($id_usuario)){
-			if ($restaurante = Restaurante::find($id_restaurante)){
-				if ($comentario = Comentario::where('id_usuario',$id_usuario)->
-				where('id_restaurante',$id_restaurante)->get()){
-					$comentario->mensaje = $request->input('mensaje');
-					$comentario->valoracion = $request->input('valoracion');
-					$comentario->fecha = $request->input('fecha');
-					if(($comentario->fecha)>now()){
-						return "Error, fecha no puede superar fecha actual.";
-					}
-					$comentario->id_usuario = $id_usuario;
-					$comentario->id_restaurante = $id_restaurante;
-					$comentario->save();
-					return response()->json($comentario);
-				}
-				else{
-					return "El usuario no ha realizado ningun comentario en el restaurante";
-				}
-			}
-			else{
-				return "No existe el restaurante";
-			}
-		}
-		else{
-			return "No existe el usuario";
-		}*/
 	}
 	public function eliminarComentario ($id_usuario, $id_restaurante, $id_comentario){
 		if($comentario = Comentario::find($id_comentario)){
