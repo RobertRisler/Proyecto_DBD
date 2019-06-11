@@ -65,5 +65,4 @@ class ComunaController extends Controller
         return "Eliminado";
 
     }
-
 }

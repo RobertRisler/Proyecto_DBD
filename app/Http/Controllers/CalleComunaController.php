@@ -66,5 +66,4 @@ class CalleComunaController extends Controller
         return "Eliminado!";
 
     }
-
 }

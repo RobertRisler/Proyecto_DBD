@@ -82,13 +82,17 @@ Route::get('/calleRestaurantes/{id}','CalleController@mostrarRestaurantes');/*Mu
 
 Route::post('/restaurante', 'RestauranteController@store');
 Route::post('/restaurante/{id}/mesas', 'RestauranteController@agregarMesa');
+Route::post('/restaurante/ubicacion', 'RestauranteController@crearRestaurante');
 Route::put('/restaurante/{id}', 'RestauranteController@update');
+Route::put('/restaurante/{id}/ubicacion', 'RestauranteController@modificarRestaurante');
 Route::put('/restaurante/{id_restaurante}/{id_mesa}/mesas', 'RestauranteController@cambiarMesa');
 Route::get('/restaurante','RestauranteController@index');
 Route::get('/restaurante/{id}','RestauranteController@show');
+Route::get('/restaurante/{id}/ubicacion','RestauranteController@mostrarRestaurante');
 Route::get('/restaurante/{id}/mesas','RestauranteController@mostrarMesas');
 Route::delete('/restaurante/{id}','RestauranteController@destroy');
 Route::delete('/restaurante/{id_restaurante}/{id_mesa}/mesas','RestauranteController@eliminarMesa');
+Route::delete('/restaurante/{id}/ubicacion','RestauranteController@eliminarRestaurante');
 
 /*Rutas de despacho*/
 

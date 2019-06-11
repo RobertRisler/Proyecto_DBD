@@ -28,7 +28,7 @@ class CalleController extends Controller
         }else{
             return "No se encuentra la calle.";       
 		}
-
+	}
     /*Muestra las restaurantes que se encuentra la calle*/
     public function mostrarRestaurantes($id_calle)
     {
@@ -102,5 +102,4 @@ class CalleController extends Controller
         return "Eliminado!";
 
     }
-
 }
