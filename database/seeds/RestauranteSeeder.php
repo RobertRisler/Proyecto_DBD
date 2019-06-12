@@ -38,7 +38,7 @@ class RestauranteSeeder extends Seeder
             'telefono' => '639564937',
             'hace_despacho' => 'False',
             'validacion' => 'True',
-            'id_calle' => '1'
+            'id_calle' => '5'
         ]);
 
         factory(App\Restaurante::class)->create([
@@ -58,7 +58,7 @@ class RestauranteSeeder extends Seeder
             'telefono' => '759362753',
             'hace_despacho' => 'False',
             'validacion' => 'False',
-            'id_calle' => '5'
+            'id_calle' => '2'
         ]);
 
 		factory('App\Restaurante',30)->create();

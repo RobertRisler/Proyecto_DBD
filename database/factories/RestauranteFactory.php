@@ -9,7 +9,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Restaurante::class, function (Faker $faker) {
 
     $ids_calles = \DB::table('calles')->select('id')->get();
-    $id_calle = $faker->randomElement($ids_calles)->id;
+    $id_calle = $faker->unique()->randomElement($ids_calles)->id;
 
 
     return [

@@ -9,6 +9,7 @@ use App\Calle;
 use App\Comuna;
 use App\Ciudad;
 use App\Calle_Comuna;
+use App\Historial;
 use App\Http\Requests\RestauranteRequest;
 
 class RestauranteController extends Controller
@@ -64,24 +65,13 @@ class RestauranteController extends Controller
 
     public function update(Request $request, $id)
     {
-        $valoracion = $request->input('promedio_valoracion');
-
-        if((is_numeric($valoracion)) && ($valoracion > 0) && ($valoracion < 6)){
+        
             $restaurante = Restaurante::find($id);
-            $restaurante->nombre = $request->input('nombre');
-            $restaurante->descripcion = $request->input('descripcion');
-            $restaurante->promedio_valoracion = $request->input('promedio_valoracion');
-            $restaurante->telefono = $request->input('telefono');
-            $restaurante->hace_despacho = $request->input('hace_despacho');
-            $restaurante->validacion = $request->input('validacion');
-            $restaurante->id_calle = $request->input('id_calle');
+            $restaurante->update($request->all());
 
             $restaurante->save();
             return response()->json($restaurante);
-        }
-        else{
-            return "Error parametros de entradas";
-        }
+        
     }
 
     public function destroy($id)
@@ -262,7 +252,18 @@ class RestauranteController extends Controller
 				array_push($ubicacionRestaurante, $ciudad);
 				break;
 			}
+            
+            /*$historial = new Historial();
+            $historial::create([
+                'actividad' => 'Mostrar',
+                'descripcion' =>'Se muestra el restaurante '.$restaurante->nombre. '.',
+                'fecha_actividad'=>now(),
+                'id_usuario'=>$id,]);*/
 			return response()->json($ubicacionRestaurante);
+
+
+
+
 		}
 		else{
 			return "No se encuentra el restaurante";
@@ -271,12 +272,7 @@ class RestauranteController extends Controller
 	public function modificarRestaurante(Request $request, $id){
 		if ($restaurante = Restaurante::find($id)){
 			$ubicacionRestaurante = [];
-			$restaurante->nombre = $request->input('nombre');
-			$restaurante->descripcion = $request->input('descripcion');
-			$restaurante->promedio_valoracion = $request->input('promedio_valoracion');
-			$restaurante->telefono = $request->input('telefono');
-			$restaurante->hace_despacho = $request->input('hace_despacho');
-			$restaurante->validacion = $request->input('validacion');
+            $restaurante->update($request->all());
 			$restaurante->save();
 			array_push($ubicacionRestaurante, $restaurante);
 			$calle = Calle::find($restaurante->id_calle);
@@ -289,7 +285,15 @@ class RestauranteController extends Controller
 				array_push($ubicacionRestaurante, $ciudad);
 				break;
 			}
+            /*$historial = new Historial();
+            $historial::create([
+                'actividad' => 'Actualizar',
+                'descripcion' =>'Se actualiza informacion del restaurante '.$restaurante->nombre. '.',
+                'fecha_actividad'=>now(),
+                'id_usuario'=>$restaurante->id,]);*/
+
 			return response()->json($ubicacionRestaurante);
+
 		}
 		else{
 			return "No se encuentra el restaurante";
@@ -297,10 +301,17 @@ class RestauranteController extends Controller
 	}
 	public function eliminarRestaurante($id){
 		if ($restaurante = Restaurante::find($id)){
-			$calle = Calle::find($restaurante->id);
+            $idCalle = $restaurante->id_calle;
+			$calle = Calle::find($idCalle);
 			$restaurante ->delete();
 			$calle ->delete();
-			return "Eliminado!";
+            $historial = new Historial();
+            /*$historial::create([
+                'actividad' => 'Eliminar',
+                'descripcion' =>'Se elimina el '.$restaurante->nombre. '.',
+                'fecha_actividad'=>now(),
+                'id_usuario'=>$restaurante->id,]);
+			return "Eliminado restaurante con su calle!";*/
 		}
 		else{
 			return "No existe el restaurante";
