@@ -1,33 +1,44 @@
-/*CREATE OR REPLACE FUNCTION actualizar_valoracion()
-RETRUNS trigger AS
+/* Trigger para verificar que los horarios de inicio y fin estén correctos */
+CREATE OR REPLACE FUNCTION comparar_horarios()
+RETURNS trigger AS
 $BODY$
 BEGIN
-
+  	IF NEW.hora_fin <= NEW.hora_inicio THEN
+    	RAISE EXCEPTION 'No es posible insertar';
+  	END IF;
+    IF NEW.hora_fin > NEW.hora_inicio THEN
+    	RETURN NEW;
+  	END IF;
 END;
-$BODY$ LANGUAGE plpgsql;
+$BODY$
+LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS  actualizar_valoracion_restaurant ON comentarios;
+DROP TRIGGER IF EXISTS comparacion_horarios ON horarios_mesas;
 
-CREATE TRIGGER actualizar_valoracion_restaurant
-AFTER INSERT ON comentarios
+CREATE TRIGGER comparacion_horarios
+BEFORE INSERT ON horarios_mesas
 FOR EACH ROW
-EXECUTE PROCEDURE actualizar_valoracion();*/
+EXECUTE PROCEDURE comparar_horarios();
 
-CREATE OR REPLACE FUNCTION menu_cantidad_productos() 
-RETURNS trigger AS 
-$menu_cantidad_productos$ 
-BEGIN 
-    SELECT menus
-    FROM menus, productos, menus_productos
-    GROUP BY menus.id;
-    UPDATE menus
-    SET cantidad_productos = COUNT(*)
-    WHERE menus.id = menus_productos.id_menu AND productos.id = menus_productos.id_producto;
-END;
-$menu_cantidad_productos$ LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS menu_cantidad_productos ON menus;
+/* Asigna el tipo de rol usuario a cualquier usuario nuevo */
+CREATE OR REPLACE FUNCTION dar_rol()
+RETURNS trigger AS
+$BODY$
+    BEGIN
+    IF NEW.id > 5 THEN
+        UPDATE usuarios
+        SET id_tipo_usuario = 2
+        WHERE usuarios.id = NEW.id;
+    END IF;
+    RETURN NEW;
+    END;
+$BODY$
+LANGUAGE plpgsql;
 
-CREATE TRIGGER  menu_cantidad_productos 
-AFTER INSERT ON menus 
-FOR EACH ROW EXECUTE PROCEDURE menu_cantidad_productos(); 
+DROP TRIGGER IF EXISTS asignar_rol ON usuarios;
+
+CREATE TRIGGER asignar_rol
+AFTER INSERT ON usuarios
+FOR EACH ROW
+EXECUTE PROCEDURE dar_rol();
