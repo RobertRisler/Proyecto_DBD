@@ -62,9 +62,8 @@ class DireccionController extends Controller
     {
 
         $direccion = Direccion::find($id);
-        $direccion->alias = $request->input('alias');
-        $direccion->id_usuario = $request->input('id_usuario');
-        $direccion->id_calle = $request->input('id_calle');
+        $direccion->update($request->all());
+
 
         $direccion->save();
         return response()->json($direccion);

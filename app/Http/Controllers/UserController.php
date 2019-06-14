@@ -75,11 +75,7 @@ class UserController extends Controller
     public function update(Request $request, $id)//actualiza uno en especifico
     {
         if($users = User::find($id)){
-            $users->nombre = $request->input('nombre');
-            $users->apellido = $request->input('apellido');
-            $users->correo = $request->input('correo');
-            $users->contrasena = $request->input('contrasena');
-            $users->id_tipo_usuario = $request->input('id_tipo_usuario');
+            $users->update($request->all());
             $users->save();
             return response()->json($users);
 
@@ -151,9 +147,8 @@ class UserController extends Controller
 	public function modificarComentario(Request $request, $id_usuario, $id_restaurante, $id_comentario){
 		if ($comentario = Comentario::find($id_comentario)){
 			if (($comentario->id_usuario == $id_usuario)&&($comentario->id_restaurante == $id_restaurante)){
-				$comentario->mensaje = $request->input('mensaje');
-				$comentario->valoracion = $request->input('valoracion');
-				$comentario->fecha = $request->input('fecha');
+
+				$comentario->update($request->all());
 				if(($comentario->fecha)>now()){
 					return "Error, fecha no puede superar fecha actual.";
 				}

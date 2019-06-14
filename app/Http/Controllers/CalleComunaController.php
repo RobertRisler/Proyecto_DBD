@@ -51,8 +51,7 @@ class CalleComunaController extends Controller
     {
 
         $calleComuna = CalleComuna::find($id);
-        $calleComuna->id_calle = $request->input('id_calle');
-        $calleComuna->id_comuna = $request->input('id_comuna');
+       $calleComuna->update($request->all());
         $calleComuna->save();
             return response()->json($calleComuna);
 

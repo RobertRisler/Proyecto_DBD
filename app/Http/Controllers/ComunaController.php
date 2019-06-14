@@ -49,8 +49,7 @@ class ComunaController extends Controller
     public function update(Request $request, $id)
     {
         $comuna = Comuna::find($id);
-        $comuna->nombre = $request->input('nombre');
-        $comuna->id_ciudad = $request->input('id_ciudad');
+        $comuna->update($request->all());
 
         $comuna->save();
         return response()->json($comuna);

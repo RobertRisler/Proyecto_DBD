@@ -51,8 +51,8 @@ class PedidoProductoController extends Controller
     {
 
         $pedidoProducto = PedidoProducto::find($id);
-        $pedidoProducto->id_pedido = $request->input('id_pedido');
-        $pedidoProducto->id_producto = $request->input('id_producto');
+        $pedidoProducto->update($request->all());
+
         $pedidoProducto->save();
         return response()->json($pedidoProducto);
 

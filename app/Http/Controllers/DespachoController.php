@@ -67,11 +67,8 @@ class DespachoController extends Controller
     public function update(Request $request, $id)
     {
         $despacho = Despacho::find($id);
-        $despacho->nombre_repartidor = $request->input('nombre_repartidor');
-        $despacho->rut_repartidor = $request->input('rut_repartidor');
-        $despacho->tiempo_estimado = $request->input('tiempo_estimado');
-        $despacho->estado_despacho = $request->input('estado_despacho');
-        $despacho->hora_despacho = $request->input('hora_despacho');
+        $despacho->update($request->all());
+
 
         $despacho->save();
         return response()->json($despacho);

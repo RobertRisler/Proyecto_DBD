@@ -58,11 +58,8 @@ class ProductoController extends Controller
 
         if((is_numeric($precio)) && $precio >= 0){
         $producto = Producto::find($id);
-        $producto->nombre = $request->input('nombre');
-        $producto->descripcion = $request->input('descripcion');
-        $producto->precio_total = $request->input('precio_total');
-        $producto->tipo = $request->input('tipo');
-        $producto->disponibilidad = $request->input('disponibilidad');
+        $producto->update($request->all());
+
 
         $producto->save();
         return response()->json($producto);

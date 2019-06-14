@@ -84,8 +84,8 @@ class CalleController extends Controller
         if((is_numeric($numero)) && $numero >= 0){
 
             $calle = Calle::find($id);
-            $calle->nombre = $request->input('nombre');
-            $calle->numero = $request->input('numero');
+            $calle->update($request->all());
+
             $calle->save();
             return response()->json($calle);
         }

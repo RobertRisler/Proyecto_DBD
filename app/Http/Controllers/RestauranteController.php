@@ -85,7 +85,7 @@ class RestauranteController extends Controller
 		if ($restaurante = Restaurante::find($id)){
 			$mesa = new Mesa();
 			$mesa->cantidad_asientos = $request->input('cantidad_asientos');
-            $mesa->id_reserva = $request->input('id_reserva');
+            $mesa->id_reserva = NULL;
             $mesa->id_restaurante = $id;
 			$mesa->save();
 			return response()->json($mesa);
@@ -310,8 +310,8 @@ class RestauranteController extends Controller
                 'actividad' => 'Eliminar',
                 'descripcion' =>'Se elimina el '.$restaurante->nombre. '.',
                 'fecha_actividad'=>now(),
-                'id_usuario'=>$restaurante->id,]);
-			return "Eliminado restaurante con su calle!";*/
+                'id_usuario'=>$restaurante->id,]);*/
+			return "Eliminado restaurante con su calle!";
 		}
 		else{
 			return "No existe el restaurante";

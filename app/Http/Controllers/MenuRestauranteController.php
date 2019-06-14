@@ -51,8 +51,8 @@ class MenuRestauranteController extends Controller
     {
 
         $menuRestaurante = MenuRestaurante::find($id);
-        $menuRestaurante->id_menu = $request->input('id_menu');
-        $menuRestaurante->id_restaurante = $request->input('id_restaurante');
+        $menuRestaurante->update($request->all());
+
         $menuRestaurante->save();
         return response()->json($menuRestaurante);
 

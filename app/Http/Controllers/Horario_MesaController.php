@@ -53,10 +53,7 @@ class Horario_MesaController extends Controller
     public function update(Request $request, $id)
     {
         $horario_mesa = Horario_Mesa::find($id);
-        $horario_mesa->hora_inicio = $request->input('hora_inicio');
-        $horario_mesa->hora_fin = $request->input('hora_fin');
-        $horario_mesa->estado_reservacion = $request->input('estado_reservacion');
-        $horario_mesa->id_mesa = $request->input('id_mesa');
+        $horario_mesa->update($request->all());
 
         $horario_mesa->save();
         return response()->json($horario_mesa);

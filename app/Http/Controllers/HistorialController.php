@@ -58,10 +58,8 @@ class HistorialController extends Controller
     public function update(Request $request, $id)
     {
         $historial = Historial::find($id);
-        $historial->actividad = $request->input('actividad');
-        $historial->descripcion = $request->input('descripcion');
-        $historial->fecha_actividad = $request->input('fecha_actividad');
-        $historial->id_usuario = $request->input('id_usuario');
+        $historial->update($request->all());
+
 
 
         $historial->save();

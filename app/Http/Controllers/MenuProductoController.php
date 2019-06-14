@@ -39,8 +39,7 @@ class MenuProductoController extends Controller
     public function update(Request $request, $id)
     {
         $menuProducto = Menu_Producto::find($id);
-        $menuProducto->id_menu = $request->input('id_menu');
-        $menuProducto->id_producto = $request->input('id_producto');
+        $menuProducto->update($request->all());
         $menuProducto->save();
         return response()->json($menuProducto);
     }
@@ -102,11 +101,7 @@ class MenuProductoController extends Controller
 		}
 		if ($id > -1){
 			$producto = Producto::find($id_producto);
-			$producto->nombre = $request->input('nombre');
-			$producto->descripcion = $request->input('descripcion');
-			$producto->precio_total = $request->input('precio_total');
-			$producto->tipo = $request->input('tipo');
-			$producto->disponibilidad = $request->input('disponibilidad');
+			$producto->update($request->all());
 			$producto->save();
 			return response()->json($producto);
 		}

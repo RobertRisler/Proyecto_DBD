@@ -64,8 +64,8 @@ class CategoriaController extends Controller
     public function update(Request $request, $id)
     {
         $categoria = Categoria::find($id);
-        $categoria->nombre = $request->input('nombre');
-        $categoria->descripcion = $request->input('descripcion');
+        $categoria->update($request->all());
+
 
         $categoria->save();
         return response()->json($categoria);

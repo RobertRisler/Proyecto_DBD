@@ -59,9 +59,8 @@ class MesaController extends Controller
 
         if((is_numeric($numeroAsientos)) && $numeroAsientos > 0){
             $mesa = Mesa::find($id);
-            $mesa->cantidad_asientos = $request->input('cantidad_asientos');
-            $mesa->id_reserva = $request->input('id_reserva');
-            $mesa->id_restaurante = $request->input('id_restaurante');
+            $mesa->update($request->all());
+
 
             $mesa->save();
             return response()->json($mesa);

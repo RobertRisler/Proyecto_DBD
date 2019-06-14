@@ -49,10 +49,8 @@ class MenuController extends Controller
         $numeroProductos = $request->input('cantidad_productos');
         if((is_numeric($numeroProductos)) && $numeroProductos >= 0){
             $menu = Menu::find($id);
-            $menu->nombre = $request->input('nombre');
-            $menu->descripcion = $request->input('descripcion');
-            $menu->cantidad_productos = $request->input('cantidad_productos');
-            $menu->id_categoria = $request->input('id_categoria');
+            $menu->update($request->all());
+
             $menu->save();
             return response()->json($menu);
         }
@@ -91,14 +89,13 @@ class MenuController extends Controller
 	}
 	public function modificarMenu(Request $request, $id_categoria, $id_menu){
 		if (($menu = Menu::find($id_menu))&&($menu->id_categoria == $id_categoria)){
-			$menu->nombre = $request->input('nombre');
-            $menu->descripcion = $request->input('descripcion');
-            $menu->cantidad_productos = $request->input('cantidad_productos');
+			$menu->update($request->all());
+
 			$menu->save();
 			return response()->json($menu);
 		}
 		else{
-			return "No existe el menu";
+			return "No existe el menu con esa categoria";
 		}
 	}
 	public function eliminarMenu($id_categoria, $id_menu){
