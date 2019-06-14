@@ -253,8 +253,13 @@ Route::get('/horarioMesa','Horario_MesaController@index');
 Route::get('/horarioMesa/{id}','Horario_MesaController@show');
 Route::delete('/horarioMesa/{id}','Horario_MesaController@destroy');
 
+Route::post('/horarioMesa/{id}', 'Horario_MesaController@agregarhorario_mesa');
+Route::put('/horarioMesa/{id_mesa}/{id_horarioMesa}/mesas', 'Horario_MesaController@modificarhorario_mesa');
+Route::get('/horarioMesa/{id}/mesas','Horario_MesaController@mostrarhorario_mesas');
+Route::delete('horarioMesa/{id_mesa}/{id_horario_mesa}/mesas','Horario_MesaController@eliminarhorario_mesa');
 
-/*Rutas de HorarioMesaController*/
+
+/*Rutas de HorarioRestauranteController*/
 
 Route::post('/horarioRestaurante', 'Horario_RestauranteController@store');
 Route::put('/horarioRestaurante/{id}', 'Horario_RestauranteController@update');
