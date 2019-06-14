@@ -107,8 +107,7 @@ class RestauranteController extends Controller
 		if ($restaurante = Restaurante::find($id_restaurante)){
 			if ($mesa = Mesa::find($id_mesa)){
 				if ($mesa->id_restaurante == $id_restaurante){
-					$mesa->cantidad_asientos = $request->input('cantidad_asientos');
-					$mesa->id_reserva = $request->input('id_reserva');
+					$mesa->update($request->all());
 					$mesa->save();
 					return response()->json($mesa);
 				}
