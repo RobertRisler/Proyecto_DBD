@@ -20,6 +20,15 @@ class CreateDespachosTable extends Migration
             $table->string('tiempo_estimado');
             $table->boolean('estado_despacho');
             $table->string('hora_despacho');
+			$table->bigInteger('id_calle');
+
+            /*Llave foranea calle, por tener 1 * n */
+            $table->foreign('id_calle')
+                ->references('id')
+                ->on('calles')
+                ->onDelete('cascade');
+
+            $table->timestamps();
             $table->timestamps();
         });
     }

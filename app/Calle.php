@@ -25,4 +25,8 @@ class Calle extends Model
     	return $this->hasMany('App\Calle_Comuna', 'id_calle','id');
     }
 
+	public function despachos()
+    {
+    	return $this->hasMany('App\Despacho','id_despacho','id');
+    }
 }

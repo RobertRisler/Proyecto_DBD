@@ -14,4 +14,9 @@ class Despacho extends Model
     {
     	return $this->hasOne('App\Pedido','id_despacho','id');
     }
+	
+	public function calles()
+    {
+        return $this->belongsTo('App\Calle');
+    }
 }
