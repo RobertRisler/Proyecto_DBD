@@ -15,7 +15,12 @@ Route::get('/', function () {
     return view('index');
 });
 
+
+
 Auth::routes();
+
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -256,3 +261,10 @@ Route::put('/horarioRestaurante/{id}', 'Horario_RestauranteController@update');
 Route::get('/horarioRestaurante','Horario_RestauranteController@index');
 Route::get('/horarioRestaurante/{id}','Horario_RestauranteController@show');
 Route::delete('/horarioRestaurante/{id}','Horario_RestauranteController@destroy');
+
+
+
+
+
+
+

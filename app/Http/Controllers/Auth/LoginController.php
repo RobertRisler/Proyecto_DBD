@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -36,4 +39,37 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+    public function index(Request $request){
+        return view('auth/login', ['loginErrorMsg' => '', 'regErr' => '']);
+    }
+
+        public function authenticate(Request $request)
+    {
+        $this->validate($request, [
+            'correo' => 'required|email',
+            'contrasena' => 'required|alphaNum|min:8'
+        ]);
+
+        $correo = $request->get('correo');
+        $contrasena = $request->get('contrasena');
+        $credenciales = array('correo' => $correo, 'contrasena' => $contrasena);
+        $userData = User::where('correo', $correo)->first();
+        if($userData != NULL){
+            if (Auth::attempt($credenciales)) {
+                
+                return redirect('/home');
+            }
+            else{
+                return back()->with('error', 'Error: Correo o Contraseña incorrecta'); 
+            }
+          
+        }
+        else{
+          
+          return back()->with('error', 'Error: Debe ingresar Correo y contraseña'); 
+        }
+    }
+
 }
