@@ -16,6 +16,7 @@ class DespachoSeeder extends Seeder
             'rut_repartidor' => '198231238',
             'tiempo_estimado' => '1:30:0',
             'estado_despacho' => False,
+            'id_calle' => '1',
             'hora_despacho' => '0:0:0'
         ]);
 
@@ -24,6 +25,7 @@ class DespachoSeeder extends Seeder
             'rut_repartidor' => '178882341',
             'tiempo_estimado' => '0:45:0',
             'estado_despacho' => True,
+            'id_calle' => '2',
             'hora_despacho' => '17:53:20'
         ]);
 
@@ -32,6 +34,7 @@ class DespachoSeeder extends Seeder
             'rut_repartidor' => '153882341',
             'tiempo_estimado' => '0:24:0',
             'estado_despacho' => False,
+            'id_calle' => '3',
             'hora_despacho' => '0:0:0'
         ]);
 
@@ -40,6 +43,7 @@ class DespachoSeeder extends Seeder
             'rut_repartidor' => '172182341',
             'tiempo_estimado' => '0:15:0',
             'estado_despacho' => True,
+            'id_calle' => '4',
             'hora_despacho' => '0:15:37'
         ]);
 
@@ -48,6 +52,7 @@ class DespachoSeeder extends Seeder
             'rut_repartidor' => '178881241',
             'tiempo_estimado' => '0:35:0',
             'estado_despacho' => False,
+            'id_calle' => '5',
             'hora_despacho' => '0:0:0'
         ]);
         

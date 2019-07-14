@@ -12,9 +12,9 @@ class ComunaController extends Controller
 
     public function index()
     {
-        $comuna = Comuna::all();
-        return response()->json($comuna);
-
+        $comunas = Comuna::all();
+        return response()->json($comunas);
+        //return view('home', compact('comunas'));
     }
 
     public function create()
