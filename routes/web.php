@@ -15,10 +15,12 @@ Route::get('/', function () {
     return redirect('/index');
 });
 
-
-
 Route::get('/hom', function () { /*Por el momento sirve para logout*/
     return view('hom');
+});
+
+Route::get('/user', function () { /*Por el momento sirve para logout*/
+    return view('vistaUsuarios');
 });
 
 
