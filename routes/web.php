@@ -12,11 +12,26 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return redirect('/index');
 });
 
-Auth::routes();
 
+
+Route::get('/hom', function () { /*Por el momento sirve para logout*/
+    return view('hom');
+});
+
+
+Route::get('/register', 'Auth\RegisterController@index');
+Route::post('/register', 'Auth\RegisterController@create');
+
+Route::get('/login', 'Auth\LoginController@index');
+Route::post('/login', 'Auth\LoginController@authenticate');
+Route::post('/logout', 'Auth\LoginController@logout');
+
+//Auth::routes();
+
+Route::get('/index', 'PaginaPrincipalController@index');
 
 
 

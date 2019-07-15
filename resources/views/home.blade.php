@@ -54,7 +54,7 @@
                         <select class="form-control" required>
                             <option value="1" disabled selected>Elige una ciudad</option>
                             @foreach ($ciudades as $ciudad)
-                                <option value="{{ $ciudad->id }}">
+                                <option value="{{ $ciudad->id }}" selected>
                                   {{  $ciudad->nombre }}
                                 </option>
                             @endforeach

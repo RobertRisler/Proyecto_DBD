@@ -47,9 +47,17 @@
         <div class="row" style="  background-color: rgb(238,232,232);">
             <div class="col" style="  margin-top: 20px;">
                 <form>
-                    <div class="field"><select class="form-control" required>
-                        <option value="1" selected>Elige una ciudad</option>
-                        <option value="2" selected>Santiago</option><option value="3">Puerto Montt</option><option value="4">Valdivia</option></select></div>
+                    <div class="field">
+                        <select class="form-control" required>
+                        <option value="" disabled selected>Elige una ciudad</option>
+                            @foreach ($ciudades as $ciudad)
+                                <option value="{{ $ciudad->id }}" selected>
+                                  {{  $ciudad->nombre }}
+                                </option>
+                                @endforeach
+                        </select>
+
+                    </div>
                 </form>
             </div>
             <div class="col">

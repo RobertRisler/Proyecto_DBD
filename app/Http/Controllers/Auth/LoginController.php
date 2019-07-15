@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/index';
 
     /**
      * Create a new controller instance.
@@ -42,14 +42,20 @@ class LoginController extends Controller
 
 
     public function index(Request $request){
-        return view('auth/login', ['loginErrorMsg' => '', 'regErr' => '']);
+        return view('auth/login');
     }
+
+
+    public function username(){
+        return 'correo';
+    }
+
 
         public function authenticate(Request $request)
     {
         $this->validate($request, [
             'correo' => 'required|email',
-            'contrasena' => 'required|alphaNum|min:8'
+            'contrasena' => 'required|string|min:8'
         ]);
 
         $correo = $request->get('correo');
@@ -59,7 +65,7 @@ class LoginController extends Controller
         if($userData != NULL){
             if (Auth::attempt($credenciales)) {
                 
-                return redirect('/home');
+                return redirect('/hom')->with('error', 'Ingreso correcto!');/*Momentaneamente, para deslogear*/
             }
             else{
                 return back()->with('error', 'Error: Correo o Contraseña incorrecta'); 
@@ -72,4 +78,11 @@ class LoginController extends Controller
         }
     }
 
+
+
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->flush();
+        return redirect('/');
+    }
 }

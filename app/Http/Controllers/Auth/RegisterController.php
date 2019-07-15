@@ -41,6 +41,11 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+
+    public function index(Request $request){
+        return view('auth/register');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -64,15 +69,45 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $data)
     {
-        return User::create([
-            'nombre' => $data['nombre'],
-            'apellido' => $data['apellido'],
-            'correo' => $data['correo'],
-            'contrasena' => Hash::make($data['contrasena']),
-            'id_tipo_usuario' => $data['id_tipo_usuario'],
+
+        $this->validate($data, [
+            'nombre' => ['required', 'string', 'max:255'],
+            'apellido' => ['required', 'string', 'max:255'],
+            'correo' => ['required', 'string', 'email', 'max:255', 'unique:usuarios'],
+            'contrasena' => ['required', 'string', 'min:8', 'confirmed'],
+            'id_tipo_usuario' => ['required', 'integer']
         ]);
+
+        $user = new User;
+        $user->fill([
+            'nombre' => $data->get('nombre'),
+            'apellido' => $data->get('apellido'),
+            'correo' => $data->get('correo'),
+            'contrasena' => Hash::make($data->get('contrasena')),
+            'id_tipo_usuario' => $data->get('id_tipo_usuario'),
+        ]);
+        
+        if($user->save()){
+            return redirect('/login');
+
+        }else{
+            return redirect('/register');
+
+
+        }
+            
+
+        
+
+
+        
+        
+
+
+
+        
 
 
     }

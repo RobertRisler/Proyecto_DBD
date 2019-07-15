@@ -33,6 +33,8 @@
 </head>
 
 
+
+
 <body id="page-top" style="background-color: rgb(241,120,94)">  
     <div class="container" style="  margin-top: 80px;">
         <div class="row justify-content-center">
@@ -41,6 +43,10 @@
                     <div class="card-header">{{ __('Inicia Sesión') }}</div>
 
                     <div class="card-body">
+                        @if(session()->has('error'))
+                            <div class="alert alert-danger" role="alert">{{ session('error') }}</div>
+                        
+                        @endif
                         <form method="POST" action="{{ url ('login') }}">
                             @csrf
 
@@ -62,14 +68,17 @@
                                 <label for="contrasena" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="contrasena" type="password" class="form-control @error('contrasena') is-invalid @enderror" name="contrasena" required autofocus>
+                                    <input id="contrasena" type="password" class="form-control @error('contrasena') is-invalid @enderror" name="contrasena" value="{{ old('contrasena') }}" required autofocus>
 
                                     @error('contrasena')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+
                                 </div>
+
                             </div>
 
                             <div class="form-group row">

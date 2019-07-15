@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Ciudad;
 use App\Comuna;
 
-class HomeController extends Controller
+class PaginaPrincipalController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -27,6 +27,6 @@ class HomeController extends Controller
     {
         $ciudades= Ciudad::all();
         $comunas= Comuna::all();
-        return view('home', compact('ciudades', 'comunas'));
+        return view('index', compact('ciudades', 'comunas'));
     }
 }

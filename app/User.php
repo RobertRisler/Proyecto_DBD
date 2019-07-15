@@ -42,6 +42,14 @@ class User extends Authenticatable
     protected $fillable=[
     	'nombre', 'apellido', 'correo', 'contrasena', 'id_tipo_usuario',
     ];
+
+    public function getAuthPassword()
+    {
+        return $this->contrasena;
+    }
+
+
+
     //relacion con otra tabla
     //poner nombre en plural si se relaciona con muchos
     public function comentarios()
