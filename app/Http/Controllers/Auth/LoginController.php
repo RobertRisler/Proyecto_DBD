@@ -65,7 +65,7 @@ class LoginController extends Controller
         if($userData != NULL){
             if (Auth::attempt($credenciales)) {
                 
-                return redirect('/hom')->with('error', 'Ingreso correcto!');/*Momentaneamente, para deslogear*/
+                return redirect('/')->with('error', 'Ingreso correcto!');/*Momentaneamente, para deslogear*/
             }
             else{
                 return back()->with('error', 'Error: Correo o Contraseña incorrecta'); 
@@ -80,9 +80,9 @@ class LoginController extends Controller
 
 
 
-    public function logout(Request $request) {
+    public function logout() {
         Auth::logout();
-        $request->session()->flush();
-        return redirect('/');
+        
+        return redirect('/login');
     }
 }

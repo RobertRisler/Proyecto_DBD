@@ -1,3 +1,4 @@
+<?php use \App\Http\Controllers\VistaUsuarioController; ?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -20,15 +21,48 @@
 
     <body>
         <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav" style="background-color: #ea745d; -moz-box-shadow: 1px 1px 3px 2px #cc1414;
-            -webkit-box-shadow: 1px 1px 3px 2px #cc1414;
-            box-shadow:         1px 1px 3px 2px #cc1414;">
-            <div class="container">
-                <a href="#page-top" class="navbar-brand js-scroll-trigger">YA-PEDIDOS</a>
-                <button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-align-justify"></i>
-                </button>
+  -webkit-box-shadow: 1px 1px 3px 2px #cc1414;
+  box-shadow:         1px 1px 3px 2px #cc1414;">
+        <div class="container">
+            <a href="/" class="navbar-brand js-scroll-trigger">YA-PEDIDOS</a>
+            <button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    
+                </ul>
+                
+                @if(auth()->check())
+                    <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Bienvenido {{auth()->user()->nombre }}
+                      </a>
+                      <div class="dropdown-menu sm-menu">
+                        <a class="dropdown-item" href="/user">Mi perfil</a>
+                        <div class="dropdown-divider"></div>
+                        
+
+                        <form method="POST" action="{{ route ('logout') }}">
+                            {{csrf_field()}}
+                            <button class="btn btn-primary">Cerrar sesión</button>
+
+                        </form>
+
+
+                      </div>
+                    </li>
+                  @else
+                    <li class="nav-item">
+                      <a class="btn btn-primary" href="{{ url('login') }}">Inicia sesión</a>
+                        <a class="btn btn-primary" href="{{ url('register') }}">Registrate</a>
+                    </li>
+                @endif
+
+                
+                
             </div>
-        </nav>
+        </div>
+    </nav>
         
         <div class="container">
             <div class="row">
@@ -91,13 +125,13 @@
                                                     <label><strong>Alias</strong></label>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <label><strong>Comuna</strong></label>
-                                                </div>
-                                                <div class="col-sm-3">
                                                     <label><strong>Calle</strong></label>
                                                 </div>
                                                 <div class="col-sm-2">
                                                     <label><strong>Número</strong></label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label><strong>Comuna</strong></label>
                                                 </div>
 
                                                 @foreach($direcciones as $direccion)
@@ -105,13 +139,13 @@
                                                         <label>{{$direccion->alias}}</label>
                                                     </div>
                                                     <div class="col-sm-3 text-muted">
-                                                        <label>placeholder</label>
-                                                    </div>
-                                                    <div class="col-sm-3 text-muted">
-                                                        <label>placeholder</label>
+                                                        <label>{{ (VistaUsuarioController::CalleDireccion($direccion))->nombre }}</label>
                                                     </div>
                                                     <div class="col-sm-2 text-muted">
-                                                        <label>placeholder</label>
+                                                        <label>{{ (VistaUsuarioController::CalleDireccion($direccion))->numero }}</label>
+                                                    </div>
+                                                    <div class="col-sm-3 text-muted">
+                                                        <label>{{ (VistaUsuarioController::ComunaCalle($direccion))->nombre }}</label>
                                                     </div>
                                                 @endforeach
                                             </div>

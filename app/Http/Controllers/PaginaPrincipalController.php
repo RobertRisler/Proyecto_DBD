@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Ciudad;
 use App\Comuna;
+use App\User;
+use Auth;
 
 class PaginaPrincipalController extends Controller
 {
@@ -23,10 +25,17 @@ class PaginaPrincipalController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
     {
+        
+
         $ciudades= Ciudad::all();
         $comunas= Comuna::all();
         return view('index', compact('ciudades', 'comunas'));
     }
+
+
+    
+
 }
