@@ -8,7 +8,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>Home - YA-PEDIDOS</title>
+        <title>Mi perfil - YA-PEDIDOS</title>
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
@@ -54,19 +54,19 @@
                                         <li class="list-group-item text">Información Personal</li>
                                         <li class="list-group-item text"><span class="pull-left">
                                             <strong>Nombre</strong></span><br>
-                                            <span class="pull-left text-muted">Roers</span>
+                                            <span class="pull-left text-muted">{{$user->nombre}}</span>
                                         </li>
                                         <li class="list-group-item text">
                                             <span class="pull-left"><strong>Apellido</strong></span><br>
-                                            <span class="pull-left text-muted">Risler</span>
+                                            <span class="pull-left text-muted">{{$user->apellido}}</span>
                                         </li>
                                         <li class="list-group-item text">
                                             <span class="pull-left"><strong>Email</strong></span><br>
-                                            <span class="pull-left text-muted">roers.risler@mail.com</span>
+                                            <span class="pull-left text-muted">{{$user->correo}}</span>
                                         </li>
                                         <li class="list-group-item text">
                                             <span class="pull-left"><strong>Creación</strong></span><br>
-                                            <span class="pull-left text-muted">1/2/3</span>
+                                            <span class="pull-left text-muted">{{$user->created_at}}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -87,7 +87,7 @@
                                     <div class="tab-content ml-1" id="myTabContent">
                                         <div class="tab-pane fade show active" id="misDirecciones" role="tabpanel" aria-labelledby="misDirecciones-tab">
                                             <div class="row">
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-4">
                                                     <label><strong>Alias</strong></label>
                                                 </div>
                                                 <div class="col-sm-3">
@@ -96,43 +96,88 @@
                                                 <div class="col-sm-3">
                                                     <label><strong>Calle</strong></label>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-2">
                                                     <label><strong>Número</strong></label>
                                                 </div>
+
+                                                @foreach($direcciones as $direccion)
+                                                    <div class="col-sm-4 text-muted">
+                                                        <label>{{$direccion->alias}}</label>
+                                                    </div>
+                                                    <div class="col-sm-3 text-muted">
+                                                        <label>placeholder</label>
+                                                    </div>
+                                                    <div class="col-sm-3 text-muted">
+                                                        <label>placeholder</label>
+                                                    </div>
+                                                    <div class="col-sm-2 text-muted">
+                                                        <label>placeholder</label>
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                         
                                         <div class="tab-pane fade" id="misPedidos" role="tabpanel" aria-labelledby="misPedidos-tab">
                                             <div class="row">
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-1">
                                                     <label><strong>ID</strong></label>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-4">
                                                     <label><strong>Fecha</strong></label>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-4">
                                                     <label><strong>Restaurant</strong></label>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <label><strong>Valor</strong></label>
                                                 </div>
+
+                                                @foreach($pedidos as $pedido)
+                                                    <div class="col-sm-1 text-muted">
+                                                        <label><strong>{{$pedido->id}}</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-4 text-muted">
+                                                        <label><strong>{{$pedido->fecha}}</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-4 text-muted">
+                                                        <label><strong>placeholder</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-3 text-muted">
+                                                        <label><strong>placeholder</strong></label>
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
 
                                         <div class="tab-pane fade" id="misReservas" role="tabpanel" aria-labelledby="misReservas-tab">
                                             <div class="row">
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-1">
                                                     <label><strong>ID</strong></label>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-4">
                                                     <label><strong>Fecha</strong></label>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-4">
                                                     <label><strong>Restaurant</strong></label>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <label><strong>Estado</strong></label>
                                                 </div>
+
+                                                @foreach($reservas as $reserva)
+                                                    <div class="col-sm-1 text-muted">
+                                                        <label><strong>{{$reserva->id}}</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-4 text-muted">
+                                                        <label><strong>{{$reserva->fecha_resevacion}}</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-4 text-muted">
+                                                        <label><strong>placeholder</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-3 text-muted">
+                                                        <label><strong>{{$reserva->estado}}</strong></label>
+                                                    </div>
+                                                @endforeach
                                             </div> 
                                         </div>
                                     </div>

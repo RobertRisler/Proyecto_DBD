@@ -19,11 +19,6 @@ Route::get('/hom', function () { /*Por el momento sirve para logout*/
     return view('hom');
 });
 
-Route::get('/user', function () { /*Por el momento sirve para logout*/
-    return view('vistaUsuarios');
-});
-
-
 Route::get('/register', 'Auth\RegisterController@index');
 Route::post('/register', 'Auth\RegisterController@create');
 
@@ -35,10 +30,12 @@ Route::post('/logout', 'Auth\LoginController@logout');
 
 Route::get('/index', 'PaginaPrincipalController@index');
 
-
-
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/user', 'VistaUsuarioController@index');
+
+
+/* Rutas entrega 2 */
 
 /*Rutas de usuario*/
 Route::post('/usuario', 'UserController@store');
