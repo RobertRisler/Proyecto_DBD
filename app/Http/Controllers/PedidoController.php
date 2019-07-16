@@ -10,6 +10,7 @@ use App\Despacho;
 use App\Calle;
 use App\Comuna;
 use App\Ciudad;
+use App\Direccion;
 use App\Http\Requests\PedidoRequest;
 
 class PedidoController extends Controller
@@ -18,6 +19,8 @@ class PedidoController extends Controller
     {
         $pedido = Pedido::all();
         return response()->json($pedido);
+		//return view('vistaUbicacionPedido')
+		//	->withCiudades($ciudades);
 
     }
 
@@ -166,13 +169,82 @@ class PedidoController extends Controller
         return "Eliminado";
 
     }
-	public function enviarPedido(Request $request, $id){
+	public function enviarPedido(Request $request){
 		$despacho = new Despacho();
 		$pedido = new Pedido();
 		$calles = Calle::all();
 		$comunas = Comuna::all();
 		$ciudades = Ciudad::all();
-		$pagos = Pago::all();
-		
+		$pago = new Pago();
+		$direcciones = Direccion::all();
+		$alias = $request->input('alias');
+		$nombre_ciudad = $request->input('nombre_ciudad');
+		$nombre_comuna = $request->input('nombre_comuna');
+		$nombre_calle = $request->input('nombre_calle');
+		$numero = $request->input('numero');
+		$telefono = $request->input('telefono');
+		$existe=0;
+		$ciudad_pedido;
+		foreach($ciudades as $ciudad){
+			if ($ciudad->nombre==$nombre_ciudad){
+				$existe=1;
+				$ciudad_pedido=$ciudad;
+				break;
+			}
+		}
+		if ($existe==0){
+			return "no existe la ciudad";
+		}
+		$existe=0;
+		$comuna_pedido;
+		foreach($comunas as $comuna){
+			if ($comuna->nombre==$nombre_comuna){
+				$existe=1;
+				$comuna_pedido=$comuna;
+				break;
+			}
+		}
+		if (($existe==0) || (($existe==1)&&($comuna_pedido->id_ciudad!=$ciudad_pedido->id))){
+			return "no existe la comuna";
+		}
+		$existe=0;
+		$calle_pedido;
+		foreach($calles as $calle){
+			if (($calle->nombre==$nombre_calle)&&($calle->numero==$numero)){
+				$existe=1;
+				$calle_pedido=$calle;
+				break;
+			}
+		}
+		if ($existe==0){
+			$calle_pedido = new Calle();
+			$calle_pedido->nombre=$nombre_calle;
+			$calle_pedido->numero==$numero;
+			$direccion_pedido = new Direccion();
+			$direccion_pedido->alias=$alias;
+			$direccion_pedido->id_calle=$calle_pedido->id;
+			$direccion_pedido->id_comuna=$comuna_pedido->id;
+			$calle_pedido->save();
+			$direccion_pedido->save();
+		}
+		$despacho->id_calle=$calle->id;
+		$pedido->id_despacho=$despacho->id;
+		$pedido->id_pago=$pago->id;
+		$pago->save();
+		$despacho->save();
+		$pedido->save();
+		return view('vistaUbicacionPedido')
+				->withDespacho($despacho)
+				->withPedido($pedido)
+				->withCalles($calles)
+				->withComunas($comunas)
+				->withPago($pago)
+				->withDirecciones($direcciones)
+				->withAlias($alias)
+				->withNombre_ciudad($nombre_ciudad)
+				->witNombre_comuna($nombre_comuna)
+				->withNombre_calle($nombre_calle)
+				->withNumero($numero)
+				->withTelefono($telefono);
 	}
 }

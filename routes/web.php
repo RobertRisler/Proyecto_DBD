@@ -151,7 +151,8 @@ Route::get('/mesa/{id}','MesaController@show');
 Route::delete('/mesa/{id}','MesaController@destroy');
 
 /*Rutas de pedido*/
-Route::post('/pedido', 'PedidoController@store');
+Route::get('/enviarPedido', 'PedidoController@enviarPedido');
+Route::post('/pedido/{id}', 'MenuController@agregarMenu');
 Route::put('/pedido/{id}', 'PedidoController@update');
 Route::get('/pedido','PedidoController@index');
 Route::get('/pedido/{id}','PedidoController@show');

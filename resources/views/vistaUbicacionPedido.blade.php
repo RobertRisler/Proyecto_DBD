@@ -1,19 +1,5 @@
 <html>
 
-<!-- <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <title>VistaEnviarPedido</title>
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
-        <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
-        <link rel="stylesheet" href="assets/css/Pretty-Search-Form.css">
-        <link rel="stylesheet" href="assets/css/select.css">
-    <link rel="stylesheet" href="bootstrap.min.css" />
-    <link rel="stylesheet" href="styles.css" />
-</head>-->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -56,13 +42,16 @@
                 <h4 style="margin-top: -20px;margin-left: 20px;font-size: 24px;"><em>Ingrese su dirección de entrega</em></h4>
                 <section>
                     <div style="margin-top: -80px;margin-left: 20px;">
-                        <div><label style="font-size: 20px;"><strong>Alias</strong></label><input type="text" style="margin-left: 10px;max-width: 178px;font-size: 16px" /></div>
-                        <div><label style="font-size: 20px;"><strong>Ciudad</strong></label><select style="margin-left: 10px;max-width: 178px;font-size: 16px">
-							<optgroup>
-								<option value="1" selected style="color: rgb(142,142,142)">Elige ciudad</option>
-								@foreach ($ciudades as $ciudad)
-									<option value="{{$ciudad->nombre}}">{{$ciudad->nombre}}</option>
-								@endforeach
+                        <!--<div><label style="font-size: 20px;"><strong>Alias</strong></label>
+							<input type="text" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+							</div>
+                        <div><label style="font-size: 20px;"><strong>Ciudad</strong></label>
+							<select style="margin-left: 10px;max-width: 178px;font-size: 16px">
+								<optgroup>
+									<option value="1" selected style="color: rgb(142,142,142)">Elige ciudad</option>
+									@foreach ($ciudades as $ciudad)
+										<option value="{{$ciudad->nombre}}">{{$ciudad->nombre}}</option>
+									@endforeach
 							</optgroup>
 						</select>
 							</div>
@@ -70,7 +59,38 @@
                         <div><label style="font-size: 20px;"><strong>Calle</strong></label><input type="text" style="margin-left: 10px;max-width: 178px;font-size: 16px" /></div>
                         <div><label style="font-size: 20px;"><strong>Número</strong></label><input type="text" style="margin-left: 10px;max-width: 178px;font-size: 16px" /></div>
                         <div><label style="font-size: 20px;"><strong>Depto.</strong></label><input type="text" style="margin-left: 10px;max-width: 178px;font-size: 16px" /></div>
-                        <div><label style="font-size: 20px;"><strong>Teléfono</strong></label><input type="text" style="margin-left: 10px;max-width: 178px;font-size: 16px" /></div>
+                        <div><label style="font-size: 20px;"><strong>Teléfono</strong></label><input type="text" style="margin-left: 10px;max-width: 178px;font-size: 16px" /></div>-->
+						<div>
+							<form class="form-horizontal" method="post">
+								<input type="hidden" name="_token" value="{!! csrf_token() !!}">
+								<fieldset>
+									<div class="form-group">
+									<label for "alias" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Alias</strong></label>
+									<input type="text" class="form-control" id="alias" placeholder="Alias" name="alias" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									</div>
+									<div class="form-group">
+									<label for "nombre_ciudad" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Ciudad</strong></label>
+									<input type="text" class="form-control" id="nombre_ciudad" placeholder="Ciudad" name="nombre_ciudad" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									</div>
+									<div class="form-group">
+									<label for "nombre_comuna" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Comuna</strong></label>
+									<input type="text" class="form-control" id="nombre_comuna" placeholder="Comuna" name="nombre_comuna" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									</div>
+									<div class="form-group">
+									<label for "nombre_calle" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Calle</strong></label>
+									<input type="text" class="form-control" id="nombre_calle" placeholder="Calle" name="nombre_calle" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									</div>
+									<div class="form-group">
+									<label for "numero" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Número</strong></label>
+									<input type="text" class="numero" id="numero" placeholder="123" name="numero" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									</div>
+									<div class="form-group">
+									<label for "telefono" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Teléfono</strong></label>
+									<input type="text" class="form-control" id="telefono" placeholder="12345678" name="telefono" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									</div>
+								</fieldset>
+							</form>
+						</div>
                     </div>
                 </section>
                 <div>
