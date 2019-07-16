@@ -17,7 +17,7 @@ class Calle extends Model
 
     public function restaurantes()
     {
-    	return $this->hasMany('App\Restaurante','id_calle','id');
+    	return $this->hasMany('App\Restaurante','id_restaurante','id');
     }
 
     public function calles_comunas()

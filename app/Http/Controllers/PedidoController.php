@@ -169,20 +169,20 @@ class PedidoController extends Controller
         return "Eliminado";
 
     }
-	public function enviarPedido(Request $request){
-		$despacho = new Despacho();
+	public static function enviarPedido(Request $request, $alias, $nombre_ciudad, $nombre_comuna, $nombre_calle, $numero, $telefono){
+		/*$despacho = new Despacho();*/
 		$pedido = new Pedido();
 		$calles = Calle::all();
 		$comunas = Comuna::all();
 		$ciudades = Ciudad::all();
-		$pago = new Pago();
+		/*$pago = new Pago();*/
 		$direcciones = Direccion::all();
-		$alias = $request->input('alias');
+		/*$alias = $request->input('alias');
 		$nombre_ciudad = $request->input('nombre_ciudad');
 		$nombre_comuna = $request->input('nombre_comuna');
 		$nombre_calle = $request->input('nombre_calle');
 		$numero = $request->input('numero');
-		$telefono = $request->input('telefono');
+		$telefono = $request->input('telefono');*/
 		$existe=0;
 		$ciudad_pedido;
 		foreach($ciudades as $ciudad){
@@ -219,21 +219,32 @@ class PedidoController extends Controller
 		if ($existe==0){
 			$calle_pedido = new Calle();
 			$calle_pedido->nombre=$nombre_calle;
-			$calle_pedido->numero==$numero;
+			$calle_pedido->numero=$numero;
 			$direccion_pedido = new Direccion();
 			$direccion_pedido->alias=$alias;
 			$direccion_pedido->id_calle=$calle_pedido->id;
-			$direccion_pedido->id_comuna=$comuna_pedido->id;
+			/*$direccion_pedido->id_comuna=$comuna_pedido->id;*/
 			$calle_pedido->save();
 			$direccion_pedido->save();
 		}
-		$despacho->id_calle=$calle->id;
-		$pedido->id_despacho=$despacho->id;
-		$pedido->id_pago=$pago->id;
-		$pago->save();
-		$despacho->save();
+		/*$calle->id_despacho=$despacho->id;*/
+		/*$pedido->id_despacho=$despacho->id;*/
+		/*$pedido->id_pago=$pago->id;*/
+		/*$pago->save();*/
+		/*$despacho->save();*/
+		$pedido->nombre_cliente="miguel";
+		$pedido->apellido_cliente="ramirez";
+		$pedido->rut_cliente="12345678-9";
+		$pedido->correo_cliente="cliente@gmail.com";
+		$pedido->fecha="12-12-2019";
+		$pedido->tipo_entrega="True";
+		$pedido->hora_estimada="20:20:20";
+		$pedido->estado="True";
+		$pedido->id_usuario=1;
+		$pedido->id_despacho=1;
+		$pedido->id_pago=1;
 		$pedido->save();
-		return view('vistaUbicacionPedido')
+		return /*view('vistaUbicacionPedido')
 				->withDespacho($despacho)
 				->withPedido($pedido)
 				->withCalles($calles)
@@ -245,6 +256,6 @@ class PedidoController extends Controller
 				->witNombre_comuna($nombre_comuna)
 				->withNombre_calle($nombre_calle)
 				->withNumero($numero)
-				->withTelefono($telefono);
+				->withTelefono($telefono)*/ "TODO CORRECTO";
 	}
 }

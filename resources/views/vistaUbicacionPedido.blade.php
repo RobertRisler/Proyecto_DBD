@@ -42,26 +42,9 @@
                 <h4 style="margin-top: -20px;margin-left: 20px;font-size: 24px;"><em>Ingrese su dirección de entrega</em></h4>
                 <section>
                     <div style="margin-top: -80px;margin-left: 20px;">
-                        <!--<div><label style="font-size: 20px;"><strong>Alias</strong></label>
-							<input type="text" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
-							</div>
-                        <div><label style="font-size: 20px;"><strong>Ciudad</strong></label>
-							<select style="margin-left: 10px;max-width: 178px;font-size: 16px">
-								<optgroup>
-									<option value="1" selected style="color: rgb(142,142,142)">Elige ciudad</option>
-									@foreach ($ciudades as $ciudad)
-										<option value="{{$ciudad->nombre}}">{{$ciudad->nombre}}</option>
-									@endforeach
-							</optgroup>
-						</select>
-							</div>
-                        <div><label style="font-size: 20px;"><strong>Comuna</strong></label><select style="margin-left: 10px;max-width: 178px;font-size: 16px"><optgroup label="This is a group"><option value="12" selected>This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
-                        <div><label style="font-size: 20px;"><strong>Calle</strong></label><input type="text" style="margin-left: 10px;max-width: 178px;font-size: 16px" /></div>
-                        <div><label style="font-size: 20px;"><strong>Número</strong></label><input type="text" style="margin-left: 10px;max-width: 178px;font-size: 16px" /></div>
-                        <div><label style="font-size: 20px;"><strong>Depto.</strong></label><input type="text" style="margin-left: 10px;max-width: 178px;font-size: 16px" /></div>
-                        <div><label style="font-size: 20px;"><strong>Teléfono</strong></label><input type="text" style="margin-left: 10px;max-width: 178px;font-size: 16px" /></div>-->
+                        
 						<div>
-							<form class="form-horizontal" method="post">
+							<form action= "/enviarPedido/result" class="form-horizontal" method="GET">
 								<input type="hidden" name="_token" value="{!! csrf_token() !!}">
 								<fieldset>
 									<div class="form-group">
@@ -82,11 +65,12 @@
 									</div>
 									<div class="form-group">
 									<label for "numero" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Número</strong></label>
-									<input type="text" class="numero" id="numero" placeholder="123" name="numero" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									<input type="text" class="form-control" id="numero" placeholder="123" name="numero" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
 									</div>
 									<div class="form-group">
 									<label for "telefono" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Teléfono</strong></label>
 									<input type="text" class="form-control" id="telefono" placeholder="12345678" name="telefono" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									<input type="submit" value="Listo" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
 									</div>
 								</fieldset>
 							</form>

@@ -12,7 +12,7 @@ class Comuna extends Model
 
     public function calles_comunas()
     {
-    	return $this->hasMany('App\Calle_Comuna','','');
+    	return $this->hasMany('App\Calle_Comuna','id_calle','id');
     }
 
     public function ciudades()

@@ -148,7 +148,30 @@ Route::get('/mesa/{id}','MesaController@show');
 Route::delete('/mesa/{id}','MesaController@destroy');
 
 /*Rutas de pedido*/
-Route::get('/enviarPedido', 'PedidoController@enviarPedido');
+Route::get('/enviarPedido', function (){return view('vistaUbicacionPedido');});
+
+use Illuminate\Http\Request;
+use App\Pedido;
+use App\User;
+use App\Pago;
+use App\Despacho;
+use App\Calle;
+use App\Comuna;
+use App\Ciudad;
+use App\Direccion;
+use App\Http\Requests\PedidoRequest;
+use App\Http\Controllers\PedidoController;
+
+Route::get('/enviarPedido/result', function (Request $request){
+	$alias = $request->input('alias');
+	$nombre_ciudad = $request->input('nombre_ciudad');
+	$nombre_comuna = $request->input('nombre_comuna');
+	$nombre_calle = $request->input('nombre_calle');
+	$numero = $request->input('numero');
+	$telefono = $request->input('telefono');
+	return PedidoController::enviarPedido($request, $alias, $nombre_ciudad, $nombre_comuna, $nombre_calle, $numero, $telefono);
+	})->name('/enviarPedido/result');
+						
 Route::post('/pedido/{id}', 'MenuController@agregarMenu');
 Route::put('/pedido/{id}', 'PedidoController@update');
 Route::get('/pedido','PedidoController@index');
