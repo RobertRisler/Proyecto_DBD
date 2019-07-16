@@ -6,8 +6,17 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Direccion;
 use App\Calle;
+use App\Calle_Comuna;
+use App\Comuna;
 use App\Pedido;
+use App\Pedido_Producto;
+use App\Producto;
+use App\Menu_producto;
+use App\Menu;
+use App\Menu_Resturant;
+use App\Restaurant;
 use App\Reserva;
+use App\Restaurante;
 use Auth;
 
 class VistaUsuarioController extends Controller
@@ -21,11 +30,33 @@ class VistaUsuarioController extends Controller
     {
         $user = User::find(Auth::user()->id);
 
-        $direcciones = (Direccion::all())->where('id_usuario', $user->id);
+        $direcciones = Direccion::all()->where('id_usuario', $user->id);
 
-        $pedidos = (Pedido::all())->where('id_usuario', $user->id);
-        $reservas = (Reserva::all())->where('id_usuario', $user->id);
+        $calles = Calle::all();
 
-        return view('vistaUsuarios', compact('user', 'direcciones', 'pedidos', 'reservas'));
+        $pedidos = Pedido::all()->where('id_usuario', $user->id);
+        $reservas = Reserva::all()->where('id_usuario', $user->id);
+
+        return view('vistaUsuarios', compact('user', 'direcciones', 'calles', 'pedidos', 'reservas'));
+    }
+
+    public static function CalleDireccion($direccion)
+    {
+        $calle = Calle::find($direccion->id_calle);
+        return $calle;
+    }
+
+    public static function ComunaCalle($direccion)
+    {
+        $calle = Calle::find($direccion->id_calle);
+        $calle_comuna = Calle_Comuna::all()->where('id_calle', $calle->id)->first->id;
+        $comuna = Comuna::find($calle_comuna->id_comuna);
+
+        return $comuna;
+    }
+
+    public static function RestaurantPedido($pedido)
+    {
+        
     }
 }

@@ -1,3 +1,4 @@
+<?php use \App\Http\Controllers\VistaUsuarioController; ?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -124,13 +125,13 @@
                                                     <label><strong>Alias</strong></label>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <label><strong>Comuna</strong></label>
-                                                </div>
-                                                <div class="col-sm-3">
                                                     <label><strong>Calle</strong></label>
                                                 </div>
                                                 <div class="col-sm-2">
                                                     <label><strong>Número</strong></label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label><strong>Comuna</strong></label>
                                                 </div>
 
                                                 @foreach($direcciones as $direccion)
@@ -138,13 +139,13 @@
                                                         <label>{{$direccion->alias}}</label>
                                                     </div>
                                                     <div class="col-sm-3 text-muted">
-                                                        <label>placeholder</label>
-                                                    </div>
-                                                    <div class="col-sm-3 text-muted">
-                                                        <label>placeholder</label>
+                                                        <label>{{ (VistaUsuarioController::CalleDireccion($direccion))->nombre }}</label>
                                                     </div>
                                                     <div class="col-sm-2 text-muted">
-                                                        <label>placeholder</label>
+                                                        <label>{{ (VistaUsuarioController::CalleDireccion($direccion))->numero }}</label>
+                                                    </div>
+                                                    <div class="col-sm-3 text-muted">
+                                                        <label>{{ (VistaUsuarioController::ComunaCalle($direccion))->nombre }}</label>
                                                     </div>
                                                 @endforeach
                                             </div>
