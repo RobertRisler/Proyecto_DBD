@@ -16,7 +16,8 @@ class UserController extends Controller
 	public function index()//Los muestra todos
     {
         $users = User::all();
-        return response()->json($users);
+		return $users;
+        //return response()->json($users);
     }
     /*Muesta el historial de un usuario $id_usuario*/
     public function mostrarHistorial($id_usuario)

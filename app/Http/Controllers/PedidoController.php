@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pedido;
 use App\User;
+use App\Pago;
+use App\Despacho;
+use App\Calle;
+use App\Comuna;
+use App\Ciudad;
 use App\Http\Requests\PedidoRequest;
 
 class PedidoController extends Controller
@@ -161,4 +166,13 @@ class PedidoController extends Controller
         return "Eliminado";
 
     }
+	public function enviarPedido(Request $request, $id){
+		$despacho = new Despacho();
+		$pedido = new Pedido();
+		$calles = Calle::all();
+		$comunas = Comuna::all();
+		$ciudades = Ciudad::all();
+		$pagos = Pago::all();
+		
+	}
 }

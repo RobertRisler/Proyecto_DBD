@@ -12,8 +12,9 @@ class CiudadController extends Controller
 {
     public function index()
     {
-        $ciudad = Ciudad::all();
-        return response()->json($ciudad);
+        $ciudades = Ciudad::all();
+		return view('vistaUbicacionPedido')
+			->withCiudades($ciudades);
 
     }
 
