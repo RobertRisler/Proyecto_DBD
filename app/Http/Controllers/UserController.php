@@ -9,6 +9,7 @@ use App\Historial;
 use App\Comentario;
 use App\Restaurante;
 use App\Http\Requests\UserRequest;
+use Auth;
 
 class UserController extends Controller
 {
@@ -19,6 +20,10 @@ class UserController extends Controller
 		return $users;
         //return response()->json($users);
     }
+
+
+
+
     /*Muesta el historial de un usuario $id_usuario*/
     public function mostrarHistorial($id_usuario)
     {

@@ -24,15 +24,19 @@ Route::post('/register', 'Auth\RegisterController@create');
 
 Route::get('/login', 'Auth\LoginController@index');
 Route::post('/login', 'Auth\LoginController@authenticate');
-Route::post('/logout', 'Auth\LoginController@logout');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 //Auth::routes();
 
 Route::get('/index', 'PaginaPrincipalController@index');
 
+
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user', 'VistaUsuarioController@index');
+
 
 
 /* Rutas entrega 2 */
