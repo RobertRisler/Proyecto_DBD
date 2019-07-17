@@ -214,7 +214,8 @@ class RestauranteController extends Controller
 				$calleComuna = RestauranteController::otraCalleComuna($calle->id,$indexComuna);
 				$restaurante->id_calle = $calle->id;
 				$restaurante->save();
-				return response()->json($restaurante);
+				//return response()->json($restaurante);
+				return redirect('/');
 			}
 			else{
 				$comuna = RestauranteController::otraComuna($nombreComuna,$indexCiudad);
@@ -222,7 +223,8 @@ class RestauranteController extends Controller
 				$calleComuna = RestauranteController::otraCalleComuna($calle->id,$comuna->id);
 				$restaurante->id_calle = $calle->id;
 				$restaurante->save();
-				return response()->json($restaurante);
+				//return response()->json($restaurante);
+				return redirect('/');
 			}
 		}
 		else{
@@ -234,7 +236,10 @@ class RestauranteController extends Controller
 			$calleComuna = RestauranteController::otraCalleComuna($calle->id,$comuna->id);
 			$restaurante->id_calle = $calle->id;
 			$restaurante->save();
-			return response()->json($restaurante);
+			//return response()->json($restaurante);
+			return redirect('/');
+
+
 		}
 	}
 	public function mostrarRestaurante($id){

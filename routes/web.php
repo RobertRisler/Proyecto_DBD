@@ -15,20 +15,20 @@ Route::get('/', function () {
     return redirect('/index');
 });
 
-Route::get('/hom', function () { /*Por el momento sirve para logout*/
-    return view('hom');
+Route::get('/M', function () { /*Por el momento */
+    return view('vistaRegistroRestaurante');
 });
 
 Route::get('/register', 'Auth\RegisterController@index');
 Route::post('/register', 'Auth\RegisterController@create');
 
 Route::get('/login', 'Auth\LoginController@index');
-Route::post('/login', 'Auth\LoginController@authenticate');
+Route::post('/login', 'Auth\LoginController@authenticate')->name('login');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 //Auth::routes();
 
-Route::get('/index', 'PaginaPrincipalController@index');
+Route::get('/index', 'PaginaPrincipalController@index')->name('index');
 
 
 

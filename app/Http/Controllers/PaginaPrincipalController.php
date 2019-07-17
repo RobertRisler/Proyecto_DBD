@@ -7,6 +7,7 @@ use App\Ciudad;
 use App\Comuna;
 use App\User;
 use Auth;
+use App\Restaurante;
 
 class PaginaPrincipalController extends Controller
 {
@@ -32,7 +33,8 @@ class PaginaPrincipalController extends Controller
 
         $ciudades= Ciudad::all();
         $comunas= Comuna::all();
-        return view('index', compact('ciudades', 'comunas'));
+        $restaurantes = Restaurante::all();
+        return view('index', compact('ciudades', 'comunas','restaurantes'));
     }
 
 

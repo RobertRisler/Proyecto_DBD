@@ -27,7 +27,10 @@
                     <li role="presentation" class="nav-item"><a href="#restaurante" class="nav-link js-scroll-trigger">restaurantes</a></li>
                 </ul>
                 
+
+
                 @if(auth()->check())
+                    @if((auth()->user()->id_tipo_usuario)=="2")<!--Si es tipo usuario-->
                     <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
                       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                         Bienvenido {{auth()->user()->nombre }}
@@ -43,6 +46,31 @@
 
                         </form>
 
+                        @elseif ((auth()->user()->id_tipo_usuario)=="1")<!--Si es tipo administrador-->
+
+                        <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Bienvenido Administrador {{auth()->user()->nombre }}
+                      </a>
+                      <div class="dropdown-menu sm-menu">
+                        <a class="dropdown-item" href="/#">Administración</a>
+                        <div class="dropdown-divider">
+                            
+                        </div>
+                        
+
+                        <form method="POST" action="{{ route ('logout') }}">
+                            {{csrf_field()}}
+                            <button class="btn btn-primary">Cerrar sesión</button>
+
+                        </form>
+
+
+                        @else <!--Si es tipo restaurante-->
+
+
+
+                        @endif
 
                       </div>
                     </li>
@@ -51,6 +79,7 @@
                       <a class="btn btn-primary" href="{{ url('login') }}">Inicia sesión</a>
                         <a class="btn btn-primary" href="{{ url('register') }}">Registrate</a>
                     </li>
+
                 @endif
 
                 
@@ -60,6 +89,10 @@
     </nav>
 <header class="masthead text-center text-white d-flex" style="background-color: rgb(241,120,94)">
     <div class="container my-auto">
+        @if (session()->has('flash'))
+                    <div class="alert alert-info">{{session('flash')}}</div>
+                @endif
+
         <div class="row">
             <div class="col-lg-10 mx-auto">
                 <h1 class="text-uppercase"><strong><br />Comida a domicilio online<br /></strong></h1>
@@ -118,12 +151,20 @@
             </div>
         </div>
     </div>
-</section><section id="comentario">
+</section>
+<section id="comentario">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">Los comentarios de restaurantes</h2>
                 <hr class="my-4" />
+
+
+
+                
+
+
+
             </div>
         </div>
     </div>
@@ -135,6 +176,53 @@
             <div class="col-lg-12 text-center">
                 <h2 class="text-white section-heading">Los restaurantes disponibles</h2>
                 <hr class="light my-4" />
+                
+
+                <div class="card-deck"><!--Inicio cards-->
+                     @foreach ($restaurantes as $restaurante)
+                        @if (($restaurante->id)=="1")
+
+                      <div class="card">
+                        <img src="assets/images/pizza-hut.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{$restaurante->nombre}}</h5>
+                          <p class="card-text">{{$restaurante->descripcion}}</p>
+                        </div>
+                        <div class="card-footer">
+                          <small class="text-muted">{{$restaurante->created_at}}</small>
+                        </div>
+                      </div>
+
+                      @elseif (($restaurante->id)=="2")
+
+                      <div class="card">
+                        <img src="assets/images/domino.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{$restaurante->nombre}}</h5>
+                          <p class="card-text">{{$restaurante->descripcion}}</p>
+                        </div>
+                        <div class="card-footer">
+                          <small class="text-muted">{{$restaurante->created_at}}</small>
+                        </div>
+                      </div>
+
+                      @elseif (($restaurante->id)=="3")
+                      <div class="card">
+                        <img src="assets/images/macdoland.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{$restaurante->nombre}}</h5>
+                          <p class="card-text">{{$restaurante->descripcion}}</p>
+                        </div>
+                        <div class="card-footer">
+                          <small class="text-muted">{{$restaurante->created_at}}</small>
+                        </div>
+                      </div>
+                </div>
+                @endif
+                @endforeach
+
+
+
             </div>
         </div>
     </div>
