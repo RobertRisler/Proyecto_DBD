@@ -1,4 +1,5 @@
 <?php use \App\Http\Controllers\VistaUsuarioController; ?>
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -21,48 +22,38 @@
 
     <body>
         <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav" style="background-color: #ea745d; -moz-box-shadow: 1px 1px 3px 2px #cc1414;
-  -webkit-box-shadow: 1px 1px 3px 2px #cc1414;
-  box-shadow:         1px 1px 3px 2px #cc1414;">
-        <div class="container">
-            <a href="/" class="navbar-brand js-scroll-trigger">YA-PEDIDOS</a>
-            <button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false"
-            aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="nav navbar-nav ml-auto">
-                    
-                </ul>
-                
-                @if(auth()->check())
-                    <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
-                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        Bienvenido {{auth()->user()->nombre }}
-                      </a>
-                      <div class="dropdown-menu sm-menu">
-                        <a class="dropdown-item" href="/user">Mi perfil</a>
-                        <div class="dropdown-divider"></div>
-                        
-
-                        <form method="POST" action="{{ route ('logout') }}">
-                            {{csrf_field()}}
-                            <button class="btn btn-primary">Cerrar sesión</button>
-
-                        </form>
-
-
-                      </div>
-                    </li>
-                  @else
-                    <li class="nav-item">
-                      <a class="btn btn-primary" href="{{ url('login') }}">Inicia sesión</a>
-                        <a class="btn btn-primary" href="{{ url('register') }}">Registrate</a>
-                    </li>
-                @endif
-
-                
-                
+        -webkit-box-shadow: 1px 1px 3px 2px #cc1414;
+        box-shadow:         1px 1px 3px 2px #cc1414;">
+            <div class="container">
+                <a href="/" class="navbar-brand js-scroll-trigger">YA-PEDIDOS</a>
+                <button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="nav navbar-nav ml-auto">
+                    </ul>
+                    @if(auth()->check())
+                        <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Bienvenido {{auth()->user()->nombre }}
+                        </a>
+                        <div class="dropdown-menu sm-menu">
+                            <a class="dropdown-item" href="/user">Mi perfil</a>
+                            <div class="dropdown-divider"></div>   
+                            <form method="POST" action="{{ route ('logout') }}">
+                                {{csrf_field()}}
+                                <button class="btn btn-primary">Cerrar sesión</button>
+                            </form>
+                        </div>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                        <a class="btn btn-primary" href="{{ url('login') }}">Inicia sesión</a>
+                            <a class="btn btn-primary" href="{{ url('register') }}">Registrate</a>
+                        </li>
+                    @endif    
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
         
         <div class="container">
             <div class="row">
@@ -88,23 +79,24 @@
                                         <li class="list-group-item text">Información Personal</li>
                                         <li class="list-group-item text"><span class="pull-left">
                                             <strong>Nombre</strong></span><br>
-                                            <span class="pull-left text-muted">{{$user->nombre}}</span>
+                                            <span class="pull-left text-muted">{{$usuario->nombre}}</span>
                                         </li>
                                         <li class="list-group-item text">
                                             <span class="pull-left"><strong>Apellido</strong></span><br>
-                                            <span class="pull-left text-muted">{{$user->apellido}}</span>
+                                            <span class="pull-left text-muted">{{$usuario->apellido}}</span>
                                         </li>
                                         <li class="list-group-item text">
                                             <span class="pull-left"><strong>Email</strong></span><br>
-                                            <span class="pull-left text-muted">{{$user->correo}}</span>
+                                            <span class="pull-left text-muted">{{$usuario->correo}}</span>
                                         </li>
                                         <li class="list-group-item text">
                                             <span class="pull-left"><strong>Creación</strong></span><br>
-                                            <span class="pull-left text-muted">{{$user->created_at}}</span>
+                                            <span class="pull-left text-muted">{{$usuario->created_at}}</span>
                                         </li>
                                     </ul>
                                 </div>
 
+                                
                                 <div class="col-9">
                                     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                                         <li class="nav-item">
@@ -188,13 +180,16 @@
                                                 <div class="col-sm-1">
                                                     <label><strong>ID</strong></label>
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <label><strong>Fecha</strong></label>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label><strong>Restaurant</strong></label>
+                                                <div class="col-sm-3">
+                                                    <label><strong>Hora inicio</strong></label>
                                                 </div>
                                                 <div class="col-sm-3">
+                                                    <label><strong>Hora fin</strong></label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label><strong>Restaurant</strong></label>
+                                                </div>
+                                                <div class="col-sm-2">
                                                     <label><strong>Estado</strong></label>
                                                 </div>
 
@@ -202,13 +197,16 @@
                                                     <div class="col-sm-1 text-muted">
                                                         <label><strong>{{$reserva->id}}</strong></label>
                                                     </div>
-                                                    <div class="col-sm-4 text-muted">
+                                                    <div class="col-sm-3 text-muted">
                                                         <label><strong>{{$reserva->fecha_resevacion}}</strong></label>
                                                     </div>
-                                                    <div class="col-sm-4 text-muted">
+                                                    <div class="col-sm-3 text-muted">
+                                                    <label><strong>Fecha</strong></label>
+                                                </div>
+                                                    <div class="col-sm-3 text-muted">
                                                         <label><strong>placeholder</strong></label>
                                                     </div>
-                                                    <div class="col-sm-3 text-muted">
+                                                    <div class="col-sm-2 text-muted">
                                                         <label><strong>{{$reserva->estado}}</strong></label>
                                                     </div>
                                                 @endforeach

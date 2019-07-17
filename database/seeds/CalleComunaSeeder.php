@@ -23,7 +23,7 @@ class CalleComunaSeeder extends Seeder
 
         factory(App\Calle_Comuna::class)->create([
             'id_calle' => '3',
-        	'id_comuna' => '3'
+        	'id_comuna' => '44'
         ]);
 
         factory(App\Calle_Comuna::class)->create([
@@ -33,7 +33,7 @@ class CalleComunaSeeder extends Seeder
 
         factory(App\Calle_Comuna::class)->create([
             'id_calle' => '5',
-        	'id_comuna' => '5'
+        	'id_comuna' => '35'
         ]);
 
         factory(App\Calle_Comuna::class)->create([

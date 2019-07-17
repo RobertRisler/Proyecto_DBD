@@ -14,13 +14,13 @@ class DireccionSeeder extends Seeder
         factory(App\Direccion::class)->create([
             'alias' => 'Casa Temuco',
             'id_usuario' => '1',
-            'id_calle' => '44'
+            'id_calle' => '3'
         ]);
 
         factory(App\Direccion::class)->create([
             'alias' => 'Casa La Reina',
             'id_usuario' => '1',
-            'id_calle' => '55'
+            'id_calle' => '5'
         ]);
 
         factory(App\Direccion::class)->create([

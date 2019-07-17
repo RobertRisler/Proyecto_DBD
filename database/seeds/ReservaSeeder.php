@@ -18,7 +18,8 @@ class ReservaSeeder extends Seeder
             'nombre_cliente' => 'Roberto',
             'apellido_cliente' => 'Lillo',
             'estado' => 'True',
-            'id_usuario' => '1'
+            'id_usuario' => '1',
+            'id_horario_mesa' => '2'
         ]);
 
         factory(App\Reserva::class)->create([
@@ -28,7 +29,8 @@ class ReservaSeeder extends Seeder
             'nombre_cliente' => 'Armando',
             'apellido_cliente' => 'Casas',
             'estado' => 'True',
-            'id_usuario' => '1'
+            'id_usuario' => '1',
+            'id_horario_mesa' => '2'
         ]);
         
         factory(App\Reserva::class)->create([
@@ -38,7 +40,8 @@ class ReservaSeeder extends Seeder
             'nombre_cliente' => 'Olga',
             'apellido_cliente' => 'Rodriguez',
             'estado' => 'False',
-            'id_usuario' => '2'
+            'id_usuario' => '2',
+            'id_horario_mesa' => '3'
         ]);
 
         factory(App\Reserva::class)->create([
@@ -48,7 +51,8 @@ class ReservaSeeder extends Seeder
             'nombre_cliente' => 'Hector',
             'apellido_cliente' => 'Perez',
             'estado' => 'True',
-            'id_usuario' => '3'
+            'id_usuario' => '3',
+            'id_horario_mesa' => '1'
         ]);
 
         factory(App\Reserva::class)->create([
@@ -58,7 +62,8 @@ class ReservaSeeder extends Seeder
             'nombre_cliente' => 'Rodrigo',
             'apellido_cliente' => 'Hurtado',
             'estado' => 'True',
-            'id_usuario' => '4'
+            'id_usuario' => '4',
+            'id_horario_mesa' => '1'
         ]);
 
         factory(App\Reserva::class)->create([
@@ -68,7 +73,8 @@ class ReservaSeeder extends Seeder
             'nombre_cliente' => 'Ernesto',
             'apellido_cliente' => 'Lillo',
             'estado' => 'False',
-            'id_usuario' => '5'
+            'id_usuario' => '5',
+            'id_horario_mesa' => '2'
         ]);
         
 		//factory('App\Reserva',30)->create();

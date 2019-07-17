@@ -19,8 +19,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CalleSeeder::class);
         $this->call(RestauranteSeeder::class);
         $this->call(DespachoSeeder::class);
-        $this->call(ReservaSeeder::class);
         $this->call(MesaSeeder::class);
+        $this->call(Horario_MesaSeeder::class);
+        $this->call(ReservaSeeder::class);
         $this->call(TarjetaSeeder::class);
         $this->call(PagoSeeder::class);
         $this->call(ComentarioSeeder::class);
@@ -30,7 +31,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DireccionSeeder::class);
         $this->call(CiudadSeeder::class);
         $this->call(ComunaSeeder::class);
-        $this->call(Horario_MesaSeeder::class);
         $this->call(Horario_RestauranteSeeder::class);
         $this->call(CalleComunaSeeder::class);
         $this->call(MenuProductoSeeder::class);

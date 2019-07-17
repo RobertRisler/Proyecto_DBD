@@ -23,11 +23,18 @@ class CreateReservasTable extends Migration
             $table->boolean('estado');
             
             $table->bigInteger('id_usuario');
+            $table->bigInteger('id_horario_mesa');
 
             /*Llave foranea de usuario en reserva, por tener 1 * m */
             $table->foreign('id_usuario')
                 ->references('id')
                 ->on('usuarios')
+                ->onDelete('cascade');
+
+            /*Llave foranea de horario_mesa en reserva, por tener 1 * m */
+            $table->foreign('id_horario_mesa')
+                ->references('id')
+                ->on('horarios_mesas')
                 ->onDelete('cascade');
 
             $table->timestamps();

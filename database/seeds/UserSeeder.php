@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             'apellido' => 'Lillo',
             'correo' => 'robertoxlp@hotmail.com',
             'contrasena' => '$2y$10$6wg54QM9pjn25EkcyvaYmO5.bY8E6oaLXdZOnx04KaJ1zUocXINTO',
-            'id_tipo_usuario' => '1'
+            'id_tipo_usuario' => '2'
         ]);
         
         factory(App\User::class)->create([
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'apellido' => 'Gutierrez',
             'correo' => 'manuel.gutierrez@gmail.com',
             'contrasena' => '$2y$10$6wg54QM9pjn25EkcyvaYmO5.bY8E6oaLXdZOnx04KaJ1zUocXINTO',
-            'id_tipo_usuario' => '2'
+            'id_tipo_usuario' => '1'
         ]);
 
         factory(App\User::class)->create([
