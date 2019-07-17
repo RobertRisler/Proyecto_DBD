@@ -36,7 +36,7 @@ class CalleSeeder extends Seeder
             'numero' => 6728
         ]);
         
-        factory('App\Calle',30)->create();
+        factory('App\Calle',50)->create();
 
     }
 }

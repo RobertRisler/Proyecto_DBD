@@ -12,10 +12,10 @@ class ComentarioSeeder extends Seeder
     public function run()
     {
         factory(App\Comentario::class)->create([
-            'mensaje' => 'Un gran lugar, agradable ambiente.',
+            'mensaje' => 'excelente servicio.',
             'valoracion' => '5',
             'fecha' => '2019-02-01',
-            'id_usuario' => '2',
+            'id_usuario' => '1',
             'id_restaurante' => '2'
         ]);
 
@@ -24,17 +24,17 @@ class ComentarioSeeder extends Seeder
             'valoracion' => '1',
             'fecha' => '2019-03-02',
             'id_usuario' => '2',
-            'id_restaurante' => '1'
+            'id_restaurante' => '3'
         ]);
 
         factory(App\Comentario::class)->create([
-            'mensaje' => 'Encontré un pelo en mi plato, nunca vayan.',
-            'valoracion' => '1',
+            'mensaje' => 'Encontré un pelo en mi plato, pero no me lo cobraron.',
+            'valoracion' => '3',
             'fecha' => '2018-02-01',
             'id_usuario' => '3',
             'id_restaurante' => '1'
         ]);
-
+        /*
         factory(App\Comentario::class)->create([
             'mensaje' => 'La mesa no se encontraba en buenas condiciones, pesimo servicio.',
             'valoracion' => '2',
@@ -52,5 +52,6 @@ class ComentarioSeeder extends Seeder
         ]);
         
 		factory('App\Comentario',30)->create();
+        */
     }
 }

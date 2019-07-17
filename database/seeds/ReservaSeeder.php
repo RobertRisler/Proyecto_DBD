@@ -15,24 +15,34 @@ class ReservaSeeder extends Seeder
             'cantidad_personas' => '2',
             'fecha_resevacion' => '2017-07-07',
             'rut_cliente' => '191231239',
-            'nombre_cliente' => 'Juan',
-            'apellido_cliente' => 'Ayala',
+            'nombre_cliente' => 'Roberto',
+            'apellido_cliente' => 'Lillo',
             'estado' => 'True',
-            'id_usuario' => '2'
+            'id_usuario' => '1'
+        ]);
+
+        factory(App\Reserva::class)->create([
+            'cantidad_personas' => '6',
+            'fecha_resevacion' => '2017-08-07',
+            'rut_cliente' => '199651239',
+            'nombre_cliente' => 'Armando',
+            'apellido_cliente' => 'Casas',
+            'estado' => 'True',
+            'id_usuario' => '1'
         ]);
         
         factory(App\Reserva::class)->create([
-            'cantidad_personas' => '4',
+            'cantidad_personas' => '7',
             'fecha_resevacion' => '2019-09-09',
             'rut_cliente' => '121231231',
             'nombre_cliente' => 'Olga',
             'apellido_cliente' => 'Rodriguez',
             'estado' => 'False',
-            'id_usuario' => '3'
+            'id_usuario' => '2'
         ]);
 
         factory(App\Reserva::class)->create([
-            'cantidad_personas' => '7',
+            'cantidad_personas' => '5',
             'fecha_resevacion' => '2018-07-05',
             'rut_cliente' => '47676389',
             'nombre_cliente' => 'Hector',
@@ -48,7 +58,7 @@ class ReservaSeeder extends Seeder
             'nombre_cliente' => 'Rodrigo',
             'apellido_cliente' => 'Hurtado',
             'estado' => 'True',
-            'id_usuario' => '2'
+            'id_usuario' => '4'
         ]);
 
         factory(App\Reserva::class)->create([
@@ -58,9 +68,9 @@ class ReservaSeeder extends Seeder
             'nombre_cliente' => 'Ernesto',
             'apellido_cliente' => 'Lillo',
             'estado' => 'False',
-            'id_usuario' => '2'
+            'id_usuario' => '5'
         ]);
         
-		factory('App\Reserva',30)->create();
+		//factory('App\Reserva',30)->create();
     }
 }

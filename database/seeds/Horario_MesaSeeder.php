@@ -17,20 +17,6 @@ class Horario_MesaSeeder extends Seeder
             'estado_reservacion' => 'True',
             'id_mesa' => '1'
         ]);
-        
-        factory(App\Horario_Mesa::class)->create([
-            'hora_inicio' => '18:01:00',
-            'hora_fin' => '19:00:00',
-            'estado_reservacion' => 'False',
-            'id_mesa' => '1'
-        ]);
-        
-        factory(App\Horario_Mesa::class)->create([
-            'hora_inicio' => '16:01:00',
-            'hora_fin' => '17:00:00',
-            'estado_reservacion' => 'false',
-            'id_mesa' => '1'
-        ]);
 
         factory(App\Horario_Mesa::class)->create([
             'hora_inicio' => '17:01:00',
@@ -38,14 +24,35 @@ class Horario_MesaSeeder extends Seeder
             'estado_reservacion' => 'True',
             'id_mesa' => '2'
         ]);
+        
+        factory(App\Horario_Mesa::class)->create([
+            'hora_inicio' => '12:01:00',
+            'hora_fin' => '13:00:00',
+            'estado_reservacion' => 'False',
+            'id_mesa' => '3'
+        ]);
+        
+        factory(App\Horario_Mesa::class)->create([
+            'hora_inicio' => '16:01:00',
+            'hora_fin' => '17:00:00',
+            'estado_reservacion' => 'False',
+            'id_mesa' => '4'
+        ]);
 
         factory(App\Horario_Mesa::class)->create([
             'hora_inicio' => '17:01:00',
             'hora_fin' => '18:00:00',
             'estado_reservacion' => 'True',
-            'id_mesa' => '4'
+            'id_mesa' => '5'
         ]);
 
-        factory('App\Horario_Mesa',30)->create();
+        factory(App\Horario_Mesa::class)->create([
+            'hora_inicio' => '17:01:00',
+            'hora_fin' => '18:00:00',
+            'estado_reservacion' => 'True',
+            'id_mesa' => '6'
+        ]);
+
+        //factory('App\Horario_Mesa',30)->create();
     }
 }

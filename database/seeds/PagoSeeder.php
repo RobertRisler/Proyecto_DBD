@@ -14,24 +14,24 @@ class PagoSeeder extends Seeder
         factory(App\Pago::class)->create([
             'tipo' => 'efectivo',
             'monto' => '6500',
-            'fecha' => '1987-02-04 00:00:00',
+            'fecha' => '2018-06-03 00:00:00',
             'id_tarjeta' => null
         ]);
 
         factory(App\Pago::class)->create([
             'tipo' => 'tarjeta',
-            'monto' => '9600',
-            'fecha' => '1999-05-04 00:00:00',
-            'id_tarjeta' => '2'
+            'monto' => '9900',
+            'fecha' => '2019-10-11 00:00:00',
+            'id_tarjeta' => '1'
         ]);
 
         factory(App\Pago::class)->create([
             'tipo' => 'tarjeta',
-            'monto' => '546900',
-            'fecha' => '2015-03-09 00:00:00',
-            'id_tarjeta' => '3'
+            'monto' => '2500',
+            'fecha' => '2008-12-07 17:00:00',
+            'id_tarjeta' => '2'
         ]);
-
+        /*
         factory(App\Pago::class)->create([
             'tipo' => 'efectivo',
             'monto' => '9430',
@@ -45,7 +45,7 @@ class PagoSeeder extends Seeder
             'fecha' => '2018-12-12 00:00:00',
             'id_tarjeta' => '5'
         ]);
-        
-        factory('App\Pago',30)->create();
+        */
+        //factory('App\Pago',30)->create();
     }
 }

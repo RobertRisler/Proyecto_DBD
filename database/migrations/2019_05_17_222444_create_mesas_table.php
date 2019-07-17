@@ -17,10 +17,11 @@ class CreateMesasTable extends Migration
             $table->bigIncrements('id');
             $table->integer('cantidad_asientos');
 
-            $table->bigInteger('id_reserva')->nullable();
             $table->bigInteger('id_restaurante');
+            
+            $table->bigInteger('id_reserva')->nullable();
 
-            /*Llave foranea de reserva en mesa, por tener 1 * m */
+            /*Llave foranea de reserva en horario_mesa, por tener 1 * m */
             $table->foreign('id_reserva')
                 ->references('id')
                 ->on('reservas')

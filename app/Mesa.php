@@ -11,7 +11,7 @@ class Mesa extends Model
     
     public function reservas()
     {
-    	return $this->belongsTo('App\Reserva','id_reserva','id');
+        return $this->belongsTo('App\Reserva','id_reserva','id');
     }
     
     public function restaurantes()

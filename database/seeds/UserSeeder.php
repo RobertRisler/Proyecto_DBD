@@ -11,19 +11,20 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        
         factory(App\User::class)->create([
             'nombre' => 'Roberto',
             'apellido' => 'Lillo',
             'correo' => 'robertoxlp@hotmail.com',
-            'contrasena' => '120996',
-            'id_tipo_usuario' => '3'
+            'contrasena' => '$2y$10$6wg54QM9pjn25EkcyvaYmO5.bY8E6oaLXdZOnx04KaJ1zUocXINTO',
+            'id_tipo_usuario' => '1'
         ]);
         
         factory(App\User::class)->create([
             'nombre' => 'Manuel',
             'apellido' => 'Gutierrez',
             'correo' => 'manuel.gutierrez@gmail.com',
-            'contrasena' => 'manolo_14',
+            'contrasena' => '$2y$10$6wg54QM9pjn25EkcyvaYmO5.bY8E6oaLXdZOnx04KaJ1zUocXINTO',
             'id_tipo_usuario' => '2'
         ]);
 
@@ -31,7 +32,7 @@ class UserSeeder extends Seeder
             'nombre' => 'Hector',
             'apellido' => 'Perez',
             'correo' => 'hector.perez.m@usach.cl',
-            'contrasena' => '123457890',
+            'contrasena' => '$2y$10$6wg54QM9pjn25EkcyvaYmO5.bY8E6oaLXdZOnx04KaJ1zUocXINTO',
             'id_tipo_usuario' => '2'
         ]);
 
@@ -39,18 +40,18 @@ class UserSeeder extends Seeder
             'nombre' => 'Jose',
             'apellido' => 'Rojas',
             'correo' => 'jose_rojas@hotmail.com',
-            'contrasena' => 'A_12341',
-            'id_tipo_usuario' => '1'
+            'contrasena' => '$2y$10$6wg54QM9pjn25EkcyvaYmO5.bY8E6oaLXdZOnx04KaJ1zUocXINTO',
+            'id_tipo_usuario' => '3'
         ]);
 
         factory(App\User::class)->create([
             'nombre' => 'Luis',
             'apellido' => 'Cortés',
             'correo' => 'cortes.luis@hotmail.com',
-            'contrasena' => '09120',
+            'contrasena' => '$2y$10$6wg54QM9pjn25EkcyvaYmO5.bY8E6oaLXdZOnx04KaJ1zUocXINTO',
             'id_tipo_usuario' => '1'
         ]);
-        
-		factory('App\User',30)->create();
+
+		factory('App\User',5)->create();
     }
 }

@@ -16,7 +16,7 @@ class DespachoSeeder extends Seeder
             'rut_repartidor' => '198231238',
             'tiempo_estimado' => '1:30:0',
             'estado_despacho' => False,
-            'id_calle' => '1',
+            'id_calle' => '44',
             'hora_despacho' => '0:0:0'
         ]);
 
@@ -25,10 +25,10 @@ class DespachoSeeder extends Seeder
             'rut_repartidor' => '178882341',
             'tiempo_estimado' => '0:45:0',
             'estado_despacho' => True,
-            'id_calle' => '2',
+            'id_calle' => '3',
             'hora_despacho' => '17:53:20'
         ]);
-
+        /*
         factory(App\Despacho::class)->create([
             'nombre_repartidor' => 'Caco',
             'rut_repartidor' => '153882341',
@@ -55,7 +55,7 @@ class DespachoSeeder extends Seeder
             'id_calle' => '5',
             'hora_despacho' => '0:0:0'
         ]);
-        
 		factory('App\Despacho',30)->create();
+        */
     }
 }

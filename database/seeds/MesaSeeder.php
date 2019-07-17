@@ -13,13 +13,13 @@ class MesaSeeder extends Seeder
     {
         factory(App\Mesa::class)->create([
             'cantidad_asientos' => '4',
-            'id_reserva' => '2',
+            'id_reserva' => '1',
             'id_restaurante' => '1'
         ]);
         
         factory(App\Mesa::class)->create([
-            'cantidad_asientos' => '4',
-            'id_reserva' => '1',
+            'cantidad_asientos' => '6',
+            'id_reserva' => '2',
             'id_restaurante' => '2'
         ]);
 
@@ -30,7 +30,7 @@ class MesaSeeder extends Seeder
         ]);
 
         factory(App\Mesa::class)->create([
-            'cantidad_asientos' => '2',
+            'cantidad_asientos' => '6',
             'id_reserva' => '4',
             'id_restaurante' => '4'
         ]);
@@ -40,7 +40,33 @@ class MesaSeeder extends Seeder
             'id_reserva' => '5',
             'id_restaurante' => '5'
         ]);
+
+        factory(App\Mesa::class)->create([
+            'cantidad_asientos' => '4',
+            'id_reserva' => '6',
+            'id_restaurante' => '6'
+        ]);
         
-		factory('App\Mesa',30)->create();
+        factory(App\Mesa::class)->create([
+            'cantidad_asientos' => '4',
+            'id_restaurante' => '7'
+        ]);
+
+        factory(App\Mesa::class)->create([
+            'cantidad_asientos'=>'8',
+            'id_restaurante'=>'8'
+        ]);
+
+        factory(App\Mesa::class)->create([
+            'cantidad_asientos' => '2',
+            'id_restaurante' => '9'
+        ]);
+
+        factory(App\Mesa::class)->create([
+            'cantidad_asientos' => '4',
+            'id_restaurante' => '10'
+        ]);
+        
+		//factory('App\Mesa',30)->create();
     }
 }

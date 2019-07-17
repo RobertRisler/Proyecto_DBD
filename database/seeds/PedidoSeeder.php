@@ -18,7 +18,7 @@ class PedidoSeeder extends Seeder
             'correo_cliente' => 'roberto.lillo@usach.cl',
             'fecha' => '2018-06-03',
             'tipo_entrega' => 'True',
-            'hora_estimada' => '17:15:00',
+            'hora_estimada' => '00:15:00',
             'estado' => 'True',
             'id_usuario' => '1',
             'id_despacho' => '1',
@@ -32,9 +32,10 @@ class PedidoSeeder extends Seeder
             'correo_cliente' => 'javier@gmail.es',
             'fecha' => '2019-10-11',
             'tipo_entrega' => 'False',
-            'hora_estimada' => '14:30:00',
+            'hora_estimada' => '17:30:00',
             'estado' => 'False',
             'id_usuario' => '2',
+            'id_despacho' => '2',
             'id_pago' => '2'
         ]);
 
@@ -48,10 +49,9 @@ class PedidoSeeder extends Seeder
             'hora_estimada' => '09:15:00',
             'estado' => 'True',
             'id_usuario' => '3',
-            'id_despacho' => '2',
             'id_pago' => '3'
         ]);
-
+        /*
         factory(App\Pedido::class)->create([
             'nombre_cliente' => 'Manuel',
             'apellido_cliente' => 'Gutierrez',
@@ -80,5 +80,6 @@ class PedidoSeeder extends Seeder
         ]);
         
         factory('App\Pedido',30)->create();
+        */
     }
 }
