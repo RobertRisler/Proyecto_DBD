@@ -92,7 +92,7 @@ class DireccionSeeder extends Seeder
         factory(App\Direccion::class)->create([
             'alias' => 'Depa',
             'id_usuario' => '1',
-            'id_calle' => '14'
+            'id_calle' => '2'
         ]);
 
         factory(App\Direccion::class)->create([

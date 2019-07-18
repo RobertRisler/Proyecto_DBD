@@ -28,63 +28,62 @@
                 aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="nav navbar-nav ml-auto"></ul>
-                        @if(auth()->check())
-                            @if((auth()->user()->id_tipo_usuario)=="2")<!--Si es tipo usuario-->
-                                <li class="nav-item">
-                                    <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
-                                </li>
-                                <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                                        Bienvenido {{auth()->user()->nombre }}
-                                    </a>
-                                    <div class="dropdown-menu sm-menu">
-                                        <a class="dropdown-item" href="/MiPerfil">Mi perfil</a>
-                                        <div class="dropdown-divider"></div>
-                                    <form method="POST" action="{{ route ('logout') }}">
-                                        {{csrf_field()}}
-                                        <button class="btn btn-primary">Cerrar sesión</button>
-                                    </form>
-                                </li>
-
-                            @elseif ((auth()->user()->id_tipo_usuario)=="1")<!--Si es tipo administrador-->
-                                <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                                        Bienvenido Administrador {{auth()->user()->nombre }}
-                                    </a>
-                                    <div class="dropdown-menu sm-menu">
-                                        <a class="dropdown-item" href="/#">Administración</a>
-                                        <div class="dropdown-divider"></div>
-                                    </div>
-                                    <form method="POST" action="{{ route ('logout') }}">
-                                        {{csrf_field()}}
-                                        <button class="btn btn-primary">Cerrar sesión</button>
-                                     </form>
-                            @else <!--Si es tipo restaurante-->
-                                <li class="nav-item">
-                                    <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
-                                </li>
-                                <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                                        Bienvenido {{auth()->user()->nombre }}
-                                    </a>
-                                    <div class="dropdown-menu sm-menu">
-                                        <a class="dropdown-item" href="/MiPerfil">Mi perfil</a>
-                                        <div class="dropdown-divider"></div>
-                                    <form method="POST" action="{{ route ('logout') }}">
-                                        {{csrf_field()}}
-                                        <button class="btn btn-primary">Cerrar sesión</button>
-                                    </form>
-                                </li>
-                            @endif
-                        </div>
-                        </li>
-                        @else
+                    @if(auth()->check())
+                        @if((auth()->user()->id_tipo_usuario)=="2")<!--Si es tipo usuario-->
                             <li class="nav-item">
                                 <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
-                            <a class="btn btn-primary" href="{{ url('login') }}">Inicia sesión</a>
-                                <a class="btn btn-primary" href="{{ url('register') }}">Registrate</a>
                             </li>
-                        @endif 
+                            <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Bienvenido {{auth()->user()->nombre }}
+                                </a>
+                                <div class="dropdown-menu sm-menu">
+                                <a class="dropdown-item" href="/MiPerfil">Mi perfil</a>
+                                <div class="dropdown-divider"></div>
+                                    <form method="POST" action="{{ route ('logout') }}">
+                                        {{csrf_field()}}
+                                        <button class="btn btn-primary">Cerrar sesión</button>
+                                    </form>
+                        @elseif ((auth()->user()->id_tipo_usuario)=="1")<!--Si es tipo administrador-->
+                        <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Bienvenido Administrador {{auth()->user()->nombre }}
+                            </a>
+                            <div class="dropdown-menu sm-menu">
+                            <a class="dropdown-item" href="/usuario">Panel Administración</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/#">Administración</a>
+                            <div class="dropdown-divider"></div>
+                        <form method="POST" action="{{ route ('logout') }}">
+                            {{csrf_field()}}
+                            <button class="btn btn-primary">Cerrar sesión</button>
+                        </form>
+
+                        @else <!--Si es tipo restaurante-->
+                            <li class="nav-item">
+                            <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
+                            </li>
+                            <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Bienvenido {{auth()->user()->nombre }}
+                            </a>
+                            <div class="dropdown-menu sm-menu">
+                            <a class="dropdown-item" href="/MiPerfil">Mi perfil</a>
+                            <div class="dropdown-divider"></div>
+                            <form method="POST" action="{{ route ('logout') }}">
+                                {{csrf_field()}}
+                                <button class="btn btn-primary">Cerrar sesión</button>
+                            </form>
+                        @endif
+                      </div>
+                    </li>
+                  @else
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
+                      <a class="btn btn-primary" href="{{ url('login') }}">Inicia sesión</a>
+                        <a class="btn btn-primary" href="{{ url('register') }}">Registrate</a>
+                    </li>
+                @endif
                 </div>
             </div>
         </nav>
@@ -175,11 +174,7 @@
                                                             <label>{{$direccion->calles->numero}}</label>
                                                         </div>
                                                         <div class="col-sm-3 text-muted">
-                                                            @foreach($comunas as $comuna)
-                                                                @if($comuna->id == $direccion->calles->calles_comunas->first->id->id_comuna)
-                                                                    <label>{{$comuna->nombre}}</label>
-                                                                @endif
-                                                            @endforeach
+                                                            <label>{{$direccion->calles->calles_comunas->first->id->comunas->nombre}}</label>
                                                         </div>
                                                     @endforeach
                                                 </div>
@@ -324,7 +319,7 @@
                                         </div>
                                     </div>
                                 
-                                @elseif($usuario->id_tipo_usuario == "3") <!--Usuario restaurante-->
+                                @elseif($usuario->id_tipo_usuario == "3") <!--Restaurante-->
                                     <div class="col-9">
                                         @if($usuario->peticion == null)
                                             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
@@ -339,20 +334,37 @@
                                             <div class="tab-content ml-1" id="contenidoRestaurante1">
                                                 <!--Inicio Ingresar petición-->
                                                 <div class="tab-pane fade show active" id="ingresarPeticion" role="tabpanel" aria-labelledby="ingresarPeticion-tab">
-                                                    <div class="row">
-                                                        <div class="col-sm">
-                                                            <label><strong>HolderIngresarPeticion</strong></label>
-                                                        </div>
+                                                    <div class="row center">
+                                                        <form>
+                                                            <div class="form-group">
+                                                                <label for="descripcionPeticion">Realice una descripción de su local</label>
+                                                                <textarea class="form-control" id="descripcionPeticion" rows="8" placeholder="Descripción"></textarea>
+                                                                <small id="recordatorioDescripcion" class="form-text text-muted">Recuerde mencionar el nombre y la dirección de su local, incluyendo calle, número, comuna y ciudad donde se ubica</small>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Enviar petición</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <!--Fin ingresar petición-->
 
                                                 <!--Inicio Editar perfil-->
                                                 <div class="tab-pane fade" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
-                                                    <div class="row">
-                                                        <div class="col-sm">
-                                                            <label><strong>HolderEditarPerfil</strong></label>
-                                                        </div>
+                                                    <div class="row center">
+                                                        <form>
+                                                            <div class="form-group">
+                                                                <label for="nombreNuevo">Nombre</label>
+                                                                <input type="text" id="nombreNuevo" class="form-control" placeholder="Nombre">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="apellidoNuevo">Apellido</label>
+                                                                <input type="text" id="apellidoNuevo" class="form-control" placeholder="Apellido">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="nuevoMail">Correo electrónico</label>
+                                                                <input type="text" class="form-control" id="nuevoMail" placeholder="correo@correo">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <!--Fin Editar perfil-->
@@ -372,8 +384,11 @@
                                                 <!--Inicio Mi petición-->
                                                 <div class="tab-pane fade show active" id="miPeticion" role="tabpanel" aria-labelledby="miPeticion-tab">
                                                     <div class="row">
-                                                        <div class="col-sm">
-                                                            <label><strong>HolderMiPeticion</strong></label>
+                                                        <div class="col-sm-12">
+                                                            <label><strong>La petición enviada es:</strong></label>
+                                                        </div>
+                                                        <div class="col-sm-12 text-muted">
+                                                            <label>{{$usuario->peticion->descripcion}}</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -381,10 +396,22 @@
 
                                                 <!--Inicio Editar perfil-->
                                                 <div class="tab-pane fade" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
-                                                    <div class="row">
-                                                        <div class="col-sm">
-                                                            <label><strong>HolderEditarPerfil</strong></label>
-                                                        </div>
+                                                    <div class="row center">
+                                                        <form>
+                                                            <div class="form-group">
+                                                                <label for="nombreNuevo">Nombre</label>
+                                                                <input type="text" id="nombreNuevo" class="form-control" placeholder="Nombre">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="apellidoNuevo">Apellido</label>
+                                                                <input type="text" id="apellidoNuevo" class="form-control" placeholder="Apellido">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="nuevoMail">Correo electrónico</label>
+                                                                <input type="text" class="form-control" id="nuevoMail" placeholder="correo@correo">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <!--Fin Editar perfil-->
@@ -406,8 +433,45 @@
                                                 <!--Inicio Mi restaurante-->
                                                 <div class="tab-pane fade show active" id="miRestaurante" role="tabpanel" aria-labelledby="miRestaurante-tab">
                                                     <div class="row">
-                                                        <div class="col-sm">
-                                                            <label><strong>HolderMiRestaurante</strong></label>
+                                                        <div class="col-sm-3">
+                                                            <label><strong>Nombre:</strong></label>
+                                                        </div>
+                                                        <div class="col-sm-9 text-muted">
+                                                            <label>{{$usuario->peticion->restaurante->nombre}}</label>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label><strong>Descripción:</strong></label>
+                                                        </div>
+                                                        <div class="col-sm-9 text-muted">
+                                                            <label>{{$usuario->peticion->restaurante->descripcion}}</label>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label><strong>Valoración actual:</strong></label>
+                                                        </div>
+                                                        <div class="col-sm-9 text-muted">
+                                                            <label>{{$usuario->peticion->restaurante->promedio_valoracion}}</label>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label><strong>Teléfono:</strong></label>
+                                                        </div>
+                                                        <div class="col-sm-9 text-muted">
+                                                            <label>{{$usuario->peticion->restaurante->telefono}}</label>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label><strong>Despacho:</strong></label>
+                                                        </div>
+                                                        <div class="col-sm-9 text-muted">
+                                                            @if($usuario->peticion->restaurante->hace_despacho == true)
+                                                                <label>Si</label>
+                                                            @elseif($usuario->peticion->restaurante->hace_despacho == false)
+                                                                <label>No</label>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label><strong>Dirección:</strong></label>
+                                                        </div>
+                                                        <div class="col-sm-9 text-muted">
+                                                            <label>{{$usuario->peticion->restaurante->calles->nombre}}, {{$usuario->peticion->restaurante->calles->numero}}</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -415,20 +479,44 @@
 
                                                 <!--Inicio Editar restaurante-->
                                                 <div class="tab-pane fade" id="editarRestaurante" role="tabpanel" aria-labelledby="editarRestaurante-tab">
-                                                    <div class="row">
-                                                        <div class="col-sm">
-                                                            <label><strong>HolderEditarRestaurante</strong></label>
-                                                        </div>
+                                                    <div class="row center">
+                                                        <form>
+                                                            <div class="form-group">
+                                                                <label for="nombreNuevo">Nombre</label>
+                                                                <input type="text" id="nombreNuevo" class="form-control" placeholder="Nombre">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="apellidoNuevo">Descripción</label>
+                                                                <input type="text" id="apellidoNuevo" class="form-control" placeholder="Descripción">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="nuevoMail">Teléfono</label>
+                                                                <input type="text" class="form-control" id="nuevoMail" placeholder="12345678">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <!--Fin editar restaurante-->
 
                                                 <!--Inicio Editar perfil-->
                                                 <div class="tab-pane fade" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
-                                                    <div class="row">
-                                                        <div class="col-sm">
-                                                            <label><strong>HolderEditarPerfil</strong></label>
-                                                        </div>
+                                                    <div class="row center">
+                                                        <form>
+                                                            <div class="form-group">
+                                                                <label for="nombreNuevo">Nombre</label>
+                                                                <input type="text" id="nombreNuevo" class="form-control" placeholder="Nombre">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="apellidoNuevo">Apellido</label>
+                                                                <input type="text" id="apellidoNuevo" class="form-control" placeholder="Apellido">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="nuevoMail">Correo electrónico</label>
+                                                                <input type="text" class="form-control" id="nuevoMail" placeholder="correo@correo">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <!--Fin Editar perfil-->

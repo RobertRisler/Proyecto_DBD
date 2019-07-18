@@ -23,7 +23,6 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav ml-auto">
                     <li role="presentation" class="nav-item"><a href="#pago" class="nav-link js-scroll-trigger">métodos de pago</a></li>
-                    <li role="presentation" class="nav-item"><a href="#comentario" class="nav-link js-scroll-trigger">Nuestra Comunidad</a></li>
                     <li role="presentation" class="nav-item"><a href="#restaurante" class="nav-link js-scroll-trigger">restaurantes</a></li>
                 </ul>
                 
@@ -72,7 +71,23 @@
 
 
                         @else <!--Si es tipo restaurante-->
+                        <li class="nav-item">
+                        <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
+                    </li>
+                    <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Bienvenido {{auth()->user()->nombre }}
+                      </a>
+                      <div class="dropdown-menu sm-menu">
+                        <a class="dropdown-item" href="/MiPerfil">Mi perfil</a>
+                        <div class="dropdown-divider"></div>
+                        
 
+                        <form method="POST" action="{{ route ('logout') }}">
+                            {{csrf_field()}}
+                            <button class="btn btn-primary">Cerrar sesión</button>
+
+                        </form>
 
 
                         @endif
@@ -164,12 +179,6 @@
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">Los comentarios de restaurantes</h2>
                 <hr class="my-4" />
-
-
-
-                
-
-
 
             </div>
         </div>

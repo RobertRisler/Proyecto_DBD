@@ -10,11 +10,11 @@ class Calle_Comuna extends Model
 
     public function calles()
     {
-        return $this->belongsTo('App\Calle');
+        return $this->belongsTo('App\Calle', 'id_calle', 'id');
     }
 
     public function comunas()
     {
-        return $this->belongsTo('App\Comuna');
+        return $this->belongsTo('App\Comuna', 'id_comuna', 'id');
     }
 }

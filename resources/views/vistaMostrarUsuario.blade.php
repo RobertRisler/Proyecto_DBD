@@ -72,7 +72,25 @@
 
 
                         @else <!--Si es tipo restaurante-->
+                        <li class="nav-item">
+                        <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
+                    </li>
+                    <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Bienvenido {{auth()->user()->nombre }}
+                      </a>
+                      <div class="dropdown-menu sm-menu">
+                        <a class="dropdown-item" href="/MiPerfil">Mi perfil</a>
+                        <div class="dropdown-divider">
+                            
+                        </div>
+                        
 
+                        <form method="POST" action="{{ route ('logout') }}">
+                            {{csrf_field()}}
+                            <button class="btn btn-primary">Cerrar sesión</button>
+
+                        </form>
 
 
                         @endif

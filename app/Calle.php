@@ -22,7 +22,7 @@ class Calle extends Model
 
     public function calles_comunas()
     {
-    	return $this->hasMany('App\Calle_Comuna', 'id_calle','id');
+    	return $this->hasMany('App\Calle_Comuna','id_calle','id');
     }
 
 	public function despachos()

@@ -12,13 +12,11 @@ class Comuna extends Model
 
     public function calles_comunas()
     {
-    	return $this->hasMany('App\Calle_Comuna','id_calle','id');
+    	return $this->hasMany('App\Calle_Comuna','id','id_comuna');
     }
 
     public function ciudades()
     {
-
     	return $this->belongsTo('App\Ciudad','id_ciudad','id');
-
     }
 }

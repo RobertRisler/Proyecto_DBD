@@ -32,16 +32,9 @@ Route::get('/index', 'PaginaPrincipalController@index')->name('index');
 
 Route::get('/buscar', 'BuscarController@search')->name('search');
 
-
-
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/MiPerfil', 'VistaUsuarioController@index');
-
-
-
-
 
 
 

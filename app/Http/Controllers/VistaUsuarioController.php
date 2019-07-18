@@ -31,9 +31,8 @@ class VistaUsuarioController extends Controller
         if (Auth::check())
         {
             $usuario = User::find(Auth::user()->id);
-            $comunas = Comuna::all();
 
-            return view('vistaUsuarios', compact('usuario', 'comunas'));
+            return view('vistaUsuarios', compact('usuario'));
         }
         else
         {
