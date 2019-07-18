@@ -33,19 +33,27 @@ Route::get('/index', 'PaginaPrincipalController@index')->name('index');
 Route::get('/buscar', 'BuscarController@search')->name('search');
 
 
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user', 'VistaUsuarioController@index');
 
 
 
-/* Rutas entrega 2 */
 
+
+
+
+
+/* Rutas entrega 2 */
+route::resource('usuario','UserController');
 /*Rutas de usuario*/
+Route::get('/usuario', 'UserController@search')->name('search'); 
 Route::post('/usuario', 'UserController@store');
 Route::put('/usuario/{id}', 'UserController@update');
-Route::get('/usuario','UserController@index');
-Route::get('/usuario/{id}','UserController@show');
+
+Route::get('/usuario/{id}','UserController@show')->name('show');
 Route::get('/usuario/{id_usuario}/comentarios','UserController@mostrarTotalComentarios');
 Route::delete('/usuario/{id}','UserController@destroy');
 

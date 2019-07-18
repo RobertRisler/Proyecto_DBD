@@ -4,7 +4,7 @@
 <head>	
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Buscar - YA-PEDIDOS</title>
+    <title>Administración Usuario - YA-PEDIDOS</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
@@ -18,8 +18,10 @@
     <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav" style="background-color: #ea745d; -moz-box-shadow: 1px 1px 3px 2px #cc1414;
   -webkit-box-shadow: 1px 1px 3px 2px #cc1414;
   box-shadow:         1px 1px 3px 2px #cc1414;">
-        <div class="container"><a href="/" class="navbar-brand js-scroll-trigger">YA-PEDIDOS</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false"
-            aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
+        <div class="container"><a href="/" class="navbar-brand js-scroll-trigger">YA-PEDIDOS</a>
+            <button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation"><i class="fa fa-align-justify"></i>
+            </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav ml-auto">
                     
@@ -27,7 +29,7 @@
                 
 
 
-                @if(auth()->check())
+                 @if(auth()->check())
                     @if((auth()->user()->id_tipo_usuario)=="2")<!--Si es tipo usuario-->
                     <li class="nav-item">
                         <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
@@ -98,14 +100,14 @@
 
 <div class="row">
     <div class="col-md-6" style="  margin-top: 80px;">
-        <h1>Buscar Productos</h1>
+        <h1>Administrar usuarios</h1>
     </div>
     <div class="col-md-6" style="  margin-top: 80px;">
-        <form action="{{ route('search') }}" method="GET" class="search-form">
+        <form action="{{ url('usuario') }}" method="GET" class="search-form">
             <div class="input-group">
-                <input type="search" name="query" id="query" value="{{ request()->input('query') }}" class="form-control" placeholder="Buscar productos" required>
+                <input type="search" name="query" id="query" value="{{ request()->input('query') }}" class="form-control" placeholder="Buscar usuarios" required>
                 <span class="input-group-prepend">
-                    <button type="submit" class="btn btn-primary">Buscar</button>
+                    <button type="submit" class="btn btn-primary">Buscar usuario</button>
                 </span>
             </div>
         </form>
@@ -115,23 +117,32 @@
 <table class="table table-bordered table-striped ">
                 <thead>
                     <tr>
-                        <th>Nombre Producto</th>
-                        <th>Descripción</th>
-                        <th>Precio</th>
+                        <th>Nombre Usuario</th>
+                        <th>Apellido</th>
+                        <th>Acciones</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($productos as $producto)
+                    @foreach ($usuarios as $usuario)
                         <tr>
-                            <th>{{ $producto->nombre }}</th>
-                            <th>{{ $producto->descripcion }}</th>
-                            <th>${{ $producto->precio_total }}</th>
+                            <th>{{ $usuario->nombre }}</th>
+                            <th>{{ $usuario->apellido }}</th>
+                            <td>
+                                <form action="" method="post">
+                                  <a class="btn btn-sm btn-success" href="{{route('usuario.show',$usuario->id)}}">Mostrar</a>
+                                  <a class="btn btn-sm btn-warning" href="">Editar</a>
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                </form>
+                            </td>
                             
                         </tr>
                     @endforeach
                 </tbody>
-</table>
-            {!! $productos->render() !!}
+   </table>
+                {!! $usuarios->render() !!}
 
  <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

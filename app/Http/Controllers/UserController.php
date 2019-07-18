@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Tipo_usuario;
 use App\Historial;
@@ -16,12 +17,35 @@ class UserController extends Controller
     //
 	public function index()//Los muestra todos
     {
-        $users = User::all();
-		return $users;
-        //return response()->json($users);
+        $usuarios = User::all();
+		
+        return view("usuarios.index", compact("usuarios"));
     }
 
+    
 
+
+
+
+
+
+
+
+    public function search(Request $request){
+
+        $query = $request->get('query');
+
+        
+        $usuarios = DB::table('usuarios')
+                        ->where('nombre', 'ilike', '%' .$query. '%')
+                        ->orWhere('apellido', 'ilike', '%' .$query. '%')
+                        ->paginate(5);
+
+        return view('usuarios.index')->with('usuarios', $usuarios);
+
+
+
+    }
 
 
     /*Muesta el historial de un usuario $id_usuario*/
@@ -69,11 +93,19 @@ class UserController extends Controller
     public function show($id)//muestra segun el $id
     {
 
-        $users = User::find($id);
-        return response()->json($users);
+    	
+    	
+		
+        
 
 
+        $usuario = User::find($id);
+        return view('usuarios.show', compact('usuario'));
+        
+        
     }
+
+
     public function edit($id)
     {
         //

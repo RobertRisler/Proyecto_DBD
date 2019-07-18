@@ -56,9 +56,11 @@
                         Bienvenido Administrador {{auth()->user()->nombre }}
                       </a>
                       <div class="dropdown-menu sm-menu">
+                        <a class="dropdown-item" href="/usuario">Panel Administración</a>
+                         <div class="dropdown-divider">   
+                        </div>
                         <a class="dropdown-item" href="/#">Administración</a>
-                        <div class="dropdown-divider">
-                            
+                        <div class="dropdown-divider">   
                         </div>
                         
 
