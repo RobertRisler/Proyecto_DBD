@@ -38,4 +38,9 @@ class Restaurante extends Model
     {
     	return $this->hasMany('App\Horario_Restaurante');
     }
+
+    public function pedidos()
+    {
+    	return $this->hasMany('App\Pedido','id_pedido','id');
+    }
 }

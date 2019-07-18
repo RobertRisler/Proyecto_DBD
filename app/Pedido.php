@@ -30,4 +30,9 @@ class Pedido extends Model
     {
         return $this->hasOne('App\Pago','id','id_pago');
     }
+
+    public function restaurantes()
+    {
+        return $this->belongsTo('App\Restaurante','id_restaurante','id');
+    }
 }

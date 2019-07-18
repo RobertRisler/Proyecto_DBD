@@ -27,6 +27,7 @@ class CreatePedidosTable extends Migration
             $table->bigInteger('id_usuario');
             $table->bigInteger('id_despacho')->nullable();
             $table->bigInteger('id_pago');
+            $table->bigInteger('id_restaurante');
 
             /*Llave foranea de usuario en pedido, por tener 1 * m */
             $table->foreign('id_usuario')
@@ -44,6 +45,12 @@ class CreatePedidosTable extends Migration
             $table->foreign('id_pago')
                 ->references('id')
                 ->on('pagos')
+                ->onDelete('cascade');
+
+            /*Llave foranea restaurante, por tener 1 * m */
+            $table->foreign('id_restaurante')
+                ->references('id')
+                ->on('restaurantes')
                 ->onDelete('cascade');
 
             $table->timestamps();

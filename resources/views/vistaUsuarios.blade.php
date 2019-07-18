@@ -1,5 +1,3 @@
-<?php use \App\Http\Controllers\VistaUsuarioController; ?>
-
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -108,36 +106,43 @@
                                         <li class="nav-item">
                                             <a class="nav-link" id="misReservas-tab" data-toggle="tab" href="#misReservas" role="tab" aria-controls="misReservas" aria-selected="false">Mis reservas</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="editarPerfil-tab" data-toggle="tab" href="#editarPerfil" role="tab" aria-controls="editarPerfil" aria-selected="false">Editar información</a>
+                                        </li>
                                     </ul>
 
                                     <div class="tab-content ml-1" id="myTabContent">
                                         <div class="tab-pane fade show active" id="misDirecciones" role="tabpanel" aria-labelledby="misDirecciones-tab">
                                             <div class="row">
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-3">
                                                     <label><strong>Alias</strong></label>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <label><strong>Calle</strong></label>
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-3">
                                                     <label><strong>Número</strong></label>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <label><strong>Comuna</strong></label>
                                                 </div>
 
-                                                @foreach($direcciones as $direccion)
-                                                    <div class="col-sm-4 text-muted">
+                                                @foreach($usuario->direcciones as $direccion)
+                                                    <div class="col-sm-3 text-muted">
                                                         <label>{{$direccion->alias}}</label>
                                                     </div>
                                                     <div class="col-sm-3 text-muted">
-                                                        <label>{{ (VistaUsuarioController::CalleDireccion($direccion))->nombre }}</label>
-                                                    </div>
-                                                    <div class="col-sm-2 text-muted">
-                                                        <label>{{ (VistaUsuarioController::CalleDireccion($direccion))->numero }}</label>
+                                                        <label>{{$direccion->calles->nombre}}</label>
                                                     </div>
                                                     <div class="col-sm-3 text-muted">
-                                                        <label>{{ (VistaUsuarioController::ComunaCalle($direccion))->nombre }}</label>
+                                                        <label>{{$direccion->calles->numero}}</label>
+                                                    </div>
+                                                    <div class="col-sm-3 text-muted">
+                                                        @foreach($comunas as $comuna)
+                                                            @if($comuna->id == $direccion->calles->calles_comunas->first->id->id_comuna)
+                                                                <label>{{$comuna->nombre}}</label>
+                                                            @endif
+                                                        @endforeach
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -145,73 +150,133 @@
                                         
                                         <div class="tab-pane fade" id="misPedidos" role="tabpanel" aria-labelledby="misPedidos-tab">
                                             <div class="row">
-                                                <div class="col-sm-1">
-                                                    <label><strong>ID</strong></label>
-                                                </div>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-3">
                                                     <label><strong>Fecha</strong></label>
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-3">
                                                     <label><strong>Restaurant</strong></label>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-2">
                                                     <label><strong>Valor</strong></label>
                                                 </div>
+                                                <div class="col-sm-2">
+                                                    <label><strong>Tipo</strong></label>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <label><strong>Estado</strong></label>
+                                                </div>
 
-                                                @foreach($pedidos as $pedido)
-                                                    <div class="col-sm-1 text-muted">
-                                                        <label><strong>{{$pedido->id}}</strong></label>
-                                                    </div>
-                                                    <div class="col-sm-4 text-muted">
+                                                @foreach($usuario->pedidos as $pedido)
+                                                    <div class="col-sm-3 text-muted">
                                                         <label><strong>{{$pedido->fecha}}</strong></label>
                                                     </div>
-                                                    <div class="col-sm-4 text-muted">
-                                                        <label><strong>placeholder</strong></label>
-                                                    </div>
+
                                                     <div class="col-sm-3 text-muted">
-                                                        <label><strong>placeholder</strong></label>
+                                                        <label><strong>{{$pedido->restaurantes->nombre}}</strong></label>
                                                     </div>
+
+                                                    <div class="col-sm-2 text-muted">
+                                                        <label><strong>{{$pedido->pagos->monto}}</strong></label>
+                                                    </div>
+
+                                                    @if($pedido->tipo_entrega == false) <!--Retiro-->
+                                                        <div class="col-sm-2 text-muted">
+                                                            <label><strong>Retiro</strong></label>
+                                                        </div>
+
+                                                        @if($pedido->estado == false) <!--No completado-->
+                                                            <div class="col-sm-2 text-muted">
+                                                                <label><strong>Incompleto</strong></label>
+                                                            </div>
+                                                        @elseif($pedido->estado == true) <!--Completado-->
+                                                            <div class="col-sm-2 text-muted">
+                                                                <label><strong>Completado</strong></label>
+                                                            </div>
+                                                        @endif
+
+                                                    @elseif($pedido->tipo_entrega == true) <!--Despacho-->
+                                                        <div class="col-sm-2 text-muted">
+                                                            <label><strong>Despacho</strong></label>
+                                                        </div>
+
+                                                        @if($pedido->estado == false) <!--No entregado-->
+                                                            <div class="col-sm-2 text-muted">
+                                                                <label><strong>Incompleto</strong></label>
+                                                            </div>
+                                                        @elseif($pedido->estado == true) <!--Entregado-->
+                                                            <div class="col-sm-2 text-muted">
+                                                                <label><strong>Entregado</strong></label>
+                                                            </div>
+                                                        @endif
+                                                    @endif
                                                 @endforeach
                                             </div>
                                         </div>
 
                                         <div class="tab-pane fade" id="misReservas" role="tabpanel" aria-labelledby="misReservas-tab">
                                             <div class="row">
-                                                <div class="col-sm-1">
-                                                    <label><strong>ID</strong></label>
+                                                <div class="col-sm-2">
+                                                    <label><strong>Fecha</strong></label>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-2">
                                                     <label><strong>Hora inicio</strong></label>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-2">
                                                     <label><strong>Hora fin</strong></label>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <label><strong>Restaurant</strong></label>
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-3">
                                                     <label><strong>Estado</strong></label>
                                                 </div>
 
-                                                @foreach($reservas as $reserva)
-                                                    <div class="col-sm-1 text-muted">
-                                                        <label><strong>{{$reserva->id}}</strong></label>
-                                                    </div>
-                                                    <div class="col-sm-3 text-muted">
+                                                @foreach($usuario->reservas as $reserva)
+                                                    <div class="col-sm-2 text-muted">
                                                         <label><strong>{{$reserva->fecha_resevacion}}</strong></label>
                                                     </div>
-                                                    <div class="col-sm-3 text-muted">
-                                                    <label><strong>Fecha</strong></label>
-                                                </div>
-                                                    <div class="col-sm-3 text-muted">
-                                                        <label><strong>placeholder</strong></label>
+                                                    <div class="col-sm-2 text-muted">
+                                                        <label><strong>{{$reserva->horarios_mesas->hora_inicio}}</strong></label>
                                                     </div>
                                                     <div class="col-sm-2 text-muted">
-                                                        <label><strong>{{$reserva->estado}}</strong></label>
+                                                        <label><strong>{{$reserva->horarios_mesas->hora_fin}}</strong></label>
                                                     </div>
+                                                    <div class="col-sm-3 text-muted">
+                                                        <label><strong>{{$reserva->horarios_mesas->mesas->restaurantes->nombre}}</strong></label>
+                                                    </div>
+                                                    @if($reserva->estado == false)
+                                                        <div class="col-sm-3 text-muted">
+                                                            <label><strong>Incompleta</strong></label>
+                                                        </div>
+                                                    @elseif($reserva->estado == true)
+                                                        <div class="col-sm-3 text-muted">
+                                                            <label><strong>Completada</strong></label>
+                                                        </div>
+                                                    @endif
                                                 @endforeach
                                             </div> 
                                         </div>
+
+                                        <div class="tab-pane fade show text-center" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
+                                            <div class="row center">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label for="nombreNuevo">Nombre</label>
+                                                        <input type="text" id="nombreNuevo" class="form-control" placeholder="Nicolás">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="apellidoNuevo">Apellido</label>
+                                                        <input type="text" id="apellidoNuevo" class="form-control" placeholder="Ayala">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="nuevoMail">Correo electrónico</label>
+                                                        <input type="text" class="form-control" id="nuevoMail" placeholder="NicoAyala@mail.com">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

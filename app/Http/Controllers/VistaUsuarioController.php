@@ -25,52 +25,19 @@ class VistaUsuarioController extends Controller
     {
         $this->middleware('auth');
     }
-
-	 
 	 
     public function index()
     {
         if (Auth::check())
         {
             $usuario = User::find(Auth::user()->id);
+            $comunas = Comuna::all();
 
-            $direcciones = Direccion::all()->where('id_usuario', $usuario->id);
-
-            $calles = Calle::all();
-
-            $pedidos = Pedido::all()->where('id_usuario', $usuario->id);
-            $reservas = Reserva::all()->where('id_usuario', $usuario->id);
-
-            return view('vistaUsuarios', compact('usuario', 'direcciones', 'calles', 'pedidos', 'reservas'));
+            return view('vistaUsuarios', compact('usuario', 'comunas'));
         }
         else
         {
             return redirect('/login');
-        }
-        
-    }
-
-    public static function CalleDireccion($direccion)
-    {
-        $calle = Calle::find($direccion->id_calle);
-        return $calle;
-    }
-
-    public static function ComunaCalle($direccion)
-    {
-        $calle = Calle::find($direccion->id_calle);
-        $calle_comuna = Calle_Comuna::all()->where('id_calle', $calle->id)->first->id;
-        $comuna = Comuna::find($calle_comuna->id_comuna);
-        return $comuna;
-    }
-
-    public static function RestaurantPedido($pedido)
-    {
-        
-    }
-
-    public static function HorariosReserva($reserva)
-    {
-
+        }   
     }
 }

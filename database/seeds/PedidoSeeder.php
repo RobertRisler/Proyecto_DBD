@@ -22,7 +22,8 @@ class PedidoSeeder extends Seeder
             'estado' => 'True',
             'id_usuario' => '1',
             'id_despacho' => '1',
-            'id_pago' => '1'
+            'id_pago' => '1',
+            'id_restaurante' => '1'
         ]);
 
         factory(App\Pedido::class)->create([
@@ -31,12 +32,13 @@ class PedidoSeeder extends Seeder
             'rut_cliente' => '173839280',
             'correo_cliente' => 'javier@gmail.es',
             'fecha' => '2019-10-11',
-            'tipo_entrega' => 'False',
+            'tipo_entrega' => 'True',
             'hora_estimada' => '17:30:00',
             'estado' => 'False',
             'id_usuario' => '2',
             'id_despacho' => '2',
-            'id_pago' => '2'
+            'id_pago' => '2',
+            'id_restaurante' => '2'
         ]);
 
         factory(App\Pedido::class)->create([
@@ -45,11 +47,12 @@ class PedidoSeeder extends Seeder
             'rut_cliente' => '67397463',
             'correo_cliente' => 'juanito.rod@live.pl',
             'fecha' => '2008-12-07',
-            'tipo_entrega' => 'True',
+            'tipo_entrega' => 'False',
             'hora_estimada' => '09:15:00',
             'estado' => 'True',
             'id_usuario' => '3',
-            'id_pago' => '3'
+            'id_pago' => '3',
+            'id_restaurante' => '3'
         ]);
         /*
         factory(App\Pedido::class)->create([
