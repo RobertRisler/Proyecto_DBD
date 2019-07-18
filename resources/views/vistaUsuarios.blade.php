@@ -29,26 +29,64 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="nav navbar-nav ml-auto">
                     </ul>
-                    @if(auth()->check())
-                        <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            Bienvenido {{auth()->user()->nombre }}
-                        </a>
-                        <div class="dropdown-menu sm-menu">
-                            <a class="dropdown-item" href="/user">Mi perfil</a>
-                            <div class="dropdown-divider"></div>   
-                            <form method="POST" action="{{ route ('logout') }}">
-                                {{csrf_field()}}
-                                <button class="btn btn-primary">Cerrar sesión</button>
-                            </form>
+                     @if(auth()->check())
+                    @if((auth()->user()->id_tipo_usuario)=="2")<!--Si es tipo usuario-->
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
+                    </li>
+                    <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Bienvenido {{auth()->user()->nombre }}
+                      </a>
+                      <div class="dropdown-menu sm-menu">
+                        <a class="dropdown-item" href="/user">Mi perfil</a>
+                        <div class="dropdown-divider">
+                            
                         </div>
-                        </li>
-                    @else
-                        <li class="nav-item">
-                        <a class="btn btn-primary" href="{{ url('login') }}">Inicia sesión</a>
-                            <a class="btn btn-primary" href="{{ url('register') }}">Registrate</a>
-                        </li>
-                    @endif    
+                        
+
+                        <form method="POST" action="{{ route ('logout') }}">
+                            {{csrf_field()}}
+                            <button class="btn btn-primary">Cerrar sesión</button>
+
+                        </form>
+                     </li>
+                        @elseif ((auth()->user()->id_tipo_usuario)=="1")<!--Si es tipo administrador-->
+
+                        <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Bienvenido Administrador {{auth()->user()->nombre }}
+                      </a>
+                      <div class="dropdown-menu sm-menu">
+                        <a class="dropdown-item" href="/#">Administración</a>
+                        <div class="dropdown-divider">
+                            
+                        </div>
+                        
+
+                        <form method="POST" action="{{ route ('logout') }}">
+                            {{csrf_field()}}
+                            <button class="btn btn-primary">Cerrar sesión</button>
+
+                        </form>
+
+
+                        @else <!--Si es tipo restaurante-->
+
+
+
+                        @endif
+
+                      </div>
+                    </li>
+                  @else
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
+                      <a class="btn btn-primary" href="{{ url('login') }}">Inicia sesión</a>
+                        <a class="btn btn-primary" href="{{ url('register') }}">Registrate</a>
+                    </li>
+
+                @endif 
                 </div>
             </div>
         </nav>
@@ -257,25 +295,30 @@
                                             </div> 
                                         </div>
 
-                                        <div class="tab-pane fade show text-center" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
-                                            <div class="row center">
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label for="nombreNuevo">Nombre</label>
-                                                        <input type="text" id="nombreNuevo" class="form-control" placeholder="Nicolás">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="apellidoNuevo">Apellido</label>
-                                                        <input type="text" id="apellidoNuevo" class="form-control" placeholder="Ayala">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="nuevoMail">Correo electrónico</label>
-                                                        <input type="text" class="form-control" id="nuevoMail" placeholder="NicoAyala@mail.com">
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary">Actualizar</button>
-                                                </form>
-                                            </div>
-                                        </div>
+                                        <!--Inicio editar-->
+                                        
+                                            <div class="tab-pane fade show text-center" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab"> 
+                                                
+                                                <div class="row center">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label for="nombreNuevo">Nombre</label>
+                                                            <input type="text" id="nombreNuevo" class="form-control" placeholder="Nombre">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="apellidoNuevo">Apellido</label>
+                                                            <input type="text" id="apellidoNuevo" class="form-control" placeholder="Apellido">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="nuevoMail">Correo electrónico</label>
+                                                            <input type="text" class="form-control" id="nuevoMail" placeholder="correo@correo">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                    </form>
+                                                </div>
+
+                                            </div><!--Fin editar-->
+                                        
 
                                     </div>
                                 </div>
