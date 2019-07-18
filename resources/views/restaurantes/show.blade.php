@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
 
-<head>	
+<head>  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Buscar - YA-PEDIDOS</title>
+    <title>Administración Usuario - YA-PEDIDOS</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
@@ -18,8 +18,10 @@
     <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav" style="background-color: #ea745d; -moz-box-shadow: 1px 1px 3px 2px #cc1414;
   -webkit-box-shadow: 1px 1px 3px 2px #cc1414;
   box-shadow:         1px 1px 3px 2px #cc1414;">
-        <div class="container"><a href="/" class="navbar-brand js-scroll-trigger">YA-PEDIDOS</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false"
-            aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
+        <div class="container"><a href="/" class="navbar-brand js-scroll-trigger">YA-PEDIDOS</a>
+            <button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation"><i class="fa fa-align-justify"></i>
+            </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav ml-auto">
                     
@@ -27,7 +29,7 @@
                 
 
 
-                @if(auth()->check())
+                 @if(auth()->check())
                     @if((auth()->user()->id_tipo_usuario)=="2")<!--Si es tipo usuario-->
                     <li class="nav-item">
                         <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
@@ -37,7 +39,7 @@
                         Bienvenido {{auth()->user()->nombre }}
                       </a>
                       <div class="dropdown-menu sm-menu">
-                        <a class="dropdown-item" href="/MiPerfil">Mi perfil</a>
+                        <a class="dropdown-item" href="/user">Mi perfil</a>
                         <div class="dropdown-divider">
                             
                         </div>
@@ -92,55 +94,42 @@
         </div>
     </nav>
 
-   <div class="container">
+   
+
+
 
 <div class="row">
     <div class="col-md-6" style="  margin-top: 80px;">
-        <h1>Buscar Productos</h1>
+        <h1>Administrar restaurantes</h1>
     </div>
-    <div class="col-md-6" style="  margin-top: 80px;">
-        <form action="{{ route('searchProducto') }}" method="GET" class="search-form">
-            <div class="input-group">
-                <input type="search" name="query" id="query" value="{{ request()->input('query') }}" class="form-control" placeholder="Buscar productos ej: 'Almuerzo' o 'pizza'" required>
-                <span class="input-group-prepend">
-                    <button type="submit" class="btn btn-primary">Buscar</button>
-                </span>
-            </div>
-        </form>
-    </div>
+    
+
 </div>
-
-
-<!--FUNCIONA-->
-
-<div class="row">
-
-    @foreach($productos as $producto)
-<div class="col-sm-4 my-4">
-    <div class="card" style="width: 18rem;  margin-top: 80px;">
-         <div class="card text-white bg-danger">
-
-
-            <img style="width:200px; height: 200px; margin:0 auto" src="assets/images/producto.jpg">
-            <div class="card-body">
-                <h5 class="card-title">Nombre: {{ $producto->nombre }}</h5>
-                <h6 class="card-title">Precio: ${{ $producto->precio_total }}</h6>
-                <a type="button" class="btn btn-warning" href="">Añadir a carro de compra</a>
+<table class="table table-bordered table-striped ">
+                <thead>
+                    <tr>
+                        <th>Nombre Restaurante</th>
+                        <th>Descripción</th>
+                        <th>Promedio Valoración</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        <tr>
+                            <th>{{ $restaurante->nombre }}</th>
+                            <th>{{ $restaurante->descripcion }}</th>
+                            <th>{{ $restaurante->promedio_valoracion }}</th>
+                            
+                            
+                        </tr>
+                    
+                </tbody>
+   </table>
+    <a class="btn btn-sm btn-success" href="{{url('restaurante')}}">Volver</a>
+   
                 
-            </div>  
-        </div>      
-    </div>
-</div>
-    @endforeach
-
-</div>
-{!! $productos->render() !!}
-</div>
-
-
-            
-
- <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>

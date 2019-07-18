@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Restaurante;
 use App\Mesa;
 use App\Calle;
@@ -26,6 +27,28 @@ class RestauranteController extends Controller
     {
         //
     }
+
+
+    public function search(Request $request){
+
+        $query = $request->get('query');
+
+        
+        $restaurantes = DB::table('restaurantes')
+                        ->where('nombre', 'ilike', '%' .$query. '%')
+                        ->orWhere('promedio_valoracion', 'ilike', '%' .$query. '%')
+                        ->paginate(5);
+
+        return view('restaurantes.index')->with('restaurantes', $restaurantes);
+
+
+
+    }
+
+
+
+
+
 
     public function store(Request $request)
     {
@@ -54,23 +77,31 @@ class RestauranteController extends Controller
     {
 
         $restaurante = Restaurante::find($id);
-        return response()->json($restaurante);
+        return view('restaurantes.show', compact('restaurante'));
+
+
+        
 
     }
 
     public function edit($id)
     {
-        //
-    }
+        $restaurante = Restaurante::find($id);
+        return view('restaurantes.edit', compact('restaurante'));    }
 
     public function update(Request $request, $id)
     {
         
-            $restaurante = Restaurante::find($id);
+            if($restaurante = Restaurante::find($id)){
             $restaurante->update($request->all());
-
             $restaurante->save();
-            return response()->json($restaurante);
+            return redirect('/restaurante')
+            				->with('success', 'Actualizado');
+
+        }else{
+            return "No se encuentra para ser modificado.";
+
+        }
         
     }
 
@@ -79,7 +110,7 @@ class RestauranteController extends Controller
 
         $restaurante = Restaurante::find($id);
         $restaurante ->delete();
-        return "Eliminado!";
+        return back()->with('info', 'El producto fue eliminado');
     }
 	public function agregarMesa(Request $request, $id){
 		if ($restaurante = Restaurante::find($id)){

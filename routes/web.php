@@ -30,11 +30,18 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/index', 'PaginaPrincipalController@index')->name('index');
 
-Route::get('/buscar', 'BuscarController@search')->name('search');
+Route::get('/buscar', 'BuscarController@search')->name('searchProducto');
+
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/MiPerfil', 'VistaUsuarioController@index');
+
+
+
+
 
 
 
@@ -101,11 +108,14 @@ Route::get('/calleDirecciones/{id}','CalleController@mostrarDirecciones');
 Route::get('/calleRestaurantes/{id}','CalleController@mostrarRestaurantes');
 
 /*Rutas de restaurante*/
+Route::get('/restaurante/{id}/edit','RestauranteController@edit')->name('restaurante.edit');
 Route::post('/restaurante', 'RestauranteController@store');
-Route::put('/restaurante/{id}', 'RestauranteController@update');
-Route::get('/restaurante','RestauranteController@index');
-Route::get('/restaurante/{id}','RestauranteController@show');
-Route::delete('/restaurante/{id}','RestauranteController@destroy');
+Route::put('/restaurante/{id}', 'RestauranteController@update')->name('restaurante.update');
+Route::get('/restaurante', 'RestauranteController@search')->name('searchRestaurante'); 
+//Route::get('/restaurante','RestauranteController@index');
+Route::get('/restaurante/{id}','RestauranteController@show')->name('restaurante.show');
+
+Route::delete('/restaurante/{id}','RestauranteController@destroy')->name('restaurante.destroy');
 
 /*Rutas restaurante-ubicacion*/
 Route::post('/restaurante/ubicacion', 'RestauranteController@crearRestaurante');
