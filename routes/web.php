@@ -47,15 +47,16 @@ Route::get('/MiPerfil', 'VistaUsuarioController@index');
 
 
 /* Rutas entrega 2 */
-route::resource('usuario','UserController');
+//route::resource('usuario','UserController');
 /*Rutas de usuario*/
 Route::get('/usuario', 'UserController@search')->name('search'); 
 Route::post('/usuario', 'UserController@store');
-Route::put('/usuario/{id}', 'UserController@update');
+Route::put('/usuario/{id}', 'UserController@update')->name('usuario.update');
 
-Route::get('/usuario/{id}','UserController@show')->name('show');
+Route::get('/usuario/{id}/edit','UserController@edit')->name('usuario.edit');
+Route::get('/usuario/{id}','UserController@show')->name('usuario.show');
 Route::get('/usuario/{id_usuario}/comentarios','UserController@mostrarTotalComentarios');
-Route::delete('/usuario/{id}','UserController@destroy');
+Route::delete('/usuario/{id}','UserController@destroy')->name('usuario.destroy');
 
 /*Muesta comentarios de un usuario*/
 Route::get('/comentariosUsuario/{id}','UserController@mostrarComentarios');

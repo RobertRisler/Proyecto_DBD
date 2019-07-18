@@ -93,12 +93,6 @@ class UserController extends Controller
     public function show($id)//muestra segun el $id
     {
 
-    	
-    	
-		
-        
-
-
         $usuario = User::find($id);
         return view('usuarios.show', compact('usuario'));
         
@@ -108,14 +102,18 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        //
+        $usuario = User::find($id);
+        return view('usuarios.edit', compact('usuario'));
     }
+
+
     public function update(Request $request, $id)//actualiza uno en especifico
     {
         if($users = User::find($id)){
             $users->update($request->all());
             $users->save();
-            return response()->json($users);
+            return redirect('/usuario')
+            				->with('success', 'Actualizado');
 
         }else{
             return "No se encuentra usuario para ser modificado.";
@@ -126,9 +124,7 @@ class UserController extends Controller
     {
         if($users = User::find($id)) {
             $users->delete();
-            return "Eliminado!";
-        }else{
-            return "No se pudo eliminar usuario";
+            return back()->with('info', 'El producto fue eliminado');
         }
     }
 	public function agregarComentario(Request $request, $id_usuario, $id_restaurante){

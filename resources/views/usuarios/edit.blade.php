@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 
-<head>	
+<head>  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Administración Usuario - YA-PEDIDOS</title>
@@ -100,52 +100,48 @@
 
 <div class="row">
     <div class="col-md-6" style="  margin-top: 80px;">
-        <h1>Administrar usuarios</h1>
+        <h1>Editar usuario</h1>
     </div>
-    <div class="col-md-6" style="  margin-top: 80px;">
-        <form action="{{ url('usuario') }}" method="GET" class="search-form">
-            <div class="input-group">
-                <input type="search" name="query" id="query" value="{{ request()->input('query') }}" class="form-control" placeholder="Buscar usuarios" required>
-                <span class="input-group-prepend">
-                    <button type="submit" class="btn btn-primary">Buscar usuario</button>
-                </span>
-            </div>
-        </form>
-    </div>
+    
+
+
+    <form action="{{route('usuario.update',$usuario->id)}}" method="POST">
+        @csrf
+        @method('PUT')
+
+        <div class="col-md-12">
+            <strong>Nombre Usuario</strong>
+            <input type="text" name="nombre" class="form-control" value="{{$usuario->nombre}}">
+        </div>
+        <div class="col-md-12">
+            <strong>Apellido Usuario</strong>
+            <input type="text" name="apellido" class="form-control" value="{{$usuario->apellido}}">
+        </div>
+        <div class="col-md-12">
+            <strong>Correo Usuario</strong>
+            <input type="text" name="correo" class="form-control" value="{{$usuario->correo}}">
+        </div>
+
+        <div class="col-md-12">
+            <a href="{{url('usuario')}}" class="btn btn-sm btn-success">Volver</a>
+           
+            <button type="submit" class="btn btn-sm btn-primary">Guardar</button> 
+        </div>
+        
+
+
+
+    </form>
+
+
+
+
 
 </div>
-<table class="table table-bordered table-striped ">
-                <thead>
-                    <tr>
-                        <th>Nombre Usuario</th>
-                        <th>Apellido</th>
-                        <th>Acciones</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($usuarios as $usuario)
-                        <tr>
-                            <th>{{ $usuario->nombre }}</th>
-                            <th>{{ $usuario->apellido }}</th>
-                            <td>
-                                
-                                  <a class="btn btn-sm btn-success" href="{{route('usuario.show',$usuario->id)}}">Mostrar</a>
-                                  <a class="btn btn-sm btn-warning" href="{{route('usuario.edit',$usuario->id)}}">Editar</a>
-                                  <form action="{{route ('usuario.destroy', $usuario->id)}}" method="POST">
-                                  {{csrf_field()}}
-                                  @method('DELETE')
-                                  <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                                </form>
-                            </td>
-                            
-                        </tr>
-                    @endforeach
-                </tbody>
-   </table>
-                {!! $usuarios->render() !!}
 
- <script src="assets/js/jquery.min.js"></script>
+   
+                
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
