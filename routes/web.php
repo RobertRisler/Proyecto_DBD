@@ -37,7 +37,7 @@ Route::get('/buscar', 'BuscarController@search')->name('search');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/user', 'VistaUsuarioController@index');
+Route::get('/MiPerfil', 'VistaUsuarioController@index');
 
 
 

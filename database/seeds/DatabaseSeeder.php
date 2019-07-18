@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MenuProductoSeeder::class);
         $this->call(MenuRestauranteSeeder::class);
         $this->call(PedidoProductoSeeder::class);
+        $this->call(PeticionSeeder::class);
     }
 }

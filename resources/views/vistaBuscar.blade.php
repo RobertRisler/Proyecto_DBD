@@ -37,7 +37,7 @@
                         Bienvenido {{auth()->user()->nombre }}
                       </a>
                       <div class="dropdown-menu sm-menu">
-                        <a class="dropdown-item" href="/user">Mi perfil</a>
+                        <a class="dropdown-item" href="/MiPerfil">Mi perfil</a>
                         <div class="dropdown-divider">
                             
                         </div>

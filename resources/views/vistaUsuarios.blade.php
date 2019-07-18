@@ -27,66 +27,64 @@
                 <button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="nav navbar-nav ml-auto">
-                    </ul>
-                     @if(auth()->check())
-                    @if((auth()->user()->id_tipo_usuario)=="2")<!--Si es tipo usuario-->
-                    <li class="nav-item">
-                        <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
-                    </li>
-                    <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
-                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        Bienvenido {{auth()->user()->nombre }}
-                      </a>
-                      <div class="dropdown-menu sm-menu">
-                        <a class="dropdown-item" href="/user">Mi perfil</a>
-                        <div class="dropdown-divider">
-                            
+                    <ul class="nav navbar-nav ml-auto"></ul>
+                        @if(auth()->check())
+                            @if((auth()->user()->id_tipo_usuario)=="2")<!--Si es tipo usuario-->
+                                <li class="nav-item">
+                                    <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
+                                </li>
+                                <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                        Bienvenido {{auth()->user()->nombre }}
+                                    </a>
+                                    <div class="dropdown-menu sm-menu">
+                                        <a class="dropdown-item" href="/MiPerfil">Mi perfil</a>
+                                        <div class="dropdown-divider"></div>
+                                    <form method="POST" action="{{ route ('logout') }}">
+                                        {{csrf_field()}}
+                                        <button class="btn btn-primary">Cerrar sesión</button>
+                                    </form>
+                                </li>
+
+                            @elseif ((auth()->user()->id_tipo_usuario)=="1")<!--Si es tipo administrador-->
+                                <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                        Bienvenido Administrador {{auth()->user()->nombre }}
+                                    </a>
+                                    <div class="dropdown-menu sm-menu">
+                                        <a class="dropdown-item" href="/#">Administración</a>
+                                        <div class="dropdown-divider"></div>
+                                    </div>
+                                    <form method="POST" action="{{ route ('logout') }}">
+                                        {{csrf_field()}}
+                                        <button class="btn btn-primary">Cerrar sesión</button>
+                                     </form>
+                            @else <!--Si es tipo restaurante-->
+                                <li class="nav-item">
+                                    <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
+                                </li>
+                                <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                        Bienvenido {{auth()->user()->nombre }}
+                                    </a>
+                                    <div class="dropdown-menu sm-menu">
+                                        <a class="dropdown-item" href="/MiPerfil">Mi perfil</a>
+                                        <div class="dropdown-divider"></div>
+                                    <form method="POST" action="{{ route ('logout') }}">
+                                        {{csrf_field()}}
+                                        <button class="btn btn-primary">Cerrar sesión</button>
+                                    </form>
+                                </li>
+                            @endif
                         </div>
-                        
-
-                        <form method="POST" action="{{ route ('logout') }}">
-                            {{csrf_field()}}
-                            <button class="btn btn-primary">Cerrar sesión</button>
-
-                        </form>
-                     </li>
-                        @elseif ((auth()->user()->id_tipo_usuario)=="1")<!--Si es tipo administrador-->
-
-                        <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
-                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        Bienvenido Administrador {{auth()->user()->nombre }}
-                      </a>
-                      <div class="dropdown-menu sm-menu">
-                        <a class="dropdown-item" href="/#">Administración</a>
-                        <div class="dropdown-divider">
-                            
-                        </div>
-                        
-
-                        <form method="POST" action="{{ route ('logout') }}">
-                            {{csrf_field()}}
-                            <button class="btn btn-primary">Cerrar sesión</button>
-
-                        </form>
-
-
-                        @else <!--Si es tipo restaurante-->
-
-
-
-                        @endif
-
-                      </div>
-                    </li>
-                  @else
-                    <li class="nav-item">
-                        <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
-                      <a class="btn btn-primary" href="{{ url('login') }}">Inicia sesión</a>
-                        <a class="btn btn-primary" href="{{ url('register') }}">Registrate</a>
-                    </li>
-
-                @endif 
+                        </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
+                            <a class="btn btn-primary" href="{{ url('login') }}">Inicia sesión</a>
+                                <a class="btn btn-primary" href="{{ url('register') }}">Registrate</a>
+                            </li>
+                        @endif 
                 </div>
             </div>
         </nav>
@@ -103,12 +101,10 @@
                                         <br><br><br>
                                         <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">Mi Perfil</h2>
                                     </div>
-                                    <div class="ml-auto">
-                                        <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
-                                    </div>
                                 </div>
                             </div>
 
+                            <!--Inicio información personal-->
                             <div class="row">
                                 <div class="col-3">
                                     <ul class="list-group">
@@ -131,174 +127,180 @@
                                         </li>
                                     </ul>
                                 </div>
-
+                                <!--Fin información personal-->
                                 
-                                <div class="col-9">
-                                    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="misDirecciones-tab" data-toggle="tab" href="#misDirecciones" role="tab" aria-controls="misDirecciones" aria-selected="true">Mis direcciones</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="misPedidos-tab" data-toggle="tab" href="#misPedidos" role="tab" aria-controls="misPedidos" aria-selected="false">Mis pedidos</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="misReservas-tab" data-toggle="tab" href="#misReservas" role="tab" aria-controls="misReservas" aria-selected="false">Mis reservas</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="editarPerfil-tab" data-toggle="tab" href="#editarPerfil" role="tab" aria-controls="editarPerfil" aria-selected="false">Editar información</a>
-                                        </li>
-                                    </ul>
+                                @if($usuario->id_tipo_usuario == "2") <!--Usuario común-->
+                                    <div class="col-9">
+                                        <!--Pestañas-->
+                                        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="misDirecciones-tab" data-toggle="tab" href="#misDirecciones" role="tab" aria-controls="misDirecciones" aria-selected="true">Mis direcciones</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="misPedidos-tab" data-toggle="tab" href="#misPedidos" role="tab" aria-controls="misPedidos" aria-selected="false">Mis pedidos</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="misReservas-tab" data-toggle="tab" href="#misReservas" role="tab" aria-controls="misReservas" aria-selected="false">Mis reservas</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="editarPerfil-tab" data-toggle="tab" href="#editarPerfil" role="tab" aria-controls="editarPerfil" aria-selected="false">Editar perfil</a>
+                                            </li>
+                                        </ul>
 
-                                    <div class="tab-content ml-1" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="misDirecciones" role="tabpanel" aria-labelledby="misDirecciones-tab">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <label><strong>Alias</strong></label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <label><strong>Calle</strong></label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <label><strong>Número</strong></label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <label><strong>Comuna</strong></label>
-                                                </div>
+                                        <div class="tab-content ml-1" id="myTabContent">
+                                            <!--Inicio Mis direcciones-->
+                                            <div class="tab-pane fade show active" id="misDirecciones" role="tabpanel" aria-labelledby="misDirecciones-tab">
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <label><strong>Alias</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label><strong>Calle</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label><strong>Número</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label><strong>Comuna</strong></label>
+                                                    </div>
 
-                                                @foreach($usuario->direcciones as $direccion)
-                                                    <div class="col-sm-3 text-muted">
-                                                        <label>{{$direccion->alias}}</label>
+                                                    @foreach($usuario->direcciones as $direccion)
+                                                        <div class="col-sm-3 text-muted">
+                                                            <label>{{$direccion->alias}}</label>
+                                                        </div>
+                                                        <div class="col-sm-3 text-muted">
+                                                            <label>{{$direccion->calles->nombre}}</label>
+                                                        </div>
+                                                        <div class="col-sm-3 text-muted">
+                                                            <label>{{$direccion->calles->numero}}</label>
+                                                        </div>
+                                                        <div class="col-sm-3 text-muted">
+                                                            @foreach($comunas as $comuna)
+                                                                @if($comuna->id == $direccion->calles->calles_comunas->first->id->id_comuna)
+                                                                    <label>{{$comuna->nombre}}</label>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            <!--Fin Mis direcciones-->
+                                        
+                                            <!--Inicio Mis pedidos-->
+                                            <div class="tab-pane fade" id="misPedidos" role="tabpanel" aria-labelledby="misPedidos-tab">
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <label><strong>Fecha</strong></label>
                                                     </div>
-                                                    <div class="col-sm-3 text-muted">
-                                                        <label>{{$direccion->calles->nombre}}</label>
+                                                    <div class="col-sm-3">
+                                                        <label><strong>Restaurant</strong></label>
                                                     </div>
-                                                    <div class="col-sm-3 text-muted">
-                                                        <label>{{$direccion->calles->numero}}</label>
+                                                    <div class="col-sm-2">
+                                                        <label><strong>Valor</strong></label>
                                                     </div>
-                                                    <div class="col-sm-3 text-muted">
-                                                        @foreach($comunas as $comuna)
-                                                            @if($comuna->id == $direccion->calles->calles_comunas->first->id->id_comuna)
-                                                                <label>{{$comuna->nombre}}</label>
+                                                    <div class="col-sm-2">
+                                                        <label><strong>Tipo</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <label><strong>Estado</strong></label>
+                                                    </div>
+
+                                                    @foreach($usuario->pedidos as $pedido)
+                                                        <div class="col-sm-3 text-muted">
+                                                            <label><strong>{{$pedido->fecha}}</strong></label>
+                                                        </div>
+
+                                                        <div class="col-sm-3 text-muted">
+                                                            <label><strong>{{$pedido->restaurantes->nombre}}</strong></label>
+                                                        </div>
+
+                                                        <div class="col-sm-2 text-muted">
+                                                            <label><strong>{{$pedido->pagos->monto}}</strong></label>
+                                                        </div>
+
+                                                        @if($pedido->tipo_entrega == false) <!--Retiro-->
+                                                            <div class="col-sm-2 text-muted">
+                                                                <label><strong>Retiro</strong></label>
+                                                            </div>
+
+                                                            @if($pedido->estado == false) <!--No completado-->
+                                                                <div class="col-sm-2 text-muted">
+                                                                    <label><strong>Incompleto</strong></label>
+                                                                </div>
+                                                            @elseif($pedido->estado == true) <!--Completado-->
+                                                                <div class="col-sm-2 text-muted">
+                                                                    <label><strong>Completado</strong></label>
+                                                                </div>
                                                             @endif
-                                                        @endforeach
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="tab-pane fade" id="misPedidos" role="tabpanel" aria-labelledby="misPedidos-tab">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <label><strong>Fecha</strong></label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <label><strong>Restaurant</strong></label>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <label><strong>Valor</strong></label>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <label><strong>Tipo</strong></label>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <label><strong>Estado</strong></label>
-                                                </div>
 
-                                                @foreach($usuario->pedidos as $pedido)
-                                                    <div class="col-sm-3 text-muted">
-                                                        <label><strong>{{$pedido->fecha}}</strong></label>
-                                                    </div>
-
-                                                    <div class="col-sm-3 text-muted">
-                                                        <label><strong>{{$pedido->restaurantes->nombre}}</strong></label>
-                                                    </div>
-
-                                                    <div class="col-sm-2 text-muted">
-                                                        <label><strong>{{$pedido->pagos->monto}}</strong></label>
-                                                    </div>
-
-                                                    @if($pedido->tipo_entrega == false) <!--Retiro-->
-                                                        <div class="col-sm-2 text-muted">
-                                                            <label><strong>Retiro</strong></label>
-                                                        </div>
-
-                                                        @if($pedido->estado == false) <!--No completado-->
+                                                        @elseif($pedido->tipo_entrega == true) <!--Despacho-->
                                                             <div class="col-sm-2 text-muted">
-                                                                <label><strong>Incompleto</strong></label>
+                                                                <label><strong>Despacho</strong></label>
                                                             </div>
-                                                        @elseif($pedido->estado == true) <!--Completado-->
-                                                            <div class="col-sm-2 text-muted">
-                                                                <label><strong>Completado</strong></label>
+
+                                                            @if($pedido->estado == false) <!--No entregado-->
+                                                                <div class="col-sm-2 text-muted">
+                                                                    <label><strong>Incompleto</strong></label>
+                                                                </div>
+                                                            @elseif($pedido->estado == true) <!--Entregado-->
+                                                                <div class="col-sm-2 text-muted">
+                                                                    <label><strong>Entregado</strong></label>
+                                                                </div>
+                                                            @endif
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            <!--Fin Mis pedidos-->
+                                        
+                                            <!--Inicio Mis reservas-->
+                                            <div class="tab-pane fade" id="misReservas" role="tabpanel" aria-labelledby="misReservas-tab">
+                                                <div class="row">
+                                                    <div class="col-sm-2">
+                                                        <label><strong>Fecha</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <label><strong>Hora inicio</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <label><strong>Hora fin</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label><strong>Restaurant</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label><strong>Estado</strong></label>
+                                                    </div>
+
+                                                    @foreach($usuario->reservas as $reserva)
+                                                        <div class="col-sm-2 text-muted">
+                                                            <label><strong>{{$reserva->fecha_resevacion}}</strong></label>
+                                                        </div>
+                                                        <div class="col-sm-2 text-muted">
+                                                            <label><strong>{{$reserva->horarios_mesas->hora_inicio}}</strong></label>
+                                                        </div>
+                                                        <div class="col-sm-2 text-muted">
+                                                            <label><strong>{{$reserva->horarios_mesas->hora_fin}}</strong></label>
+                                                        </div>
+                                                        <div class="col-sm-3 text-muted">
+                                                            <label><strong>{{$reserva->horarios_mesas->mesas->restaurantes->nombre}}</strong></label>
+                                                        </div>
+                                                        @if($reserva->estado == false)
+                                                            <div class="col-sm-3 text-muted">
+                                                                <label><strong>Incompleta</strong></label>
+                                                            </div>
+                                                        @elseif($reserva->estado == true)
+                                                            <div class="col-sm-3 text-muted">
+                                                                <label><strong>Completada</strong></label>
                                                             </div>
                                                         @endif
-
-                                                    @elseif($pedido->tipo_entrega == true) <!--Despacho-->
-                                                        <div class="col-sm-2 text-muted">
-                                                            <label><strong>Despacho</strong></label>
-                                                        </div>
-
-                                                        @if($pedido->estado == false) <!--No entregado-->
-                                                            <div class="col-sm-2 text-muted">
-                                                                <label><strong>Incompleto</strong></label>
-                                                            </div>
-                                                        @elseif($pedido->estado == true) <!--Entregado-->
-                                                            <div class="col-sm-2 text-muted">
-                                                                <label><strong>Entregado</strong></label>
-                                                            </div>
-                                                        @endif
-                                                    @endif
-                                                @endforeach
+                                                    @endforeach
+                                                </div> 
                                             </div>
-                                        </div>
+                                            <!--Fin Mis reservas-->
 
-                                        <div class="tab-pane fade" id="misReservas" role="tabpanel" aria-labelledby="misReservas-tab">
-                                            <div class="row">
-                                                <div class="col-sm-2">
-                                                    <label><strong>Fecha</strong></label>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <label><strong>Hora inicio</strong></label>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <label><strong>Hora fin</strong></label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <label><strong>Restaurant</strong></label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <label><strong>Estado</strong></label>
-                                                </div>
-
-                                                @foreach($usuario->reservas as $reserva)
-                                                    <div class="col-sm-2 text-muted">
-                                                        <label><strong>{{$reserva->fecha_resevacion}}</strong></label>
-                                                    </div>
-                                                    <div class="col-sm-2 text-muted">
-                                                        <label><strong>{{$reserva->horarios_mesas->hora_inicio}}</strong></label>
-                                                    </div>
-                                                    <div class="col-sm-2 text-muted">
-                                                        <label><strong>{{$reserva->horarios_mesas->hora_fin}}</strong></label>
-                                                    </div>
-                                                    <div class="col-sm-3 text-muted">
-                                                        <label><strong>{{$reserva->horarios_mesas->mesas->restaurantes->nombre}}</strong></label>
-                                                    </div>
-                                                    @if($reserva->estado == false)
-                                                        <div class="col-sm-3 text-muted">
-                                                            <label><strong>Incompleta</strong></label>
-                                                        </div>
-                                                    @elseif($reserva->estado == true)
-                                                        <div class="col-sm-3 text-muted">
-                                                            <label><strong>Completada</strong></label>
-                                                        </div>
-                                                    @endif
-                                                @endforeach
-                                            </div> 
-                                        </div>
-
-                                        <!--Inicio editar-->
-                                        
-                                            <div class="tab-pane fade show text-center" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab"> 
-                                                
+                                            <!--Inicio Editar perfil-->
+                                            <div class="tab-pane fade text-center" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab"> 
                                                 <div class="row center">
                                                     <form>
                                                         <div class="form-group">
@@ -316,12 +318,125 @@
                                                         <button type="submit" class="btn btn-primary">Actualizar</button>
                                                     </form>
                                                 </div>
+                                            </div>
+                                            <!--Fin Editar perfil-->
 
-                                            </div><!--Fin editar-->
-                                        
-
+                                        </div>
                                     </div>
-                                </div>
+                                
+                                @elseif($usuario->id_tipo_usuario == "3") <!--Usuario restaurante-->
+                                    <div class="col-9">
+                                        @if($usuario->peticion == null)
+                                            <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="ingresarPeticion-tab" data-toggle="tab" href="#ingresarPeticion" role="tab" aria-controls="ingresarPeticion" aria-selected="true">Ingresar petición</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="editarPerfil-tab" data-toggle="tab" href="#editarPerfil" role="tab" aria-controls="editarPerfil" aria-selected="false">Editar perfil</a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content ml-1" id="contenidoRestaurante1">
+                                                <!--Inicio Ingresar petición-->
+                                                <div class="tab-pane fade show active" id="ingresarPeticion" role="tabpanel" aria-labelledby="ingresarPeticion-tab">
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <label><strong>HolderIngresarPeticion</strong></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Fin ingresar petición-->
+
+                                                <!--Inicio Editar perfil-->
+                                                <div class="tab-pane fade" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <label><strong>HolderEditarPerfil</strong></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Fin Editar perfil-->
+                                            </div>
+
+                                        @elseif($usuario->peticion->validacion == false)
+                                            <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="miPeticion-tab" data-toggle="tab" href="#miPeticion" role="tab" aria-controls="miPeticion" aria-selected="true">Mi petición</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="editarPerfil-tab" data-toggle="tab" href="#editarPerfil" role="tab" aria-controls="editarPerfil" aria-selected="false">Editar perfil</a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content ml-1" id="contenidoRestaurante2">
+                                                <!--Inicio Mi petición-->
+                                                <div class="tab-pane fade show active" id="miPeticion" role="tabpanel" aria-labelledby="miPeticion-tab">
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <label><strong>HolderMiPeticion</strong></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Fin Mi petición-->
+
+                                                <!--Inicio Editar perfil-->
+                                                <div class="tab-pane fade" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <label><strong>HolderEditarPerfil</strong></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Fin Editar perfil-->
+                                            </div>
+                                        @elseif($usuario->peticion->validacion == true)
+                                            <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="miRestaurante-tab" data-toggle="tab" href="#miRestaurante" role="tab" aria-controls="miRestaurante" aria-selected="true">Mi restaurante</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="editarRestaurante-tab" data-toggle="tab" href="#editarRestaurante" role="tab" aria-controls="editarRestaurante" aria-selected="true">Editar restaurante</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="editarPerfil-tab" data-toggle="tab" href="#editarPerfil" role="tab" aria-controls="editarPerfil" aria-selected="false">Editar perfil</a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content ml-1" id="contenidoRestaurante3">
+                                                <!--Inicio Mi restaurante-->
+                                                <div class="tab-pane fade show active" id="miRestaurante" role="tabpanel" aria-labelledby="miRestaurante-tab">
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <label><strong>HolderMiRestaurante</strong></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Fin Mi restaurante-->
+
+                                                <!--Inicio Editar restaurante-->
+                                                <div class="tab-pane fade" id="editarRestaurante" role="tabpanel" aria-labelledby="editarRestaurante-tab">
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <label><strong>HolderEditarRestaurante</strong></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Fin editar restaurante-->
+
+                                                <!--Inicio Editar perfil-->
+                                                <div class="tab-pane fade" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <label><strong>HolderEditarPerfil</strong></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Fin Editar perfil-->
+                                            </div>
+                                        @endif
+                                    </div>
+                                @endif
+                                
                             </div>
                         </div>
                     </div>

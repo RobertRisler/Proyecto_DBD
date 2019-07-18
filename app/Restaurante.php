@@ -43,4 +43,9 @@ class Restaurante extends Model
     {
     	return $this->hasMany('App\Pedido','id_pedido','id');
     }
+
+    public function peticion()
+    {
+    	return $this->belongsTo('App\Peticion', 'id', 'id_restaurante');
+    }
 }

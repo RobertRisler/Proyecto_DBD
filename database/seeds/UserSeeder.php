@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
             'apellido' => 'Perez',
             'correo' => 'hector.perez.m@usach.cl',
             'contrasena' => '$2y$10$6wg54QM9pjn25EkcyvaYmO5.bY8E6oaLXdZOnx04KaJ1zUocXINTO',
-            'id_tipo_usuario' => '2'
+            'id_tipo_usuario' => '3'
         ]);
 
         factory(App\User::class)->create([
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
             'apellido' => 'Cortés',
             'correo' => 'cortes.luis@hotmail.com',
             'contrasena' => '$2y$10$6wg54QM9pjn25EkcyvaYmO5.bY8E6oaLXdZOnx04KaJ1zUocXINTO',
-            'id_tipo_usuario' => '1'
+            'id_tipo_usuario' => '3'
         ]);
 
 		factory('App\User',5)->create();
