@@ -22,7 +22,7 @@ class BuscarController extends Controller
 		$productos = DB::table('productos')
 						->where('nombre', 'ilike', '%' .$query. '%')
 						->orWhere('tipo', 'ilike', '%' .$query. '%')
-						->paginate(5);
+						->paginate(6);
 
 		return view('vistaBuscar')->with('productos', $productos);
 
