@@ -17,11 +17,11 @@ class Menu extends Model
 
     public function menus_restaurantes()
     {
-    	return $this->hasMany('App\Menu_Restaurante');
+    	return $this->hasMany('App\Menu_Restaurante', 'id_menu', 'id');
     }
 
     public function menus_productos()
     {
-    	return $this->hasMany('App\Menu_Producto');
+    	return $this->hasMany('App\Menu_Producto', 'id_menu', 'id');
     }
 }

@@ -27,8 +27,9 @@ class PeticionSeeder extends Seeder
 
         factory(App\Peticion::class)->create([
             'descripcion' => 'Quiero agregar mi restaurante familiar, se encuentra en caupolican 198 en Temuco.',
-            'id_usuario' => '4',
-            'id_restaurante' => '1'
+            'validacion' => null,
+            'id_usuario' => '6',
+            'id_restaurante' => null
         ]);
     }
 }

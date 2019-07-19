@@ -24,9 +24,9 @@ class Restaurante extends Model
     	return $this->hasMany('App\Mesa','id_restaurante','id');
     }
 
-    public function menus()
+    public function menus_restaurantes()
     {
-    	return $this->belongsTo('App\Menu');
+    	return $this->hasMany('App\Menu_Restaurante', 'id_restaurante', 'id');
     }
 
     public function calles()
