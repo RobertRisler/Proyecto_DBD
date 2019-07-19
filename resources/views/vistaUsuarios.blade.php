@@ -593,11 +593,92 @@
 
                                                     <div class="tab-content ml-1" id="contenidoRestaurante3">
                                                         <div class="tab-pane fade show active" id="miRestaurante" role="tabpanel" aria-labelledby="miRestaurante-tab">
-                                                            <div class="row">
-                                                                <div class="col-sm">
-                                                                    <a class="btn btn-primary" href="/M" role="button">Ingresar restaurante</a>
+                                                            <div class="col-sm-5">
+
+                                                                <a class="btn btn-primary" href="/M" role="button">Ingresar restaurante</a>
+
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="modalComentar3" tabindex="-1" role="dialog" aria-labelledby="modalComentar3" aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <form action="{{ url('/restaurante/ubicacion') }}" method="POST">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="modelComentar3">Comentario</h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div class="col">
+                                                                                        <div class="row">
+                                                                                            <label>Nombre</label>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div class="row">
+                                                                                            <label>Descripción</label>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <textarea class="form-control" id="comentario" rows="3" placeholder="Descripción" name="descripcion"></textarea>
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div class="row">
+                                                                                            <label>Teléfono</label>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <input type="text" class="form-control" placeholder="Teléfono" name="telefono">
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div class="row">
+                                                                                            <label>¿Hace despacho?</label>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <select class="form-control" id="categorias" name="hace_despacho">
+                                                                                                <option value="true">Si</option>
+                                                                                                <option value="false">No</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div class="row">
+                                                                                            <label>Ciudad</label>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <input type="text" class="form-control" placeholder="Nombre ciudad" name="nombre_ciudad">
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div class="row">
+                                                                                            <label>Comuna</label>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <input type="text" class="form-control" placeholder="Nombre comuna" name="nombre_comuna">
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div class="row">
+                                                                                            <label>Calle</label>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <input type="text" class="form-control" placeholder="Nombre calle" name="nombre_calle">
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div class="row">
+                                                                                            <label>Número</label>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <input type="text" class="form-control" placeholder="Número casa" name="numero_casa">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
+                                                            </div> 
                                                         </div>
                                                     </div>
                                                 @else

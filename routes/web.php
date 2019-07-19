@@ -54,7 +54,11 @@ Route::post('/nuevoProducto', 'ProductoController@agregarProducto')->name('nuevo
 
 Route::post('/nuevaPeticion/{id}', 'PeticionController@agregarPeticion')->name('nuevaPeticion');
 
-Route::post('/nuevoComentario/{id_usuario}', 'ComentarioController@agregarComentario')->name('nuevoComentario');
+Route::post('/nuevoComentario/{id}', 'ComentarioController@agregarComentario')->name('nuevoComentario');
+
+Route::post('/nuevoRestaurante', 'RestauranteController@nuevoRestaurante')->name('nuevoRestaurante');
+
+Route::post('/asignarRestaurante/{id}', 'PeticionController@aasignarRestaurante')->name('asignarRestaurante');
 
 Route::get('/buscarValoracion', 'BuscarValoracionController@showValoration')->name('searchValoration');
 
