@@ -11,6 +11,8 @@ use App\Comuna;
 use App\Ciudad;
 use App\Calle_Comuna;
 use App\Historial;
+use App\User;
+use Auth;
 use App\Http\Requests\RestauranteRequest;
 
 class RestauranteController extends Controller
@@ -18,9 +20,19 @@ class RestauranteController extends Controller
     //
     public function index()
     {
-        $restaurante = Restaurante::all();
-        return response()->json($restaurante);
+        $restaurantes = Restaurante::all();
+        $usuarios = User::all();
+        if (Auth::check())
+        {
+            $usuario = User::find(Auth::user()->id);
 
+            return view('vistaReservarMesa', compact('restaurantes','usuario'));
+        }
+
+
+        else{
+        return view("vistaReservarMesa", compact("restaurantes", 'usuarios'));	
+		}
     }
 
     public function create()

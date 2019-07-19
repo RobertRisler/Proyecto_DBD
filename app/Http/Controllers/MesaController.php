@@ -68,4 +68,10 @@ class MesaController extends Controller
         $mesa->delete();
         return "Eliminado";
     }
+	
+	public function byRestaurante($id){
+        return Mesa::where('id_restaurante', $id)->get();
+
+
+    }
 }

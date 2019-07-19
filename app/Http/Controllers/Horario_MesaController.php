@@ -108,4 +108,11 @@ class Horario_MesaController extends Controller
             return "No existe el horario_mesa";
         }
     }
+	
+	
+	public function byMesas($id){
+        return Horario_Mesa::where('id_mesa', $id)->get();
+
+
+    }
 }

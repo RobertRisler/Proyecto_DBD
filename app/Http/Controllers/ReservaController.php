@@ -92,4 +92,25 @@ class ReservaController extends Controller
         return "Eliminado!";
 
     }
+	
+	public function crearReserva(Request $request){
+        $reserva = new Reserva();
+        $reserva->cantidad_personas = $request->input('cantidad_personas');
+        $reserva->fecha_resevacion = $request->input('fecha_resevacion');
+        $reserva->rut_cliente = $request->input('rut_cliente');
+        $reserva->nombre_cliente = $request->input('nombre_cliente');
+        $reserva->apellido_cliente = $request->input('apellido_cliente');
+        $reserva->estado = $request->input('estado');
+        $reserva->id_usuario = $request->input('id_usuario');
+        $reserva->id_horario_mesa = $request->input('id_horario_mesa');
+
+        $reserva->save();
+
+        return redirect('/');
+
+
+        
+
+
+    }
 }

@@ -131,6 +131,10 @@ Route::post('/restaurante', 'RestauranteController@store');
 Route::put('/restaurante/{id}', 'RestauranteController@update')->name('restaurante.update');
 Route::get('/restaurante', 'RestauranteController@search')->name('searchRestaurante'); 
 //Route::get('/restaurante','RestauranteController@index');
+
+
+Route::get('/reservar','RestauranteController@index')->name('restaurante.index');
+
 Route::get('/restaurante/{id}','RestauranteController@show')->name('restaurante.show');
 
 Route::delete('/restaurante/{id}','RestauranteController@destroy')->name('restaurante.destroy');
@@ -165,7 +169,7 @@ Route::get('/pago/{id}','PagoController@show');
 Route::delete('/pago/{id}','PagoController@destroy');
 
 /*Rutas de reserva*/
-Route::post('/reserva', 'ReservaController@store');
+Route::post('/reservaCreate', 'ReservaController@crearReserva');
 Route::put('/reserva/{id}', 'ReservaController@update');
 Route::get('/reserva','ReservaController@index');
 Route::get('/reserva/{id}','ReservaController@show');

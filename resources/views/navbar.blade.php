@@ -21,7 +21,6 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav ml-auto">
                     <li role="presentation" class="nav-item"><a href="#pago" class="nav-link js-scroll-trigger">métodos de pago</a></li>
-                    <li role="presentation" class="nav-item"><a href="#restaurante" class="nav-link js-scroll-trigger">restaurantes</a></li>
                 </ul>
                 
 
@@ -29,6 +28,7 @@
                 @if(auth()->check())
                     @if((auth()->user()->id_tipo_usuario)=="2")<!--Si es tipo usuario-->
                      <li class="nav-item">
+                        <a class="btn btn-primary" href="{{ url('reservar') }}">Realiza reserva</a>
                         <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
                     </li>
                     <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
@@ -95,6 +95,7 @@
                     </li>
                   @else
                     <li class="nav-item">
+                        <a class="btn btn-primary" href="{{ url('reservar') }}">Realiza reserva</a>
                         <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
                       <a class="btn btn-primary" href="{{ url('login') }}">Inicia sesión</a>
                         <a class="btn btn-primary" href="{{ url('register') }}">Registrate</a>

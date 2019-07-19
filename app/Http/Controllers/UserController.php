@@ -21,6 +21,20 @@ class UserController extends Controller
 		
         return view("usuarios.index", compact("usuarios"));
     }
+	
+	public function mostrarUsuario()
+    {
+        if (Auth::check())
+        {
+            $usuario = User::find(Auth::user()->id);
+
+            return view('vistaUsuarios', compact('usuario'));
+        }
+        else
+        {
+            return redirect('/login');
+        }   
+    }
 
     public function search(Request $request){
 
