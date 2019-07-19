@@ -38,45 +38,41 @@
     </nav>
     <div>
         <div>
+		<form action= "{{ route('searchProducto') }}" class="form-horizontal" method="GET">
+			<input type="hidden" name="_token" value="{!! csrf_token() !!}">
+			<fieldset>
             <section>
                 <h4 style="margin-top: -20px;margin-left: 20px;font-size: 24px;"><em>Ingrese su dirección de entrega</em></h4>
                 <section>
                     <div style="margin-top: -80px;margin-left: 20px;">
                         
 						<div>
-							<form action= "/enviarPedido/result" class="form-horizontal" method="GET">
-								<input type="hidden" name="_token" value="{!! csrf_token() !!}">
-								<fieldset>
 									<div class="form-group">
 									<label for "alias" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Alias</strong></label>
-									<input type="text" class="form-control" id="alias" placeholder="Alias" name="alias" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									<input type="text" class="form-control" id="alias" placeholder="Alias" name="alias" value="{{ request()->input('alias') }}" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
 									</div>
 									<div class="form-group">
 									<label for "nombre_ciudad" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Ciudad</strong></label>
-									<input type="text" class="form-control" id="nombre_ciudad" placeholder="Ciudad" name="nombre_ciudad" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									<input type="text" class="form-control" id="nombre_ciudad" placeholder="Ciudad" name="nombre_ciudad" value="{{ request()->input('nombre_ciudad') }}" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
 									</div>
 									<div class="form-group">
 									<label for "nombre_comuna" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Comuna</strong></label>
-									<input type="text" class="form-control" id="nombre_comuna" placeholder="Comuna" name="nombre_comuna" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									<input type="text" class="form-control" id="nombre_comuna" placeholder="Comuna" name="nombre_comuna" value="{{ request()->input('nombre_comuna') }}" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
 									</div>
 									<div class="form-group">
 									<label for "nombre_calle" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Calle</strong></label>
-									<input type="text" class="form-control" id="nombre_calle" placeholder="Calle" name="nombre_calle" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									<input type="text" class="form-control" id="nombre_calle" placeholder="Calle" name="nombre_calle" value="{{ request()->input('nombre_calle') }}" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
 									</div>
 									<div class="form-group">
 									<label for "numero" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Número</strong></label>
-									<input type="text" class="form-control" id="numero" placeholder="123" name="numero" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									<input type="text" class="form-control" id="numero" placeholder="123" name="numero" value="{{ request()->input('numero') }}" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
 									</div>
 									<div class="form-group">
 									<label for "telefono" class="col-lg-2 control-label" style="font-size: 20px;"><strong>Teléfono</strong></label>
-									<input type="text" class="form-control" id="telefono" placeholder="12345678" name="telefono" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
-									<input type="submit" value="Listo" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
+									<input type="text" class="form-control" id="telefono" placeholder="12345678" name="telefono" value="{{ request()->input('telefono') }}" style="margin-left: 10px;max-width: 178px;font-size: 16px" />
 									</div>
-								</fieldset>
-							</form>
 						</div>
                     </div>
-                </section>
                 <div>
                     <h4 style="margin-top: -20px;margin-left: 20px;font-size: 24px;"><em>Seleccione un medio de pago</em></h4>
                 </div>
@@ -100,12 +96,14 @@
         </section>
         </section>
         <div class="text-center">
-			<button class="btn btn-primary text-center" type="button" style="margin-top: -100px;width: 200px;height: 80px;background-color: rgb(255,0,0);font-size: 25px;">
+			<button class="btn btn-primary text-center" type="submit" style="margin-top: -100px;width: 200px;height: 80px;background-color: rgb(255,0,0);font-size: 25px;">
 				<strong>
 					<em>Enviar Pedido</em>
 				</strong>
 			</button>
 		</div>
+		</fieldset>
+		</form>
     </div>
     </div>
 </body>
