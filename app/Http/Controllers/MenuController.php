@@ -65,19 +65,16 @@ class MenuController extends Controller
         return "Eliminado";
     }
 	public function agregarMenu(Request $request, $id){
-		if ($categoria = Categoria::find($id)){
-			$menu = new Menu();
-			$menu->nombre = $request->input('nombre');
-            $menu->descripcion = $request->input('descripcion');
-            $menu->cantidad_productos = $request->input('cantidad_productos');
-            $menu->id_categoria = $id;
-			$menu->save();
-            return response()->json($menu);
-		}
-		else{
-			return "No se ha encontrado la categoria para el menu";
-		}
-	}
+        $menu = new Menu();
+        $menu->nombre = $request->input('nombre');
+        $menu->descripcion = $request->input('descripcion');
+        $menu->cantidad_productos = 0;
+        $menu->id_categoria = $request->input('id_categoria');
+        $menu->id_restaurante = $id;
+        $menu->save();
+        return redirect('/MiPerfil');
+    }
+    
 	public function mostrarMenus($id){
 		if ($categoria = Categoria::find($id)){
 			$menu = Menu::where('id_categoria',$id)->get();

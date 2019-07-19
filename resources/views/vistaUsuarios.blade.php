@@ -345,7 +345,7 @@
                                                         <form>
                                                             <div class="form-group">
                                                                 <label for="descripcionPeticion">Realice una descripción de su local</label>
-                                                                <textarea class="form-control" id="descripcionPeticion" rows="8" placeholder="Descripción"></textarea>
+                                                                    <textarea class="form-control" id="descripcionPeticion" rows="8" placeholder="Descripción"></textarea>
                                                                 <small id="recordatorioDescripcion" class="form-text text-muted">Recuerde mencionar el nombre y la dirección de su local, incluyendo calle, número, comuna y ciudad donde se ubica</small>
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">Enviar petición</button>
@@ -556,22 +556,77 @@
                                                                     <label><strong>Nombre</strong></label>
                                                                 </div>
                                                                 <div class="col-sm-2">
-                                                                    <label><strong>Productos</strong></label>
+                                                                    <label><strong>Categoría</strong></label>
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <label><strong>Descripción</strong></label>
                                                                 </div>
-                                                                @foreach($usuario->peticion->restaurante->menus_restaurantes as $menu_rest)
+                                                                @foreach($usuario->peticion->restaurante->menus as $menu)
                                                                     <div class="col-sm-2 text-muted">
-                                                                        <label><strong>{{ $menu_rest->menus->nombre }}</strong></label>
+                                                                        <label><strong>{{ $menu->nombre }}</strong></label>
                                                                     </div>
                                                                     <div class="col-sm-2 text-muted">
-                                                                        <label><strong>{{ $menu_rest->menus->cantidad_productos }}</strong></label>
+                                                                        <label><strong>{{ $menu->categorias->nombre }}</strong></label>
                                                                     </div>
                                                                     <div class="col-sm-8 text-muted">
-                                                                        <label><strong>{{ $menu_rest->menus->descripcion }}</strong></label>
+                                                                        <label><strong>{{ $menu->descripcion }}</strong></label>
                                                                     </div>
                                                                 @endforeach
+
+                                                                <div class="col-sm-12">
+                                                                    <!-- Button trigger modal -->
+                                                                    <br>
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                                        Agregar nuevo menú
+                                                                    </button>
+
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <form action="{{ route('nuevoMenu', $usuario->peticion->restaurante->id) }}" method="POST">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title" id="exampleModalLabel">Nuevo menú</h5>
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <div class="col">
+                                                                                            <div class="row">
+                                                                                                <label>Nombre</label>
+                                                                                            </div>
+                                                                                            <div class="row">
+                                                                                                <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                                                                                            </div>
+                                                                                            <br>
+                                                                                            <div class="row">
+                                                                                                <label>Descripción</label>
+                                                                                            </div>
+                                                                                            <div class="row">
+                                                                                                <input type="text" class="form-control" placeholder="Descripción" name="descripcion">
+                                                                                            </div>
+                                                                                            <br>
+                                                                                            <div class="row">
+                                                                                                <label for="menus">Categoría</label>
+                                                                                                <select class="form-control" id="categorias" name="id_categoria">
+                                                                                                    @foreach($categorias as $categoria)
+                                                                                                        <option value="{{$categoria->id}}">{{ $categoria->nombre }}</option>
+                                                                                                    @endforeach
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div> 
+
                                                             </div>
                                                         </div>
                                                         <!--Fin Editar menu-->
@@ -607,6 +662,67 @@
                                                                         </div>
                                                                     @endforeach
                                                                 @endforeach
+                                                                <div class="col-sm-12">
+                                                                    <!-- Button trigger modal -->
+                                                                    <br>
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nuevoProducto">
+                                                                        Agregar nuevo producto
+                                                                    </button>
+
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="nuevoProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <form action="{{ route('nuevoProducto') }}" method="POST">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title" id="exampleModalLabel">Nuevo producto</h5>
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <div class="col">
+                                                                                            <div class="row">
+                                                                                                <label>Nombre</label>
+                                                                                            </div>
+                                                                                            <div class="row">
+                                                                                                <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                                                                                            </div>
+                                                                                            <br>
+                                                                                            <div class="row">
+                                                                                                <label>Valor</label>
+                                                                                            </div>
+                                                                                            <div class="row">
+                                                                                                <input type="text" class="form-control" placeholder="Valor" name="precio_total">
+                                                                                            </div>
+                                                                                            <br>
+                                                                                            <div class="row">
+                                                                                                <label for="menus">Menú</label>
+                                                                                                <select class="form-control" id="menus" name="id_menu">
+                                                                                                    @foreach($usuario->peticion->restaurante->menus as $menu)
+                                                                                                        <option value="{{$menu->id}}">{{ $menu->nombre }}</option>
+                                                                                                    @endforeach
+                                                                                                </select>
+                                                                                            </div>
+                                                                                            <br>
+                                                                                            <div class="row">
+                                                                                                <label>Descripción</label>
+                                                                                            </div>
+                                                                                            <div class="row">
+                                                                                                <input type="text" class="form-control" placeholder="Descripción" name="descripcion">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div> 
+
                                                             </div>
                                                         </div>
                                                         <!--Fin Editar producto-->

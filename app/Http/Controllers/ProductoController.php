@@ -78,4 +78,18 @@ class ProductoController extends Controller
         return "Eliminado!";
 
     }
+
+    public function agregarProducto(Request $request)
+    {
+        $producto = new Producto();
+        $producto->nombre = $request->input('nombre');
+        $producto->descripcion = $request->input('descripcion');
+        $producto->precio_total = $request->input('precio_total');
+        $producto->tipo = "Almuerzo";
+        $producto->disponibilidad = true;
+        $producto->id_menu = $request->input('id_menu');
+
+        $producto->save();
+        return redirect('/MiPerfil');
+    }
 }

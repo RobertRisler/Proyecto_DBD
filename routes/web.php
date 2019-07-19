@@ -48,6 +48,10 @@ Route::post('/editarPerfil/{id}', 'UserController@editarPerfil')->name('editarPe
 
 Route::post('/editarRestaurante/{id}', 'RestauranteController@editarRestaurante')->name('editarRestaurante');
 
+Route::post('/nuevoMenu/{id}', 'MenuController@agregarMenu')->name('nuevoMenu');
+
+Route::post('/nuevoProducto', 'ProductoController@agregarProducto')->name('nuevoProducto');
+
 
 
 Route::get('/buscarValoracion', 'BuscarValoracionController@showValoration')->name('searchValoration');

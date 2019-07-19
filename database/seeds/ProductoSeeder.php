@@ -35,7 +35,7 @@ class ProductoSeeder extends Seeder
             'precio_total' => '4000',
             'tipo' => 'Entrada',
             'disponibilidad' => 'True',
-            'id_menu' => '5'
+            'id_menu' => '4'
         ]);
 
         factory(App\Producto::class)->create([
@@ -89,7 +89,7 @@ class ProductoSeeder extends Seeder
             'precio_total' => '1750',
             'tipo' => 'Desayuno',
             'disponibilidad' => 'True',
-            'id_menu' => '5'
+            'id_menu' => '3'
         ]);
 
         factory(App\Producto::class)->create([

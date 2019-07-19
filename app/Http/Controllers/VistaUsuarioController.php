@@ -4,13 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Direccion;
-use App\Calle;
-use App\Calle_Comuna;
-use App\Comuna;
-use App\Pedido;
-use App\Restaurant;
-use App\Reserva;
+use App\Categoria;
 use Auth;
 
 class VistaUsuarioController extends Controller
@@ -31,8 +25,9 @@ class VistaUsuarioController extends Controller
         if (Auth::check())
         {
             $usuario = User::find(Auth::user()->id);
+            $categorias = Categoria::all();
 
-            return view('vistaUsuarios', compact('usuario'));
+            return view('vistaUsuarios', compact('usuario', 'categorias'));
         }
         else
         {
