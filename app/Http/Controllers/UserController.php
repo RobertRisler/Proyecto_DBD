@@ -22,15 +22,6 @@ class UserController extends Controller
         return view("usuarios.index", compact("usuarios"));
     }
 
-    
-
-
-
-
-
-
-
-
     public function search(Request $request){
 
         $query = $request->get('query');
@@ -42,8 +33,6 @@ class UserController extends Controller
                         ->paginate(5);
 
         return view('usuarios.index')->with('usuarios', $usuarios);
-
-
 
     }
 
@@ -112,12 +101,10 @@ class UserController extends Controller
         if($users = User::find($id)){
             $users->update($request->all());
             $users->save();
-            return redirect('/usuario')
-            				->with('success', 'Actualizado');
+            return redirect('/usuario')->with('success', 'Actualizado');
 
         }else{
             return "No se encuentra usuario para ser modificado.";
-
         }
     }
     public function destroy($id)//Elimina uno en especifico
@@ -126,7 +113,22 @@ class UserController extends Controller
             $users->delete();
             return back()->with('info', 'El producto fue eliminado');
         }
-    }
+	}
+	
+	public function editarPerfil(Request $request, $id)
+	{
+		if($usuario = User::find($id))
+		{
+			$usuario->update($request->all());
+			$usuario->save();
+			return redirect('/MiPerfil');
+		}
+		else
+		{
+			return redirect('/MiPerfil');
+		}
+	}
+
 	public function agregarComentario(Request $request, $id_usuario, $id_restaurante){
 		if($users = User::find($id_usuario)){
 			if ($restaurante = Restaurante::find($id_restaurante)){

@@ -45,11 +45,6 @@ class RestauranteController extends Controller
 
     }
 
-
-
-
-
-
     public function store(Request $request)
     {
         $valoracion = $request->input('promedio_valoracion');
@@ -111,7 +106,22 @@ class RestauranteController extends Controller
         $restaurante = Restaurante::find($id);
         $restaurante ->delete();
         return back()->with('info', 'El producto fue eliminado');
-    }
+	}
+	
+	public function editarRestaurante(Request $request, $id)
+	{
+		if($restaurante = Restaurante::find($id))
+		{
+			$restaurante->update($request->all());
+			$restaurante->save();
+			return redirect('/MiPerfil');
+		}
+		else
+		{
+			return redirect('/MiPerfil');
+		}
+	}
+
 	public function agregarMesa(Request $request, $id){
 		if ($restaurante = Restaurante::find($id)){
 			$mesa = new Mesa();
