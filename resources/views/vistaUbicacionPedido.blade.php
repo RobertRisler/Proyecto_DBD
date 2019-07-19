@@ -26,7 +26,7 @@
     <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav" style="background-color: #ea745d; -moz-box-shadow: 1px 1px 3px 2px #cc1414;
   -webkit-box-shadow: 1px 1px 3px 2px #cc1414;
   box-shadow:         1px 1px 3px 2px #cc1414;">
-        <div class="container"><a href="#page-top" class="navbar-brand js-scroll-trigger" style="font-size: 20px;">YA-PEDIDOS</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false"
+        <div class="container"><a href="{{ url('index') }}" class="navbar-brand js-scroll-trigger" style="font-size: 20px;">YA-PEDIDOS</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav ml-auto">
@@ -74,7 +74,7 @@
 						</div>
                     </div>
                 <div>
-                    <h4 style="margin-top: -20px;margin-left: 20px;font-size: 24px;"><em>Seleccione un medio de pago</em></h4>
+                    <h4 style="margin-top: 30px;margin-left: 20px;font-size: 24px;"><em>Seleccione un medio de pago</em></h4>
                 </div>
                 <section class="text-justify" style="margin-top: -60px;margin-bottom: 0px;margin-left: 20px;">
                     <div role="group" class="btn-group" style="margin-left: 0px;">
