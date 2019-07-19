@@ -216,6 +216,14 @@ class RestauranteController extends Controller
 		$comuna->save();
 		return $comuna;
 	}
+
+
+	public function mostrar (){
+
+		return view('vistaRegistroRestaurante');
+	}
+
+
 	public function crearRestaurante(Request $request){
 		$restaurante = new Restaurante();
         $restaurante->nombre = $request->input('nombre');

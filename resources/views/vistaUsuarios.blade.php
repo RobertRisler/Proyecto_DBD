@@ -595,7 +595,7 @@
                                                         <div class="tab-pane fade show active" id="miRestaurante" role="tabpanel" aria-labelledby="miRestaurante-tab">
                                                             <div class="col-sm-5">
 
-                                                                <a class="btn btn-primary" href="/M" role="button">Ingresar restaurante</a>
+                                                                <a class="btn btn-primary" href="/registroRestaurante" role="button">Ingresar restaurante</a>
 
                                                                 <!-- Modal -->
                                                                 <div class="modal fade" id="modalComentar3" tabindex="-1" role="dialog" aria-labelledby="modalComentar3" aria-hidden="true">

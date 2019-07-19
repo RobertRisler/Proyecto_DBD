@@ -136,6 +136,8 @@ Route::get('/restaurante/{id}/edit','RestauranteController@edit')->name('restaur
 Route::post('/restaurante', 'RestauranteController@store');
 Route::put('/restaurante/{id}', 'RestauranteController@update')->name('restaurante.update');
 Route::get('/restaurante', 'RestauranteController@search')->name('searchRestaurante'); 
+
+Route::get('/registroRestaurante', 'RestauranteController@mostrar')->name('registroRestaurante'); 
 //Route::get('/restaurante','RestauranteController@index');
 
 
