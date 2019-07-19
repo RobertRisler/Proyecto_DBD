@@ -55,4 +55,16 @@ class BuscarValoracionController extends Controller
 
 	}
 
+	public function showLocation(Request $request){
+
+		$query = $request->get('query');
+
+		$restaurantes = DB::table('restaurantes')
+						->where('nombre', 'ilike', '%' .$query. '%')
+						->paginate(6);
+
+		return view('vistaBuscarRestauranteC')->with('restaurantes', $restaurantes);
+
+	}
+
 }

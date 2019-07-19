@@ -66,7 +66,7 @@ Route::get('/buscarNombre', 'BuscarValoracionController@showName')->name('search
 
 Route::get('/buscarCategoria', 'BuscarValoracionController@showCategory')->name('searchCategory');
 
-
+Route::get('/buscarUbicacion', 'BuscarValoracionController@showLocation')->name('searchLocation');
 
 
 
