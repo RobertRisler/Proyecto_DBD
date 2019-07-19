@@ -30,9 +30,6 @@
                     <ul class="nav navbar-nav ml-auto"></ul>
                     @if(auth()->check())
                         @if((auth()->user()->id_tipo_usuario)=="2")<!--Si es tipo usuario-->
-                            <li class="nav-item">
-                                <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
-                            </li>
                             <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
                                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                                 Bienvenido {{auth()->user()->nombre }}
@@ -45,24 +42,21 @@
                                         <button class="btn btn-primary">Cerrar sesión</button>
                                     </form>
                         @elseif ((auth()->user()->id_tipo_usuario)=="1")<!--Si es tipo administrador-->
-                        <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
-                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                                Bienvenido Administrador {{auth()->user()->nombre }}
-                            </a>
-                            <div class="dropdown-menu sm-menu">
-                            <a class="dropdown-item" href="/usuario">Panel Administración</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/#">Administración</a>
-                            <div class="dropdown-divider"></div>
-                        <form method="POST" action="{{ route ('logout') }}">
-                            {{csrf_field()}}
-                            <button class="btn btn-primary">Cerrar sesión</button>
-                        </form>
+                            <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                    Bienvenido Administrador {{auth()->user()->nombre }}
+                                </a>
+                                <div class="dropdown-menu sm-menu">
+                                <a class="dropdown-item" href="/usuario">Panel Administración</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/#">Administración</a>
+                                <div class="dropdown-divider"></div>
+                            <form method="POST" action="{{ route ('logout') }}">
+                                {{csrf_field()}}
+                                <button class="btn btn-primary">Cerrar sesión</button>
+                            </form>
 
                         @else <!--Si es tipo restaurante-->
-                            <li class="nav-item">
-                            <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
-                            </li>
                             <li class="btn btn-primary dropdown" style="background-color: #ffffff;" >
                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                                 Bienvenido {{auth()->user()->nombre }}
@@ -79,7 +73,6 @@
                     </li>
                   @else
                     <li class="nav-item">
-                        <a class="btn btn-primary" href="{{ url('buscar') }}">Buscar Productos</a>
                       <a class="btn btn-primary" href="{{ url('login') }}">Inicia sesión</a>
                         <a class="btn btn-primary" href="{{ url('register') }}">Registrate</a>
                     </li>
@@ -295,22 +288,36 @@
                                             <!--Fin Mis reservas-->
 
                                             <!--Inicio Editar perfil-->
-                                            <div class="tab-pane fade text-center" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab"> 
-                                                <div class="row center">
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <label for="nombreNuevo">Nombre</label>
-                                                            <input type="text" id="nombreNuevo" class="form-control" placeholder="Nombre">
+                                            <div class="tab-pane fade text-center" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
+                                                <div class="row mt-3">
+                                                    <form action="{{ route('editarPerfil', $usuario->id) }}" method="POST" class="form-inline">
+                                                        <div class="col-sm-1 form-group mb-2">
+                                                            <label>Nombre</label>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label for="apellidoNuevo">Apellido</label>
-                                                            <input type="text" id="apellidoNuevo" class="form-control" placeholder="Apellido">
+                                                        <div class="form-group mx-sm-5 mb-2">
+                                                            <input type="text" class="form-control" placeholder="{{$usuario->nombre}}" name="nombre">
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label for="nuevoMail">Correo electrónico</label>
-                                                            <input type="text" class="form-control" id="nuevoMail" placeholder="correo@correo">
+                                                        <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                    </form>
+
+                                                    <form action="{{ route('editarPerfil', $usuario->id) }}" method="POST" class="form-inline">
+                                                        <div class="col-sm-1 form-group mb-2">
+                                                            <label>Apellido</label>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                        <div class="form-group mx-sm-5 mb-2">
+                                                            <input type="text" class="form-control" placeholder="{{$usuario->apellido}}" name="apellido">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                    </form>
+
+                                                    <form action="{{ route('editarPerfil', $usuario->id) }}" method="POST" class="form-inline">
+                                                        <div class="col-sm-1 form-group mb-2">
+                                                            <label>Correo</label>
+                                                        </div>
+                                                        <div class="form-group mx-sm-5 mb-2">
+                                                            <input type="text" class="form-control" placeholder="{{$usuario->correo}}" name="correo">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -321,7 +328,7 @@
                                 
                                 @elseif($usuario->id_tipo_usuario == "3") <!--Restaurante-->
                                     <div class="col-9">
-                                        @if($usuario->peticion == null)
+                                        @if($usuario->peticion === null)
                                             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" id="ingresarPeticion-tab" data-toggle="tab" href="#ingresarPeticion" role="tab" aria-controls="ingresarPeticion" aria-selected="true">Ingresar petición</a>
@@ -348,29 +355,43 @@
                                                 <!--Fin ingresar petición-->
 
                                                 <!--Inicio Editar perfil-->
-                                                <div class="tab-pane fade" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
-                                                    <div class="row center">
-                                                        <form>
-                                                            <div class="form-group">
-                                                                <label for="nombreNuevo">Nombre</label>
-                                                                <input type="text" id="nombreNuevo" class="form-control" placeholder="Nombre">
+                                                <div class="tab-pane fade text-center" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
+                                                    <div class="row mt-3">
+                                                        <form action="{{ route('editarPerfil', $usuario->id) }}" method="POST" class="form-inline">
+                                                            <div class="col-sm-1 form-group mb-2">
+                                                                <label>Nombre</label>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="apellidoNuevo">Apellido</label>
-                                                                <input type="text" id="apellidoNuevo" class="form-control" placeholder="Apellido">
+                                                            <div class="form-group mx-sm-5 mb-2">
+                                                                <input type="text" class="form-control" placeholder="{{$usuario->nombre}}" name="nombre">
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="nuevoMail">Correo electrónico</label>
-                                                                <input type="text" class="form-control" id="nuevoMail" placeholder="correo@correo">
+                                                            <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                        </form>
+
+                                                        <form action="{{ route('editarPerfil', $usuario->id) }}" method="POST" class="form-inline">
+                                                            <div class="col-sm-1 form-group mb-2">
+                                                                <label>Apellido</label>
                                                             </div>
-                                                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                            <div class="form-group mx-sm-5 mb-2">
+                                                                <input type="text" class="form-control" placeholder="{{$usuario->apellido}}" name="apellido">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                        </form>
+
+                                                        <form action="{{ route('editarPerfil', $usuario->id) }}" method="POST" class="form-inline">
+                                                            <div class="col-sm-1 form-group mb-2">
+                                                                <label>Correo</label>
+                                                            </div>
+                                                            <div class="form-group mx-sm-5 mb-2">
+                                                                <input type="text" class="form-control" placeholder="{{$usuario->correo}}" name="correo">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                                                         </form>
                                                     </div>
                                                 </div>
                                                 <!--Fin Editar perfil-->
                                             </div>
 
-                                        @elseif($usuario->peticion->validacion == false)
+                                        @elseif($usuario->peticion->validacion === null || $usuario->peticion->validacion === false)
                                             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" id="miPeticion-tab" data-toggle="tab" href="#miPeticion" role="tab" aria-controls="miPeticion" aria-selected="true">Mi petición</a>
@@ -390,27 +411,53 @@
                                                         <div class="col-sm-12 text-muted">
                                                             <label>{{$usuario->peticion->descripcion}}</label>
                                                         </div>
+                                                        <div class="col-sm-12">
+                                                            <label>El estado actual de la petición enviada es:</label>
+                                                        </div>
+                                                        @if($usuario->peticion->validacion === null)
+                                                            <div class="col-sm-12 text-muted">
+                                                                <label>Aun no revisada</label>
+                                                            </div>
+                                                        @elseif($usuario->peticion->validacion === false)
+                                                            <div class="col-sm-12 text-muted">
+                                                                <label>Rechazada</label>
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <!--Fin Mi petición-->
 
                                                 <!--Inicio Editar perfil-->
-                                                <div class="tab-pane fade" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
-                                                    <div class="row center">
-                                                        <form>
-                                                            <div class="form-group">
-                                                                <label for="nombreNuevo">Nombre</label>
-                                                                <input type="text" id="nombreNuevo" class="form-control" placeholder="Nombre">
+                                                <div class="tab-pane fade text-center" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
+                                                    <div class="row mt-3">
+                                                        <form action="{{ route('editarPerfil', $usuario->id) }}" method="POST" class="form-inline">
+                                                            <div class="col-sm-1 form-group mb-2">
+                                                                <label>Nombre</label>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="apellidoNuevo">Apellido</label>
-                                                                <input type="text" id="apellidoNuevo" class="form-control" placeholder="Apellido">
+                                                            <div class="form-group mx-sm-5 mb-2">
+                                                                <input type="text" class="form-control" placeholder="{{$usuario->nombre}}" name="nombre">
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="nuevoMail">Correo electrónico</label>
-                                                                <input type="text" class="form-control" id="nuevoMail" placeholder="correo@correo">
+                                                            <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                        </form>
+
+                                                        <form action="{{ route('editarPerfil', $usuario->id) }}" method="POST" class="form-inline">
+                                                            <div class="col-sm-1 form-group mb-2">
+                                                                <label>Apellido</label>
                                                             </div>
-                                                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                            <div class="form-group mx-sm-5 mb-2">
+                                                                <input type="text" class="form-control" placeholder="{{$usuario->apellido}}" name="apellido">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                        </form>
+
+                                                        <form action="{{ route('editarPerfil', $usuario->id) }}" method="POST" class="form-inline">
+                                                            <div class="col-sm-1 form-group mb-2">
+                                                                <label>Correo</label>
+                                                            </div>
+                                                            <div class="form-group mx-sm-5 mb-2">
+                                                                <input type="text" class="form-control" placeholder="{{$usuario->correo}}" name="correo">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -418,109 +465,220 @@
                                             </div>
                                         @elseif($usuario->peticion->validacion == true)
                                             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" id="miRestaurante-tab" data-toggle="tab" href="#miRestaurante" role="tab" aria-controls="miRestaurante" aria-selected="true">Mi restaurante</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="editarRestaurante-tab" data-toggle="tab" href="#editarRestaurante" role="tab" aria-controls="editarRestaurante" aria-selected="true">Editar restaurante</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="editarPerfil-tab" data-toggle="tab" href="#editarPerfil" role="tab" aria-controls="editarPerfil" aria-selected="false">Editar perfil</a>
-                                                </li>
-                                            </ul>
+                                                @if($usuario->peticion->id_restaurante === null)
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" id="miRestaurante-tab" data-toggle="tab" href="#miRestaurante" role="tab" aria-controls="miRestaurante" aria-selected="true">Mi restaurante</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="editarPerfil-tab" data-toggle="tab" href="#editarPerfil" role="tab" aria-controls="editarPerfil" aria-selected="false">Editar perfil</a>
+                                                    </li>
+                                                    </ul>
 
-                                            <div class="tab-content ml-1" id="contenidoRestaurante3">
-                                                <!--Inicio Mi restaurante-->
-                                                <div class="tab-pane fade show active" id="miRestaurante" role="tabpanel" aria-labelledby="miRestaurante-tab">
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                            <label><strong>Nombre:</strong></label>
-                                                        </div>
-                                                        <div class="col-sm-9 text-muted">
-                                                            <label>{{$usuario->peticion->restaurante->nombre}}</label>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <label><strong>Descripción:</strong></label>
-                                                        </div>
-                                                        <div class="col-sm-9 text-muted">
-                                                            <label>{{$usuario->peticion->restaurante->descripcion}}</label>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <label><strong>Valoración actual:</strong></label>
-                                                        </div>
-                                                        <div class="col-sm-9 text-muted">
-                                                            <label>{{$usuario->peticion->restaurante->promedio_valoracion}}</label>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <label><strong>Teléfono:</strong></label>
-                                                        </div>
-                                                        <div class="col-sm-9 text-muted">
-                                                            <label>{{$usuario->peticion->restaurante->telefono}}</label>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <label><strong>Despacho:</strong></label>
-                                                        </div>
-                                                        <div class="col-sm-9 text-muted">
-                                                            @if($usuario->peticion->restaurante->hace_despacho == true)
-                                                                <label>Si</label>
-                                                            @elseif($usuario->peticion->restaurante->hace_despacho == false)
-                                                                <label>No</label>
-                                                            @endif
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <label><strong>Dirección:</strong></label>
-                                                        </div>
-                                                        <div class="col-sm-9 text-muted">
-                                                            <label>{{$usuario->peticion->restaurante->calles->nombre}}, {{$usuario->peticion->restaurante->calles->numero}}</label>
+                                                    <div class="tab-content ml-1" id="contenidoRestaurante3">
+                                                        <div class="tab-pane fade show active" id="miRestaurante" role="tabpanel" aria-labelledby="miRestaurante-tab">
+                                                            <div class="row">
+                                                                <div class="col-sm">
+                                                                    <a class="btn btn-primary" href="/M" role="button">Ingresar restaurante</a>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <!--Fin Mi restaurante-->
+                                                @else
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" id="miRestaurante-tab" data-toggle="tab" href="#miRestaurante" role="tab" aria-controls="miRestaurante" aria-selected="true">Mi restaurante</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="editarRestaurante-tab" data-toggle="tab" href="#editarRestaurante" role="tab" aria-controls="editarRestaurante" aria-selected="true">Editar restaurante</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="misMenus-tab" data-toggle="tab" href="#misMenus" role="tab" aria-controls="misMenus" aria-selected="true">Mis menús</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="misProductos-tab" data-toggle="tab" href="#misProductos" role="tab" aria-controls="misProductos" aria-selected="true">Mis productos</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="editarPerfil-tab" data-toggle="tab" href="#editarPerfil" role="tab" aria-controls="editarPerfil" aria-selected="false">Editar perfil</a>
+                                                    </li>
+                                                    </ul>
 
-                                                <!--Inicio Editar restaurante-->
-                                                <div class="tab-pane fade" id="editarRestaurante" role="tabpanel" aria-labelledby="editarRestaurante-tab">
-                                                    <div class="row center">
-                                                        <form>
-                                                            <div class="form-group">
-                                                                <label for="nombreNuevo">Nombre</label>
-                                                                <input type="text" id="nombreNuevo" class="form-control" placeholder="Nombre">
+                                                    <div class="tab-content ml-1" id="contenidoRestaurante3">
+                                                        <!--Inicio Mi restaurante-->
+                                                        <div class="tab-pane fade show active" id="miRestaurante" role="tabpanel" aria-labelledby="miRestaurante-tab">
+                                                            <div class="row">
+                                                                <div class="col-sm-3">
+                                                                    <label><strong>Nombre:</strong></label>
+                                                                </div>
+                                                                <div class="col-sm-9 text-muted">
+                                                                    <label>{{$usuario->peticion->restaurante->nombre}}</label>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label><strong>Descripción:</strong></label>
+                                                                </div>
+                                                                <div class="col-sm-9 text-muted">
+                                                                    <label>{{$usuario->peticion->restaurante->descripcion}}</label>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label><strong>Valoración actual:</strong></label>
+                                                                </div>
+                                                                <div class="col-sm-9 text-muted">
+                                                                    <label>{{$usuario->peticion->restaurante->promedio_valoracion}}</label>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label><strong>Teléfono:</strong></label>
+                                                                </div>
+                                                                <div class="col-sm-9 text-muted">
+                                                                    <label>{{$usuario->peticion->restaurante->telefono}}</label>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label><strong>Despacho:</strong></label>
+                                                                </div>
+                                                                <div class="col-sm-9 text-muted">
+                                                                    @if($usuario->peticion->restaurante->hace_despacho == true)
+                                                                        <label>Si</label>
+                                                                    @elseif($usuario->peticion->restaurante->hace_despacho == false)
+                                                                        <label>No</label>
+                                                                    @endif
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label><strong>Dirección:</strong></label>
+                                                                </div>
+                                                                <div class="col-sm-9 text-muted">
+                                                                    <label>{{$usuario->peticion->restaurante->calles->nombre}}, {{$usuario->peticion->restaurante->calles->numero}}</label>
+                                                                </div>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="apellidoNuevo">Descripción</label>
-                                                                <input type="text" id="apellidoNuevo" class="form-control" placeholder="Descripción">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="nuevoMail">Teléfono</label>
-                                                                <input type="text" class="form-control" id="nuevoMail" placeholder="12345678">
-                                                            </div>
-                                                            <button type="submit" class="btn btn-primary">Actualizar</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                                <!--Fin editar restaurante-->
+                                                        </div>
+                                                        <!--Fin Mi restaurante-->
 
-                                                <!--Inicio Editar perfil-->
-                                                <div class="tab-pane fade" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
-                                                    <div class="row center">
-                                                        <form>
-                                                            <div class="form-group">
-                                                                <label for="nombreNuevo">Nombre</label>
-                                                                <input type="text" id="nombreNuevo" class="form-control" placeholder="Nombre">
+                                                        <!--Inicio Editar menu-->
+                                                        <div class="tab-pane fade" id="misMenus" role="tabpanel" aria-labelledby="misMenus-tab">
+                                                            <div class="row">
+                                                                <div class="col-sm-2">
+                                                                    <label><strong>Nombre</strong></label>
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <label><strong>Productos</strong></label>
+                                                                </div>
+                                                                <div class="col-sm-8">
+                                                                    <label><strong>Descripción</strong></label>
+                                                                </div>
+                                                                @foreach($usuario->peticion->restaurante->menus_restaurantes as $menu_rest)
+                                                                    <div class="col-sm-2 text-muted">
+                                                                        <label><strong>{{ $menu_rest->menus->nombre }}</strong></label>
+                                                                    </div>
+                                                                    <div class="col-sm-2 text-muted">
+                                                                        <label><strong>{{ $menu_rest->menus->cantidad_productos }}</strong></label>
+                                                                    </div>
+                                                                    <div class="col-sm-8 text-muted">
+                                                                        <label><strong>{{ $menu_rest->menus->descripcion }}</strong></label>
+                                                                    </div>
+                                                                @endforeach
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="apellidoNuevo">Apellido</label>
-                                                                <input type="text" id="apellidoNuevo" class="form-control" placeholder="Apellido">
+                                                        </div>
+                                                        <!--Fin Editar menu-->
+
+                                                        <!--Inicio Editar producto-->
+                                                        <div class="tab-pane fade" id="misProductos" role="tabpanel" aria-labelledby="misProductos-tab">
+                                                            <div class="row">
+                                                                <div class="col-sm-2">
+                                                                    <label><strong>Nombre</strong></label>
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <label><strong>Valor</strong></label>
+                                                                </div>
+                                                                <div class="col-sm-8">
+                                                                    <label><strong>Descripción</strong></label>
+                                                                </div>
+                                                                @foreach($usuario->peticion->restaurante->menus_restaurantes as $menu_rest)
+                                                                    @foreach($menu_rest->menus->menus_productos as $menu_prod)
+                                                                        <div class="col-sm-2 text-muted">
+                                                                            <label><strong>{{ $menu_prod->productos->nombre }}</strong></label>
+                                                                        </div>
+                                                                        <div class="col-sm-2 text-muted">
+                                                                            <label><strong>{{ $menu_prod->productos->precio_total }}</strong></label>
+                                                                        </div>
+                                                                        <div class="col-sm-8 text-muted">
+                                                                            <label><strong>{{ $menu_prod->productos->descripcion }}</strong></label>
+                                                                        </div>
+                                                                    @endforeach
+                                                                @endforeach
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="nuevoMail">Correo electrónico</label>
-                                                                <input type="text" class="form-control" id="nuevoMail" placeholder="correo@correo">
+                                                        </div>
+                                                        <!--Fin Editar producto-->
+
+                                                        <!--Inicio Editar restaurante-->
+                                                        <div class="tab-pane fade text-center" id="editarRestaurante" role="tabpanel" aria-labelledby="editarRestaurante-tab">
+                                                            <div class="row mt-3">
+                                                                <form action="{{ route('editarRestaurante', $usuario->peticion->restaurante->id) }}" method="POST" class="form-inline">
+                                                                    <div class="col-sm-1 form-group mb-2">
+                                                                        <label>Nombre</label>
+                                                                    </div>
+                                                                    <div class="form-group mx-sm-5 mb-2">
+                                                                        <input type="text" class="form-control" placeholder="{{$usuario->peticion->restaurante->nombre}}" name="nombre">
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                                </form>
+
+                                                                <form action="{{ route('editarRestaurante', $usuario->peticion->restaurante->id) }}" method="POST" class="form-inline">
+                                                                    <div class="col-sm-1 form-group mb-2">
+                                                                        <label>Descrip.</label>
+                                                                    </div>
+                                                                    <div class="form-group mx-sm-5 mb-2">
+                                                                        <input type="text" class="form-control" placeholder="{{$usuario->peticion->restaurante->descripcion}}" name="descripcion">
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                                </form>
+                                                                
+                                                                <form action="{{ route('editarRestaurante', $usuario->peticion->restaurante->id) }}" method="POST" class="form-inline">
+                                                                    <div class="col-sm-1 form-group mb-2">
+                                                                        <label>Teléfono</label>
+                                                                    </div>
+                                                                    <div class="form-group mx-sm-5 mb-2">
+                                                                        <input type="text" class="form-control" placeholder="{{$usuario->peticion->restaurante->telefono}}" name="telefono">
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                                </form>
                                                             </div>
-                                                            <button type="submit" class="btn btn-primary">Actualizar</button>
-                                                        </form>
+                                                        </div>
+                                                        <!--Fin editar restaurante-->
+
+                                                        <!--Inicio Editar perfil-->
+                                                        <div class="tab-pane fade text-center" id="editarPerfil" role="tabpanel" aria-labelledby="editarPerfil-tab">
+                                                            <div class="row mt-3">
+                                                                <form action="{{ route('editarPerfil', $usuario->id) }}" method="POST" class="form-inline">
+                                                                    <div class="col-sm-1 form-group mb-2">
+                                                                        <label>Nombre</label>
+                                                                    </div>
+                                                                    <div class="form-group mx-sm-5 mb-2">
+                                                                        <input type="text" class="form-control" placeholder="{{$usuario->nombre}}" name="nombre">
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                                </form>
+
+                                                                <form action="{{ route('editarPerfil', $usuario->id) }}" method="POST" class="form-inline">
+                                                                    <div class="col-sm-1 form-group mb-2">
+                                                                        <label>Apellido</label>
+                                                                    </div>
+                                                                    <div class="form-group mx-sm-5 mb-2">
+                                                                        <input type="text" class="form-control" placeholder="{{$usuario->apellido}}" name="apellido">
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                                </form>
+
+                                                                <form action="{{ route('editarPerfil', $usuario->id) }}" method="POST" class="form-inline">
+                                                                    <div class="col-sm-1 form-group mb-2">
+                                                                        <label>Correo</label>
+                                                                    </div>
+                                                                    <div class="form-group mx-sm-5 mb-2">
+                                                                        <input type="text" class="form-control" placeholder="{{$usuario->correo}}" name="correo">
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <!--Fin Editar perfil-->
                                                     </div>
-                                                </div>
-                                                <!--Fin Editar perfil-->
-                                            </div>
+                                                @endif
+                                            
                                         @endif
                                     </div>
                                 @endif

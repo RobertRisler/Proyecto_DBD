@@ -16,7 +16,7 @@ class CreatePeticionesTable extends Migration
         Schema::create('peticiones', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('descripcion');
-            $table->boolean('validacion');
+            $table->boolean('validacion')->nullable();
             
             $table->bigInteger('id_usuario');
             $table->bigInteger('id_restaurante')->nullable();

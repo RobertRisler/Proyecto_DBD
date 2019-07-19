@@ -52,6 +52,14 @@ class UserSeeder extends Seeder
             'id_tipo_usuario' => '3'
         ]);
 
+        factory(App\User::class)->create([
+            'nombre' => 'Marcial',
+            'apellido' => 'Cuevas',
+            'correo' => 'marcialito@hotmail.com',
+            'contrasena' => '$2y$10$6wg54QM9pjn25EkcyvaYmO5.bY8E6oaLXdZOnx04KaJ1zUocXINTO',
+            'id_tipo_usuario' => '3'
+        ]);
+
 		factory('App\User',5)->create();
     }
 }

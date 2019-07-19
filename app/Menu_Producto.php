@@ -10,11 +10,11 @@ class Menu_Producto extends Model
 
     public function menus()
     {
-        return $this->belongsTo('App\Menu');
+        return $this->belongsTo('App\Menu', 'id_menu', 'id');
     }
 
     public function productos()
     {
-        return $this->belongsTo('App\Producto');
+        return $this->belongsTo('App\Producto', 'id_producto', 'id');
     }
 }

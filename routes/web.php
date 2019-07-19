@@ -44,7 +44,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/MiPerfil', 'VistaUsuarioController@index');
 
 
+Route::post('/editarPerfil/{id}', 'UserController@editarPerfil')->name('editarPerfil');
 
+Route::post('/editarRestaurante/{id}', 'RestauranteController@editarRestaurante')->name('editarRestaurante');
 
 
 
