@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Peticion;
 
 class PeticionController extends Controller
 {
@@ -14,6 +15,21 @@ class PeticionController extends Controller
     public function index()
     {
         //
+    }
+
+    public function search(Request $request){
+
+        $query = $request->get('query');
+
+        
+        $peticiones = DB::table('peticiones')
+                        ->where('descripcion', 'ilike', '%' .$query. '%')
+                        ->paginate(5);
+
+        return view('peticiones.vistaPeticionesRestaurante')->with('peticiones', $peticiones);
+
+
+
     }
 
     /**
@@ -56,9 +72,9 @@ class PeticionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $peticion = Peticion::find($id);
+        return view('peticiones.edit', compact('peticion'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -68,7 +84,16 @@ class PeticionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($peticiones = Peticion::find($id)){
+            $peticiones->update($request->all());
+            $peticiones->save();
+            return redirect('/peticion')
+                            ->with('success', 'Actualizado');
+
+        }else{
+            return "No se encuentra para ser modificado.";
+
+        }
     }
 
     /**

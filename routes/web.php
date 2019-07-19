@@ -31,6 +31,10 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/index', 'PaginaPrincipalController@index')->name('index');
 
 Route::get('/buscar', 'BuscarController@search')->name('searchProducto');
+Route::get('/peticion', 'PeticionController@search')->name('searchPeticion');
+Route::put('/peticion/{id}', 'PeticionController@update')->name('peticion.update');
+
+Route::get('/peticion/{id}/edit','PeticionController@edit')->name('peticion.edit');
 
 
 
