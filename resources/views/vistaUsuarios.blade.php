@@ -243,7 +243,7 @@
                                                         @if($pedido->estado == true)
                                                             <div class="col-sm-2">
                                                                 <!-- Button trigger modal -->
-                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalComentar">
+                                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalComentar">
                                                                     Comentar
                                                                 </button>
 
@@ -289,6 +289,10 @@
                                                                     </div>
                                                                 </div>
                                                             </div> 
+                                                        @elseif($pedido->estado == false)
+                                                            <div class="col-sm-2">
+                                                                <label></label>
+                                                            </div>
                                                         @endif
 
                                                     @endforeach
@@ -340,62 +344,62 @@
                                                                 <label><strong>Completada</strong></label>
                                                             </div>
                                                         @endif
-                                                    @endforeach
 
-                                                    @if($reserva->estado == true)
-                                                        <div class="col-sm-2">
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalComentar2">
-                                                                Comentar
-                                                            </button>
+                                                        @if($reserva->estado == true)
+                                                            <div class="col-sm-2">
+                                                                <!-- Button trigger modal -->
+                                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalComentar2">
+                                                                    Comentar
+                                                                </button>
 
-                                                            <!-- Modal -->
-                                                            <div class="modal fade" id="modalComentar2" tabindex="-1" role="dialog" aria-labelledby="modalComentar2" aria-hidden="true">
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                        <form action="{{ route('nuevoComentario', $usuario->id, $pedido->id_restaurante) }}" method="POST">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title" id="modelComentar2">Comentario</h5>
-                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                    <span aria-hidden="true">&times;</span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <div class="col">
-                                                                                    <div class="row">
-                                                                                        <label for="menus">Valoración</label>
-                                                                                        <select class="form-control" id="categorias" name="valoracion">
-                                                                                            <option>1</option>
-                                                                                            <option>2</option>
-                                                                                            <option>3</option>
-                                                                                            <option>4</option>
-                                                                                            <option>5</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                    <br>
-                                                                                    <div class="row">
-                                                                                        <label>Mensaje</label>
-                                                                                    </div>
-                                                                                    <div class="row">
-                                                                                        <textarea class="form-control" id="comentario" rows="3" placeholder="Comentario" name="mensaje"></textarea>
-                                                                                        <input class="invisible" value="{{$pedido->id_restaurante}}" name="id_restaurante">
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="modalComentar2" tabindex="-1" role="dialog" aria-labelledby="modalComentar2" aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <form action="{{ route('nuevoComentario', $usuario->id, $pedido->id_restaurante) }}" method="POST">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="modelComentar2">Comentario</h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div class="col">
+                                                                                        <div class="row">
+                                                                                            <label for="menus">Valoración</label>
+                                                                                            <select class="form-control" id="categorias" name="valoracion">
+                                                                                                <option>1</option>
+                                                                                                <option>2</option>
+                                                                                                <option>3</option>
+                                                                                                <option>4</option>
+                                                                                                <option>5</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div class="row">
+                                                                                            <label>Mensaje</label>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <textarea class="form-control" id="comentario" rows="3" placeholder="Comentario" name="mensaje"></textarea>
+                                                                                            <input class="invisible" value="{{$reserva->horarios_mesas->mesas->restaurantes->id}}" name="id_restaurante">
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                                                            </div>
-                                                                        </form>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+                                                            </div> 
+                                                        @elseif($reserva->estado == false)
+                                                            <div class="col-sm-2">
+                                                                <label></label>
                                                             </div>
-                                                        </div> 
-                                                    @elseif($reserva->estado == false)
-                                                        <div class="col-sm-2">
-                                                            <label></label>
-                                                        </div>
-                                                    @endif
+                                                        @endif
+                                                    @endforeach
                                                 </div> 
                                             </div>
                                             <!--Fin Mis reservas-->
