@@ -90,8 +90,7 @@ class RestauranteController extends Controller
             if($restaurante = Restaurante::find($id)){
             $restaurante->update($request->all());
             $restaurante->save();
-            return redirect('/restaurante')
-            				->with('success', 'Actualizado');
+            return redirect('/restaurante')->with('success', 'Actualizado');
 
         }else{
             return "No se encuentra para ser modificado.";
