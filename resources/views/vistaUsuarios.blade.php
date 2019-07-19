@@ -177,10 +177,10 @@
                                             <!--Inicio Mis pedidos-->
                                             <div class="tab-pane fade" id="misPedidos" role="tabpanel" aria-labelledby="misPedidos-tab">
                                                 <div class="row">
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-2">
                                                         <label><strong>Fecha</strong></label>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-2">
                                                         <label><strong>Restaurant</strong></label>
                                                     </div>
                                                     <div class="col-sm-2">
@@ -192,13 +192,16 @@
                                                     <div class="col-sm-2">
                                                         <label><strong>Estado</strong></label>
                                                     </div>
+                                                    <div class="col-sm-2">
+                                                        <label><strong></strong></label>
+                                                    </div>
 
                                                     @foreach($usuario->pedidos as $pedido)
-                                                        <div class="col-sm-3 text-muted">
+                                                        <div class="col-sm-2 text-muted">
                                                             <label><strong>{{$pedido->fecha}}</strong></label>
                                                         </div>
 
-                                                        <div class="col-sm-3 text-muted">
+                                                        <div class="col-sm-2 text-muted">
                                                             <label><strong>{{$pedido->restaurantes->nombre}}</strong></label>
                                                         </div>
 
@@ -236,6 +239,58 @@
                                                                 </div>
                                                             @endif
                                                         @endif
+
+                                                        @if($pedido->estado == true)
+                                                            <div class="col-sm-2">
+                                                                <!-- Button trigger modal -->
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalComentar">
+                                                                    Comentar
+                                                                </button>
+
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="modalComentar" tabindex="-1" role="dialog" aria-labelledby="modalComentar" aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <form action="{{ route('nuevoComentario', $usuario->id, $pedido->id_restaurante) }}" method="POST">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="modelComentar">Comentario</h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div class="col">
+                                                                                        <div class="row">
+                                                                                            <label for="menus">Valoración</label>
+                                                                                            <select class="form-control" id="categorias" name="valoracion">
+                                                                                                <option>1</option>
+                                                                                                <option>2</option>
+                                                                                                <option>3</option>
+                                                                                                <option>4</option>
+                                                                                                <option>5</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div class="row">
+                                                                                            <label>Mensaje</label>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <textarea class="form-control" id="comentario" rows="3" placeholder="Comentario" name="mensaje"></textarea>
+                                                                                            <input class="invisible" value="{{$pedido->id_restaurante}}" name="id_restaurante">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                        @endif
+
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -253,11 +308,14 @@
                                                     <div class="col-sm-2">
                                                         <label><strong>Hora fin</strong></label>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-2">
                                                         <label><strong>Restaurant</strong></label>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-2">
                                                         <label><strong>Estado</strong></label>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <label></label>
                                                     </div>
 
                                                     @foreach($usuario->reservas as $reserva)
@@ -270,19 +328,74 @@
                                                         <div class="col-sm-2 text-muted">
                                                             <label><strong>{{$reserva->horarios_mesas->hora_fin}}</strong></label>
                                                         </div>
-                                                        <div class="col-sm-3 text-muted">
+                                                        <div class="col-sm-2 text-muted">
                                                             <label><strong>{{$reserva->horarios_mesas->mesas->restaurantes->nombre}}</strong></label>
                                                         </div>
                                                         @if($reserva->estado == false)
-                                                            <div class="col-sm-3 text-muted">
+                                                            <div class="col-sm-2 text-muted">
                                                                 <label><strong>Incompleta</strong></label>
                                                             </div>
                                                         @elseif($reserva->estado == true)
-                                                            <div class="col-sm-3 text-muted">
+                                                            <div class="col-sm-2 text-muted">
                                                                 <label><strong>Completada</strong></label>
                                                             </div>
                                                         @endif
                                                     @endforeach
+
+                                                    @if($reserva->estado == true)
+                                                        <div class="col-sm-2">
+                                                            <!-- Button trigger modal -->
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalComentar2">
+                                                                Comentar
+                                                            </button>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="modalComentar2" tabindex="-1" role="dialog" aria-labelledby="modalComentar2" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <form action="{{ route('nuevoComentario', $usuario->id, $pedido->id_restaurante) }}" method="POST">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="modelComentar2">Comentario</h5>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="col">
+                                                                                    <div class="row">
+                                                                                        <label for="menus">Valoración</label>
+                                                                                        <select class="form-control" id="categorias" name="valoracion">
+                                                                                            <option>1</option>
+                                                                                            <option>2</option>
+                                                                                            <option>3</option>
+                                                                                            <option>4</option>
+                                                                                            <option>5</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <br>
+                                                                                    <div class="row">
+                                                                                        <label>Mensaje</label>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <textarea class="form-control" id="comentario" rows="3" placeholder="Comentario" name="mensaje"></textarea>
+                                                                                        <input class="invisible" value="{{$pedido->id_restaurante}}" name="id_restaurante">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> 
+                                                    @elseif($reserva->estado == false)
+                                                        <div class="col-sm-2">
+                                                            <label></label>
+                                                        </div>
+                                                    @endif
                                                 </div> 
                                             </div>
                                             <!--Fin Mis reservas-->
@@ -342,10 +455,10 @@
                                                 <!--Inicio Ingresar petición-->
                                                 <div class="tab-pane fade show active" id="ingresarPeticion" role="tabpanel" aria-labelledby="ingresarPeticion-tab">
                                                     <div class="row center">
-                                                        <form>
+                                                        <form action="{{ route('nuevaPeticion', $usuario->id) }}" method="POST">
                                                             <div class="form-group">
                                                                 <label for="descripcionPeticion">Realice una descripción de su local</label>
-                                                                    <textarea class="form-control" id="descripcionPeticion" rows="8" placeholder="Descripción"></textarea>
+                                                                    <textarea class="form-control" id="descripcionPeticion" rows="8" placeholder="Descripción" name="descripcion"></textarea>
                                                                 <small id="recordatorioDescripcion" class="form-text text-muted">Recuerde mencionar el nombre y la dirección de su local, incluyendo calle, número, comuna y ciudad donde se ubica</small>
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">Enviar petición</button>

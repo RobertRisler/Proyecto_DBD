@@ -106,4 +106,15 @@ class PeticionController extends Controller
     {
         //
     }
+
+    public function agregarPeticion(Request $request, $id)
+    {
+        $peticion = new Peticion();
+        $peticion->descripcion = $request->input('descripcion');
+        $peticion->validacion = null;
+        $peticion->id_usuario = $id;
+        $peticion->id_restaurante = null;
+        $peticion->save();
+        return redirect('/MiPerfil');
+    }
 }

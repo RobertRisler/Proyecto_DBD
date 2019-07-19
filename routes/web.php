@@ -52,7 +52,9 @@ Route::post('/nuevoMenu/{id}', 'MenuController@agregarMenu')->name('nuevoMenu');
 
 Route::post('/nuevoProducto', 'ProductoController@agregarProducto')->name('nuevoProducto');
 
+Route::post('/nuevaPeticion/{id}', 'PeticionController@agregarPeticion')->name('nuevaPeticion');
 
+Route::post('/nuevoComentario/{id_usuario}', 'ComentarioController@agregarComentario')->name('nuevoComentario');
 
 Route::get('/buscarValoracion', 'BuscarValoracionController@showValoration')->name('searchValoration');
 

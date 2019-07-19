@@ -121,4 +121,16 @@ class ComentarioController extends Controller
         return "Eliminado";
 
     }
+
+    public function agregarComentario(Request $request, $id)
+    {
+        $comentario = new Comentario();
+        $comentario->mensaje = $request->input('mensaje');
+        $comentario->valoracion = $request->input('valoracion');
+        $comentario->fecha = now();
+        $comentario->id_usuario = $id;
+        $comentario->id_restaurante = $request->input('id_restaurante');
+        $comentario->save();
+        return redirect('/MiPerfil');
+    }
 }
