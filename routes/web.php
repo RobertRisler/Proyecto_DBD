@@ -50,6 +50,14 @@ Route::post('/editarRestaurante/{id}', 'RestauranteController@editarRestaurante'
 
 
 
+Route::get('/buscarValoracion', 'BuscarValoracionController@showValoration')->name('searchValoration');
+
+Route::get('/buscarNombre', 'BuscarValoracionController@showName')->name('searchName');
+
+Route::get('/buscarCategoria', 'BuscarValoracionController@showCategory')->name('searchCategory');
+
+
+
 
 
 /* Rutas entrega 2 */

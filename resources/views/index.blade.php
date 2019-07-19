@@ -18,6 +18,16 @@
         <div class="col-lg-8 mx-auto">
             <p class="text-faded mb-5">Encuentra los mejores restaurantes, almuerzos y menús en donde te encuentres<br /></p>
         </div>
+        <div class="col" style="  margin-top: 10px;">
+                <form action="{{ route('searchName') }}" method="GET" class="search-form">
+                    <div class="input-group">
+                        <input type="search" name="query" id="query" value="{{ request()->input('query') }}" class="form-control" placeholder="Buscar restaurante por nombre" required>
+                        <span class="input-group-prepend">
+                            <button type="submit" class="btn btn-primary">Buscar</button>
+                        </span>
+                    </div>
+                </form>
+        </div>
         <div class="row" style="  background-color: rgb(238,232,232);">
             <div class="col" style="  margin-top: 20px;">
                 <form>
@@ -25,7 +35,7 @@
                         <select class="form-control" required>
                         <option value="" disabled selected>Elige una ciudad</option>
                             @foreach ($ciudades as $ciudad)
-                                <option value="{{ $ciudad->id }}" selected>
+                                <option value="{{ $ciudad->id }}" >
                                   {{  $ciudad->nombre }}
                                 </option>
                                 @endforeach
@@ -34,15 +44,45 @@
                     </div>
                 </form>
             </div>
-            <div class="col">
-                <form class="search-form" style="  margin-top: 20px;">
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control" type="text" placeholder="Calle y número de casa" />
-                        <div class="input-group-append"><button class="btn btn-light" type="button">Search </button></div>
+            <div class="col" style="  margin-top: 20px;">
+                <form>
+                    <div class="field">
+                        <select class="form-control" required>
+                        <option value="" disabled selected>Elige una comuna</option>
+                            @foreach ($comunas as $comuna)
+                                    <option value="{{ $comuna->id }}">
+                                      {{  $comuna->nombre }}
+                                    </option>
+                            @endforeach
+                        </select>
+
                     </div>
                 </form>
+
             </div>
         </div>
+        <button class="btn btn-light" type="button">Buscar </button>
+        <div class="col" style="  margin-top: 10px;">
+                <form action="{{ route('searchValoration') }}" method="GET" class="search-form">
+                    <div class="input-group">
+                        <input type="search" name="query" id="query" value="{{ request()->input('query') }}" class="form-control" placeholder="Valoracion (entre 1 y 5)" required>
+                        <span class="input-group-prepend">
+                            <button type="submit" class="btn btn-primary">Buscar</button>
+                        </span>
+                    </div>
+                </form>
+        </div>
+        <div class="col" style="  margin-top: 10px;">
+                <form action="{{ route('searchCategory') }}" method="GET" class="search-form">
+                    <div class="input-group">
+                        <input type="search" name="query" id="query" value="{{ request()->input('query') }}" class="form-control" placeholder="Buscar por categoria ej almuerzo" required>
+                        <span class="input-group-prepend">
+                            <button type="submit" class="btn btn-primary">Buscar</button>
+                        </span>
+                    </div>
+                </form>
+        </div>
+    </div>
     </div>
     <div class="card"></div>
 </header><section id="pago" class="bg-primary">
@@ -143,7 +183,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script src="assets/js/creative.js"></script>
-	
+    
 </body>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
