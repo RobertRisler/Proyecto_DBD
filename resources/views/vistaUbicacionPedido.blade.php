@@ -30,8 +30,8 @@
             aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav ml-auto">
-                    <li role="presentation" class="nav-item"><a href="#comentario" class="nav-link js-scroll-trigger" style="font-size: 16px;">Nuestra Comunidad</a></li>
-                    <li role="presentation" class="nav-item"><a href="#restaurante" class="nav-link js-scroll-trigger" style="font-size: 16px;">restaurantes</a></li>
+                    <li role="presentation" class="nav-item"><a href="{{ route('login') }}" class="nav-link js-scroll-trigger" style="font-size: 16px;">Iniciar sesión</a></li>
+                    <li role="presentation" class="nav-item"><a href="{{ route('register') }}" class="nav-link js-scroll-trigger" style="font-size: 16px;">Registrate</a></li>
                 </ul>             
             </div>
         </div>

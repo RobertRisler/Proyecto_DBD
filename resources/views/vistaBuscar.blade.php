@@ -36,7 +36,7 @@
             <div class="card-body">
                 <h5 class="card-title">Nombre: {{ $producto->nombre }}</h5>
                 <h6 class="card-title">Precio: ${{ $producto->precio_total }}</h6>
-                <a type="button" class="btn btn-warning" href="">Añadir a carro de compra</a>
+                <a type="button" class="btn btn-warning" href="{{ route('searchProducto') }}">Añadir a carro de compra</a>
                 
             </div>  
         </div>      

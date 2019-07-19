@@ -20,7 +20,7 @@ Route::get('/M', function () { /*Por el momento */
 });
 
 Route::get('/register', 'Auth\RegisterController@index');
-Route::post('/register', 'Auth\RegisterController@create');
+Route::post('/register', 'Auth\RegisterController@create')->name('register');
 
 Route::get('/login', 'Auth\LoginController@index');
 Route::post('/login', 'Auth\LoginController@authenticate')->name('login');
