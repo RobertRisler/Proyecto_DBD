@@ -29,7 +29,7 @@ class ReservaSeeder extends Seeder
             'nombre_cliente' => 'Armando',
             'apellido_cliente' => 'Casas',
             'estado' => 'True',
-            'id_usuario' => '1',
+            'id_usuario' => '2',
             'id_horario_mesa' => '2'
         ]);
         
@@ -40,7 +40,7 @@ class ReservaSeeder extends Seeder
             'nombre_cliente' => 'Olga',
             'apellido_cliente' => 'Rodriguez',
             'estado' => 'False',
-            'id_usuario' => '2',
+            'id_usuario' => '1',
             'id_horario_mesa' => '3'
         ]);
 

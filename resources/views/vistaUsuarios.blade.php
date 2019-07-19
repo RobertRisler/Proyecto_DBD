@@ -579,25 +579,31 @@
                                                         <!--Inicio Editar producto-->
                                                         <div class="tab-pane fade" id="misProductos" role="tabpanel" aria-labelledby="misProductos-tab">
                                                             <div class="row">
-                                                                <div class="col-sm-2">
+                                                                <div class="col-sm-3">
                                                                     <label><strong>Nombre</strong></label>
                                                                 </div>
                                                                 <div class="col-sm-2">
                                                                     <label><strong>Valor</strong></label>
                                                                 </div>
-                                                                <div class="col-sm-8">
+                                                                <div class="col-sm-2">
+                                                                    <label><strong>Menú</strong></label>
+                                                                </div>
+                                                                <div class="col-sm-5">
                                                                     <label><strong>Descripción</strong></label>
                                                                 </div>
-                                                                @foreach($usuario->peticion->restaurante->menus_restaurantes as $menu_rest)
-                                                                    @foreach($menu_rest->menus->menus_productos as $menu_prod)
-                                                                        <div class="col-sm-2 text-muted">
-                                                                            <label><strong>{{ $menu_prod->productos->nombre }}</strong></label>
+                                                                @foreach($usuario->peticion->restaurante->menus as $menu)
+                                                                    @foreach($menu->productos as $producto)
+                                                                        <div class="col-sm-3 text-muted">
+                                                                            <label><strong>{{ $producto->nombre }}</strong></label>
                                                                         </div>
                                                                         <div class="col-sm-2 text-muted">
-                                                                            <label><strong>{{ $menu_prod->productos->precio_total }}</strong></label>
+                                                                            <label><strong>{{ $producto->precio_total }}</strong></label>
                                                                         </div>
-                                                                        <div class="col-sm-8 text-muted">
-                                                                            <label><strong>{{ $menu_prod->productos->descripcion }}</strong></label>
+                                                                        <div class="col-sm-2 text-muted">
+                                                                            <label><strong>{{ $menu->nombre }}</strong></label>
+                                                                        </div>
+                                                                        <div class="col-sm-5 text-muted">
+                                                                            <label><strong>{{ $producto->descripcion }}</strong></label>
                                                                         </div>
                                                                     @endforeach
                                                                 @endforeach

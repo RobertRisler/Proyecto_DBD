@@ -20,6 +20,14 @@ class CreateProductosTable extends Migration
             $table->decimal('precio_total');
             $table->string('tipo');
             $table->boolean('disponibilidad');
+
+            $table->bigInteger('id_menu');
+
+            $table->foreign('id_menu')
+                ->references('id')
+                ->on('menus')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

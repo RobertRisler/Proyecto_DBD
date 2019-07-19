@@ -16,7 +16,8 @@ class ProductoSeeder extends Seeder
             'descripcion' => 'El desayuno típico',
             'precio_total' => '2500',
             'tipo' => 'Desayuno',
-            'disponibilidad' => 'True'
+            'disponibilidad' => 'True',
+            'id_menu' => '3'
         ]);
 
         factory(App\Producto::class)->create([
@@ -24,7 +25,8 @@ class ProductoSeeder extends Seeder
             'descripcion' => 'Una ensalada para tener un almuerzo ligero',
             'precio_total' => '2000',
             'tipo' => 'Almuerzo',
-            'disponibilidad' => 'True'
+            'disponibilidad' => 'True',
+            'id_menu' => '4'
         ]);
 
         factory(App\Producto::class)->create([
@@ -32,7 +34,8 @@ class ProductoSeeder extends Seeder
             'descripcion' => 'Rico ceviche preparado al estilo peruano',
             'precio_total' => '4000',
             'tipo' => 'Entrada',
-            'disponibilidad' => 'True'
+            'disponibilidad' => 'True',
+            'id_menu' => '5'
         ]);
 
         factory(App\Producto::class)->create([
@@ -40,7 +43,8 @@ class ProductoSeeder extends Seeder
             'descripcion' => 'Un sandwich con un buen café para comenzar el día',
             'precio_total' => '1750',
             'tipo' => 'Desayuno',
-            'disponibilidad' => 'True'
+            'disponibilidad' => 'True',
+            'id_menu' => '1'
         ]);
 
         factory(App\Producto::class)->create([
@@ -48,7 +52,8 @@ class ProductoSeeder extends Seeder
             'descripcion' => 'Exquisita pizza preparada con los mejores vegetales',
             'precio_total' => '8900',
             'tipo' => 'Almuerzo',
-            'disponibilidad' => 'False'
+            'disponibilidad' => 'False',
+            'id_menu' => '2'
         ]);
 
         factory(App\Producto::class)->create([
@@ -56,7 +61,8 @@ class ProductoSeeder extends Seeder
             'descripcion' => 'Un completo con todos los ingredientes chilenos',
             'precio_total' => '2000',
             'tipo' => 'Almuerzo',
-            'disponibilidad' => 'True'
+            'disponibilidad' => 'True',
+            'id_menu' => '3'
         ]);
 
         factory(App\Producto::class)->create([
@@ -64,7 +70,8 @@ class ProductoSeeder extends Seeder
             'descripcion' => 'Exquisita pizza preparada con los mejores vegetales',
             'precio_total' => '8900',
             'tipo' => 'Almuerzo',
-            'disponibilidad' => 'False'
+            'disponibilidad' => 'False',
+            'id_menu' => '2'
         ]);
 
         factory(App\Producto::class)->create([
@@ -72,7 +79,8 @@ class ProductoSeeder extends Seeder
             'descripcion' => 'Rico ceviche preparado al estilo peruano',
             'precio_total' => '4000',
             'tipo' => 'Entrada',
-            'disponibilidad' => 'True'
+            'disponibilidad' => 'True',
+            'id_menu' => '4'
         ]);
 
         factory(App\Producto::class)->create([
@@ -80,7 +88,8 @@ class ProductoSeeder extends Seeder
             'descripcion' => 'Un sandwich con un buen café para comenzar el día',
             'precio_total' => '1750',
             'tipo' => 'Desayuno',
-            'disponibilidad' => 'True'
+            'disponibilidad' => 'True',
+            'id_menu' => '5'
         ]);
 
         factory(App\Producto::class)->create([
@@ -88,7 +97,8 @@ class ProductoSeeder extends Seeder
             'descripcion' => 'El desayuno típico americano',
             'precio_total' => '2500',
             'tipo' => 'Desayuno',
-            'disponibilidad' => 'True'
+            'disponibilidad' => 'True',
+            'id_menu' => '5'
         ]);
         
 		//factory('App\Producto',30)->create();

@@ -18,4 +18,9 @@ class Producto extends Model
     {
     	return $this->hasMany('App\Menu_Producto', 'id_producto', 'id');
     }
+
+    public function menu()
+    {
+    	return $this->belongsTo('App\Menu', 'id_menu', 'id');
+    }
 }
