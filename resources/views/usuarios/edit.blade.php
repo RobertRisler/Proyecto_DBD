@@ -1,18 +1,14 @@
 <!doctype html>
 
 <html>
-
+<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 <head>  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Pagina Principal - YA-PEDIDOS</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Search-Form.css">
-    <link rel="stylesheet" href="assets/css/select.css">
+    
+
+    
 </head>
 
 <body id="page-top">
@@ -113,7 +109,7 @@
 
 
 
-<div class="row">
+<div class="row" style="  margin-top: 180px;>
     <div class="col-md-6" style="  margin-top: 80px;">
         <h1>Editar usuario</h1>
     </div>

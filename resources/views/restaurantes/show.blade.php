@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-
+<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 <head>  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -113,7 +113,7 @@
 
 
 
-<div class="row">
+<div class="row" style="  margin-top: 180px;">
     <div class="col-md-6" style="  margin-top: 80px;">
         <h1>Administrar restaurantes</h1>
     </div>
